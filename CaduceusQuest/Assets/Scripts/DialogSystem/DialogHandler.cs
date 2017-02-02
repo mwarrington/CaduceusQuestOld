@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class DialogHandler : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
+    public string GetLine(int index)
     {
-
+        return "Sup";
     }
 
-    // Update is called once per frame
-    void Update()
+    public string[] GetDialogOptions()
     {
-
+        string[] newDOs = new string[3];
+        return newDOs;
     }
 }

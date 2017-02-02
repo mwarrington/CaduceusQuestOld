@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class DialogOptions
 {
-    
+    public DialogOption[] myOptions; 
 }

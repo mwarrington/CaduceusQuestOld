@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class DialogOption
 {
-    
+    public int MyNextLine;
+    public string DialogOptionText;
 }

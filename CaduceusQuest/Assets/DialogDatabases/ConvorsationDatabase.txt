@@ -1,0 +1,10 @@
+c:Auntie|i:0;
+s:Simone|e:0,0|t:Hi, I'm Simone!;
+s:Auntie|e:0,6|t:I know your name Simone...;
+s:Simone|e:4,2|t:Oh, right. Haha;;
+
+c:Patient|i:1;
+s:Simone|e:0,0|t:Hi, I'm Simone!;
+s:Patient|e:0,6|t:Are you a doctor?;
+s:Simone|e:4,2|t:No, not technically.;
+s:Patinet|e:1,2|t:It's cool, I'm also not a doctor.;;
