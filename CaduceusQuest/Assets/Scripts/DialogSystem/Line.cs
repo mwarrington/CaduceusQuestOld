@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Line
 {
-    public string Speaker;
+    public string Speaker,
+                  LineText;
     public Vector2 EmotionColor;
     public int DialogOptionsIndex;
 }
