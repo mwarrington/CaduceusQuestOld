@@ -9,8 +9,8 @@ public class DialogHandler : MonoBehaviour
 
     void Start()
     {
-        Convorsation convo = new Convorsation("Auntie", 'a');
-        Debug.Log(convo.MyLines[0].LineText);
+        Convorsation convo = new Convorsation("Patient", 'a');
+        Debug.Log(convo.MyLines[2].LineText);
     }
 
     public string GetLine(int index)

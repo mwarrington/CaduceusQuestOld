@@ -36,12 +36,22 @@ public class Convorsation
         {
             currentChar = masterText[i];
 
+            if (_skipConvo)
+            {
+                if (currentChar == ';' && masterText[i + 1] == ';')
+                {
+                    _skipConvo = false;
+                    continue;
+                }
+                else
+                    continue;
+            }
+
             if (_readingName)
             {
                 if (currentChar != '(')
                 {
                     _currentName = _currentName + currentChar;
-                    continue;
                 }
                 else if (_currentName == Name)
                 {
@@ -51,6 +61,8 @@ public class Convorsation
                 {
                     _readingName = false;
                     _skipConvo = true;
+                    _currentName = "";
+                    continue;
                 }
             }
 
@@ -94,14 +106,13 @@ public class Convorsation
                     else
                     {
                         MyLines.Add(_currentLine);
-                        _currentLine.Speaker = "";
-                        _currentLine.LineText = "";
+                        _currentLine = new Line();
                         _writingLineText = false;
                         continue;
                     }
                 }
 
-                if(currentChar == '|')
+                if (currentChar == '|')
                 {
                     _writingSpeaker = false;
                     _writingEmotion = false;
@@ -109,18 +120,16 @@ public class Convorsation
                 }
 
                 //Writing Speaker
-                if(_writingSpeaker)
+                if (_writingSpeaker)
                 {
                     _currentLine.Speaker = _currentLine.Speaker + currentChar;
                     continue;
                 }
 
                 //Writing Emotion
-                if(_writingEmotion)
+                if (_writingEmotion)
                 {
-                    //START HERE MONDAY!!!
-                    //We're gonna need these chars to be ints
-                    _currentLine.EmotionColor = new Vector2(currentChar, masterText[i + 2]);
+                    _currentLine.EmotionColor = new Vector2((int)char.GetNumericValue(currentChar), (int)char.GetNumericValue(masterText[i + 2]));
                     i += 2;
                     continue;
                 }
