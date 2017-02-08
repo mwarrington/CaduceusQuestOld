@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class DialogOptions
 {
-    public DialogOption[] myOptions; 
+    public List<DialogOption> myOptions;
+
+    public DialogOptions()
+    {
+        myOptions = new List<DialogOption>();
+    }
 }

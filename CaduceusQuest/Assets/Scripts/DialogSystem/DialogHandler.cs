@@ -10,7 +10,6 @@ public class DialogHandler : MonoBehaviour
     void Start()
     {
         Convorsation convo = new Convorsation("Patient", 'a');
-        Debug.Log(convo.MyLines[2].LineText);
     }
 
     public string GetLine(int index)

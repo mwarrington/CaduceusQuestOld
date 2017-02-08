@@ -7,15 +7,20 @@ public class Convorsation
     public string Name;
     public char Index;
     public List<Line> MyLines = new List<Line>();
-    public List<DialogOptions> MyDialogOptionsArray = new List<DialogOptions>();
+    public List<DialogOptions> MyDialogOptionsList = new List<DialogOptions>();
 
     private Line _currentLine = new Line();
+    private List<DialogOptions> _currentDialogOptions;
+    private List<DialogOption> _currentDialogOption;
     private string _currentName = "";
+    private int _currentDOGroupIndex = -1,
+                _currentDOIndex;
     private bool _readingName = false,
                  _readingIndex = false,
                  _writingSpeaker = false,
                  _writingEmotion = false,
                  _writingLineText = false,
+                 _writingDialogOptionLine = false,
                  _skipConvo = false,
                  _correctConvo = false;
 
@@ -25,6 +30,7 @@ public class Convorsation
         Index = index;    
 
         PopulateConversation();
+        Debug.Log("Dear Mason, Right now dialog option text number isn't recording correctly and the first post dialog options line holds all the rest of the text.");
     }
 
     public void PopulateConversation()
@@ -105,9 +111,26 @@ public class Convorsation
                     }
                     else
                     {
-                        MyLines.Add(_currentLine);
-                        _currentLine = new Line();
-                        _writingLineText = false;
+                        char sup = masterText[i + 3];
+
+                        if (_currentDOGroupIndex == -1)
+                        {
+                            MyLines.Add(_currentLine);
+                            _currentLine = new Line();
+                            _writingLineText = false;
+                        }
+                        else if (masterText[i + 2] == '[')
+                        {
+                            _writingDialogOptionLine = false;
+                            _currentDOGroupIndex = -1;
+                            _currentDOIndex = 0;
+                        }
+                        else
+                        {
+                            _writingDialogOptionLine = false;
+                            _currentDOIndex++;
+                        }
+
                         continue;
                     }
                 }
@@ -141,6 +164,13 @@ public class Convorsation
                     continue;
                 }
 
+                //Writing Dialog Option Line
+                if(_writingDialogOptionLine)
+                {
+                    MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].DialogOptionText = MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].DialogOptionText + currentChar;
+                    continue;
+                }
+
                 //Section Finder 2
                 if (currentChar == '(')
                 {
@@ -168,6 +198,41 @@ public class Convorsation
                         i += 2;
 
                         _writingLineText = true;
+                        continue;
+                    }
+
+                    //Dialog Option group
+                    if (masterText[i + 1] == 'g')
+                    {
+                        i += 3;
+
+                        if(_currentDOGroupIndex == -1)
+                        {
+                            _currentDOGroupIndex = (int)char.GetNumericValue(masterText[i]);
+                            MyDialogOptionsList.Add(new DialogOptions());
+                        }
+
+                        MyDialogOptionsList[_currentDOGroupIndex].myOptions.Add(new DialogOption());
+
+                        continue;
+                    }
+
+                    //Next Line Index
+                    if (masterText[i + 1] == 'n')
+                    {
+                        i += 2;
+
+                        MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = (int)char.GetNumericValue(masterText[i]);
+                        
+                        continue;
+                    }
+
+                    //Dialog Option Line
+                    if (masterText[i + 1] == 'l')
+                    {
+                        i += 2;
+
+                        _writingDialogOptionLine = true;
                         continue;
                     }
                 }
