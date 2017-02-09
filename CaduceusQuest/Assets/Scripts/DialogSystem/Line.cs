@@ -8,4 +8,5 @@ public class Line
                   LineText;
     public Vector2 EmotionColor;
     public int DialogOptionsIndex;
+    public bool LastLine;
 }

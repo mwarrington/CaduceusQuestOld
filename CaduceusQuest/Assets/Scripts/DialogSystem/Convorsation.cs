@@ -10,8 +10,6 @@ public class Convorsation
     public List<DialogOptions> MyDialogOptionsList = new List<DialogOptions>();
 
     private Line _currentLine = new Line();
-    private List<DialogOptions> _currentDialogOptions;
-    private List<DialogOption> _currentDialogOption;
     private string _currentName = "";
     private int _currentDOGroupIndex = -1,
                 _currentDOIndex;
@@ -30,7 +28,6 @@ public class Convorsation
         Index = index;    
 
         PopulateConversation();
-        Debug.Log("Dear Mason, Right now dialog option text number isn't recording correctly and the first post dialog options line holds all the rest of the text.");
     }
 
     public void PopulateConversation()
@@ -111,15 +108,13 @@ public class Convorsation
                     }
                     else
                     {
-                        char sup = masterText[i + 3];
-
                         if (_currentDOGroupIndex == -1)
                         {
                             MyLines.Add(_currentLine);
                             _currentLine = new Line();
                             _writingLineText = false;
                         }
-                        else if (masterText[i + 2] == '[')
+                        else if (masterText[i + 3] == '[')
                         {
                             _writingDialogOptionLine = false;
                             _currentDOGroupIndex = -1;
@@ -160,7 +155,13 @@ public class Convorsation
                 //Writing Line Text
                 if(_writingLineText)
                 {
-                    _currentLine.LineText = _currentLine.LineText + currentChar;
+                    if (currentChar == '#')
+                    {
+                        _currentLine.LastLine = true;
+                    }
+                    else
+                        _currentLine.LineText = _currentLine.LineText + currentChar;
+
                     continue;
                 }
 
@@ -222,7 +223,12 @@ public class Convorsation
                     {
                         i += 2;
 
-                        MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = (int)char.GetNumericValue(masterText[i]);
+                        if (masterText[i + 2] == '(')
+                            MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = (int)char.GetNumericValue(masterText[i + 1]);
+                        else
+                        {
+                            MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = int.Parse("" + masterText[i + 1] + masterText[i + 2]);
+                        }
                         
                         continue;
                     }
