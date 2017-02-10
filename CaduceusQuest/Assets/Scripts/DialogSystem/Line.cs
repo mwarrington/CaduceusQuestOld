@@ -6,7 +6,7 @@ public class Line
 {
     public string Speaker,
                   LineText;
-    public Vector2 EmotionColor;
+    public Emotion MyEmotion;
     public int DialogOptionsIndex;
     public bool LastLine;
 }

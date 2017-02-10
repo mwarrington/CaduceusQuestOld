@@ -147,7 +147,7 @@ public class Convorsation
                 //Writing Emotion
                 if (_writingEmotion)
                 {
-                    _currentLine.EmotionColor = new Vector2((int)char.GetNumericValue(currentChar), (int)char.GetNumericValue(masterText[i + 2]));
+                    _currentLine.MyEmotion = new Emotion(currentChar, (int)char.GetNumericValue(masterText[i + 2]));
                     i += 2;
                     continue;
                 }
