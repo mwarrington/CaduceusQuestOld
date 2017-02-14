@@ -13,14 +13,14 @@ public class Convorsation
     private string _currentName = "";
     private int _currentDOGroupIndex = -1,
                 _currentDOIndex;
-    private bool _readingName = false,
-                 _readingIndex = false,
-                 _writingSpeaker = false,
-                 _writingEmotion = false,
-                 _writingLineText = false,
-                 _writingDialogOptionLine = false,
-                 _skipConvo = false,
-                 _correctConvo = false;
+    private bool _readingName,
+                 _writingSpeaker,
+                 _writingEmotion,
+                 _writingLineText,
+                 _writingDialogOptionLine,
+                 _skipConvo,
+                 _correctConvo,
+                 _skipLine;
 
     public Convorsation(string name, char index)
     {
@@ -48,6 +48,18 @@ public class Convorsation
                 }
                 else
                     continue;
+            }
+
+            if (_skipLine)
+            {
+                if (currentChar == '/' && masterText[i + 1] == '/')
+                    _skipLine = false;
+                else
+                    continue;
+            }
+            else if (currentChar == '/' && masterText[i + 1] == '/')
+            {
+                _skipLine = true;
             }
 
             if (_readingName)

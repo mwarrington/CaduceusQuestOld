@@ -3,6 +3,7 @@
 [1](s)Auntie|(e)a,6|(t)I know your name, Simone...;
 [2](s)Simone|(e)e,2|(t)Oh, right. Haha#;;
 
+//This is a test conversation that has at least one example of every component of the dialog system including this note//
 (c)Patient(i)a;
 [0](s)Simone|(e)a,0|(t)Hi, I'm Simone!;
 [1](s)Patient|(e)a,6|(t)Are you a doctor?;
