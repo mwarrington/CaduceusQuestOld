@@ -33,7 +33,8 @@ public class CameraController : MovementController
         {
             Move(CardinalDirections.LEFT);
         }
-        else if (((this.transform.position.z + _initialCameraDistance) + CameraFollowDistance.y) < _followSubject.transform.position.z) //Follow Forward
+
+        if (((this.transform.position.z + _initialCameraDistance) + CameraFollowDistance.y) < _followSubject.transform.position.z) //Follow Forward
         {
             Move(CardinalDirections.FORWARD);
         }
@@ -66,6 +67,11 @@ public class CameraController : MovementController
         if (dir == CardinalDirections.LEFT)
         {
             currentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x - CameraFollowDistance.x) - _followSubject.transform.position.z), 0.05f, 1.1f);
+        }
+
+        if (currentSpeed > _followSubject.Speed)
+        {
+            currentSpeed = _followSubject.Speed;
         }
 
         Speed = currentSpeed;
