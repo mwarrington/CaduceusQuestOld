@@ -61,12 +61,12 @@ public class CameraController : MovementController
 
         if (dir == CardinalDirections.RIGHT)
         {
-            currentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x + CameraFollowDistance.x) - _followSubject.transform.position.z), 0.05f, 1.1f);
+            currentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x + CameraFollowDistance.x) - _followSubject.transform.position.x), 0.05f, 1.1f);
         }
 
         if (dir == CardinalDirections.LEFT)
         {
-            currentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x - CameraFollowDistance.x) - _followSubject.transform.position.z), 0.05f, 1.1f);
+            currentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x - CameraFollowDistance.x) - _followSubject.transform.position.x), 0.05f, 1.1f);
         }
 
         if (currentSpeed > _followSubject.Speed)
