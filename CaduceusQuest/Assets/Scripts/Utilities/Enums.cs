@@ -9,3 +9,13 @@ public enum CardinalDirections
     LEFT,
     RIGHT
 }
+
+public enum EncounterActionType
+{
+    EMPATHYPUZZLE,
+    EVENT,
+    COMPSCIPUZZLE,
+    DOCTORPUZZLE,
+    EPIPUZZLE,
+    CHEMENGPUZZLE,
+}
