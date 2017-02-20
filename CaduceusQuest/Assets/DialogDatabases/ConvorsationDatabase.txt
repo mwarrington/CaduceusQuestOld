@@ -1,3 +1,74 @@
+<<<<<<< HEAD
+//Hospital Receptionist//
+
+(c)Receptionist(i)a;
+[0](s)Receptionist|(e)TK|(t)Hi sweetie! Welcome to the Ashland Community Hospital. What can I do for you?<0;
+(g)0(n)1(l)I’m looking for Dr. Gallo.;
+(g)0(n)1(l)My internship starts today.;
+[1](s)Receptionist|(e)TK(t)Right through the doors on your left. Watch out, the doctor can take a while to warm up to you...#;
+
+//Hospital Reception NPC 1: Macy//
+
+(c)Macy(i)a;
+[0](s)Macy|(e)TK|(t)I hope my dad’s okay. I’ve been waiting here for 3 hours. At least he has Teddy.#;
+
+//After Simone gives Teddy to Mason//
+(c)Macy(i)b;
+[0](s)Simone|(e)TK|(t)I made sure your dad got Teddy, he’s taking care of him.
+Macy: Is he ok? Can you fix him?<0;
+(g)0(n)1(l)Yes, we’re fixing him.;
+(g)0(n)1(l)I’m not sure, the doctors here are doing their best...;
+[1](s)Macy|(e)TK|(t)I don’t know what’s wrong. He started throwing up and his skin turned blue.<1;
+(g)1(n)2(l)He turned blue?;
+(g)1(n)3(l)He started throwing up?;
+[2](s)Macy|(e)TK|(t)Yeah! Like we were on a boat. His skin turned blue and his eyes got all dark. Is he okay?;
+[3](s)Macy|(e)TK|(t)He’d barely eaten any dinner but he said he was feeling dizzy and he threw up! Is he okay?;
+[4](s)Simone|(e)TK|(t)Everything will be okay, but he has to stay here tonight. Is someone coming to get you?;
+[5](s)Macy|(e)TK|(t)Alright. My older brother’s on his way.#;
+
+//Meet Dr. Gallo//
+
+(c)Dr. Gallo(i)a;
+[0](s)Simone|(e)TK|(t)Good morning, are you Dr. Gallo?;
+[1](s)Dr. Gallo|(e)TK|(t)Yes, yes, and who are you?;
+[2](s)Simone|(e)TK|(t)I’m Simone. I think I’m interning with you this summer. My aunt—;
+[3](s)Dr. Gallo|(e)TK|(t)I don’t have time to teach you anything right now, can you go talk to these patients and do what the list says? Make sure you grab the teddy bear.;
+[4](s)Simone|(e)TK|(t)Ok, I—#;
+//acquire list//
+
+(c)Dr. Gallo(i)b;
+[0](s)Dr. Gallo|(e)TK|(t)Do I have to do everything around here? Go talk to those patients.#;
+
+//Tutorial 1: Tim//
+//encounter TBD goes here//
+
+(c)Tim(i)a;
+[0](s)Simone|(e)TK|(t)Good morning!;
+[1](s)Tim|(e)TK|(t)Hey, you woke me up. Who let you in here?;
+[2](s)Simone|(e)TK|(t)I’m sorry. Dr. Gallo sent me. Are you Tim?;
+Tim: Maybe. Who are you?
+Simone: I’m Simone. 
+Tim: I 
+
+//Tutorial 2: Mason//
+
+(c)Mason(i)a;
+[0](s)Simone|(e)TK|(t)Hi, I'm Simone.;
+[1](s)Mason|(e)TK|(t)Are you a doctor?;
+[2](s)Simone|(e)TK|(t)No, not technically.;
+[3](s)Mason|(e)TK|(t)It's cool, I'm not a doctor either.;
+[4](s)Mason|(e)TK|(t)So what are you here for?<0;
+[5](s)Simone|(e)TK|(t)Dr. Gallo sent me to give this teddy bear to you.;
+[5](s)Mason|(e)TK|(t)Wow!! Thank you. This is from my daughter Macy. She’s still in the waiting room. She must be scared.#;
+
+(c)Mason(i)b;
+[0](s)Mason|(e)TK|(t)Could you go check on Macy?#;
+
+//School NPC 1: Quinn//
+
+(c)Quinn(i)a;
+[0](s)Quinn|(e)TK|(t)Do you see all these beatles around? It’s the invasive emerald ash borer, scientific name agrilus planipennis. Our town is named after them. I’m writing a report about it.#;
+=======
 (c)Auntie(i)a;
 [0](s)Simone|(e)a,0|(t)Hi, I'm Simone!;
 [1](s)Auntie|(e)a,6|(t)I know your name, Simone...;
@@ -22,4 +93,9 @@
 [10](s)Simone|(e)b,1|(t)Oh, I just remembered. I'm here to see how you're doing.;
 [11](s)Patient|(e)b,1|(t)That's interesting, I've also been having trouble remembering things.;
 [12](s)Simone|(e)b,1|(t)Hmm, that might be important (foreboding).#;
+<<<<<<< Updated upstream
 [13](s)Patient|(e)b,1|(t)Well, if that's all...#;;
+=======
+[13](s)Patient|(e)b,1|(t)Well, if that's all...#;;
+>>>>>>> origin/master
+>>>>>>> Stashed changes
