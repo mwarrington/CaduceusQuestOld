@@ -171,6 +171,16 @@ public class Convorsation
                     {
                         _currentLine.LastLine = true;
                     }
+                    else if(currentChar == '<')
+                    {
+                        i++;
+                        _currentLine.NextGroupIndex = (int)char.GetNumericValue(masterText[i]);
+                    }
+                    else if (currentChar == '>')
+                    {
+                        i++;
+                        _currentLine.NextLineIndex = (int)char.GetNumericValue(masterText[i]);
+                    }
                     else
                         _currentLine.LineText = _currentLine.LineText + currentChar;
 
