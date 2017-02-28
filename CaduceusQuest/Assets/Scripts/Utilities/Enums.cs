@@ -4,10 +4,10 @@ using UnityEngine;
 
 public enum CardinalDirections
 {
-    FORWARD,
-    BACKWARD,
-    LEFT,
-    RIGHT
+    FORWARD = 0,
+    BACKWARD = 1,
+    LEFT = 2,
+    RIGHT = 3
 }
 
 public enum EncounterActionType

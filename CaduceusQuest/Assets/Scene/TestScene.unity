@@ -471,7 +471,6 @@ GameObject:
   - component: {fileID: 329790698}
   - component: {fileID: 329790697}
   - component: {fileID: 329790696}
-  - component: {fileID: 329790695}
   m_Layer: 0
   m_Name: CompSciCamera
   m_TagString: Untagged
@@ -492,13 +491,6 @@ Transform:
   m_Father: {fileID: 107457482}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &329790695
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 329790693}
-  m_Enabled: 1
 --- !u!92 &329790696
 Behaviour:
   m_ObjectHideFlags: 0
