@@ -7,10 +7,25 @@ using UnityEditor;
 public class EncounterAction
 {
     public EncounterActionType MyType;
+    public ScriptableObject MyScriptableObject;
     public string Name;
     public string EncounterMessage;
 
-    public void BeginDialogEvent(string encounterSubj)
+    //CompSci Encounter Action
+    public void InitiateAction(int symbolCount, int strikeCount)
+    {
+        GameObject CompSciEAObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzle/CompSciPuzzle/CompSciPuzzle" + symbolCount);
+        CompSciEAObj.GetComponent<CompSciPuzzleManager>().Strikes = strikeCount;
+    }
+
+    //Doctor Encounter Action
+    public void InitiateAction(int keyStrokeCount, float arrowMinSpeed, float arrowMaxSpeed)
+    {
+        
+    }
+
+    //Dialog Encounter Action
+    public void InitiateAction(string speaker, string speakerLine, string badResponse, string medResponse, string goodResponse, Emotion lineEmotion)
     {
         
     }
