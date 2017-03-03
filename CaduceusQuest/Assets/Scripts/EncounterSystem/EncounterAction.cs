@@ -7,9 +7,17 @@ using UnityEditor;
 public class EncounterAction
 {
     public EncounterActionType MyType;
-    public ScriptableObject MyScriptableObject;
     public string Name;
-    public string EncounterMessage;
+
+    private ScriptableObject _myScriptableObject;
+
+    public EncounterAction(EncounterActionType myType, string name)
+    {
+        MyType = myType;
+        Name = name;
+
+        _myScriptableObject = Resources.Load<ScriptableObject>("EncounterActions/" + myType.ToString() + "EA" + name);
+    }
 
     //CompSci Encounter Action
     public void InitiateAction(int symbolCount, int strikeCount)
@@ -97,7 +105,7 @@ public class MakeEncounterActionDialog
         asset.LineEmotion.EmotionType = emotionType;
         asset.LineEmotion.EmotionIntensity = emotionIntensity;
 
-        AssetDatabase.CreateAsset(asset, "Assets/EncounterActions/NewEncounterActionDialog.asset");
+        AssetDatabase.CreateAsset(asset, "Assets/Resouces/EncounterActions/DialogEA.asset");
         AssetDatabase.SaveAssets();
 
         Selection.activeObject = asset;
@@ -144,7 +152,7 @@ public class MakeEncounterActionCompSci
             asset.SymbolCount = symbolCount;
             asset.StrikeCount = strikeCount;
 
-            AssetDatabase.CreateAsset(asset, "Assets/EncounterActions/NewEncounterActionDialog.asset");
+            AssetDatabase.CreateAsset(asset, "Assets/Resources/EncounterActions/CompSciEA.asset");
             AssetDatabase.SaveAssets();
 
             Selection.activeObject = asset;
@@ -199,7 +207,7 @@ public class MakeEncounterActionDoctor
             asset.ArrowMinSpeed = arrowMinSpeed;
             asset.ArrowMaxSpeed = arrowMaxSpeed;
 
-            AssetDatabase.CreateAsset(asset, "Assets/EncounterActions/NewEncounterActionDialog.asset");
+            AssetDatabase.CreateAsset(asset, "Assets/Resources/EncounterActions/DoctorEA.asset");
             AssetDatabase.SaveAssets();
 
             Selection.activeObject = asset;

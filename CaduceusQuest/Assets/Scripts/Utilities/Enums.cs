@@ -13,10 +13,10 @@ public enum CardinalDirections
 
 public enum EncounterActionType
 {
-    EMPATHYPUZZLE,
+    DIALOG,
     EVENT,
-    COMPSCIPUZZLE,
-    DOCTORPUZZLE,
-    EPIPUZZLE,
-    CHEMENGPUZZLE,
+    COMPSCI,
+    DOCTOR,
+    EPIDEMIOLOGIST,
+    CHEMENG,
 }
