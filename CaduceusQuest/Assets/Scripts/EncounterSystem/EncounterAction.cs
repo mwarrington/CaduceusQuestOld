@@ -24,6 +24,7 @@ public class EncounterAction
     {
         GameObject CompSciEAObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzle/CompSciPuzzle/CompSciPuzzle" + symbolCount);
         CompSciEAObj.GetComponent<CompSciPuzzleManager>().Strikes = strikeCount;
+        //Instantiate it
     }
 
     //Doctor Encounter Action
@@ -166,7 +167,8 @@ public class EncounterActionDoctor : ScriptableObject
 {
     public int KeyStrokeCount;
     public float ArrowMinSpeed,
-                 ArrowMaxSpeed;
+                 ArrowMaxSpeed,
+                 SpawnRate;
 }
 
 public class MakeEncounterActionDoctor
@@ -175,7 +177,8 @@ public class MakeEncounterActionDoctor
     {
         int keyStrokeCount;
         float arrowMinSpeed,
-              arrowMaxSpeed;
+              arrowMaxSpeed,
+              spawnRate;
 
         [MenuItem("Assets/Create/EncounerAction/Doctor")]
         public static void OpenEACompSciWindow()
@@ -192,20 +195,24 @@ public class MakeEncounterActionDoctor
             arrowMinSpeed = EditorGUILayout.FloatField("Minimum Arrow Speed", arrowMinSpeed);
             arrowMaxSpeed = EditorGUILayout.FloatField("Maximum Arrow Speed", arrowMaxSpeed);
             EditorGUILayout.Space();
+            
+            spawnRate = EditorGUILayout.FloatField("Spawn Rate", spawnRate);
+            EditorGUILayout.Space();
 
             if (GUILayout.Button("Create"))
             {
-                CreateEADoctor(keyStrokeCount, arrowMinSpeed, arrowMaxSpeed);
+                CreateEADoctor(keyStrokeCount, arrowMinSpeed, arrowMaxSpeed, spawnRate);
             }
         }
 
-        public static void CreateEADoctor(int keyStrokeCount, float arrowMinSpeed, float arrowMaxSpeed)
+        public static void CreateEADoctor(int keyStrokeCount, float arrowMinSpeed, float arrowMaxSpeed, float spawnRate)
         {
             EncounterActionDoctor asset = ScriptableObject.CreateInstance<EncounterActionDoctor>();
 
             asset.KeyStrokeCount = keyStrokeCount;
             asset.ArrowMinSpeed = arrowMinSpeed;
             asset.ArrowMaxSpeed = arrowMaxSpeed;
+            asset.SpawnRate = spawnRate;
 
             AssetDatabase.CreateAsset(asset, "Assets/Resources/EncounterActions/DoctorEA.asset");
             AssetDatabase.SaveAssets();
