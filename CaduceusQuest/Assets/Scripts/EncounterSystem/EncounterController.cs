@@ -5,6 +5,11 @@ using UnityEngine;
 public class EncounterController : MonoBehaviour
 {
     public string Name;
+
+    void Update()
+    {
+        
+    }
 }
 
 public class EncounterMenuItem

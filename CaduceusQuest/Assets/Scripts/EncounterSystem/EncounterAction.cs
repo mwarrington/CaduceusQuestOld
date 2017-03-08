@@ -19,24 +19,32 @@ public class EncounterAction
         _myScriptableObject = Resources.Load<ScriptableObject>("EncounterActions/" + myType.ToString() + "EA" + name);
     }
 
-    //CompSci Encounter Action
-    public void InitiateAction(int symbolCount, int strikeCount)
+    public void InitiateAction()
     {
-        GameObject CompSciEAObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzle/CompSciPuzzle/CompSciPuzzle" + symbolCount);
-        CompSciEAObj.GetComponent<CompSciPuzzleManager>().Strikes = strikeCount;
-        //Instantiate it
-    }
-
-    //Doctor Encounter Action
-    public void InitiateAction(int keyStrokeCount, float arrowMinSpeed, float arrowMaxSpeed)
-    {
-        
-    }
-
-    //Dialog Encounter Action
-    public void InitiateAction(string speaker, string speakerLine, string badResponse, string medResponse, string goodResponse, Emotion lineEmotion)
-    {
-        
+        switch(MyType)
+        {
+            case EncounterActionType.COMPSCI:
+                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_myScriptableObject;
+                GameObject CompSciEAObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzle/CompSciPuzzle/CompSciPuzzle" + myCompSciSO.SymbolCount);
+                CompSciEAObj = GameObject.Instantiate(CompSciEAObj);
+                CompSciEAObj.GetComponent<CompSciPuzzleManager>().Strikes = myCompSciSO.StrikeCount;
+                break;
+            case EncounterActionType.DOCTOR:
+                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_myScriptableObject;
+                GameObject DoctorPuzzleObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzle/Doctor/DoctorPuzzleDefault");
+                DoctorPuzzleObj = GameObject.Instantiate(DoctorPuzzleObj);
+                DoctorPuzzleManager myDocPuzzMan = DoctorPuzzleObj.GetComponent<DoctorPuzzleManager>();
+                myDocPuzzMan.KeyStrokeCount = myDoctorSO.KeyStrokeCount;
+                myDocPuzzMan.MinArrowSpeed = myDoctorSO.ArrowMinSpeed;
+                myDocPuzzMan.MaxArrowSpeed = myDoctorSO.ArrowMaxSpeed;
+                myDocPuzzMan.SpawnRate = myDoctorSO.SpawnRate;
+                break;
+            case EncounterActionType.DIALOG:
+                break;
+            default:
+                Debug.LogError("We haven't put together an IntiateAction for that action type.");
+                break;
+        }
     }
 }
 

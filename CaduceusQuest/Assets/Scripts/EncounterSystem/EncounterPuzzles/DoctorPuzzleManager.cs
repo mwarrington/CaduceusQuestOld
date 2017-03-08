@@ -9,6 +9,30 @@ public class DoctorPuzzleManager : MonoBehaviour
                  SpawnRate;
     public int KeyStrokeCount;
 
+    public int CorrectKeyPressCount
+    {
+        get
+        {
+            return _correctKeyPressCount;
+        }
+
+        set
+        {
+            if(value != _correctKeyPressCount)
+            {
+                if (value > _correctKeyPressCount)
+                {
+                    ToggleCorrectIndicator();
+                    Invoke("ToggleCorrectIndicator", 0.2f);
+                }
+                _correctKeyPressCount = value;
+            }
+        }
+    }
+    private int _correctKeyPressCount;
+
+    private SpriteRenderer _correctKeyPressIndicator,
+                           _incorrectKeyPressIndicator;
     private Vector2 _topSpawnPoint,
                     _bottomSpawnPoint,
                     _leftSpawnPoint,
@@ -22,6 +46,9 @@ public class DoctorPuzzleManager : MonoBehaviour
         _bottomSpawnPoint = GameObject.Find("SpawnPointBottom").transform.position;
         _leftSpawnPoint = GameObject.Find("SpawnPointLeft").transform.position;
         _rightSpawnPoint = GameObject.Find("SpawnPointRight").transform.position;
+        _correctKeyPressIndicator = GameObject.Find("target_green").GetComponent<SpriteRenderer>();
+        _incorrectKeyPressIndicator = GameObject.Find("target_red").GetComponent<SpriteRenderer>();
+        _correctKeyPressIndicator.enabled = false;
     }
     
     void Update()
@@ -72,5 +99,21 @@ public class DoctorPuzzleManager : MonoBehaviour
 
         if (_arrowSpawnCount < KeyStrokeCount)
             Invoke("SimpleSpawnArrow", SpawnRate);
+    }
+
+    private void ToggleCorrectIndicator()
+    {
+        _correctKeyPressIndicator.enabled = !_correctKeyPressIndicator.enabled;
+
+        if (_correctKeyPressIndicator.enabled)
+        {
+            _incorrectKeyPressIndicator.enabled = false;
+            CancelInvoke("ToggleIncorrectIndicator");
+        }
+    }
+
+    public void ToggleIncorrectIndicator()
+    {
+        _incorrectKeyPressIndicator.enabled = !_incorrectKeyPressIndicator.enabled;
     }
 }

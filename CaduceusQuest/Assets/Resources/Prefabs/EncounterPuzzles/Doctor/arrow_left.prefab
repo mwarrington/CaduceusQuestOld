@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3.695119
+  MyButtonType: 3
 --- !u!212 &212010629958690316
 SpriteRenderer:
   m_ObjectHideFlags: 1
