@@ -1084,6 +1084,16 @@ Prefab:
       propertyPath: SpawnRate
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 114000440940750524, guid: 1115bba8feea4204789f5af6b6ea2c49,
+        type: 2}
+      propertyPath: ComplexSpawning
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000440940750524, guid: 1115bba8feea4204789f5af6b6ea2c49,
+        type: 2}
+      propertyPath: RandomSpawning
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1115bba8feea4204789f5af6b6ea2c49, type: 2}
   m_IsPrefabParent: 0

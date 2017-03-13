@@ -8,6 +8,8 @@ public class DoctorPuzzleManager : MonoBehaviour
                  MaxArrowSpeed,
                  SpawnRate;
     public int KeyStrokeCount;
+    public bool ComplexSpawning,
+                RandomSpawning;
 
     public int CorrectKeyPressCount
     {
@@ -22,7 +24,7 @@ public class DoctorPuzzleManager : MonoBehaviour
             {
                 if (value > _correctKeyPressCount)
                 {
-                    ToggleCorrectIndicator();
+                    ToggleCorrectIndicator(true);
                     Invoke("ToggleCorrectIndicator", 0.2f);
                 }
                 _correctKeyPressCount = value;
@@ -62,7 +64,7 @@ public class DoctorPuzzleManager : MonoBehaviour
         {
             if(_arrowSpawnCount == 0)
             {
-                ComplexArrowSpawn();
+                SimpleArrowSpawn();
             }
         }
     }
@@ -71,27 +73,75 @@ public class DoctorPuzzleManager : MonoBehaviour
     {
         string path = "Prefabs/EncounterPuzzles/Doctor/arrow_";
         int rand = Random.Range(0, 4);
-        Vector2 spawnPoint = Vector2.zero;
+        Vector2 spawnPoint = Vector2.zero,
+                spawnVariance = Vector2.zero;
 
-        if (rand == 0)
+        if (ComplexSpawning)
         {
-            spawnPoint = _topSpawnPoint;
-            path += "up";
+            spawnVariance = _myCamera.ScreenToWorldPoint(new Vector3(_myCamera.pixelWidth, _myCamera.pixelHeight));
+            spawnVariance = new Vector2(spawnVariance.x / 2, spawnVariance.y / 2);
         }
-        else if (rand == 1)
+
+        if (RandomSpawning)
         {
-            spawnPoint = _bottomSpawnPoint;
-            path += "down";
+            int newRand = Random.Range(0, 4);
+
+            if (newRand == 0)
+            {
+                spawnPoint = _rightSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+            }
+            else if (newRand == 1)
+            {
+                spawnPoint = _leftSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+            }
+            else if (newRand == 2)
+            {
+                spawnPoint = _topSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+            }
+            else if (newRand == 3)
+            {
+                spawnPoint = _bottomSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+            }
+
+            if(rand == 0)
+            {
+                path += "up";
+            }
+            else if(rand == 1)
+            {
+                path += "down";
+            }
+            else if(rand == 2)
+            {
+                path += "left";
+            }
+            else if(rand == 3)
+            {
+                path += "right";
+            }
         }
-        else if (rand == 2)
+        else
         {
-            spawnPoint = _leftSpawnPoint;
-            path += "left";
-        }
-        else if (rand == 3)
-        {
-            spawnPoint = _rightSpawnPoint;
-            path += "right";
+            if (rand == 0)
+            {
+                spawnPoint = _topSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+                path += "up";
+            }
+            else if (rand == 1)
+            {
+                spawnPoint = _bottomSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+                path += "down";
+            }
+            else if (rand == 2)
+            {
+                spawnPoint = _leftSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+                path += "left";
+            }
+            else if (rand == 3)
+            {
+                spawnPoint = _rightSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+                path += "right";
+            }
         }
 
         GameObject arrow = Resources.Load<GameObject>(path);
@@ -103,58 +153,53 @@ public class DoctorPuzzleManager : MonoBehaviour
             Invoke("SimpleArrowSpawn", SpawnRate);
     }
 
-    private void ComplexArrowSpawn()
-    {
-        string path = "Prefabs/EncounterPuzzles/Doctor/arrow_";
-        int rand = Random.Range(0, 4);
-        Vector2 spawnPoint = Vector2.zero,
-                spawnVariance = _myCamera.ScreenToWorldPoint(new Vector3(_myCamera.pixelWidth, _myCamera.pixelHeight));
+    //private void ComplexArrowSpawn()
+    //{
+    //    string path = "Prefabs/EncounterPuzzles/Doctor/arrow_";
+    //    int rand = Random.Range(0, 4);
+    //    Vector2 spawnPoint = Vector2.zero,
+    //            spawnVariance = _myCamera.ScreenToWorldPoint(new Vector3(_myCamera.pixelWidth, _myCamera.pixelHeight));
 
-        spawnVariance = new Vector2(spawnVariance.x / 2, spawnVariance.y / 2);
+    //    spawnVariance = new Vector2(spawnVariance.x / 2, spawnVariance.y / 2);
 
-        if (rand == 0)
-        {
-            spawnPoint = _topSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
-            path += "up";
-        }
-        else if (rand == 1)
-        {
-            spawnPoint = _bottomSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0); ;
-            path += "down";
-        }
-        else if (rand == 2)
-        {
-            spawnPoint = _leftSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y)); ;
-            path += "left";
-        }
-        else if (rand == 3)
-        {
-            spawnPoint = _rightSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y)); ;
-            path += "right";
-        }
+    //    if (rand == 0)
+    //    {
+    //        spawnPoint = _topSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+    //        path += "up";
+    //    }
+    //    else if (rand == 1)
+    //    {
+    //        spawnPoint = _bottomSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0); ;
+    //        path += "down";
+    //    }
+    //    else if (rand == 2)
+    //    {
+    //        spawnPoint = _leftSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+    //        path += "left";
+    //    }
+    //    else if (rand == 3)
+    //    {
+    //        spawnPoint = _rightSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+    //        path += "right";
+    //    }
 
-        GameObject arrow = Resources.Load<GameObject>(path);
-        arrow = Instantiate(arrow, spawnPoint, Quaternion.identity);
-        arrow.GetComponent<DocArrowController>().Speed = Random.Range(MinArrowSpeed, MaxArrowSpeed);
-        _arrowSpawnCount++;
+    //    GameObject arrow = Resources.Load<GameObject>(path);
+    //    arrow = Instantiate(arrow, spawnPoint, Quaternion.identity);
+    //    arrow.GetComponent<DocArrowController>().Speed = Random.Range(MinArrowSpeed, MaxArrowSpeed);
+    //    _arrowSpawnCount++;
 
-        if (_arrowSpawnCount < KeyStrokeCount)
-            Invoke("ComplexArrowSpawn", SpawnRate);
-    }
+    //    if (_arrowSpawnCount < KeyStrokeCount)
+    //        Invoke("ComplexArrowSpawn", SpawnRate);
+    //}
 
     private void ToggleCorrectIndicator()
     {
         _correctKeyPressIndicator.enabled = !_correctKeyPressIndicator.enabled;
-
-        if (_correctKeyPressIndicator.enabled)
-        {
-            _incorrectKeyPressIndicator.enabled = false;
-            CancelInvoke("ToggleIncorrectIndicator");
-        }
     }
 
-    public void ToggleIncorrectIndicator()
+    private void ToggleCorrectIndicator(bool turnOn)
     {
-        _incorrectKeyPressIndicator.enabled = !_incorrectKeyPressIndicator.enabled;
+        _correctKeyPressIndicator.enabled = turnOn;
+        CancelInvoke("ToggleCorrectIndicator");
     }
 }

@@ -12,8 +12,6 @@ public class DocArrowController : MonoBehaviour
     private float _maxDistance;
     private bool _atTarget;
 
-    private float _sdkfj;
-
     private void Start()
     {
         _myDocPuzzleManager = FindObjectOfType<DoctorPuzzleManager>();
@@ -30,8 +28,6 @@ public class DocArrowController : MonoBehaviour
 
         if (_atTarget)
         {
-            _sdkfj += Time.deltaTime;
-
             switch (MyButtonType)
             {
                 case CardinalDirections.FORWARD:
@@ -60,13 +56,6 @@ public class DocArrowController : MonoBehaviour
                     break;
             }
         }
-        //else
-        //{
-        //    if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
-        //    {
-        //        UnsuccessfulKeyPress();
-        //    }
-        //}
     }
 
     private void SimpleMoveAt()
@@ -76,12 +65,10 @@ public class DocArrowController : MonoBehaviour
         if (Vector2.Distance(transform.position, _targetLoc) > _maxDistance)
         {
             GameObject.Destroy(gameObject);
-            Debug.Log(_sdkfj);
         }
         else if ((Vector2.Distance(transform.position, _targetLoc) < (Speed / 0.444444f) && (MyButtonType == CardinalDirections.BACKWARD || MyButtonType == CardinalDirections.FORWARD)) ||
                  (Vector2.Distance(transform.position, _targetLoc) < (Speed / 0.25f) && (MyButtonType == CardinalDirections.RIGHT || MyButtonType == CardinalDirections.LEFT)))
         {
-
             _atTarget = true;
         }
         else
@@ -94,11 +81,5 @@ public class DocArrowController : MonoBehaviour
     {
         _myDocPuzzleManager.CorrectKeyPressCount++;
         GameObject.Destroy(gameObject);
-    }
-
-    private void UnsuccessfulKeyPress()
-    {
-        _myDocPuzzleManager.ToggleIncorrectIndicator();
-        _myDocPuzzleManager.Invoke("ToggleIncorrectIndicator", 0.2f);
     }
 }
