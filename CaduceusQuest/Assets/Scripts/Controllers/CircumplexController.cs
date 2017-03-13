@@ -4,28 +4,34 @@ using UnityEngine;
 
 public class CircumplexController : MonoBehaviour
 {
+    private KeyValuePair<char, int> _currentEmotion;
     private bool _draggingCircumplex;
     private float _initialMouseDragPosition;
     private Vector3 _initialRotation;
+
+    private void Start()
+    {
+        _currentEmotion = new KeyValuePair<char, int>('c', 3);
+    }
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            _draggingCircumplex = true;
-            _initialMouseDragPosition = Input.mousePosition.x;
-            _initialRotation = this.transform.localEulerAngles;
-        }
+        //if(Input.GetKeyDown(KeyCode.Mouse1))
+        //{
+        //    _draggingCircumplex = true;
+        //    _initialMouseDragPosition = Input.mousePosition.x;
+        //    _initialRotation = this.transform.localEulerAngles;
+        //}
 
-        if(_draggingCircumplex)
-        {
-            this.transform.localEulerAngles = new Vector3(_initialRotation.x, _initialRotation.y + (_initialMouseDragPosition - Input.mousePosition.x) / 5, _initialRotation.z);
-        }
+        //if(_draggingCircumplex)
+        //{
+        //    this.transform.localEulerAngles = new Vector3(_initialRotation.x, _initialRotation.y + (_initialMouseDragPosition - Input.mousePosition.x) / 5, _initialRotation.z);
+        //}
 
-        if(Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            _draggingCircumplex = false;
-        }
+        //if(Input.GetKeyUp(KeyCode.Mouse1))
+        //{
+        //    _draggingCircumplex = false;
+        //}
 
         if(Input.GetKey(KeyCode.LeftArrow))
         {
