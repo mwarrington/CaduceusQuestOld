@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &493302357
 Transform:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 493302356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_MotionVectors: 1
@@ -581,7 +581,6 @@ GameObject:
   - component: {fileID: 1074053016}
   - component: {fileID: 1074053015}
   - component: {fileID: 1074053014}
-  - component: {fileID: 1074053013}
   m_Layer: 0
   m_Name: CircumplexCamera
   m_TagString: Untagged
@@ -602,13 +601,6 @@ Transform:
   m_Father: {fileID: 244934119}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 27.675001, y: 0, z: 0}
---- !u!81 &1074053013
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1074053011}
-  m_Enabled: 1
 --- !u!92 &1074053014
 Behaviour:
   m_ObjectHideFlags: 0
@@ -857,7 +849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1494130207
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +869,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1494130206}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_MotionVectors: 1
@@ -990,7 +982,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1595672028
 Transform:
   m_ObjectHideFlags: 0
@@ -1010,7 +1002,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1595672027}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_MotionVectors: 1
@@ -1054,7 +1046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1665060015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,7 +1173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1873320142
 Transform:
   m_ObjectHideFlags: 0
@@ -1313,19 +1305,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.81644654
+      value: -0.90285903
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.06652161
+      value: 0.07898997
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.046578933
+      value: 0.03683362
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.57168204
+      value: 0.42101005
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_RootOrder
@@ -1345,11 +1337,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -110
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 9.316
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f17acdce5ae0ac47b3c4e3722fdf4cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1377,6 +1369,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a56730b5bde6043b58528a132ff949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TopIndicator: {fileID: 1873320143}
+  TopMiddleIndicator: {fileID: 1595672029}
+  BottomMiddleIndicator: {fileID: 493302358}
+  BottomIndicator: {fileID: 1494130208}
 --- !u!1 &2077405398
 GameObject:
   m_ObjectHideFlags: 0
