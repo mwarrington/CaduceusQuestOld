@@ -20,11 +20,6 @@ public class CircumplexController : MonoBehaviour
         {
             if (value != _currentEmotionIntensity)
             {
-                TopIndicator.enabled = false;
-                TopMiddleIndicator.enabled = false;
-                BottomMiddleIndicator.enabled = false;
-                BottomIndicator.enabled = false;
-
                 if (value == 3)
                 {
                     TopIndicator.enabled = true;
@@ -68,6 +63,7 @@ public class CircumplexController : MonoBehaviour
                  _targetEmotionType;
     private Vector3 _lastRotation,
                     _targetRotation;
+    private bool _inputEnabled = true;
 
     private void Start()
     {
@@ -84,16 +80,31 @@ public class CircumplexController : MonoBehaviour
         if (_targetEmotionType != _currentEmotionType || _targetEmotionIntensity != _currentEmotionIntensity)
             RotationHandler();
 
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if (_inputEnabled)
+            InputHandler();
+    }
+
+    private void InputHandler()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            this.transform.Rotate(Vector3.forward * Time.deltaTime * 60);
-            //_targtEmotion.EmotionType = currentEmotion.GetLastEmotionType();
+            _inputEnabled = false;
         }
 
-        if(Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            this.transform.Rotate(-Vector3.forward * Time.deltaTime * 60);
-            //_targtEmotion.EmotionType = currentEmotion.GetNextEmotionType();
+            _lastRotation = this.transform.eulerAngles;
+
+            _targetRotation = new Vector3(_lastRotation.x, _lastRotation.y, _lastRotation.z - 45);
+            _targetEmotionType = _currentEmotion.GetLastEmotionType();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            _lastRotation = this.transform.eulerAngles;
+
+            _targetRotation = new Vector3(_lastRotation.x, _lastRotation.y, _lastRotation.z + 45);
+            _targetEmotionType = _currentEmotion.GetNextEmotionType();
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -104,14 +115,20 @@ public class CircumplexController : MonoBehaviour
             if (currentEmotionIntensity == 3)
                 _targetRotation = new Vector3(_lastRotation.x - 20, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 2)
-                _targetRotation = new Vector3(_lastRotation.x - 50, _lastRotation.y, _lastRotation.z);
+                _targetRotation = new Vector3(_lastRotation.x + 50, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 1)
-                _targetRotation = new Vector3(_lastRotation.x - 57, _lastRotation.y, _lastRotation.z);
-
-            Debug.Log(_targetRotation);
+                _targetRotation = new Vector3(_lastRotation.x + 57, _lastRotation.y, _lastRotation.z);
 
             if (currentEmotionIntensity != 0)
+            {
+                TopIndicator.enabled = false;
+                TopMiddleIndicator.enabled = false;
+                BottomMiddleIndicator.enabled = false;
+                BottomIndicator.enabled = false;
+
+                _inputEnabled = false;
                 _targetEmotionIntensity--;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -120,29 +137,37 @@ public class CircumplexController : MonoBehaviour
             _lastRotation = this.transform.eulerAngles;
 
             if (currentEmotionIntensity == 2)
-                _targetRotation = new Vector3(_lastRotation.x + 20, _lastRotation.y, _lastRotation.z);
+                _targetRotation = new Vector3(_lastRotation.x - 20, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 1)
-                _targetRotation = new Vector3(_lastRotation.x + 50, _lastRotation.y, _lastRotation.z);
+                _targetRotation = new Vector3(_lastRotation.x - 50, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 0)
-                _targetRotation = new Vector3(_lastRotation.x + 57, _lastRotation.y, _lastRotation.z);
-
-            Debug.Log(_targetRotation);
+                _targetRotation = new Vector3(_lastRotation.x - 57, _lastRotation.y, _lastRotation.z);
 
             if (currentEmotionIntensity != 3)
+            {
+                TopIndicator.enabled = false;
+                TopMiddleIndicator.enabled = false;
+                BottomMiddleIndicator.enabled = false;
+                BottomIndicator.enabled = false;
+
+                _inputEnabled = false;
                 _targetEmotionIntensity++;
+            }
         }
     }
 
     private void RotationHandler()
     {
-        if(_targetEmotionType == _currentEmotion.GetNextEmotionType())
+        if(_targetEmotionType != _currentEmotionType)
         {
+            _lastRotation = Vector3.Lerp(_lastRotation, _targetRotation, 30 * Time.deltaTime);
+            this.transform.eulerAngles = _lastRotation;
 
-        }
-
-        if (_targetEmotionType == _currentEmotion.GetLastEmotionType())
-        {
-
+            if (Quaternion.Angle(Quaternion.Euler(_lastRotation), Quaternion.Euler(_targetRotation)) < 0.1f)
+            {
+                currentEmotionType = _targetEmotionType;
+                _inputEnabled = true;
+            }
         }
 
         if(_targetEmotionIntensity < currentEmotionIntensity)
@@ -150,9 +175,10 @@ public class CircumplexController : MonoBehaviour
             _lastRotation = Vector3.Lerp(_lastRotation, _targetRotation, 30 * Time.deltaTime);
             this.transform.eulerAngles = _lastRotation;
 
-            if(_lastRotation == _targetRotation)
+            if (Quaternion.Angle(Quaternion.Euler(_lastRotation), Quaternion.Euler(_targetRotation)) < 0.1f)
             {
                 currentEmotionIntensity--;
+                _inputEnabled = true;
             }
         }
 
@@ -161,9 +187,10 @@ public class CircumplexController : MonoBehaviour
             _lastRotation = Vector3.Lerp(_lastRotation, _targetRotation, 30 * Time.deltaTime);
             this.transform.eulerAngles = _lastRotation;
 
-            if (_lastRotation == _targetRotation)
+            if (Quaternion.Angle(Quaternion.Euler(_lastRotation), Quaternion.Euler(_targetRotation)) < 0.1f)
             {
                 currentEmotionIntensity++;
+                _inputEnabled = true;
             }
         }
     }
