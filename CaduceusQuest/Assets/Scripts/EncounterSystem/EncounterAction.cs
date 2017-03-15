@@ -40,6 +40,8 @@ public class EncounterAction
                 myDocPuzzMan.SpawnRate = myDoctorSO.SpawnRate;
                 break;
             case EncounterActionType.DIALOG:
+                EncounterActionDialog myDialogSO = (EncounterActionDialog)_myScriptableObject;
+
                 break;
             default:
                 Debug.LogError("We haven't put together an IntiateAction for that action type.");
