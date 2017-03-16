@@ -41,7 +41,15 @@ public class EncounterAction
                 break;
             case EncounterActionType.DIALOG:
                 EncounterActionDialog myDialogSO = (EncounterActionDialog)_myScriptableObject;
-
+                GameObject DialogPuzzleObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzle/Dialog/DialogPuzzle");
+                DialogPuzzleObj = GameObject.Instantiate(DialogPuzzleObj);
+                DialogPuzzleManager myDialogPuzzMan = DialogPuzzleObj.GetComponent<DialogPuzzleManager>();
+                myDialogPuzzMan.Speaker = myDialogSO.Speaker;
+                myDialogPuzzMan.SpeakerLine = myDialogSO.SpeakerLine;
+                myDialogPuzzMan.BadResponse = myDialogSO.BadResponse;
+                myDialogPuzzMan.MedResponse = myDialogSO.MedResponse;
+                myDialogPuzzMan.GoodResponse = myDialogSO.GoodResponse;
+                myDialogPuzzMan.LineEmotion = myDialogSO.LineEmotion;
                 break;
             default:
                 Debug.LogError("We haven't put together an IntiateAction for that action type.");
