@@ -115,7 +115,7 @@ public class CircumplexController : MonoBehaviour
             if (currentEmotionIntensity == 3)
                 _targetRotation = new Vector3(_lastRotation.x - 20, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 2)
-                _targetRotation = new Vector3(_lastRotation.x + 50, _lastRotation.y, _lastRotation.z);
+                _targetRotation = new Vector3(_lastRotation.x - 50, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 1)
                 _targetRotation = new Vector3(_lastRotation.x + 57, _lastRotation.y, _lastRotation.z);
 
@@ -137,7 +137,7 @@ public class CircumplexController : MonoBehaviour
             _lastRotation = this.transform.eulerAngles;
 
             if (currentEmotionIntensity == 2)
-                _targetRotation = new Vector3(_lastRotation.x - 20, _lastRotation.y, _lastRotation.z);
+                _targetRotation = new Vector3(_lastRotation.x + 20, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 1)
                 _targetRotation = new Vector3(_lastRotation.x - 50, _lastRotation.y, _lastRotation.z);
             else if (currentEmotionIntensity == 0)
