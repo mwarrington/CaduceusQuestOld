@@ -56,6 +56,7 @@ public class CircumplexController : MonoBehaviour
         }
     }
 
+    private DialogPuzzleManager _myDialogPuzzMan;
     private Emotion _currentEmotion;
     private int _currentEmotionIntensity,
                 _targetEmotionIntensity;
@@ -71,6 +72,7 @@ public class CircumplexController : MonoBehaviour
         _currentEmotionIntensity = 3;
         _currentEmotionType = 'c';
 
+        _myDialogPuzzMan = this.GetComponentInParent<DialogPuzzleManager>();
         _targetEmotionIntensity = _currentEmotionIntensity;
         _targetEmotionType = _currentEmotionType;
     }
@@ -153,6 +155,11 @@ public class CircumplexController : MonoBehaviour
                 _inputEnabled = false;
                 _targetEmotionIntensity++;
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        {
+            _myDialogPuzzMan.SelectEmotion(_currentEmotion);
         }
     }
 
