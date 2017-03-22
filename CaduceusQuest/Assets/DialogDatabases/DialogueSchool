@@ -1,0 +1,73 @@
+//Mars//
+
+	//first encounter//
+	(c)Mars(i)a;
+	[0](s)Mars|(e)T,K|(t)It begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness…<0;
+		(g)0(n)1(l)Huh?;
+		(g)0(n)1(l)What are you talking about?;
+	[1](s)Mars|(e)T,K|(t)Oh, uh, nevermind.<1;
+		(g)1(n)&TK(l)Has your neck been feeling stiff lately?;
+		(g)1(n)&TK(l)Can I examine your neck?;
+
+//Bea//
+
+	//first encounter//
+	(c)Bea(i)a;
+	[0](s)Bea|(e)a,2|(t)Hey. What’s your sign?<0;
+		(g)0(n)1(l)Aries;
+		(g)0(n)2(l)Taurus;
+		(g)0(n)3(l)Gemini;
+		(g)0(n)4(l)Cancer;
+		(g)0(n)5(l)Leo;
+		(g)0(n)6(l)Virgo;
+		(g)0(n)7(l)Libra;
+		(g)0(n)8(l)Scorpio;
+		(g)0(n)9(l)Sagittarius;
+		(g)0(n)10(l)Capricorn;
+		(g)0(n)11(l)Aquarius;
+		(g)0(n)12(l)Pisces;
+	[1](s)Bea|(e)a,2|(t)Aries, do you feel paranoid today? Do you feel at home inside your body? Consider why and why not.>13;
+	[2](s)Bea|(e)a,2|(t)Taurus, >13;
+	[3](s)Bea|(e)a,2|(t)Gemini = >13;
+	[4](s)Bea|(e)a,2|(t)Cancer, hm? It is important to recognize that risk factors are not the direct cause of disease.>13;
+	[5](s)Bea|(e)a,2|(t)Remember, Leo: It can be dangerous to be the tallest tree in the forest. It can also be dangerous to be the moss.>13;
+	[6](s)Bea|(e)a,2|(t)Virgo = >13;
+	[7](s)Bea|(e)a,2|(t)Libra, consider how sometimes it is just easier to protect yourself than to keep track of other people. Even people you really like can have things going on that you don't know about.>13;
+	[8](s)Bea|(e)a,2|(t)Scorpio, interesting! The hardest part of protecting yourself can be learning how to apply what you know to your life and behavior.>13;
+	[9](s)Bea|(e)a,2|(t)Sagittarius = You are in a rare form of love right now>13;
+	[10](s)Bea|(e)a,2|(t)Capricorn = Infections illuminate the social ties we >13;
+	[11](s)Bea|(e)a,2|(t)Aquarius = >13;
+	[12](s)Bea|(e)a,3|(t)Pisces! My favorite. You will find something green at the Hospital if you look at the plants.>13;
+
+//Danny//
+
+//Josh//
+
+//Quinn//
+
+	//cycle through these//
+	(c)Quinn(i)a;
+	[0](s)Quinn|(e)c,2|(t)Don’t panic, but do you see all these beetles around? They’re emerald ash borers!!#;
+
+	(c)Quinn(i)b;
+	[0](s)Quinn|(e)c,2|(t)The emerald ash borer’s scientific name is Agrilus planipennis. Our town is named after them.#;
+
+	(c)Quinn(i)c;
+	[0](s)Quinn|(e)c,3|(t)They’re going to kill all the trees!! No one will listen to me because I’m just a kid.#;
+
+	(c)Quinn(i)d;
+	[0](s)Quinn|(e)c,3|(t)What’s Ashland without its ash trees?! Yeah, I don’t know either.#;
+
+	//first dialogue after you give her the beetle//
+	(c)Quinn(i)e;
+	[0](s)Quinn|(e)a,3|(t)Wait, this is just a green june bug! Wow! These are harmless.;
+	[1](s)Quinn|(e)a,3|(t)I’m SO relieved. Take this Rosy Maple Moth Eraser as a token of my thanks.#;
+
+	//subsequent dialogues after you give her the beetle//
+	(c)Quinn(i)f;
+	[0](s)Quinn|(e)a,3|(t)The green june bug’s scientific name is Cotinis nitida. So cool!!#;
+
+//Principal Gilliam//
+
+	(c)Principal Gilliam(i)a;
+	[0](s)Principal Gilliam|(e)TK|(l)Hello young lady. Are you a student here? Get to class!#;
