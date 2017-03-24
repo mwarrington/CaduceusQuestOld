@@ -49,7 +49,6 @@
 		(g)2(n)3(l)Ok, I—;
 		(g)2(n)3(l)Sure, uh—;
 	[3](s)Dr. Gallo|(e)g,1|(t)Don’t waste my time!#;
-		
 	//acquire list 1 + teddy bear//
 
 	//before completing intake forms//
@@ -58,18 +57,22 @@
 
 	//After intake forms are completed//
 	(c)Dr. Gallo(i)c;
-	[0](s)Dr. Gallo|(e)g,2|(t)Great, you’ve completed the forms. Ok, look, listen. Something’s happening and I need to investigate. I’d never normally ask this of an intern, but can I teach you to do a few things for me?<0;
+	[0](s)Dr. Gallo|(e)g,2|(t)Great, you’ve completed the forms. Ok, look, listen. Something’s happening and I need to investigate. I wouldn't normally ask this of an intern, but can I teach you to do a few things for me?<0;
 		(g)0(n)1(l)Um… ok…;
 		(g)0(n)1(l)Yes! I won’t disappoint you.;
-	[1](s)Dr. Gallo|(e)g,2|(t)For these 3 patients you’ll need to do 2 blood tests and a neck exam. We need to make sure Mason doesn’t have meningoencephalitis, which would make his neck stiff. Let me show you how to check for that.;
-	[2](s)Dr. Gallo|(e)g,2|(t)Sylvia’s here for a regular blood test to check on her C4 count and viral load—she has HIV. She used to be a nurse, so she can show you what to do. Go talk to her and get a sample, then do the same for Violet so we can run a pregnancy test.<1;
-		(g)1(n)3(l)On it!;
-		(g)1(n)4(l)Are you sure I should be doing this?;
-	[3](s)Dr. Gallo|(e)g,2|(t)Great. See you soon.
-	[4](s)Dr. Gallo|(e)g,3|(t)It’s tolerably safe. Just go.#;
+	[1](s)Dr. Gallo|(e)g,2|(t)For these 3 patients you’ll need to do 2 blood tests and a neck exam. We need to make sure Mason doesn’t have meningoencephalitis, which would make his neck stiff. Let me show you how to check for that.&13;
+
+	//after neck exam training//
+	(c)Dr. Gallo(i)d;
+	[0](s)Dr. Gallo|(e)g,2|(t)Nice work. Sylvia’s here for a regular blood test to check on her C4 count and viral load—she has HIV. 
+	[1](s)Dr. Gallo|(e)g,2|(t)She used to be a nurse, so she can show you what to do. Go talk to her and get a sample, then do the same for Violet so we can run a pregnancy test.<0;
+		(g)0(n)2(l)On it!;
+		(g)0(n)3(l)Are you sure I should be doing this?;
+	[2](s)Dr. Gallo|(e)g,2|(t)Great. See you soon.
+	[3](s)Dr. Gallo|(e)g,3|(t)It’s tolerably safe. Just go.#;
 
 	//before completing blood tests and neck exam//
-	(c)Dr. Gallo(i)d;
+	(c)Dr. Gallo(i)e;
 	[0](s)Dr. Gallo|(e)g,2|(t)It’s tolerably safe. It’s fine. Just go.#;
 
 //Violet//
@@ -86,8 +89,8 @@
 		(g)2(n)3(l)I’m Simone.;
 		(g)2(n)3(l)I’m Dr. Gallo’s intern.;
 	[3](s)Violet|(e)c,1|(t)Ok fine. Whatever. Tell the doctor that I’ve been feeling tired, winded, and sick in the mornings.<3;
-		(g)3(n)&0(l)I’ll write that down. Let’s complete the form.;
-		(g)3(n)&0(l)You’re very rude, but ok...;
+		(g)3(n)&0(l)I’ll write that down. Let’s complete the form.&0;
+		(g)3(n)&0(l)You’re very rude, but ok...&0;
 
 	//after intake form, before blood test skill has been learned//
 
