@@ -15,7 +15,7 @@
 
 	//first encounter//
 	(c)Bea(i)a;
-	[0](s)Bea|(e)a,2|(t)What’s your sign?<0;
+	[0](s)Bea|(e)a,2|(t)What's your sign?<0;
 		(g)0(n)1(l)Aries;
 		(g)0(n)2(l)Taurus;
 		(g)0(n)3(l)Gemini;
@@ -53,26 +53,26 @@
 
 	//cycle through these//
 	(c)Quinn(i)a;
-	[0](s)Quinn|(e)c,2|(t)Don’t panic, but do you see all these beetles around? They’re emerald ash borers!!#;
+	[0](s)Quinn|(e)c,2|(t)Don't panic, but do you see all these beetles around? They're emerald ash borers!!#;
 
 	(c)Quinn(i)b;
-	[0](s)Quinn|(e)c,2|(t)The emerald ash borer’s scientific name is Agrilus planipennis. Our town is named after them.#;
+	[0](s)Quinn|(e)c,2|(t)The emerald ash borer's scientific name is Agrilus planipennis. Our town is named after them.#;
 
 	(c)Quinn(i)c;
-	[0](s)Quinn|(e)c,3|(t)They’re going to kill all the trees!! No one will listen to me because I’m just a kid.#;
+	[0](s)Quinn|(e)c,3|(t)They're going to kill all the trees!! No one will listen to me because I'm just a kid.#;
 
 	(c)Quinn(i)d;
-	[0](s)Quinn|(e)c,3|(t)What’s Ashland without its ash trees?! Yeah, I don’t know either.#;
+	[0](s)Quinn|(e)c,3|(t)What's Ashland without its ash trees?! Yeah, I don't know either.#;
 
 	//first dialogue after you give her the beetle//
 	(c)Quinn(i)e;
 	[0](s)Quinn|(e)a,3|(t)Wait, this is just a green june bug! Wow! These are harmless.;
-	[1](s)Quinn|(e)a,3|(t)I’m SO relieved. Take this Rosy Maple Moth Eraser as a token of my thanks.#;
+	[1](s)Quinn|(e)a,3|(t)I'm SO relieved. Take this Rosy Maple Moth Eraser as a token of my thanks.#;
 	//acquire eraser//
 
 	//subsequent dialogues after you give her the beetle//
 	(c)Quinn(i)f;
-	[0](s)Quinn|(e)a,3|(t)The green june bug’s scientific name is Cotinis nitida. So cool!!#;
+	[0](s)Quinn|(e)a,3|(t)The green june bug's scientific name is Cotinis nitida. So cool!!#;
 
 //Principal Gilliam//
 
