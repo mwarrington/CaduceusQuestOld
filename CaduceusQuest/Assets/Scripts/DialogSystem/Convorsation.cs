@@ -18,6 +18,7 @@ public class Convorsation
                  _writingEmotion,
                  _writingLineText,
                  _writingDialogOptionLine,
+                 _writingDialogOptionEmotion,
                  _skipConvo,
                  _correctConvo,
                  _skipLine;
@@ -122,6 +123,7 @@ public class Convorsation
                     {
                         if (_currentDOGroupIndex == -1)
                         {
+                            _currentLine.LineText.Trim('"');
                             MyLines.Add(_currentLine);
                             _currentLine = new Line();
                             _writingLineText = false;
@@ -194,6 +196,14 @@ public class Convorsation
                     continue;
                 }
 
+                //Writing Dialog Option Emotion
+                if(_writingDialogOptionEmotion)
+                {
+                    MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].DialogOptionEmotion = new Emotion(currentChar, (int)char.GetNumericValue(masterText[i + 2]));
+                    i += 2;
+                    continue;
+                }
+
                 //Section Finder 2
                 if (currentChar == '(')
                 {
@@ -261,6 +271,14 @@ public class Convorsation
                         i += 2;
 
                         _writingDialogOptionLine = true;
+                        _writingDialogOptionEmotion = false;
+                        continue;
+                    }
+
+                    //Dialog Option Emotion
+                    if (masterText[i + 1] == 'f')
+                    {
+                        _writingDialogOptionEmotion = true;
                         continue;
                     }
                 }
