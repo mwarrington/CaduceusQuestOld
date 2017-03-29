@@ -10,12 +10,29 @@ public class EncounterGoal
     public float IndividualTrustGoal,
                  IndividualTrustMin;
     public EncounterActionType ActionType;
+
+    public EncounterGoal()
+    {
+        Subject = "";
+        ActionName = "";
+        IndividualTrustGoal = 0;
+        IndividualTrustMin = 0;
+        ActionType = EncounterActionType.DIALOG;
+    }
 }
 
 public class Encounter : ScriptableObject
 {
     public int GoalCount;
-    public List<EncounterGoal> EncounterGoals = new List<EncounterGoal>();
+    public EncounterGoal[] EncounterGoals = new EncounterGoal[5];
+
+    void Awake()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            EncounterGoals[i] = new EncounterGoal();
+        }
+    }
 }
 
 public class MakeEncounterObj
@@ -23,16 +40,35 @@ public class MakeEncounterObj
     class MakeEncounterWindow : EditorWindow
     {
         int goalCount;
-        string subject,
-               actionName;
-        float individualTrustGoal,
-              individualTrustMin;
-        EncounterActionType actionType;
+        EncounterGoal[] encounterGoals = new EncounterGoal[5];
+
+        void Awake()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                encounterGoals[i] = new EncounterGoal();
+            }
+        }
 
         [MenuItem("Assets/Create/Encouner")]
         public static void OpenMakeEncounterWindow()
         {
             EditorWindow.GetWindow(typeof(MakeEncounterWindow));
+        }
+
+        private void ShowEncounterGoalOptions(int i)
+        {
+            EditorGUILayout.LabelField("Encounter Goal " + i);
+            encounterGoals[i].Subject = EditorGUILayout.TextField("Subject", encounterGoals[i].Subject);
+            encounterGoals[i].ActionName = EditorGUILayout.TextField("ActionName", encounterGoals[i].ActionName);
+            EditorGUILayout.Space();
+
+            EditorGUILayout.LabelField("Trust Threshold");
+            encounterGoals[i].IndividualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", encounterGoals[i].IndividualTrustGoal);
+            encounterGoals[i].IndividualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", encounterGoals[i].IndividualTrustMin);
+            EditorGUILayout.Space();
+
+            encounterGoals[i].ActionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", encounterGoals[i].ActionType);
         }
 
         void OnGUI()
@@ -43,213 +79,103 @@ public class MakeEncounterObj
             if (goalCount == 1)
             {
                 #region 1Goals
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
+                ShowEncounterGoalOptions(0);
                 #endregion 1Goal
             }
             else if (goalCount == 2)
             {
                 #region 2Goals
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(0);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
+                ShowEncounterGoalOptions(1);
                 #endregion 2Goal
             }
             else if (goalCount == 3)
             {
                 #region 3Goals
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(0);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(1);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
+                ShowEncounterGoalOptions(2);
                 #endregion 3Goal
             }
             else if (goalCount == 4)
             {
                 #region 4Goals
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(0);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(1);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(2);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
+                ShowEncounterGoalOptions(3);
                 #endregion 4Goal
             }
             else if (goalCount == 5)
             {
                 #region 5Goals
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
+                ShowEncounterGoalOptions(0);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(1);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(2);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
+                ShowEncounterGoalOptions(3);
 
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
                 EditorGUILayout.Space();
                 EditorGUILayout.Space();
 
-                subject = EditorGUILayout.TextField("Subject", subject);
-                actionName = EditorGUILayout.TextField("ActionName", actionName);
-                EditorGUILayout.Space();
-
-                EditorGUILayout.LabelField("Trust Threshold");
-                individualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", individualTrustGoal);
-                individualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", individualTrustMin);
-                EditorGUILayout.Space();
-
-                actionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", actionType);
+                ShowEncounterGoalOptions(4);
                 #endregion 5Goal
+            }
+
+            if (GUILayout.Button("Create"))
+            {
+                CreateEncounterObj(goalCount, encounterGoals);
             }
         }
 
-        public static void CreateEncounterObj()
+        public static void CreateEncounterObj(int goalCount, EncounterGoal[] encounterGoals)
         {
-            Encoun
+            Encounter theEncounter = ScriptableObject.CreateInstance<Encounter>();
+            
+            for (int i = 0; i < goalCount; i++)
+            {
+                theEncounter.EncounterGoals[i] = encounterGoals[i];
+            }
+            theEncounter.GoalCount = goalCount;
+
+            AssetDatabase.CreateAsset(theEncounter, "Assets/Resources/EncounterData/NewEcounterData.asset");
+            AssetDatabase.SaveAssets();
+
+            Selection.activeObject = theEncounter;
         }
     }
 }

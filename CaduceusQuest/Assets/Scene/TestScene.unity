@@ -1214,7 +1214,7 @@ GameObject:
   - component: {fileID: 1584093721}
   - component: {fileID: 1584093720}
   m_Layer: 0
-  m_Name: DialogHandler
+  m_Name: DialogManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
