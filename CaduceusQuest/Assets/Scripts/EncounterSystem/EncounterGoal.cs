@@ -39,7 +39,7 @@ public class MakeEncounterObj
 {
     class MakeEncounterWindow : EditorWindow
     {
-        int goalCount;
+        int goalCount = 1;
         EncounterGoal[] encounterGoals = new EncounterGoal[5];
 
         void Awake()
@@ -75,6 +75,16 @@ public class MakeEncounterObj
         {
             goalCount = EditorGUILayout.IntField("Goal Count", goalCount);
             EditorGUILayout.Space();
+
+            //GIVE EM THE CLAMPS!!
+            if(goalCount < 1)
+            {
+                goalCount = 1;
+            }
+            else if(goalCount > 5)
+            {
+                goalCount = 5;
+            }
 
             if (goalCount == 1)
             {
@@ -165,7 +175,7 @@ public class MakeEncounterObj
         public static void CreateEncounterObj(int goalCount, EncounterGoal[] encounterGoals)
         {
             Encounter theEncounter = ScriptableObject.CreateInstance<Encounter>();
-            
+
             for (int i = 0; i < goalCount; i++)
             {
                 theEncounter.EncounterGoals[i] = encounterGoals[i];
