@@ -8,3 +8,13 @@ public class DialogOption
     public string DialogOptionText;
     public Emotion DialogOptionEmotion;
 }
+
+public class DialogOptions
+{
+    public List<DialogOption> myOptions;
+
+    public DialogOptions()
+    {
+        myOptions = new List<DialogOption>();
+    }
+}

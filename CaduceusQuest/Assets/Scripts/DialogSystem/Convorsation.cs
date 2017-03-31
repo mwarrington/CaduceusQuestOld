@@ -33,7 +33,7 @@ public class Convorsation
 
     public void PopulateConversation()
     {
-        string masterText = GameObject.Find("DialogHandler").GetComponent<DialogManager>().MasterText.text;
+        string masterText = GameObject.Find("DialogManager").GetComponent<DialogManager>().GetMasterText();
         char currentChar;
 
         for (int i = 0; i < masterText.Length; i++)

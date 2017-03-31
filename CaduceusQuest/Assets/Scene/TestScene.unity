@@ -1231,7 +1231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f5c518721ba6a489311cbf8f29d648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MasterText: {fileID: 4900000, guid: e06a9bc4fbab1e3468477c86164a327b, type: 3}
+  TextAssets:
+  - {fileID: 4900000, guid: 2bab2d1028ad440d187bbcdcdd683e40, type: 3}
+  - {fileID: 4900000, guid: ff04076553b2a461cb4c44f2be981c39, type: 3}
 --- !u!4 &1584093721
 Transform:
   m_ObjectHideFlags: 0
