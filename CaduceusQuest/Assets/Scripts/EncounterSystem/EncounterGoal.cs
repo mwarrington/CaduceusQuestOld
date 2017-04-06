@@ -76,15 +76,8 @@ public class MakeEncounterObj
             goalCount = EditorGUILayout.IntField("Goal Count", goalCount);
             EditorGUILayout.Space();
 
-            //GIVE EM THE CLAMPS!!
-            if(goalCount < 1)
-            {
-                goalCount = 1;
-            }
-            else if(goalCount > 5)
-            {
-                goalCount = 5;
-            }
+            //GIVE 'EM THE CLAMPS!!
+            goalCount = Mathf.Clamp(goalCount, 1, 5);
 
             if (goalCount == 1)
             {
