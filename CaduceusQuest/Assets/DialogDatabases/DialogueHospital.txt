@@ -1,6 +1,8 @@
-//Hospital Receptionist//
+//Dialogue Hospital//
 //max NPC line: 236 characters//
 //max Simone line: 130 characters//
+
+//Hospital Receptionist//
 
 	//first encounter//
 	(c)Receptionist(i)a;
@@ -10,6 +12,8 @@
 	[1](s)Receptionist(e)a,1(t)"Right through the doors on your left. Watch out, the doctor can take a while to warm up..."#;
 
 	//subsequent encounters//
+	(c)Receptionist(i)b;
+	[0](s)Receptionist(e)a,1(t)"If you need Dr. Gallo's help with something, just keep asking. It can take a couple tries."#;
 
 //Macy//
 
@@ -21,16 +25,17 @@
 	(c)Macy(i)b;
 	[0](s)Macy(e)c,3(t)"My dad said he got Teddy, thank you!";
 	[1](s)Macy(e)c,3(t)"Is he ok? Can you fix him?"<0;
-		(g)0(n)1(f)b,1(l)"Yes, we're fixing him.";
-		(g)0(n)1(f)c,2(l)"I'm not sure, the doctors here are doing their best...";
+		(g)0(n)1(f)h,1(l)"Yes, we're fixing him.";
+		(g)0(n)1(f)c,1(l)"I'm not sure, the doctors here are doing their best...";
 	[2](s)Macy(e)c,2(t)"I don't know what's wrong. He started throwing up and his skin turned blue."<1;
-		(g)1(n)3(f)c,2(l)"He turned blue?";
-		(g)1(n)4(f)c,2(l)"He started throwing up?";
+		(g)1(n)3(f)c,1(l)"He turned blue?";
+		(g)1(n)4(f)c,1(l)"He started throwing up?";
 	[3](s)Macy(e)c,2(t)"Yeah! Like we were on a boat. His skin turned blue and his eyes got all dark. Is he okay?"<2;
 	[4](s)Macy(e)c,3(t)"He'd barely eaten any dinner but he said he was feeling dizzy and he threw up! Is he okay?"<2;
-		(g)2(n)5(f)b,1(l)"Everything will be okay, but he has to stay here tonight.";
-		(g)2(n)5(f)b,1(l)"Is someone coming to get you?";
-	[5](s)Macy(e)c,1(t)"Alright. My older brother's on his way to pick me up."#;
+		(g)2(n)5(f)h,1(l)"Everything will be okay, but he has to stay here tonight.";
+		(g)2(n)5(f)h,1(l)"The doctors here are very good. Is someone coming to get you?";
+	[5](s)Macy(e)c,1(t)"Alright. My big brother's on his way to pick me up."#;
+	//Macy disappears//
 
 //Reception NPC 1//
 
@@ -49,32 +54,36 @@
 		(g)1(n)2(f)h,1(l)"I'm Simone. My aunt said you—";
 	[2](s)Dr. Gallo(e)g,1(t)"I don't have time to teach you anything right now, can you go talk to these patients and do what the list says? Make sure you grab the teddy bear."<2;
 		(g)2(n)3(f)h,1(l)"Ok, I—";
-		(g)2(n)3(f)h,1(l)"Sure, uh—";
+		(g)2(n)3(f)g,1(l)"Sure, uh—";
 	[3](s)Dr. Gallo(e)g,1(t)"Don't waste my time!"#;
 	//acquire list 1 + teddy bear//
 
 	//before completing intake forms//
 	(c)Dr. Gallo(i)b;
-	[0](s)Dr. Gallo(e)g,2(t)"Do I have to do everything around here? Go talk to those patients. I'll catch up with you."#;
+	[0](s)Dr. Gallo(e)g,2(t)"Do I have to do everything around here? Go talk to those patients."#;
+
+	(c)Dr. Gallo(i)c;
+	[0](s)Dr. Gallo(e)g,2(t)"Check the list in your inventory by pressing TK. Do what it says, then come back here."#;
 
 	//After intake forms are completed//
-	(c)Dr. Gallo(i)c;
-	[0](s)Dr. Gallo(e)g,2(t)"Great, you've completed the forms. Ok, look, listen. Something's happening and I need to investigate. I wouldn't normally ask this of an intern, but can I teach you to do a few things for me?"<0;
-		(g)0(n)1(l)"Um… ok…";
-		(g)0(n)1(l)"Yes! I won't disappoint you.";
-	[1](s)Dr. Gallo(e)g,2(t)"For these 3 patients you'll need to do 2 blood tests and a neck exam. We need to make sure Mason doesn't have meningoencephalitis, which would make his neck stiff. Let me show you how to check for that."&13;
+	(c)Dr. Gallo(i)d;
+	[0](s)Dr. Gallo(e)g,2(t)"Great, you've completed the forms. Ok, look, listen. Something's happening and I need to investigate.";
+	[1](s)Dr. Gallo(e)g,2(t)"I wouldn't normally ask this of an intern, but can I teach you to do a few things for me?"<0;
+		(g)0(n)2(f)g,1(l)"Um… ok…";
+		(g)0(n)2(f)h,1(l)"Yes! I won't disappoint you.";
+	[2](s)Dr. Gallo(e)g,2(t)"Great. We need to make sure Mason doesn't have meningoencephalitis, which would make his neck stiff. Let me show you how to do a neck exam."&13;
 
 	//after neck exam training//
-	(c)Dr. Gallo(i)d;
+	(c)Dr. Gallo(i)e;
 	[0](s)Dr. Gallo(e)g,2(t)"Nice work. Sylvia's here for a regular blood test to check on her C4 count and viral load. She has HIV.";
 	[1](s)Dr. Gallo(e)g,2(t)"She used to be a nurse, so she can show you what to do. Go talk to her and get a sample, then do the same for Violet so we can run a pregnancy test."<0;
-		(g)0(n)2(l)"On it!";
-		(g)0(n)3(l)"Are you sure I should be doing this?";
+		(g)0(n)2(f)h,1(l)"On it!";
+		(g)0(n)3(f)c,1(l)"Are you sure I should be doing this?";
 	[2](s)Dr. Gallo(e)g,2(t)"Great. See you soon.";
 	[3](s)Dr. Gallo(e)g,3(t)"It's tolerably safe. Just go."#;
 
 	//before completing blood tests and neck exam//
-	(c)Dr. Gallo(i)e;
+	(c)Dr. Gallo(i)f;
 	[0](s)Dr. Gallo(e)g,2(t)"It's tolerably safe. It's fine. Just go."#;
 
 //Violet//
@@ -82,21 +91,26 @@
 	//intake form//
 	(c)Violet(i)a;
 	[0](s)Violet(e)c,2(t)"Hi. You startled me. Who let you in here?"<0;
-		(g)0(n)1(l)"I'm sorry. Dr. Gallo sent me.";
-		(g)0(n)1(l)"Are you Violet?";
+		(g)0(n)1(f)h,1(l)"I'm sorry. Dr. Gallo sent me.";
+		(g)0(n)1(f)h,1(l)"Are you Violet?";
 	[1](s)Violet(e)c,2(t)"Ok fine! I'm Violet, yeah. Do I need any shots today?"<1;
-		(g)1(n)3(l)"I'm just here to do your intake form";
-		(g)1(n)2(l)"If you don't cooperate…";
+		(g)1(n)3(f)h,1(l)"I'm just here to do your intake form";
+		(g)1(n)2(f)g,1(l)"If you don't cooperate…";
 	[2](s)Violet(e)c,3(t)"You're not a doctor, are you??"<2;
-		(g)2(n)3(l)"I'm Simone.";
-		(g)2(n)3(l)"I'm Dr. Gallo's intern.";
-	[3](s)Violet(e)c,1(t)"Ok fine. Whatever. Tell the doctor that I've been feeling tired, winded, and sick in the mornings."<3;
-		(g)3(n)&0(l)"I'll write that down. Let's complete the form."&0;
-		(g)3(n)&0(l)"You're very rude, but ok..."&0;
+		(g)2(n)3(f)h,1(l)"I'm Simone.";
+		(g)2(n)3(f)h,1(l)"I'm Dr. Gallo's intern.";
+	[3](s)Violet(e)c,1(t)"Ok whatever. Tell the doctor that I've been feeling tired, winded, and sick in the mornings."<3;
+		(g)3(n)4(f)h,1(l)"I'll write that down. Let's complete the form.";
+		(g)3(n)4(f)g,1(l)"You're very rude, but ok...";
+	[4](s)Violet(e)c,1(t)"Let's do it"&0;
 
 	//after intake form, before blood test skill has been learned//
+	(c)Violet(i)b;
+	[0](s)Violet(e)c,1(t)"Did Dr. Gallo say I can leave yet? Have you even brought her my form?"#;
 
 	//blood test//
+	(c)Violet(i)b;
+	[3](s)Violet(e)c,1(t)"Did Dr. Gallo say I can leave yet?";
 
 	//after blood test// 
 
@@ -105,11 +119,12 @@
 	//intake form//
 	(c)Mason(i)a;
 	[0](s)Mason(e)h,1(t)"Hi, are you a doctor?"<0;
-		(g)0(n)1(l)"No, I'm Simone.";
-		(g)0(n)1(l)"Not technically...";
+		(g)0(n)1(f)h,1(l)"No, I'm Simone.";
+		(g)0(n)1(f)h,1(l)"Not technically...";
 	[1](s)Mason(e)h,1(t)"Oh it's cool, I'm also not a doctor. In fact, I'm not sick either. I'm not really sure why I'm here."<1;
-		(g)1(n)0(l)"That's weird.";
-		(g)1(n)5(l)"Dr. Gallo sent me to give this teddy bear to you.";
+		(g)1(n)0(f)h,1(l)"That's weird.";
+		(g)1(n)5(f)h,1(l)"Dr. Gallo sent me to give this teddy bear to you.";
+	//give teddy bear//
 	[5](s)Mason(e)a,3(t)"Wow!! Thank you. This is from my daughter Macy.";
 	[6](s)Mason(e)e,2(t)"She's still in the waiting room. She must be scared."#;
 
