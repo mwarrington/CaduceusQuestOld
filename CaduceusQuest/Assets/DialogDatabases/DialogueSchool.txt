@@ -37,9 +37,36 @@
 	[7](s)Mars(e)g,2(t)"Bea? Hmm, ok."#;
 	[8](s)Mars(e)g,2(t)"We don't really hang out."#;
 
-	//after second encounter but haven't done neck exam//
-	(c)Mars(i)b;
-	[0](s)Mars(e)g,2()
+	//after second encounter but haven't done neck exam 1//
+	(c)Mars(i)c;
+	[0](s)Mars(e)g,2(t)"You agian.";
+	[1](s)Mars(e)g,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy.<0";
+		(g)0(n)2(f)h,1(l)"I already examined Cecil.";
+		(g)0(n)3(f)h,1(l)"I already examined Josh.";
+		(g)0(n)4(f)h,1(l)"I already examined Danny.";
+	[2](s)Mars(e)g,2(t)"Wait, who? Did you make that name up?"#;
+	[3](s)Mars(e)g,2(t)"Josh, huh? I know him but I don't really know him, you know?"#;
+	[4](s)Mars(e)g,2(t)"Danny, eh? Mk."#;
+
+	//after second encounter but haven't done neck exam 2//
+	(c)Mars(i)c;
+	[0](s)Mars(e)g,2(t)"You agian.";
+	[1](s)Mars(e)g,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy.<0";
+		(g)0(n)2(f)h,1(l)"I already examined Hyacinth.";
+		(g)0(n)4(f)h,1(l)"I already examined Quinn.";
+		(g)0(n)5(f)h,1(l)"I already examined Bea.";
+	[2](s)Mars(e)g,2(t)"Hyacinth!?;
+	[3](s)Mars(e)g,2(t)"Why would you even guess that? I'm kinda impressed.#;
+	[4](s)Mars(e)g,2(t)"Quinn, huh? I know her but I don't really know her, you know?"#;
+	[5](s)Mars(e)g,2(t)"Bea's cool. Ok."#;
+
+	//after neck exam//
+	(c)Mars(i)d;
+	[0](s)Mars(e)g,2(t)"Yo. You're not here for another neck exam are you?"<0;
+		(g)0(n)1(f)h,1(l)"No, just saying hi.";
+		(g)0(n)2(f)h,1(l)"Sorry, I didn't actually mean to talk to you.";
+	[1](s)Mars(e)g,2(t)"Hi"#;
+	[2](s)Mars(e)g,2(t)"Weird how that happens..."#;
 
 
 //Bea//
