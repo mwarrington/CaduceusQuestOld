@@ -46,7 +46,7 @@
 		(g)0(n)4(f)h,1(l)"I already examined Danny.";
 	[2](s)Mars(e)g,2(t)"Wait, who? Did you make that name up?"#;
 	[3](s)Mars(e)g,2(t)"Josh, huh? I know him but I don't really know him, you know?"#;
-	[4](s)Mars(e)g,2(t)"Danny, eh? Mk."#;
+	[4](s)Mars(e)g,2(t)"Danny, eh? Mk."&5;
 
 	//after second encounter but haven't done neck exam 2//
 	(c)Mars(i)c;
@@ -58,7 +58,7 @@
 	[2](s)Mars(e)g,2(t)"Hyacinth!?;
 	[3](s)Mars(e)g,2(t)"Why would you even guess that? I'm kinda impressed.#;
 	[4](s)Mars(e)g,2(t)"Quinn, huh? I know her but I don't really know her, you know?"#;
-	[5](s)Mars(e)g,2(t)"Bea's cool. Ok."#;
+	[5](s)Mars(e)g,2(t)"Bea's cool. Ok."&5;
 
 	//after neck exam//
 	(c)Mars(i)d;
@@ -99,9 +99,48 @@
 	[11](s)Bea(e)a,2(t)"Aquarius, no one wants to be told that what formed them is something they must escape. Think about your definition of success today.">13;
 	[12](s)Bea(e)a,3(t)"Pisces! My favorite. You will find something green at the Hospital if you look at the plants.">13;
 	[13](s)Bea(e)a,2(t)"Do you want to hear another one?"<1;
-		(g)0(n)0(f)h,1(l)"Sure.";
-		(g)0(n)14(f)h,1(l)"No thanks. Can I examine your neck?";
+		(g)1(n)0(f)h,1(l)"Sure.";
+		(g)1(n)14(f)h,1(l)"No thanks. Can I examine your neck?";
 	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&6;
+
+	//Second Encounter//
+	(c)Bea(i)b;
+	[0](s)Bea(e)a,2(t)"Oh, hey! Neck lady.";
+	[1](s)Bea(e)a,2(t)"Did you want to know more about signs?<0"
+		(g)0(n)2(f)h,1(l)"Sure.";
+		(g)0(n)17(f)h,1(l)"No, just saying hi.";
+	[2](s)Bea(e)a,2(t)"Mk, what sign?"<1;
+		(g)1(n)3(f)h,1(l)"Aries";
+		(g)1(n)4(f)h,1(l)"Taurus";
+		(g)1(n)5(f)h,1(l)"Gemini";
+		(g)1(n)6(f)h,1(l)"Cancer";
+		(g)1(n)7(f)h,1(l)"Leo";
+		(g)1(n)8(f)h,1(l)"Virgo";
+		(g)1(n)9(f)h,1(l)"Libra";
+		(g)1(n)10(f)h,1(l)"Scorpio";
+		(g)1(n)11(f)h,1(l)"Sagittarius";
+		(g)1(n)12(f)h,1(l)"Capricorn";
+		(g)1(n)13(f)h,1(l)"Aquarius";
+		(g)1(n)14(f)h,1(l)"Pisces";
+	[3](s)Bea(e)a,2(t)"Aries, do you feel paranoid today? Do you feel at home inside your body? Consider why and why not.">15;
+	[4](s)Bea(e)a,2(t)"Taurus, what does going home feel like these days? Think about whether you growing toward or away from your family.">15;
+	[5](s)Bea(e)a,2(t)"Gemini, you are powerful but you can't do this alone. Think about who your friends, family, and accomplices are right now.">15;
+	[6](s)Bea(e)a,2(t)"Cancer, hm? It is important to recognize that risk factors are not the direct cause of disease.">15;
+	[7](s)Bea(e)a,2(t)"Remember, Leo: It can be dangerous to be the tallest tree in the forest. It can also be dangerous to be the moss.">15;
+	[8](s)Bea(e)a,2(t)"Virgo, think about your shared and unshared worlds. You're traveling more than ever. Who do you know how to talk to?">15;
+	[9](s)Bea(e)a,2(t)"Libra, sometimes it is easier to protect yourself than to keep track of other people.">15;
+	[10](s)Bea(e)a,2(t)"Scorpio, interesting! The hardest part of protecting yourself can be learning how to apply what you know to your life and behavior.">15;
+	[11](s)Bea(e)a,2(t)"Sagittarius, you are in a rare form of love right now, on the cusp of undoing a miseducation.">15;
+	[12](s)Bea(e)a,2(t)"Capricorn, watch out: infections illuminate our social ties and vulnerabilities. Take some time to think about strengthening.">15;
+	[13](s)Bea(e)a,2(t)"Aquarius, no one wants to be told that what formed them is something they must escape. Think about your definition of success today.">15;
+	[14](s)Bea(e)a,3(t)"Pisces! My favorite. You will find something green at the Hospital if you look at the plants.">15;
+	[15](s)Bea(e)a,2(t)"Do you want to hear another one?"<1;
+		(g)2(n)2(f)h,1(l)"Sure.";
+		(g)2(n)16(f)h,1(l)"No thanks. That's enough for now?";
+	[16](s)Bea(e)a,2(t)"Let me know if you need anymore guidence."#;
+	[17](s)Bea(e)a,2(t)"Oh, that's nice of you.";
+	[18](s)Bea(e)a,2(t)"Hi!"#;
+
 
 //Danny//
 
