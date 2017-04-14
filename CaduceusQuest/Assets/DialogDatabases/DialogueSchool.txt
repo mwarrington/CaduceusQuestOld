@@ -13,7 +13,34 @@
 		(g)1(n)2(f)h,1(l)"Has your neck been feeling stiff lately?";
 		(g)1(n)3(f)h,1(l)"Was that a Robert Frost quote?";
 	[2](s)Mars(e)c,2(t)"Now that you mention it, yeah..."&5;
-	[3](s)Mars(e)g,2(t)"I don't want to talk about it!"#;
+	[3](s)Mars(e)g,2(t)"What? Oh, don't worry about it. My neck has me distracted.";
+	[4](s)Mars(e)g,2(t)"Whatever, I don't want to talk about it!";
+
+	//second encounter//
+	(c)Mars(i)b;
+	[0](s)Mars(e)g,2(t)"Oh, hey. I forgot who you were, so tell me, who are you?"<0;
+		(g)0(n)1(f)h,1(l)"I'm Simone. It's nice to meet you.";
+		(g)0(n)2(f)h,1(l)"Hmmm, I think I'm still trying to figure that out.";
+	[1](s)Mars(e)g,2(t)"That's not really what I was talking about but it's ok."<1;
+	[2](s)Mars(e)g,2(t)"I know what you mean...";
+	[3](s)Mars(e)g,2(t)"*Zones out*"<1;
+		(g)1(n)4(f)h,1(l)"You mentioned your neck earlier. Mind if I take a look at it?";
+		(g)1(n)4(f)h,1(l)"Soooo... Your neck, is it still feeling stiff? I could take a look at it?";
+	[4](s)Mars(e)g,2(t)"I don't know... Have you looked at anyone else?"<2;
+		(g)2(n)5(f)h,1(l)"You mentioned your neck earlier. Mind if I take a look at it?";
+		(g)2(n)5(f)h,1(l)"Soooo... Your neck, is it still feeling stiff? I could take a look at it";
+	[5](s)Mars(e)g,2(t)"Hmm, maybe if one of my friends vouches for you."<3;
+		(g)3(n)6(f)h,1(l)"You mean Steve?";
+		(g)3(n)7(f)h,1(l)"You mean Bea?";
+		(g)3(n)8(f)h,1(l)"You mean Quinn?";
+	[6](s)Mars(e)g,2(t)"I don't know him..."#;
+	[7](s)Mars(e)g,2(t)"Bea? Hmm, ok."#;
+	[8](s)Mars(e)g,2(t)"We don't really hang out."#;
+
+	//after second encounter but haven't done neck exam//
+	(c)Mars(i)b;
+	[0](s)Mars(e)g,2()
+
 
 //Bea//
 
