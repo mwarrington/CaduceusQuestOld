@@ -10,19 +10,17 @@ public class DialogManager : MonoBehaviour
 
     void Start()
     {
-        Convorsation convo = new Convorsation("Patient", 'a');
+        Convorsation convo = new Convorsation("Bea", 'a');
     }
 
     public string GetMasterText()
     {
-        string masterText = "";
-
         for (int i = 0; i < TextAssets.Length; i++)
         {
             _masterText += "\n" + TextAssets[i].text;
         }
 
-        return masterText;
+        return _masterText;
     }
 
     public string GetLine(int index)

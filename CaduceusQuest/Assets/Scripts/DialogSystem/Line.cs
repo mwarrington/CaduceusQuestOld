@@ -9,6 +9,7 @@ public class Line
     public Emotion MyEmotion;
     public int DialogOptionsIndex,
                NextGroupIndex = -1,
-               NextLineIndex = -1;
+               NextLineIndex = -1,
+               EncounterToStart = -1;
     public bool LastLine;
 }

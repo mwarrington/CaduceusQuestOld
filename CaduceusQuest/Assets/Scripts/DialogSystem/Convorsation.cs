@@ -61,6 +61,8 @@ public class Convorsation
             else if (currentChar == '/' && masterText[i + 1] == '/')
             {
                 _skipLine = true;
+                i += 2;
+                continue;
             }
 
             if (_readingName)
@@ -111,6 +113,16 @@ public class Convorsation
             }
             else //Line and DO reader
             {
+                //Reseting reading bools
+                if (currentChar == '(')
+                {
+                    _writingSpeaker = false;
+                    _writingEmotion = false;
+                    _writingLineText = false;
+                    _writingDialogOptionLine = false;
+                    _writingDialogOptionEmotion = false;
+                }
+
                 //Line Finished
                 if (currentChar == ';')
                 {
@@ -123,12 +135,12 @@ public class Convorsation
                     {
                         if (_currentDOGroupIndex == -1)
                         {
-                            _currentLine.LineText.Trim('"');
+                            _currentLine.LineText.Trim('\"');
                             MyLines.Add(_currentLine);
                             _currentLine = new Line();
                             _writingLineText = false;
                         }
-                        else if (masterText[i + 3] == '[')
+                        else if (masterText[i + 4] == '[')//I need this to work
                         {
                             _writingDialogOptionLine = false;
                             _currentDOGroupIndex = -1;
@@ -142,13 +154,6 @@ public class Convorsation
 
                         continue;
                     }
-                }
-
-                if (currentChar == '|')
-                {
-                    _writingSpeaker = false;
-                    _writingEmotion = false;
-                    continue;
                 }
 
                 //Writing Speaker
@@ -182,6 +187,11 @@ public class Convorsation
                     {
                         i++;
                         _currentLine.NextLineIndex = (int)char.GetNumericValue(masterText[i]);
+                    }
+                    else if(currentChar == '&')
+                    {
+                        i++;
+                        _currentLine.EncounterToStart = (int)char.GetNumericValue(masterText[i]);
                     }
                     else
                         _currentLine.LineText = _currentLine.LineText + currentChar;
@@ -256,10 +266,14 @@ public class Convorsation
                         i += 2;
 
                         if (masterText[i + 2] == '(')
+                        {
                             MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = (int)char.GetNumericValue(masterText[i + 1]);
+                            i++;
+                        }
                         else
                         {
                             MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = int.Parse("" + masterText[i + 1] + masterText[i + 2]);
+                            i += 2;
                         }
                         
                         continue;
@@ -271,13 +285,13 @@ public class Convorsation
                         i += 2;
 
                         _writingDialogOptionLine = true;
-                        _writingDialogOptionEmotion = false;
                         continue;
                     }
 
                     //Dialog Option Emotion
                     if (masterText[i + 1] == 'f')
                     {
+                        i += 2;
                         _writingDialogOptionEmotion = true;
                         continue;
                     }
