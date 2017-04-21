@@ -6,65 +6,65 @@
 
 	//first encounter//
 	(c)Mars(i)a;
-	[0](s)Mars(e)e,1(t)"It begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness…"<0;
+	[0](s)Mars(e)d,1(t)"It begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness…"<0;
 		(g)0(n)1(f)h,1(l)"Huh?";
 		(g)0(n)1(f)h,1(l)"What are you talking about?";
-	[1](s)Mars(e)e,1(t)"Oh, uh, nevermind."<1;
+	[1](s)Mars(e)c,1(t)"Oh, uh, nevermind."<1;
 		(g)1(n)2(f)h,1(l)"Has your neck been feeling stiff lately?";
-		(g)1(n)3(f)h,1(l)"Was that a Robert Frost quote?";
-	[2](s)Mars(e)c,2(t)"Now that you mention it, yeah..."&5;
-	[3](s)Mars(e)g,2(t)"What? Oh, don't worry about it. My neck has me distracted.";
-	[4](s)Mars(e)g,2(t)"Whatever, I don't want to talk about it!"#;;
+		(g)1(n)3(f)h,2(l)"Was that a Robert Frost quote?";
+	[2](s)Mars(e)d,3(t)"Now that you mention it, yeah..."&5;
+	[3](s)Mars(e)d,3(t)"What? Oh, don't worry about it. My neck has me distracted.";
+	[4](s)Mars(e)d,3(t)"Whatever, I don't want to talk about it!"#;;
 
 	//second encounter//
 	(c)Mars(i)b;
-	[0](s)Mars(e)g,2(t)"Oh, hey. I forgot who you were, so tell me, who are you?"<0;
-		(g)0(n)1(f)h,1(l)"I'm Simone. It's nice to meet you.";
-		(g)0(n)2(f)h,1(l)"Hmmm, I think I'm still trying to figure that out.";
-	[1](s)Mars(e)g,2(t)"That's not really what I was talking about but it's ok."<1;
-	[2](s)Mars(e)g,2(t)"I know what you mean...";
-	[3](s)Mars(e)g,2(t)"*Zones out*"<1;
-		(g)1(n)4(f)h,1(l)"You mentioned your neck earlier. Mind if I take a look at it?";
-		(g)1(n)5(f)h,1(l)"Soooo... Your neck, is it still feeling stiff? Could I take a look at it?";
-	[4](s)Mars(e)g,2(t)"I don't know... Have you looked at anyone else?"<3;
-	[5](s)Mars(e)g,2(t)"Hmm, maybe if one of my friends vouches for you."<3;
-		(g)3(n)6(f)h,1(l)"You mean Steve?";
-		(g)3(n)7(f)h,1(l)"You mean Bea?";
+	[0](s)Mars(e)h,1(t)"Oh, hey. I forgot who you were, so tell me, who are you?"<0;
+		(g)0(n)1(f)a,1(l)"I'm Simone. It's nice to meet you.";
+		(g)0(n)2(f)d,2(l)"Hmmm, I think I'm still trying to figure that out.";
+	[1](s)Mars(e)f,1(t)"That's not really what I was talking about but it's ok."<1;
+	[2](s)Mars(e)d,2(t)"I know what you mean...";
+	[3](s)Mars(e)d,4(t)"*Zones out*"<1;
+		(g)1(n)4(f)h,2(l)"You mentioned your neck earlier. Mind if I take a look at it?";
+		(g)1(n)5(f)h,3(l)"Soooo... Your neck, is it still feeling stiff? I take a look at it...";
+	[4](s)Mars(e)c,2(t)"I don't know... Have you looked at anyone else?"<3;
+	[5](s)Mars(e)c,2(t)"Hmm, maybe if one of my friends vouches for you."<3;
+		(g)3(n)6(f)c,2(l)"You mean Steve?";
+		(g)3(n)7(f)c,1(l)"You mean Bea?";
 		(g)3(n)8(f)h,1(l)"You mean Quinn?";
-	[6](s)Mars(e)g,2(t)"I don't know him..."#;
-	[7](s)Mars(e)g,2(t)"Bea? Hmm, ok."&5;
-	[8](s)Mars(e)g,2(t)"We don't really hang out."#;;
+	[6](s)Mars(e)g,1(t)"I don't know him..."#;
+	[7](s)Mars(e)b,2(t)"Bea? Hmm, ok."&5;
+	[8](s)Mars(e)f,1(t)"We don't really hang out."#;;
 
 	//after second encounter but haven't done neck exam 1//
 	(c)Mars(i)c;
-	[0](s)Mars(e)g,2(t)"You again.";
-	[1](s)Mars(e)g,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
-		(g)0(n)2(f)h,1(l)"I already examined Cecil.";
-		(g)0(n)3(f)h,1(l)"I already examined Josh.";
-		(g)0(n)4(f)h,1(l)"I already examined Bea.";
+	[0](s)Mars(e)g,1(t)"You again.";
+	[1](s)Mars(e)c,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
+		(g)0(n)2(f)c,2(l)"I already examined Cecil.";
+		(g)0(n)3(f)c,1(l)"I already examined Josh.";
+		(g)0(n)4(f)c,1(l)"I already examined Danny.";
 	[2](s)Mars(e)g,2(t)"Wait, who? Did you make that name up?"#;
-	[3](s)Mars(e)g,2(t)"Josh, huh? I know him but I don't really know him, you know?"#;
-	[4](s)Mars(e)g,2(t)"Bea, eh? Mk."&5;;
+	[3](s)Mars(e)f,1(t)"Josh, huh? I know him but I don't really know him, you know?"#;
+	[4](s)Mars(e)b,2(t)"Danny, eh? Mk."&5;;
 
 	//after second encounter but haven't done neck exam 2//
 	(c)Mars(i)c;
 	[0](s)Mars(e)g,2(t)"You again.";
 	[1](s)Mars(e)g,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
-		(g)0(n)2(f)h,1(l)"I already examined Hyacinth.";
-		(g)0(n)4(f)h,1(l)"I already examined Quinn.";
-		(g)0(n)5(f)h,1(l)"I already examined Bea.";
-	[2](s)Mars(e)g,2(t)"Hyacinth!?";
-	[3](s)Mars(e)g,2(t)"Why would you even guess that? I'm kinda impressed."#;
+		(g)0(n)2(f)c,2(l)"I already examined Hyacinth.";
+		(g)0(n)4(f)c,1(l)"I already examined Quinn.";
+		(g)0(n)5(f)c,1(l)"I already examined Bea.";
+	[2](s)Mars(e)d,3(t)"Hyacinth!?";
+	[3](s)Mars(e)b,1(t)"Why would you even guess that? I'm kinda impressed."#;
 	[4](s)Mars(e)g,2(t)"Quinn, huh? I know her but I don't really know her, you know?"#;
-	[5](s)Mars(e)g,2(t)"Bea's cool. Ok."&5;;
+	[5](s)Mars(e)b,2(t)"Bea's cool. Ok."&5;;
 
 	//after neck exam//
 	(c)Mars(i)d;
-	[0](s)Mars(e)g,2(t)"Yo. You're not here for another neck exam are you?"<0;
-		(g)0(n)1(f)h,1(l)"No, just saying hi.";
-		(g)0(n)2(f)h,1(l)"Sorry, I didn't actually mean to talk to you.";
-	[1](s)Mars(e)g,2(t)"Hi"#;
-	[2](s)Mars(e)g,2(t)"Weird how that happens..."#;;
+	[0](s)Mars(e)c,1(t)"Yo. You're not here for another neck exam are you?"<0;
+		(g)0(n)1(f)a,1(l)"No, just saying hi.";
+		(g)0(n)2(f)c,1(l)"Sorry, I didn't actually mean to talk to you.";
+	[1](s)Mars(e)a,1(t)"Hi"#;
+	[2](s)Mars(e)d,2(t)"Weird how that happens..."#;;
 
 
 //Bea//
@@ -160,7 +160,7 @@
 	[5](s)Violet(e)c,2(t)"Good guess."#;
 	[6](s)Violet(e)c,2(t)"Uh... bye."#;;
 
-	//second convo//
+	//post neck exam convo//
 	(c)Violet(i)b;
 	[0](s)Violet(e)c,2(t)"Hi, did you need anything this time?"<0;
 		(g)0(n)1(f)e,2(l)"Just saying Hi.";

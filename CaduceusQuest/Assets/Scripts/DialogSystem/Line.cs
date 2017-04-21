@@ -12,4 +12,9 @@ public class Line
                NextLineIndex = -1,
                EncounterToStart = -1;
     public bool LastLine;
+
+    public Line()
+    {
+        //Empty constructor
+    }
 }
