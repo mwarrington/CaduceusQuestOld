@@ -25,8 +25,8 @@
 	(c)Macy(i)b;
 	[0](s)Macy(e)c,3(t)"My dad said he got Teddy, thank you!";
 	[1](s)Macy(e)c,3(t)"Is he ok? Can you fix him?"<0;
-		(g)0(n)1(f)h,1(l)"Yes, we're fixing him.";
-		(g)0(n)1(f)c,1(l)"I'm not sure, the doctors here are doing their best...";
+		(g)0(n)2(f)h,1(l)"Yes, we're fixing him.";
+		(g)0(n)2(f)c,1(l)"I'm not sure, the doctors here are doing their best...";
 	[2](s)Macy(e)c,2(t)"I don't know what's wrong. He started throwing up and his skin turned blue."<1;
 		(g)1(n)3(f)c,1(l)"He turned blue?";
 		(g)1(n)4(f)c,1(l)"He started throwing up?";
