@@ -33,17 +33,4 @@ public class DialogManager : MonoBehaviour
         string[] newDOs = new string[3];
         return newDOs;
     }
-
-    //This method makes a dialog Line from an existing dialog option
-    //When this method is called and how exactly it works still requires some attention
-    public Line MakeLineFromDO(DialogOption DO)
-    {
-        Line newLine = new Line();
-
-        newLine.LineText = DO.DialogOptionText;
-        newLine.MyEmotion = DO.DialogOptionEmotion;
-        newLine.NextLineIndex = DO.MyNextLine;
-
-        return newLine;
-    }
 }
