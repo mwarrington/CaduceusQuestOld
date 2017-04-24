@@ -6,7 +6,7 @@
 
 	//first encounter//
 	(c)Mars(i)a;
-	[0](s)Mars(e)d,1(t)"It begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness…"<0;
+	[0](s)Mars(e)e,1(t)"It begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness…"<0;
 		(g)0(n)1(f)h,1(l)"Huh?";
 		(g)0(n)1(f)h,1(l)"What are you talking about?";
 	[1](s)Mars(e)c,1(t)"Oh, uh, nevermind."<1;
@@ -18,21 +18,21 @@
 
 	//second encounter//
 	(c)Mars(i)b;
-	[0](s)Mars(e)h,1(t)"Oh, hey. I forgot who you were, so tell me, who are you?"<0;
+	[0](s)Mars(e)h,1(t)"Oh, hey. I forgot who you were. Tell me, who are you?"<0;
 		(g)0(n)1(f)a,1(l)"I'm Simone. It's nice to meet you.";
 		(g)0(n)2(f)d,2(l)"Hmmm, I think I'm still trying to figure that out.";
 	[1](s)Mars(e)f,1(t)"That's not really what I was talking about but it's ok."<1;
 	[2](s)Mars(e)d,2(t)"I know what you mean...";
 	[3](s)Mars(e)d,4(t)"*Zones out*"<1;
 		(g)1(n)4(f)h,2(l)"You mentioned your neck earlier. Mind if I take a look at it?";
-		(g)1(n)5(f)h,3(l)"Soooo... Your neck, is it still feeling stiff? I take a look at it...";
+		(g)1(n)5(f)h,3(l)"Soooo... Your neck, is it still feeling stiff? Could I take a look at it?";
 	[4](s)Mars(e)c,2(t)"I don't know... Have you looked at anyone else?"<3;
 	[5](s)Mars(e)c,2(t)"Hmm, maybe if one of my friends vouches for you."<3;
 		(g)3(n)6(f)c,2(l)"You mean Steve?";
-		(g)3(n)7(f)c,1(l)"You mean Bea?";
+		(g)3(n)7(f)c,1(l)"You mean Danny?";
 		(g)3(n)8(f)h,1(l)"You mean Quinn?";
 	[6](s)Mars(e)g,1(t)"I don't know him..."#;
-	[7](s)Mars(e)b,2(t)"Bea? Hmm, ok."&5;
+	[7](s)Mars(e)b,2(t)"Danny? Hmm, ok."&5;
 	[8](s)Mars(e)f,1(t)"We don't really hang out."#;;
 
 	//after second encounter but haven't done neck exam 1//
@@ -41,17 +41,17 @@
 	[1](s)Mars(e)c,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
 		(g)0(n)2(f)c,2(l)"I already examined Cecil.";
 		(g)0(n)3(f)c,1(l)"I already examined Josh.";
-		(g)0(n)4(f)c,1(l)"I already examined Danny.";
+		(g)0(n)4(f)c,1(l)"I already examined Bea.";
 	[2](s)Mars(e)g,2(t)"Wait, who? Did you make that name up?"#;
 	[3](s)Mars(e)f,1(t)"Josh, huh? I know him but I don't really know him, you know?"#;
-	[4](s)Mars(e)b,2(t)"Danny, eh? Mk."&5;;
+	[4](s)Mars(e)b,2(t)"Bea, eh? Mk."&5;;
 
 	//after second encounter but haven't done neck exam 2//
 	(c)Mars(i)c;
 	[0](s)Mars(e)g,2(t)"You again.";
 	[1](s)Mars(e)g,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
 		(g)0(n)2(f)c,2(l)"I already examined Hyacinth.";
-		(g)0(n)4(f)c,1(l)"I already examined Quinn.";
+		(g)0(n)4(f)h,1(l)"I already examined Quinn.";
 		(g)0(n)5(f)c,1(l)"I already examined Bea.";
 	[2](s)Mars(e)d,3(t)"Hyacinth!?";
 	[3](s)Mars(e)b,1(t)"Why would you even guess that? I'm kinda impressed."#;
@@ -101,10 +101,10 @@
 		(g)1(n)14(f)h,1(l)"No thanks. Can I examine your neck?";
 	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&6;;
 
-	//Second Encounter//
+	//after neck exam//
 	(c)Bea(i)b;
 	[0](s)Bea(e)a,2(t)"Oh, hey! Neck lady.";
-	[1](s)Bea(e)a,2(t)"Did you want to know more about signs?<0"
+	[1](s)Bea(e)a,2(t)"Did you want to know more about signs?"<0;
 		(g)0(n)2(f)h,1(l)"Sure.";
 		(g)0(n)17(f)h,1(l)"No, just saying hi.";
 	[2](s)Bea(e)a,2(t)"Mk, what sign?"<1;
@@ -134,8 +134,8 @@
 	[14](s)Bea(e)a,3(t)"Pisces! My favorite. You will find something green at the Hospital if you look at the plants.">15;
 	[15](s)Bea(e)a,2(t)"Do you want to hear another one?"<1;
 		(g)2(n)2(f)h,1(l)"Sure.";
-		(g)2(n)16(f)h,1(l)"No thanks. That's enough for now?";
-	[16](s)Bea(e)a,2(t)"Let me know if you need anymore guidence."#;
+		(g)2(n)16(f)h,1(l)"No thanks. That's enough for now.";
+	[16](s)Bea(e)a,2(t)"Let me know if you need anymore guidance."#;
 	[17](s)Bea(e)a,2(t)"Oh, that's nice of you.";
 	[18](s)Bea(e)a,2(t)"Hi!"#;;
 
@@ -149,18 +149,18 @@
 	//first convo//
 	(c)Violet(i)a;
 	[0](s)Violet(e)c,2(t)"What?"<0;
-		(g)0(n)1(f)e,2(l)"Do you remember me from the Hospital?";
+		(g)0(n)1(f)e,2(l)"Do you remember me from the hospital?";
 		(g)0(n)3(f)e,2(l)"Oh, I was just going to say hi.";
 	[1](s)Violet(e)c,2(t)"Yeah, I guess.";
 	[2](s)Violet(e)c,2(t)"What do you want?"<1;
 	[3](s)Violet(e)c,2(t)"Okay, Hi.";
-	[4](s)Violet(e)c,2(t)"Anything else?<1";
+	[4](s)Violet(e)c,2(t)"Anything else?"<1;
 		(g)1(n)5(f)e,1(l)"It's not a big deal. We can talk again later, or maybe not...";
 		(g)1(n)6(f)e,1(l)"Uh... Never mind.";
 	[5](s)Violet(e)c,2(t)"Good guess."#;
 	[6](s)Violet(e)c,2(t)"Uh... bye."#;;
 
-	//post neck exam convo//
+	//second convo//
 	(c)Violet(i)b;
 	[0](s)Violet(e)c,2(t)"Hi, did you need anything this time?"<0;
 		(g)0(n)1(f)e,2(l)"Just saying Hi.";
@@ -190,11 +190,34 @@
 	[1](s)Quinn(e)a,3(t)"I'm SO relieved. Take this Rosy Maple Moth Eraser as a token of my thanks."#;;
 	//acquire eraser//
 
-	//subsequent dialogues after you give her the beetle//
+	//after beetle quest, random option 1//
 	(c)Quinn(i)f;
-	[0](s)Quinn(e)a,3(t)"The green june bug's scientific name is Cotinis nitida. So cool!!"#;;
+	[0](s)Quinn(e)a,3(t)"What's up?"<0;
+		(g)0(n)1(f)h,1(l)"Nothing much.";
+		(g)0(n)2(f)h,1(l)"Would you mind if I examined your neck?";
+	[1](s)Quinn(e)a,3(t)"K, seeya!"#;
+	[2](s)Quinn(e)a,3(t)"Uh, I guess..."&8;;
+
+	//after beetle quest, random option 2//
+	(c)Quinn(i)g;
+	[0](s)Quinn(e)a,3(t)"Ashland used to be called Ashland Plantations, but I dunno why. Thanks again for the beetle!"#;;
+
+	//after beetle quest, random option 3//
+	(c)Quinn(i)h;
+	[0](s)Quinn(e)a,3(t)"Some say that Ashland is named for the ash its factories used to make, but I think it's the trees."#;;
+
 
 //Principal Gilliam//
 
+	//first encounter//
 	(c)Principal Gilliam(i)a;
-	[0](s)Principal Gilliam(e)h,1(l)"Hello young lady. Are you a student here? Get to class!"#;;
+	[0](s)Principal Gilliam(e)g,1(l)"Hello young lady. Are you a student here? Get to class!"#;;
+
+	//after talking to her 3 times//
+	(c)Principal Gilliam(i)b;
+	[0](s)Principal Gilliam(e)g,2(l)"Why aren't you in class? Are you alright?"<0;
+		(g)0(n)1(f)c,1(l)"Well, actually... could I examine your neck?";
+		(g)0(n)2(f)c,2(l)"No, I'm sorry, I'll get to class!!";
+	[1](s)Principal Gilliam(e)h,1(l)"You may not!"#;
+	[2](s)Principal Gilliam(e)h,1(l)"Ok, I'm here if you get in trouble."#;;
+
