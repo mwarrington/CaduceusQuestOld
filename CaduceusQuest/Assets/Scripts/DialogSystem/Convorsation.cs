@@ -73,10 +73,12 @@ public class Convorsation
                 }
                 else if (_currentName == Name)
                 {
+                    _currentName = "";
                     _readingName = false;
                 }
                 else
                 {
+                    _currentName = "";
                     _readingName = false;
                     _skipConvo = true;
                     _currentName = "";
@@ -106,6 +108,11 @@ public class Convorsation
                         {
                             _correctConvo = true;
                             i++;
+                            continue;
+                        }
+                        else
+                        {
+                            _skipConvo = true;
                             continue;
                         }
                     }

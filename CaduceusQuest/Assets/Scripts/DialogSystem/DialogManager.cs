@@ -10,7 +10,8 @@ public class DialogManager : MonoBehaviour
 
     void Start()
     {
-        Convorsation convo = new Convorsation("Bea", 'a');
+        Convorsation convo = new Convorsation("Dr. Gallo", 'd');
+        Debug.Log("Sup");
     }
 
     public string GetMasterText()

@@ -46,7 +46,7 @@
 
 	//first encounter//
 	(c)Dr. Gallo(i)a;
-	[0](s)Dr. Gallo(e)TK(t)"Hello?"<0;
+	[0](s)Dr. Gallo(e)d,1(t)"Hello?"<0;
 		(g)0(n)1(f)h,1(l)"Good morning!";
 		(g)0(n)1(f)h,1(l)"Are you Dr. Gallo?";
 	[1](s)Dr. Gallo(e)g,1(t)"Yes, yes, and who are you?"<1;
@@ -109,7 +109,7 @@
 	[0](s)Violet(e)c,1(t)"Did Dr. Gallo say I can leave yet? Have you even brought her my form?"#;;
 
 	//blood test//
-	(c)Violet(i)b;
+	(c)Violet(i)c;
 	[3](s)Violet(e)c,1(t)"Did Dr. Gallo say I can leave yet?";;
 
 	//after blood test// 
