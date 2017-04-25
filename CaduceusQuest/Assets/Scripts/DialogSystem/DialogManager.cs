@@ -11,7 +11,6 @@ public class DialogManager : MonoBehaviour
     void Start()
     {
         Convorsation convo = new Convorsation("Dr. Gallo", 'd');
-        Debug.Log("Sup");
     }
 
     public string GetMasterText()
