@@ -148,24 +148,24 @@
 
 	//first convo//
 	(c)Violet(i)a;
-	[0](s)Violet(e)c,2(t)"What?"<0;
-		(g)0(n)1(f)e,2(l)"Do you remember me from the hospital?";
-		(g)0(n)3(f)e,2(l)"Oh, I was just going to say hi.";
-	[1](s)Violet(e)c,2(t)"Yeah, I guess.";
-	[2](s)Violet(e)c,2(t)"What do you want?"<1;
-	[3](s)Violet(e)c,2(t)"Okay, Hi.";
-	[4](s)Violet(e)c,2(t)"Anything else?"<1;
-		(g)1(n)5(f)e,1(l)"It's not a big deal. We can talk again later, or maybe not...";
-		(g)1(n)6(f)e,1(l)"Uh... Never mind.";
-	[5](s)Violet(e)c,2(t)"Good guess."#;
-	[6](s)Violet(e)c,2(t)"Uh... bye."#;;
+	[0](s)Violet(e)g,1(t)"What?"<0;
+		(g)0(n)1(f)c,1(l)"Do you remember me from the hospital?";
+		(g)0(n)3(f)a,1(l)"Oh, I was just going to say hi.";
+	[1](s)Violet(e)c,1(t)"Yeah, I guess.";
+	[2](s)Violet(e)c,1(t)"What do you want?"<1;
+	[3](s)Violet(e)g,1(t)"Okay, Hi.";
+	[4](s)Violet(e)g,1(t)"Anything else?"<1;
+		(g)1(n)5(f)c,2(l)"It's not a big deal. We can talk again later, or maybe not...";
+		(g)1(n)6(f)c,2(l)"Uh... Never mind.";
+	[5](s)Violet(e)a,1(t)"Good guess."#;
+	[6](s)Violet(e)g,1(t)"Uh... bye."#;;
 
 	//second convo//
 	(c)Violet(i)b;
-	[0](s)Violet(e)c,2(t)"Hi, did you need anything this time?"<0;
-		(g)0(n)1(f)e,2(l)"Just saying Hi.";
-		(g)0(n)1(f)e,2(l)"I guess not.";
-		[1](s)Violet(e)c,2(t)"..."#;;
+	[0](s)Violet(e)c,1(t)"Hi, did you need anything this time?"<0;
+		(g)0(n)1(f)a,1(l)"Just saying Hi.";
+		(g)0(n)1(f)c,2(l)"I guess not.";
+	[1](s)Violet(e)g,2(t)"..."#;;
 
 //Kalil//
 
