@@ -12,7 +12,7 @@
 	[1](s)Mars(e)c,1(t)"Oh, uh, nevermind."<1;
 		(g)1(n)2(f)h,1(l)"Has your neck been feeling stiff lately?";
 		(g)1(n)3(f)h,2(l)"Was that a Robert Frost quote?";
-	[2](s)Mars(e)d,3(t)"Now that you mention it, yeah..."&5;
+	[2](s)Mars(e)d,3(t)"Now that you mention it, yeah...";
 	[3](s)Mars(e)d,3(t)"What? Oh, don't worry about it. My neck has me distracted.";
 	[4](s)Mars(e)d,3(t)"Whatever, I don't want to talk about it!"#;;
 
@@ -32,7 +32,7 @@
 		(g)3(n)7(f)c,1(l)"You mean Danny?";
 		(g)3(n)8(f)h,1(l)"You mean Quinn?";
 	[6](s)Mars(e)g,1(t)"I don't know him..."#;
-	[7](s)Mars(e)b,2(t)"Danny? Hmm, ok."&5;
+	[7](s)Mars(e)b,2(t)"Hmm..."&5;
 	[8](s)Mars(e)f,1(t)"We don't really hang out."#;;
 
 	//after second encounter but haven't done neck exam 1//
@@ -44,7 +44,7 @@
 		(g)0(n)4(f)c,1(l)"I already examined Bea.";
 	[2](s)Mars(e)g,2(t)"Wait, who? Did you make that name up?"#;
 	[3](s)Mars(e)f,1(t)"Josh, huh? I know him but I don't really know him, you know?"#;
-	[4](s)Mars(e)b,2(t)"Bea, eh? Mk."&5;;
+	[4](s)Mars(e)b,2(t)"Hmm..."&5;;
 
 	//after second encounter but haven't done neck exam 2//
 	(c)Mars(i)c;
@@ -56,7 +56,7 @@
 	[2](s)Mars(e)d,3(t)"Hyacinth!?";
 	[3](s)Mars(e)b,1(t)"Why would you even guess that? I'm kinda impressed."#;
 	[4](s)Mars(e)g,2(t)"Quinn, huh? I know her but I don't really know her, you know?"#;
-	[5](s)Mars(e)b,2(t)"Bea's cool. Ok."&5;;
+	[5](s)Mars(e)b,2(t)"Hmm..."&5;;
 
 	//after neck exam//
 	(c)Mars(i)d;
@@ -141,6 +141,41 @@
 
 
 //Danny//
+
+	//first convo//
+	(c)Danny(i)a;
+	[0](s)Danny(e)h,2(t)"Hey, I heard you were here from the hospital.";
+	[1](s)Danny(e)c,1(t)"Should I be worried?"<0;
+		(g)0(n)2(f)a,1(l)"I doubt it. They probably wouldn't send me for something serious.";
+		(g)0(n)5(f)c,2(l)"You know, I haven't really thought about it. I sure hope not.";
+	[2](s)Danny(e)a,1(t)"Huh, that's actually a pretty good point.";
+	[3](s)Danny(e)a,1(t)"Violet had me kinda worried there for a second.";
+	[4](s)Danny(e)a,1(t)"Now I can get back to worrying about this test..."#;
+	[5](s)Danny(e)a,1(t)"What!? That makes me even more worried!";
+	[6](s)Danny(e)a,1(t)"Violet was right about you..."<1;
+		(g)1(n)7(f)a,1(l)"Sorry, that was a mean joke.";
+		(g)1(n)8(f)a,1(l)"Wait, what did Violet say about me?";
+	[7](s)Danny(e)g,2(t)"Hilarious..."#;
+	[8](s)Danny(e)c,2(t)"Uh... Don't worry about it."#;
+
+	//second convo//
+	(c)Danny(i)a;
+	[0](s)Danny(e)a,1(t)"Hello again. Still nothing to worry about?";
+		(g)0(n)1(f)a,1(l)"Nothing scary to report, ma'am.";
+		(g)0(n)2(f)a,1(l)"Well, I wouldn't say nothing. I mean there's always somthing to worry about.";
+	[1](s)Danny(e)a,1(t)"Cool, I didn't think so but it's best to play it safe.">3;
+	[2](s)Danny(e)a,1(t)"True. There are so few people who get that.";
+	[3](s)Danny(e)a,1(t)"But what does bring you here?"<1;
+		(g)1(n)4(f)a,1(l)"I'm just here to do a few neck exams. Would you mind if I examine you?";
+		(g)1(n)4(f)a,1(l)"Oh right! Could I examine your neck?";
+	[4](s)Danny(e)a,1(t)"My neck!? I don't know.";
+	[5](s)Danny(e)a,1(t)"Have you examined anyone else?";
+		(g)2(n)6(f)a,1(l)"Yeah, do you know Bea?";
+		(g)2(n)6(f)a,1(l)"Sure, Violet let me examine her.";
+		(g)2(n)6(f)a,1(l)"Do you know Sarah?";
+	[6](s)Danny(e)a,1(t)"Hmm..."&7;
+	[7](s)Danny(e)a,1(t)"Haha! There's no way that's true.";
+	[8](s)Danny(e)a,1(t)"I don't.";
 
 //Josh//
 
