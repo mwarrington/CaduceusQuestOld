@@ -63,7 +63,7 @@
 	[0](s)Dr. Gallo(e)g,2(t)"Do I have to do everything around here? Go talk to those patients."#;;
 
 	(c)Dr. Gallo(i)c;
-	[0](s)Dr. Gallo(e)g,2(t)"Check the list in your inventory by pressing TK. Do what it says, then come back here."#;;
+	[0](s)Dr. Gallo(e)g,2(t)"Check the list in your inventory by pressing I. Do what it says, then come back here."#;;
 
 	//After intake forms are completed//
 	(c)Dr. Gallo(i)d;
@@ -81,10 +81,28 @@
 		(g)0(n)3(f)c,1(l)"Are you sure I should be doing this?";
 	[2](s)Dr. Gallo(e)g,2(t)"Great. See you soon.";
 	[3](s)Dr. Gallo(e)g,3(t)"It's tolerably safe. Just go."#;;
+	//acquire list 2//
 
-	//before completing blood tests and neck exam//
+	//before completing list 2 random option 1//
 	(c)Dr. Gallo(i)f;
 	[0](s)Dr. Gallo(e)g,2(t)"It's tolerably safe. It's fine. Just go."#;;
+
+	//before completing list 2 random option 2//
+	(c)Dr. Gallo(i)g;
+	[0](s)Dr. Gallo(e)g,2(t)"You need to complete the tasks on List 2. Press I to look at it in your inventory.";
+	[1](s)Dr. Gallo(e)g,2(t)"Do you want me to show you how to do the neck exam again?"<0;
+		(g)0(n)2(f)h,1(l)"No, I think I've got it.";
+		(g)0(n)3(f)h,1(l)"Yes please.";
+	[2](s)Dr. Gallo(e)g,2(t)"Get to it!"#;
+	[3](s)Dr. Gallo(e)g,2(t)"Ok, listen carefully this time..."&13;
+	
+	//after completing list 2 --> go to school//
+
+	//before completing school exams//
+
+	//after completing school exams//
+
+	//game end ?//
 
 //Violet//
 
@@ -139,6 +157,10 @@
 //Sylvia//
 
 	//intake form//
+	//(c)Sylvia(i)a;
+	//[0](s)Sylvia(e)T,K(t)"Hello honey! What's your name? How are you doing?"<0;
+	//	(g)
+
 
 	//after intake form, before blood test//
 
