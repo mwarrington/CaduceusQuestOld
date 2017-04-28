@@ -235,7 +235,10 @@
 
 	//second convo//
 	//(c)Josh(i)b;//
-	//[0](s)Josh(e)a,1(t)""//
+	//[0](s)Josh(e)a,1(t)"Hey! You!";//
+		//(g)0(n)1(e)g,2(l)"It's Simone.";//
+		//(g)0(n)1(e)g,2(l)"How do you think people are going to react to being called 'You'?";//
+	//[1](s)Josh(e)a,1(t)""//
 
 //Violet//
 
