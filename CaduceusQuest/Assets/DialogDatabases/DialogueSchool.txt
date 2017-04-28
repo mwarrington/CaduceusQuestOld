@@ -6,15 +6,20 @@
 
 	//first encounter//
 	(c)Mars(i)a;
-	[0](s)Mars(e)e,1(t)"It begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness…"<0;
+	[0](s)Mars(e)e,1(t)"It begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness..."<0;
 		(g)0(n)1(f)h,1(l)"Huh?";
 		(g)0(n)1(f)h,1(l)"What are you talking about?";
 	[1](s)Mars(e)c,1(t)"Oh, uh, nevermind."<1;
 		(g)1(n)2(f)h,1(l)"Has your neck been feeling stiff lately?";
 		(g)1(n)3(f)h,2(l)"Was that a Robert Frost quote?";
-	[2](s)Mars(e)d,3(t)"Now that you mention it, yeah...";
+	[2](s)Mars(e)d,3(t)"Now that you mention it, yeah..."<2;
 	[3](s)Mars(e)d,3(t)"What? Oh, don't worry about it. My neck has me distracted.";
-	[4](s)Mars(e)d,3(t)"Whatever, I don't want to talk about it!"#;;
+	[4](s)Mars(e)d,3(t)"Whatever, I don't want to talk about it!"<2;
+		(g)2(n)5(f)h,1(l)"Have you considered getting it looked at?";
+		(g)2(n)5(f)c,1(l)"You're not worried about it?";
+	[5](s)Mars(e)g,2(l)"Eh, I was just at the hospital picking up my sister.";
+	[6](s)Mars(e)g,1(l)"I'm not trying to deal with all that again.#"
+
 
 	//second encounter//
 	(c)Mars(i)b;
@@ -148,77 +153,76 @@
 	[1](s)Danny(e)c,1(t)"Should I be worried?"<0;
 		(g)0(n)2(f)a,1(l)"I doubt it. They probably wouldn't send me for something serious.";
 		(g)0(n)5(f)c,2(l)"You know, I haven't really thought about it. I sure hope not.";
-	[2](s)Danny(e)a,1(t)"Huh, that's actually a pretty good point.";
-	[3](s)Danny(e)a,1(t)"Violet had me kinda worried there for a second.";
-	[4](s)Danny(e)a,1(t)"Now I can get back to worrying about this test..."#;
-	[5](s)Danny(e)a,1(t)"What!? That makes me even more worried!";
-	[6](s)Danny(e)a,1(t)"Violet was right about you..."<1;
-		(g)1(n)7(f)a,1(l)"Sorry, that was a mean joke.";
-		(g)1(n)8(f)a,1(l)"Wait, what did Violet say about me?";
+	[2](s)Danny(e)b,2(t)"Huh, that's actually a pretty good point.";
+	[3](s)Danny(e)b,1(t)"Violet had me kinda worried there for a second.";
+	[4](s)Danny(e)c,2(t)"Now I can get back to worrying about this test..."#;
+	[5](s)Danny(e)c,3(t)"What!? That makes me even more worried!";
+	[6](s)Danny(e)c,2(t)"Violet was right about you..."<1;
+		(g)1(n)7(f)e,1(l)"Sorry, that was a mean joke.";
+		(g)1(n)8(f)c,2(l)"Wait, what did Violet say about me?";
 	[7](s)Danny(e)g,2(t)"Hilarious..."#;
 	[8](s)Danny(e)c,2(t)"Uh... Don't worry about it."#;
 
 	//second convo//
 	(c)Danny(i)b;
-	[0](s)Danny(e)a,1(t)"Hello again. Still nothing to worry about?";
+	[0](s)Danny(e)c,1(t)"Hello again. Still nothing to worry about?";
 		(g)0(n)1(f)a,1(l)"Nothing scary to report, ma'am.";
-		(g)0(n)2(f)a,1(l)"Well, I wouldn't say nothing. I mean there's always somthing to worry about.";
-	[1](s)Danny(e)a,1(t)"Cool, I didn't think so but it's best to play it safe.">3;
-	[2](s)Danny(e)a,1(t)"True. There are so few people who get that.";
-	[3](s)Danny(e)a,1(t)"But what does bring you here?"<1;
-		(g)1(n)4(f)a,1(l)"I'm just here to do a few neck exams. Would you mind if I examine you?";
-		(g)1(n)4(f)a,1(l)"Oh right! Could I examine your neck?";
-	[4](s)Danny(e)a,1(t)"My neck!? I don't know.";
-	[5](s)Danny(e)a,1(t)"Have you examined anyone else?";
-		(g)2(n)6(f)a,1(l)"Yeah, do you know Bea?";
-		(g)2(n)7(f)a,1(l)"Sure, Violet let me examine her.";
-		(g)2(n)8(f)a,1(l)"Do you know Sarah?";
-	[6](s)Danny(e)a,1(t)"Hmm..."&7;
-	[7](s)Danny(e)a,1(t)"Haha! There's no way that's true."#;
-	[8](s)Danny(e)a,1(t)"I don't."#;
+		(g)0(n)2(f)d,1(l)"Well, I wouldn't say nothing. I mean there's always somthing to worry about.";
+	[1](s)Danny(e)b,1(t)"Cool, I didn't think so but it's best to play it safe.">3;
+	[2](s)Danny(e)b,1(t)"True. There are so few people who get that.";
+	[3](s)Danny(e)h,1(t)"But what does bring you here?"<1;
+		(g)1(n)4(f)h,1(l)"I'm just here to do a few neck exams. Would you mind if I examine you?";
+		(g)1(n)4(f)h,1(l)"Oh right! Could I examine your neck?";
+	[4](s)Danny(e)d,3(t)"My neck!? I don't know.";
+	[5](s)Danny(e)c,1(t)"Have you examined anyone else?";
+		(g)2(n)6(f)c,1(l)"Yeah, do you know Bea?";
+		(g)2(n)7(f)c,1(l)"Sure, Violet let me examine her.";
+		(g)2(n)8(f)c,1(l)"Do you know Sarah?";
+	[6](s)Danny(e)b,1(t)"Hmm..."&7;
+	[7](s)Danny(e)a,3(t)"Haha! There's no way that's true."#;
+	[8](s)Danny(e)f,1(t)"I don't."#;
 
 	//third convo//
 	(c)Danny(i)c;
-	[0](s)Danny(e)a,1(t)"Should I call you Simone or like, Ms. Simone?"<0;
-		(g)0(n)1(f)a,1(l)"Just Simone is fine. Do you think I could do that neck exam now?";
-		(g)0(n)1(f)a,1(l)"Woah, I don't think I like Ms. Simone. I wouldn't mind if you let me examine your neck, though.";
-	[1](s)Danny(e)a,1(t)"Not until I have proof you're not crazy."<1;
-		(g)1(n)2(f)a,1(l)"Quinn already let me examine her.";
-		(g)1(n)3(f)a,1(l)"Mars didn't seem to have a problem.";
-		(g)1(n)4(f)a,1(l)"Mason let me examine him.";
-	[2](s)Danny(e)a,1(t)"You know, I haven't really talked to her much. I wonder what her deal is."#;
-	[3](s)Danny(e)a,1(t)"Hmm..."&7;
-	[4](s)Danny(e)a,1(t)"Mars' dad? Um, that's cool. I guess."#;
+	[0](s)Danny(e)h,2(t)"Should I call you Simone or like, Ms. Simone?"<0;
+		(g)0(n)1(f)h,1(l)"Just Simone is fine. Do you think I could do that neck exam now?";
+		(g)0(n)1(f)d,3(l)"Woah, I don't think I like Ms. Simone. I wouldn't mind if you let me examine your neck, though.";
+	[1](s)Danny(e)c,1(t)"Not until I have proof you're not crazy."<1;
+		(g)1(n)2(f)c,1(l)"Quinn already let me examine her.";
+		(g)1(n)3(f)c,1(l)"Mars didn't seem to have a problem.";
+		(g)1(n)4(f)c,1(l)"Mason let me examine him.";
+	[2](s)Danny(e)h,1(t)"You know, I haven't really talked to her much. I wonder what her deal is."#;
+	[3](s)Danny(e)b,1(t)"Hmm..."&7;
+	[4](s)Danny(e)c,2(t)"Mars' dad? Um, that's cool. I guess."#;
 
 	//fourth convo//
 	(c)Danny(i)d;
-	[0](s)Danny(e)a,1(t)"Hey there, Simone. Still obsessed with necks?"<0;
-		(g)0(n)1(f)a,1(l)"I wouldn't say obsessed but if you don't mind I'd like to examine you.";
+	[0](s)Danny(e)h,2(t)"Hey there, Simone. Still obsessed with necks?"<0;
+		(g)0(n)1(f)g,1(l)"I wouldn't say obsessed but if you don't mind I'd like to examine you.";
 		(g)0(n)1(f)a,1(l)"You bet! You think I could take a look?";
-	[1](s)Danny(e)a,1(t)"Depends. Who else has trusted you with their neck?"<1;
-		(g)1(n)2(f)a,1(l)"You know Bea, right? She was cool with it.";
-		(g)1(n)3(f)a,1(l)"What about Josh?";
-		(g)1(n)4(f)a,1(l)"Ida let me check her neck.";
+	[1](s)Danny(e)c,2(t)"Depends. Who else has trusted you with their neck?"<1;
+		(g)1(n)2(f)h,1(l)"You know Bea, right? She was cool with it.";
+		(g)1(n)3(f)h,1(l)"What about Josh?";
+		(g)1(n)4(f)h,1(l)"Ida let me check her neck.";
 	[2](s)Danny(e)a,1(t)"Hmm..."&7;
-	[3](s)Danny(e)a,1(t)"Ugh, not the best example."#;
-	[4](s)Danny(e)a,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?;
-	[5](s)Danny(e)a,1(t)"She's me hero!#"
-		
-
+	[3](s)Danny(e)f,2(t)"Ugh, not the best example."#;
+	[4](s)Danny(e)c,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?;
+	[5](s)Danny(e)a,3(t)"She's me hero!#"
+	
 	//after neck exam convo//
 	(c)Danny(i)e;
-	[0](s)Danny(e)a,1(t)"Hey, do you know anything about the origins of our town's name?";
-		(g)1(n)1(f)a,1(l)"I've heard more than a few reasons. Do you know the true origin?";
-		(g)1(n)2(f)a,1(l)"No, what have you heard?";
-		(g)1(n)4(f)a,1(l)"What was the town called again?";
-	[1](s)Danny(e)a,1(t)"I haven't actually been able to disprove any of the reasons I've heard.">3;
-	[2](s)Danny(e)a,1(t)"There seem to be more than one reason and they all check out!">3;
-	[3](s)Danny(e)a,1(t)"It's always kinda bugged me but maybe they're all true."#;
-	[4](s)Danny(e)a,1(t)"Ashland. Apparently there are multiple origin stories but they all seem true!"#;
-
-		
+	[0](s)Danny(e)h,2(t)"Hey, do you know anything about the origins of our town's name?";
+		(g)1(n)1(f)h,1(l)"I've heard more than a few reasons. Do you know the true origin?";
+		(g)1(n)2(f)h,1(l)"No, what have you heard?";
+		(g)1(n)4(f)d,1(l)"What was the town called again?";
+	[1](s)Danny(e)h,1(t)"I haven't actually been able to disprove any of the reasons I've heard.">3;
+	[2](s)Danny(e)h,2(t)"There seem to be more than one reason and they all check out!">3;
+	[3](s)Danny(e)c,1(t)"It's always kinda bugged me but maybe they're all true."#;
+	[4](s)Danny(e)h,2(t)"Ashland. Apparently there are multiple origin stories but they all seem true!"#;
 
 //Josh//
+
+	//first convo//
 
 //Violet//
 
