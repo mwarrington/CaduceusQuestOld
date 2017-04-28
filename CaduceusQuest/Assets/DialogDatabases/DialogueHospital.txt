@@ -34,7 +34,7 @@
 	[4](s)Macy(e)c,3(t)"He'd barely eaten any dinner but he said he was feeling dizzy and he threw up! Is he okay?"<2;
 		(g)2(n)5(f)h,1(l)"Everything will be okay, but he has to stay here tonight.";
 		(g)2(n)5(f)h,1(l)"The doctors here are very good. Is someone coming to get you?";
-	[5](s)Macy(e)c,1(t)"Alright. My big brother's on his way to pick me up."#;;
+	[5](s)Macy(e)c,1(t)"Alright. My big brother Mars is on his way to pick me up."#;;
 	//Macy disappears//
 
 //Reception NPC 1//
@@ -96,7 +96,7 @@
 	[2](s)Dr. Gallo(e)g,2(t)"Get to it!"#;
 	[3](s)Dr. Gallo(e)g,2(t)"Ok, listen carefully this time..."&13;
 	
-	//after completing list 2 --> go to school//
+	//after completing list 2 --> go to school first thing tomorrow//
 
 	//before completing school exams//
 
@@ -108,29 +108,42 @@
 
 	//intake form//
 	(c)Violet(i)a;
-	[0](s)Violet(e)c,2(t)"Hi. You startled me. Who let you in here?"<0;
+	[0](s)Violet(e)g,2(t)"Hi. You startled me. Who let you in here?"<0;
 		(g)0(n)1(f)h,1(l)"I'm sorry. Dr. Gallo sent me.";
 		(g)0(n)1(f)h,1(l)"Are you Violet?";
-	[1](s)Violet(e)c,2(t)"Ok fine! I'm Violet, yeah. Do I need any shots today?"<1;
+	[1](s)Violet(e)g,2(t)"Ok fine! I'm Violet, yeah. Do I need any shots today?"<1;
 		(g)1(n)3(f)h,1(l)"I'm just here to do your intake form";
 		(g)1(n)2(f)g,1(l)"If you don't cooperate…";
-	[2](s)Violet(e)c,3(t)"You're not a doctor, are you??"<2;
+	[2](s)Violet(e)g,2(t)"You're not a doctor, are you??"<2;
 		(g)2(n)3(f)h,1(l)"I'm Simone.";
 		(g)2(n)3(f)h,1(l)"I'm Dr. Gallo's intern.";
 	[3](s)Violet(e)c,1(t)"Ok whatever. Tell the doctor that I've been feeling tired, winded, and sick in the mornings."<3;
-		(g)3(n)4(f)h,1(l)"I'll write that down. Let's complete the form.";
-		(g)3(n)4(f)g,1(l)"You're very rude, but ok...";
+		(g)3(n)4(f)g,1(l)"I'll write that down. Let's complete the form.";
+		(g)3(n)4(f)g,2(l)"You're very rude, but ok...";
 	[4](s)Violet(e)c,1(t)"Let's do it"&0;;
 
-	//after intake form, before blood test skill has been learned//
+	//after intake form, before blood test skill has been learned 1//
 	(c)Violet(i)b;
-	[0](s)Violet(e)c,1(t)"Did Dr. Gallo say I can leave yet? Have you even brought her my form?"#;;
+	[0](s)Violet(e)f,2(t)"Did Dr. Gallo say I can leave yet? Have you even brought her my form?"#;;
+
+	//after intake form, before blood test skill has been learned 2//
+	(c)Violet(i)c;
+	[0](s)Violet(e)g,2(t)"..."#;;
 
 	//blood test//
-	(c)Violet(i)c;
-	[3](s)Violet(e)c,1(t)"Did Dr. Gallo say I can leave yet?";;
+	(c)Violet(i)d;
+	[0](s)Violet(e)g,2(t)"Did Dr. Gallo say I can leave?"<0;
+		(g)0(n)1(f)h,1(l)"Not quite yet, I need to take a blood test.";
+		(g)0(n)3(f)h,1(l)"Hey, I know things too...";
+	[1](s)Violet(e)c,2(t)"Ummm do you NEED to?";
+	[2](s)Violet(e)c,2(t)"Alright fine let's get this over with."&1;
+	[3](s)Violet(e)g,1(t)"Alright, well, do you know if I can leave?"<1;
+		(g)0(n)1(f)h,1(l)"Not quite yet, I need to take a blood test.";
+		(g)0(n)1(f)h,1(l)"As soon as we take some blood.";;
 
-	//after blood test// 
+	//after blood test//
+	(c)Violet(i)e;
+	[0](s)Violet(e)b,2(t)"Dr. Gallo said my blood's fine, I'm outta here!"#;;
 
 //Mason//
 
@@ -157,9 +170,10 @@
 //Sylvia//
 
 	//intake form//
-	//(c)Sylvia(i)a;
-	//[0](s)Sylvia(e)T,K(t)"Hello honey! What's your name? How are you doing?"<0;
-	//	(g)
+	(c)Sylvia(i)a;
+	[0](s)Sylvia(e)T,K(t)"Hi honey! How are you doing?"<0;
+		(g)0(n)TK(f)T,K(l)"I'm okay. It's been a busy morning.";
+		(g)0(n)TK(f)T,K(l)"";
 
 
 	//after intake form, before blood test//
