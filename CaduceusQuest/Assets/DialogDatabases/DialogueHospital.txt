@@ -159,11 +159,16 @@
 	[5](s)Mason(e)a,3(t)"Wow!! Thank you. This is from my daughter Macy.";
 	[6](s)Mason(e)e,2(t)"She's still in the waiting room. She must be scared."#;;
 
-	//after intake form, before neck exam//
+	//after intake form, before neck exam 1//
 	(c)Mason(i)b;
 	[0](s)Mason(e)e,1(t)"Could you go check on Macy?"#;;
 
-	//neck exam//
+	//after intake form, before neck exam 2//
+	(c)Mason(i)c;
+	[0](s)Mason(e)e,1(t)"I left Macy in the waiting room, can you go tell her I'm ok?"#;;
+
+	//after neck exam training + macy visit//
+
 
 	//after neck exam//
 
@@ -171,12 +176,20 @@
 
 	//intake form//
 	(c)Sylvia(i)a;
-	[0](s)Sylvia(e)T,K(t)"Hi honey! How are you doing?"<0;
-		(g)0(n)TK(f)T,K(l)"I'm okay. It's been a busy morning.";
-		(g)0(n)TK(f)T,K(l)"";
+	[0](s)Sylvia(e)c,2(t)"Hi honey! How are you doing?"<0;
+		(g)0(n)1(f)h,1(l)"I'm okay. It's been a busy morning.";
+		(g)0(n)3(f)h,1(l)"Pretty good! I'm here to fill out an intake form with you.";
+	[1](s)Sylvia(e)c,2(t)"You look a little frazzled, but don't worry. Dr. Gallo watches out for people.";
+	[2](s)Sylvia(e)c,2(t)"You must be here to do my intake form with me.";
+	[3](s)Sylvia(e)c,2(t)"Let's get to it."&3;;
 
-
-	//after intake form, before blood test//
+	//after intake form, before completing List 1//
+	(c)Sylvia(i)b;
+	[0](s)Sylvia(e)c,2(t)"Hi sweetie, do you need anything else from me right now?"<0;
+		(g)0(n)1(f)h,1(l)"No, thanks, just saying hello.";
+		(g)0(n)2(f)h,1(l)"Could you show me how to do the intake form again?";
+	[1](s)Sylvia(e)c,3(t)"Hello!"#;
+	[2](s)Sylvia(e)c,2(t)"Of course!"&3;;
 
 	//blood test//
 
