@@ -160,7 +160,7 @@
 		(g)1(n)7(f)e,1(l)"Sorry, that was a mean joke.";
 		(g)1(n)8(f)c,2(l)"Wait, what did Violet say about me?";
 	[7](s)Danny(e)g,2(t)"Hilarious..."#;
-	[8](s)Danny(e)c,2(t)"Uh... Don't worry about it."#;
+	[8](s)Danny(e)c,2(t)"Uh... Don't worry about it."#;;
 
 	//second convo//
 	(c)Danny(i)b;
@@ -179,7 +179,7 @@
 		(g)2(n)8(f)c,1(l)"Do you know Sarah?";
 	[6](s)Danny(e)b,1(t)"Hmm..."&7;
 	[7](s)Danny(e)a,3(t)"Haha! There's no way that's true."#;
-	[8](s)Danny(e)f,1(t)"I don't."#;
+	[8](s)Danny(e)f,1(t)"I don't."#;;
 
 	//third convo//
 	(c)Danny(i)c;
@@ -192,7 +192,7 @@
 		(g)1(n)4(f)c,1(l)"Mason let me examine him.";
 	[2](s)Danny(e)h,1(t)"You know, I haven't really talked to her much. I wonder what her deal is."#;
 	[3](s)Danny(e)b,1(t)"Hmm..."&7;
-	[4](s)Danny(e)c,2(t)"Mars' dad? Um, that's cool. I guess."#;
+	[4](s)Danny(e)c,2(t)"Mars' dad? Um, that's cool. I guess."#;;
 
 	//fourth convo//
 	(c)Danny(i)d;
@@ -206,7 +206,7 @@
 	[2](s)Danny(e)a,1(t)"Hmm..."&7;
 	[3](s)Danny(e)f,2(t)"Ugh, not the best example."#;
 	[4](s)Danny(e)c,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?;
-	[5](s)Danny(e)a,3(t)"She's me hero!#"
+	[5](s)Danny(e)a,3(t)"She's me hero!"#;;
 	
 	//after neck exam convo//
 	(c)Danny(i)e;
@@ -217,16 +217,25 @@
 	[1](s)Danny(e)h,1(t)"I haven't actually been able to disprove any of the reasons I've heard.">3;
 	[2](s)Danny(e)h,2(t)"There seem to be more than one reason and they all check out!">3;
 	[3](s)Danny(e)c,1(t)"It's always kinda bugged me but maybe they're all true."#;
-	[4](s)Danny(e)h,2(t)"Ashland. Apparently there are multiple origin stories but they all seem true!"#;
+	[4](s)Danny(e)h,2(t)"Ashland. Apparently there are multiple origin stories but they all seem true!"#;;
 
 //Josh//
 
 	//first convo//
-	//(c)Josh(i)a;//
-	//[0](s)Josh(e)a,1(t)"Hey, what are you doing here. You got a high school boyfriend?"<0;//
-		//(g)0(n)1(f)a,1(l)"Uh... No.";//
-		//(g)0(n)2(f)a,1(l)"Is that the only possible reason I could be here?";//
-	//[1](s)Josh//
+	(c)Josh(i)a;
+	[0](s)Josh(e)a,1(t)"Hey, what are you doing here. You got a high school boyfriend?"<0;
+		(g)0(n)1(f)a,1(l)"Uh... No.";
+		(g)0(n)1(f)a,1(l)"Is that the only possible reason I could be here?";
+	[1](s)Josh(e)a,1(t)"Haha, I was just joking. Relax!";
+	[2](s)Josh(e)a,1(t)"Does graduating high school mean you can't take a joke?"<1;
+		(g)1(n)3(f)a,1(l)"I like jokes. It's just that some jokes can be off putting.";
+		(g)1(n)4(f)a,1(l)"Jokes, huh? Aren't those supposed to be funny.";
+	[3](s)Josh(e)a,1(t)"What? No way, my jokes are great!"#;
+	[4](s)Josh(e)a,1(t)"So you got jokes, too!"#;;
+
+	//second convo//
+	//(c)Josh(i)b;//
+	//[0](s)Josh(e)a,1(t)""//
 
 //Violet//
 
