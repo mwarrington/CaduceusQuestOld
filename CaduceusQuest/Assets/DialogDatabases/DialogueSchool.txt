@@ -18,8 +18,7 @@
 		(g)2(n)5(f)h,1(l)"Have you considered getting it looked at?";
 		(g)2(n)5(f)c,1(l)"You're not worried about it?";
 	[5](s)Mars(e)g,2(l)"Eh, I was just at the hospital picking up my sister.";
-	[6](s)Mars(e)g,1(l)"I'm not trying to deal with all that again.#"
-
+	[6](s)Mars(e)g,1(l)"I'm not trying to deal with all that again.#;;
 
 	//second encounter//
 	(c)Mars(i)b;
@@ -223,6 +222,11 @@
 //Josh//
 
 	//first convo//
+	//(c)Josh(i)a;//
+	//[0](s)Josh(e)a,1(t)"Hey, what are you doing here. You got a high school boyfriend?"<0;//
+		//(g)0(n)1(f)a,1(l)"Uh... No.";//
+		//(g)0(n)2(f)a,1(l)"Is that the only possible reason I could be here?";//
+	//[1](s)Josh//
 
 //Violet//
 
