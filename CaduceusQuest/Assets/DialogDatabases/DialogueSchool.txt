@@ -18,7 +18,7 @@
 		(g)2(n)5(f)h,1(l)"Have you considered getting it looked at?";
 		(g)2(n)5(f)c,1(l)"You're not worried about it?";
 	[5](s)Mars(e)g,2(l)"Eh, I was just at the hospital picking up my sister.";
-	[6](s)Mars(e)g,1(l)"I'm not trying to deal with all that again.#;;
+	[6](s)Mars(e)g,1(l)"I'm not trying to deal with all that again."#;;
 
 	//second encounter//
 	(c)Mars(i)b;
@@ -42,7 +42,7 @@
 	//after second encounter but haven't done neck exam 1//
 	(c)Mars(i)c;
 	[0](s)Mars(e)g,1(t)"You again.";
-	[1](s)Mars(e)c,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
+	[1](s)Mars(e)c,2(t)"Look, I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
 		(g)0(n)2(f)c,2(l)"I already examined Cecil.";
 		(g)0(n)3(f)c,1(l)"I already examined Josh.";
 		(g)0(n)4(f)c,1(l)"I already examined Bea.";
@@ -192,12 +192,12 @@
 		(g)1(n)4(f)c,1(l)"Mason let me examine him.";
 	[2](s)Danny(e)h,1(t)"You know, I haven't really talked to her much. I wonder what her deal is."#;
 	[3](s)Danny(e)b,1(t)"Hmm..."&7;
-	[4](s)Danny(e)c,2(t)"Mars' dad? Um, that's cool. I guess."#;;
+	[4](s)Danny(e)c,2(t)"Mars's dad? Um, that's cool. I guess."#;;
 
 	//fourth convo//
 	(c)Danny(i)d;
 	[0](s)Danny(e)h,2(t)"Hey there, Simone. Still obsessed with necks?"<0;
-		(g)0(n)1(f)g,1(l)"I wouldn't say obsessed but if you don't mind I'd like to examine you.";
+		(g)0(n)1(f)g,1(l)"I wouldn't say obsessed, but if you don't mind I'd like to examine you.";
 		(g)0(n)1(f)a,1(l)"You bet! You think I could take a look?";
 	[1](s)Danny(e)c,2(t)"Depends. Who else has trusted you with their neck?"<1;
 		(g)1(n)2(f)h,1(l)"You know Bea, right? She was cool with it.";
@@ -205,7 +205,7 @@
 		(g)1(n)4(f)h,1(l)"Ida let me check her neck.";
 	[2](s)Danny(e)a,1(t)"Hmm..."&7;
 	[3](s)Danny(e)f,2(t)"Ugh, not the best example."#;
-	[4](s)Danny(e)c,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?;
+	[4](s)Danny(e)c,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?";
 	[5](s)Danny(e)a,3(t)"She's me hero!"#;;
 	
 	//after neck exam convo//
@@ -223,13 +223,13 @@
 
 	//first convo//
 	(c)Josh(i)a;
-	[0](s)Josh(e)a,1(t)"Hey, what are you doing here. You got a high school boyfriend?"<0;
+	[0](s)Josh(e)a,1(t)"Hey, what are you doing here? You got a high school boyfriend?"<0;
 		(g)0(n)1(f)a,1(l)"Uh... No.";
 		(g)0(n)1(f)a,1(l)"Is that the only possible reason I could be here?";
 	[1](s)Josh(e)a,1(t)"Haha, I was just joking. Relax!";
 	[2](s)Josh(e)a,1(t)"Does graduating high school mean you can't take a joke?"<1;
-		(g)1(n)3(f)a,1(l)"I like jokes. It's just that some jokes can be off putting.";
-		(g)1(n)4(f)a,1(l)"Jokes, huh? Aren't those supposed to be funny.";
+		(g)1(n)3(f)a,1(l)"I like jokes. It's just that some jokes can be off-putting.";
+		(g)1(n)4(f)a,1(l)"Jokes, huh? Aren't those supposed to be funny?";
 	[3](s)Josh(e)a,1(t)"What? No way, my jokes are great!"#;
 	[4](s)Josh(e)a,1(t)"So you got jokes, too!"#;;
 
