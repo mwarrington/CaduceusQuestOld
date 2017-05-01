@@ -234,11 +234,11 @@
 	[4](s)Josh(e)a,1(t)"So you got jokes, too!"#;;
 
 	//second convo//
-	//(c)Josh(i)b;//
-	//[0](s)Josh(e)a,1(t)"Hey! You!";//
-		//(g)0(n)1(e)g,2(l)"It's Simone.";//
-		//(g)0(n)1(e)g,2(l)"How do you think people are going to react to being called 'You'?";//
-	//[1](s)Josh(e)a,1(t)""//
+	(c)Josh(i)b;
+	[0](s)Josh(e)a,1(t)"Hey! What's her face!";
+		(g)0(n)1(e)g,2(l)"It's Simone.";
+		(g)0(n)1(e)g,1(l)"Wow, what's her face, huh?";
+	[1](s)Josh(e)a,1(t)"";;
 
 //Violet//
 
