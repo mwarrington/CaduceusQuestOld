@@ -4,306 +4,250 @@ using UnityEngine;
 
 public class Convorsation
 {
-    public string Name;
-    public char Index;
-    public List<Line> MyLines = new List<Line>();
-    public List<DialogOptions> MyDialogOptionsList = new List<DialogOptions>();
 
-    private Line _currentLine = new Line();
-    private string _currentName = "";
-    private int _currentDOGroupIndex = -1,
-                _currentDOIndex;
-    private bool _readingName,
-                 _writingSpeaker,
-                 _writingEmotion,
-                 _writingLineText,
-                 _writingDialogOptionLine,
-                 _writingDialogOptionEmotion,
-                 _skipConvo,
-                 _correctConvo,
-                 _skipLine;
+	public string Name;
+	public char Index;
+	public List<Line> MyLines = new List<Line> ();
+	public List<DialogOptions> MyDialogOptionsList = new List<DialogOptions> ();
 
-    public Convorsation(string name, char index)
-    {
-        Name = name;
-        Index = index;    
+	private Line _currentLine = new Line ();
+	private string _currentName = "";
+	private int _currentDOGroupIndex = -1,
+		_currentDOIndex;
+	private bool _readingName,
+		_writingSpeaker,
+		_writingEmotion,
+		_writingLineText,
+		_writingDialogOptionLine,
+		_writingDialogOptionEmotion,
+		_skipConvo,
+		_correctConvo,
+		_skipLine;
 
-        PopulateConversation();
-    }
+	public Convorsation (string name, char index)
+	{
+		Name = name;
+		Index = index;    
 
-    public void PopulateConversation()
-    {
-        string masterText = GameObject.Find("DialogManager").GetComponent<DialogManager>().GetMasterText();
-        char currentChar;
+		PopulateConversation ();
+	}
 
-        for (int i = 0; i < masterText.Length; i++)
-        {
-            currentChar = masterText[i];
+	public void PopulateConversation ()
+	{
+		string masterText = GameObject.Find ("DialogManager").GetComponent<DialogManager> ().GetMasterText ();
+		char currentChar;
 
-            if (_skipConvo)
-            {
-                if (currentChar == ';' && masterText[i + 1] == ';')
-                {
-                    _skipConvo = false;
-                    continue;
-                }
-                else
-                    continue;
-            }
+		for (int i = 0; i < masterText.Length; i++) {
+			currentChar = masterText [i];
 
-            if (_skipLine)
-            {
-                if (currentChar == '/' && masterText[i + 1] == '/')
-                    _skipLine = false;
-                else
-                    continue;
-            }
-            else if (currentChar == '/' && masterText[i + 1] == '/')
-            {
-                _skipLine = true;
-                i += 2;
-                continue;
-            }
+			if (_skipConvo) {
+				if (currentChar == ';' && masterText [i + 1] == ';') {
+					_skipConvo = false;
+					continue;
+				} else
+					continue;
+			}
 
-            if (_readingName)
-            {
-                if (currentChar != '(')
-                {
-                    _currentName = _currentName + currentChar;
-                }
-                else if (_currentName == Name)
-                {
-                    _currentName = "";
-                    _readingName = false;
-                }
-                else
-                {
-                    _currentName = "";
-                    _readingName = false;
-                    _skipConvo = true;
-                    _currentName = "";
-                    continue;
-                }
-            }
+			if (_skipLine) {
+				if (currentChar == '/' && masterText [i + 1] == '/')
+					_skipLine = false;
+				else
+					continue;
+			} else if (currentChar == '/' && masterText [i + 1] == '/') {
+				_skipLine = true;
+				i += 2;
+				continue;
+			}
 
-            //Section Finder
-            if (!_correctConvo)
-            {
-                if (currentChar == '(')
-                {
-                    //Find Name
-                    if (masterText[i + 1] == 'c')
-                    {
-                        i += 2;
-                        _readingName = true;
-                        continue;
-                    }
+			if (_readingName) {
+				if (currentChar != '(') {
+					_currentName = _currentName + currentChar;
+				} else if (_currentName == Name) {
+					_currentName = "";
+					_readingName = false;
+				} else {
+					_currentName = "";
+					_readingName = false;
+					_skipConvo = true;
+					_currentName = "";
+					continue;
+				}
+			}
 
-                    //Find Index
-                    if (masterText[i + 1] == 'i')
-                    {
-                        i += 3;
-                        char index = masterText[i];
-                        if (index == Index)
-                        {
-                            _correctConvo = true;
-                            i++;
-                            continue;
-                        }
-                        else
-                        {
-                            _skipConvo = true;
-                            continue;
-                        }
-                    }
-                }
-            }
-            else //Line and DO reader
-            {
-                //Reseting reading bools
-                if (currentChar == '(')
-                {
-                    _writingSpeaker = false;
-                    _writingEmotion = false;
-                    _writingLineText = false;
-                    _writingDialogOptionLine = false;
-                    _writingDialogOptionEmotion = false;
-                }
+			//Section Finder
+			if (!_correctConvo) {
+				if (currentChar == '(') {
+					//Find Name
+					if (masterText [i + 1] == 'c') {
+						i += 2;
+						_readingName = true;
+						continue;
+					}
 
-                //Line Finished
-                if (currentChar == ';')
-                {
-                    if (masterText[i + 1] == ';')
-                    {
-                        MyLines.Add(_currentLine);
-                        break;
-                    }
-                    else
-                    {
-                        if (_currentDOGroupIndex == -1)
-                        {
-                            _currentLine.LineText.Trim('\"');
-                            MyLines.Add(_currentLine);
-                            _currentLine = new Line();
-                            _writingLineText = false;
-                        }
-                        else if (masterText[i + 4] == '[')//I need this to work
-                        {
-                            _writingDialogOptionLine = false;
-                            _currentDOGroupIndex = -1;
-                            _currentDOIndex = 0;
-                        }
-                        else
-                        {
-                            _writingDialogOptionLine = false;
-                            _currentDOIndex++;
-                        }
+					//Find Index
+					if (masterText [i + 1] == 'i') {
+						i += 3;
+						char index = masterText [i];
+						if (index == Index) {
+							_correctConvo = true;
+							i++;
+							continue;
+						} else {
+							_skipConvo = true;
+							continue;
+						}
+					}
+				}
+			} else { //Line and DO reader
+				//Reseting reading bools
+				if (currentChar == '(') {
+					_writingSpeaker = false;
+					_writingEmotion = false;
+					_writingLineText = false;
+					_writingDialogOptionLine = false;
+					_writingDialogOptionEmotion = false;
+				}
 
-                        continue;
-                    }
-                }
+				//Line Finished
+				if (currentChar == ';') {
+					if (masterText [i + 1] == ';') {
+						MyLines.Add (_currentLine);
+						break;
+					} else {
+						if (_currentDOGroupIndex == -1) {
+							_currentLine.LineText.Trim ('\"');
+							MyLines.Add (_currentLine);
+							_currentLine = new Line ();
+							_writingLineText = false;
+						} else if (masterText [i + 4] == '[') {//I need this to work
+							_writingDialogOptionLine = false;
+							_currentDOGroupIndex = -1;
+							_currentDOIndex = 0;
+						} else {
+							_writingDialogOptionLine = false;
+							_currentDOIndex++;
+						}
 
-                //Writing Speaker
-                if (_writingSpeaker)
-                {
-                    _currentLine.Speaker = _currentLine.Speaker + currentChar;
-                    continue;
-                }
+						continue;
+					}
+				}
 
-                //Writing Emotion
-                if (_writingEmotion)
-                {
-                    _currentLine.MyEmotion = new Emotion(currentChar, (int)char.GetNumericValue(masterText[i + 2]));
-                    i += 2;
-                    continue;
-                }
+				//Writing Speaker
+				if (_writingSpeaker) {
+					_currentLine.Speaker = _currentLine.Speaker + currentChar;
+					continue;
+				}
 
-                //Writing Line Text
-                if(_writingLineText)
-                {
-                    if (currentChar == '#')
-                    {
-                        _currentLine.LastLine = true;
-                    }
-                    else if(currentChar == '<')
-                    {
-                        i++;
-                        _currentLine.NextGroupIndex = (int)char.GetNumericValue(masterText[i]);
-                    }
-                    else if (currentChar == '>')
-                    {
-                        i++;
-                        _currentLine.NextLineIndex = (int)char.GetNumericValue(masterText[i]);
-                    }
-                    else if(currentChar == '&')
-                    {
-                        i++;
-                        _currentLine.EncounterToStart = (int)char.GetNumericValue(masterText[i]);
-                    }
-                    else
-                        _currentLine.LineText = _currentLine.LineText + currentChar;
+				//Writing Emotion
+				if (_writingEmotion) {
+					_currentLine.MyEmotion = new Emotion (currentChar, (int)char.GetNumericValue (masterText [i + 2]));
+					i += 2;
+					continue;
+				}
 
-                    continue;
-                }
+				//Writing Line Text
+				if (_writingLineText) {
+					if (currentChar == '#') {
+						_currentLine.LastLine = true;
+					} else if (currentChar == '<') {
+						i++;
+						_currentLine.NextGroupIndex = (int)char.GetNumericValue (masterText [i]);
+					} else if (currentChar == '>') {
+						i++;
+						_currentLine.NextLineIndex = (int)char.GetNumericValue (masterText [i]);
+					} else if (currentChar == '&') {
+						i++;
+						_currentLine.EncounterToStart = (int)char.GetNumericValue (masterText [i]);
+					} else
+						_currentLine.LineText = _currentLine.LineText + currentChar;
 
-                //Writing Dialog Option Line
-                if(_writingDialogOptionLine)
-                {
-                    MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].DialogOptionText = MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].DialogOptionText + currentChar;
-                    continue;
-                }
+					continue;
+				}
 
-                //Writing Dialog Option Emotion
-                if(_writingDialogOptionEmotion)
-                {
-                    MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].DialogOptionEmotion = new Emotion(currentChar, (int)char.GetNumericValue(masterText[i + 2]));
-                    i += 2;
-                    continue;
-                }
+				//Writing Dialog Option Line
+				if (_writingDialogOptionLine) {
+					MyDialogOptionsList [_currentDOGroupIndex].myOptions [_currentDOIndex].DialogOptionText = MyDialogOptionsList [_currentDOGroupIndex].myOptions [_currentDOIndex].DialogOptionText + currentChar;
+					continue;
+				}
 
-                //Section Finder 2
-                if (currentChar == '(')
-                {
-                    //Speaker
-                    if (masterText[i + 1] == 's')
-                    {
-                        i += 2;
+				//Writing Dialog Option Emotion
+				if (_writingDialogOptionEmotion) {
+					MyDialogOptionsList [_currentDOGroupIndex].myOptions [_currentDOIndex].DialogOptionEmotion = new Emotion (currentChar, (int)char.GetNumericValue (masterText [i + 2]));
+					i += 2;
+					continue;
+				}
 
-                        _writingSpeaker = true;
-                        continue;
-                    }
+				//Section Finder 2
+				if (currentChar == '(') {
+					//Speaker
+					if (masterText [i + 1] == 's') {
+						i += 2;
 
-                    //Emotion
-                    if(masterText[i + 1] == 'e')
-                    {
-                        i += 2;
+						_writingSpeaker = true;
+						continue;
+					}
 
-                        _writingEmotion = true;
-                        continue;
-                    }
+					//Emotion
+					if (masterText [i + 1] == 'e') {
+						i += 2;
 
-                    //Line Text
-                    if (masterText[i + 1] == 't')
-                    {
-                        i += 2;
+						_writingEmotion = true;
+						continue;
+					}
 
-                        _writingLineText = true;
-                        continue;
-                    }
+					//Line Text
+					if (masterText [i + 1] == 't') {
+						i += 2;
 
-                    //Dialog Option group
-                    if (masterText[i + 1] == 'g')
-                    {
-                        i += 3;
+						_writingLineText = true;
+						continue;
+					}
 
-                        if(_currentDOGroupIndex == -1)
-                        {
-                            _currentDOGroupIndex = (int)char.GetNumericValue(masterText[i]);
-                            MyDialogOptionsList.Add(new DialogOptions());
-                        }
+					//Dialog Option group
+					if (masterText [i + 1] == 'g') {
+						i += 3;
 
-                        MyDialogOptionsList[_currentDOGroupIndex].myOptions.Add(new DialogOption());
+						if (_currentDOGroupIndex == -1) {
+							_currentDOGroupIndex = (int)char.GetNumericValue (masterText [i]);
+							MyDialogOptionsList.Add (new DialogOptions ());
+						}
 
-                        continue;
-                    }
+						MyDialogOptionsList [_currentDOGroupIndex].myOptions.Add (new DialogOption ());
 
-                    //Next Line Index
-                    if (masterText[i + 1] == 'n')
-                    {
-                        i += 2;
+						continue;
+					}
 
-                        if (masterText[i + 2] == '(')
-                        {
-                            MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = (int)char.GetNumericValue(masterText[i + 1]);
-                            i++;
-                        }
-                        else
-                        {
-                            MyDialogOptionsList[_currentDOGroupIndex].myOptions[_currentDOIndex].MyNextLine = int.Parse("" + masterText[i + 1] + masterText[i + 2]);
-                            i += 2;
-                        }
+					//Next Line Index
+					if (masterText [i + 1] == 'n') {
+						i += 2;
+
+						if (masterText [i + 2] == '(') {
+							MyDialogOptionsList [_currentDOGroupIndex].myOptions [_currentDOIndex].MyNextLine = (int)char.GetNumericValue (masterText [i + 1]);
+							i++;
+						} else {
+							MyDialogOptionsList [_currentDOGroupIndex].myOptions [_currentDOIndex].MyNextLine = int.Parse ("" + masterText [i + 1] + masterText [i + 2]);
+							i += 2;
+						}
                         
-                        continue;
-                    }
+						continue;
+					}
 
-                    //Dialog Option Line
-                    if (masterText[i + 1] == 'l')
-                    {
-                        i += 2;
+					//Dialog Option Line
+					if (masterText [i + 1] == 'l') {
+						i += 2;
 
-                        _writingDialogOptionLine = true;
-                        continue;
-                    }
+						_writingDialogOptionLine = true;
+						continue;
+					}
 
-                    //Dialog Option Emotion
-                    if (masterText[i + 1] == 'f')
-                    {
-                        i += 2;
-                        _writingDialogOptionEmotion = true;
-                        continue;
-                    }
-                }
-            }
-        }
-    }
+					//Dialog Option Emotion
+					if (masterText [i + 1] == 'f') {
+						i += 2;
+						_writingDialogOptionEmotion = true;
+						continue;
+					}
+				}
+			}
+		}
+	}
 }

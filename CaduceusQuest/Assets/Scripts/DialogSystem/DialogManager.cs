@@ -5,32 +5,32 @@ using UnityEngine;
 
 public class DialogManager : MonoBehaviour
 {
-    public TextAsset[] TextAssets;
-    private string _masterText;
 
-    void Start()
-    {
-        Convorsation convo = new Convorsation("Dr. Gallo", 'd');
-    }
+	public TextAsset[] TextAssets;
+	private string _masterText;
 
-    public string GetMasterText()
-    {
-        for (int i = 0; i < TextAssets.Length; i++)
-        {
-            _masterText += "\n" + TextAssets[i].text;
-        }
+	void Start ()
+	{
+		Convorsation convo = new Convorsation ("Dr. Gallo", 'd');
+	}
 
-        return _masterText;
-    }
+	public string GetMasterText ()
+	{
+		for (int i = 0; i < TextAssets.Length; i++) {
+			_masterText += "\n" + TextAssets [i].text;
+		}
 
-    public string GetLine(int index)
-    {
-        return "Sup";
-    }
+		return _masterText;
+	}
 
-    public string[] GetDialogOptions()
-    {
-        string[] newDOs = new string[3];
-        return newDOs;
-    }
+	public string GetLine (int index)
+	{
+		return "Sup";
+	}
+
+	public string[] GetDialogOptions ()
+	{
+		string[] newDOs = new string[3];
+		return newDOs;
+	}
 }
