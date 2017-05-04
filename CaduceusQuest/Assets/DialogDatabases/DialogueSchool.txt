@@ -245,7 +245,8 @@
 		(g)1(n)4(e)a,1(l)"You really need more practice talking to people...";
 	[4](s)Josh(e)a,1(t)"What do you mean?"#;
 		(g)2(n)4(e)g,4(t)"Randoms!? I'm done talking to you.";
-		(g)2(n)4(e)a,1(t)"No filter, huh?";
+		(g)2(n)5(e)a,1(t)"No filter, huh?";
+	[5](s)Josh(e)a,1(t)"Wuh?"#;;
 
 	//third convo//
 	(c)Josh(i)c;
@@ -253,7 +254,11 @@
 	[1](s)Josh(e)a,1(t)"What's up? You got a thing for me.";
 		(g)0(n)2(e)a,1(l)"I think I'm starting to understand how your brain works.";
 		(g)1(n)2(e)a,1(l)"No, Josh. I'm here to do neck exams for students.";
-	[2](s)
+	[2](s)Josh(e)a,1(t)"Wait, what does that mean?";
+	[3](s)Josh(e)a,1(t)"Girls like you are so confusing."#;
+	[4](s)Josh(e)a,1(t)"My neck? That just sounds like an excuse to get close."#;;
+
+	//fourth convo//
 
 //Violet//
 
