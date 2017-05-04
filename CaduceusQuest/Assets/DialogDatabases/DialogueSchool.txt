@@ -249,8 +249,11 @@
 
 	//third convo//
 	(c)Josh(i)c;
-	[0](s)Josh(e)a,1(t)"Uh... Hi.";
-	[1](s)Josh(e)a,1(t)"";
+	[0](s)Josh(e)a,1(t)"I noticed you keep talking to me.";
+	[1](s)Josh(e)a,1(t)"What's up? You got a thing for me.";
+		(g)0(n)2(e)a,1(l)"I think I'm starting to understand how your brain works.";
+		(g)1(n)2(e)a,1(l)"No, Josh. I'm here to do neck exams for students.";
+	[2](s)
 
 //Violet//
 

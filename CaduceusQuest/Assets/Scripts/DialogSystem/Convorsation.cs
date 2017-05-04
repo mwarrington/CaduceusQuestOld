@@ -22,7 +22,8 @@ public class Convorsation
 		_writingDialogOptionEmotion,
 		_skipConvo,
 		_correctConvo,
-		_skipLine;
+		_skipLine,
+        _finishedDO;
 
 	public Convorsation (string name, char index)
 	{
@@ -39,6 +40,24 @@ public class Convorsation
 
 		for (int i = 0; i < masterText.Length; i++) {
 			currentChar = masterText [i];
+
+            if(_finishedDO)
+            {
+                if(currentChar == '[')
+                {
+                    _writingDialogOptionLine = false;
+                    _currentDOGroupIndex = -1;
+                    _currentDOIndex = 0;
+                    _finishedDO = false;
+                    continue;
+                }
+                else if(currentChar == '(')
+                {
+                    _writingDialogOptionLine = false;
+                    _currentDOIndex++;
+                    _finishedDO = false;
+                }
+            }
 
 			if (_skipConvo) {
 				if (currentChar == ';' && masterText [i + 1] == ';') {
@@ -115,18 +134,13 @@ public class Convorsation
 						break;
 					} else {
 						if (_currentDOGroupIndex == -1) {
-							_currentLine.LineText.Trim ('\"');
 							MyLines.Add (_currentLine);
 							_currentLine = new Line ();
 							_writingLineText = false;
-						} else if (masterText [i + 4] == '[') {//I need this to work
-							_writingDialogOptionLine = false;
-							_currentDOGroupIndex = -1;
-							_currentDOIndex = 0;
-						} else {
-							_writingDialogOptionLine = false;
-							_currentDOIndex++;
-						}
+						} else
+                        {
+                            _finishedDO = true;
+                        }
 
 						continue;
 					}
