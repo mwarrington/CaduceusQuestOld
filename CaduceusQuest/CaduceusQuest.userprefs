@@ -1,17 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/DialogueUIHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/DialogSystem/DialogueUIManager.cs">
     <Files>
-      <File FileName="Assets/DialogDatabases/DialogueHospital.txt" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/DialogSystem/DialogManager.cs" Line="4" Column="19" />
-      <File FileName="Assets/Scripts/DialogSystem/Convorsation.cs" Line="32" Column="1" />
-      <File FileName="Assets/Scripts/EncounterSystem/EncounterPuzzles/DoctorPuzzleManager.cs" Line="38" Column="1" />
+      <File FileName="Assets/Scripts/DialogSystem/Convorsation.cs" Line="239" Column="34" />
+      <File FileName="Assets/Scripts/DialogSystem/DialogManager.cs" Line="14" Column="51" />
+      <File FileName="Assets/Scripts/EncounterSystem/EncounterPuzzles/DoctorPuzzleManager.cs" Line="11" Column="33" />
       <File FileName="Assets/Scripts/DialogSystem/Emotion.cs" Line="20" Column="36" />
-      <File FileName="Assets/DialogueUIHandler.cs" Line="61" Column="45" />
+      <File FileName="Assets/Scripts/DialogSystem/DialogOption.cs" Line="14" Column="5" />
+      <File FileName="Assets/Scripts/DialogSystem/Line.cs" Line="12" Column="35" />
+      <File FileName="Assets/DialogDatabases/DialogueSchool.txt" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DialogSystem/DialogueUIManager.cs" Line="260" Column="1" />
+      <File FileName="Assets/DialogDatabases/DialogueHospital.txt" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/gcc_laptop_1/Documents/CaduceusQuest/CaduceusQuest/Assets/Scripts/DialogSystem/Convorsation.cs" line="239" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

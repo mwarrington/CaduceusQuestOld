@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueUIManager : MonoBehaviour
 {
-	
+
 	public string CharacterName;
 	public char index;
 
@@ -110,15 +110,15 @@ public class DialogueUIManager : MonoBehaviour
 
 		});
 
-//		option4.onClick.AddListener (delegate() {
-//			DialogueOptionSelected (4);
-//		});
+		//		option4.onClick.AddListener (delegate() {
+		//			DialogueOptionSelected (4);
+		//		});
 	}
 
 
 	void Update ()
 	{
-		
+
 
 		if (_inConversation) {
 
@@ -126,7 +126,7 @@ public class DialogueUIManager : MonoBehaviour
 
 				if (_dialogueSelection) {
 					ShowDialogueOptions ();
-				} else if (_convoFinished && _dialoguePanel.activeSelf) {
+				} else if (convo.MyLines [_nextLineIndex].LastLine && _dialoguePanel.activeSelf) {
 					_dialoguePanel.SetActive (false);
 					_inConversation = false;
 					_convoFinished = true;
@@ -136,7 +136,7 @@ public class DialogueUIManager : MonoBehaviour
 				}
 			}
 		}
-			
+
 	}
 
 
@@ -207,13 +207,13 @@ public class DialogueUIManager : MonoBehaviour
 
 	private void GetNextLine ()
 	{
-		if (_nextLineIndex == convo.MyLines.Count) {
-			_convoFinished = true;
+		//		if (convo.MyLines[_nextLineIndex].LastLine) {
+		//			_convoFinished = true;
+		//
+		//		
+		//		}
 
-		
-		}
-
-		if (_convoFinished) {
+		if (convo.MyLines [_nextLineIndex].LastLine) {
 
 			_dialogueEmotionBox.GetComponent<Image> ().color = convo.MyLines [_lastLine].MyEmotion.GetEmotionColor ();
 			_dialogueText.text = convo.MyLines [_lastLine].Speaker + ": " + convo.MyLines [_lastLine].LineText;
@@ -242,22 +242,9 @@ public class DialogueUIManager : MonoBehaviour
 				}
 
 
-
 			}
 
-
-
-
-
-
-
 		}
-
-
-
-
-
-
 
 	}
 
