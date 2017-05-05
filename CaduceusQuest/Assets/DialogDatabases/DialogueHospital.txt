@@ -37,10 +37,22 @@
 	[5](s)Macy(e)c,1(t)"Alright. My big brother Mars is on his way to pick me up."#;;
 	//Macy disappears//
 
-//Reception NPC 1//
+//Patient - pull from these randomly for Hospital NPCs//
 
-	(c)HospitalNPC1(i)a;
-	[0](s)HospitalNPC1(e)b,1(t)"What's that? You'll have to speak up."#;;
+	(c)Patient(i)a;
+	[0](s)Patient(e)b,1(t)"What's that? You'll have to speak up."#;;
+
+	(c)Patient(i)b;
+	[0](s)Patient(e)a,2(t)"You're back, wow! I thought you were gone for good."#;;
+
+	(c)Patient(i)c;
+	[0](s)Patient(e)d,1(t)"Have you seen my cats? I lost them on my way here. Oh well."#;;
+
+	(c)Patient(i)d;
+	[0](s)Patient(e)g,2(t)"You're not too good for us after all, huh?"#;;
+
+	(c)Patient(i)e;
+	[0](s)Patient(e)g,3(t)"Ouch!!"#;;
 
 //Dr. Gallo//
 
@@ -183,10 +195,22 @@
 	[2](s)Sylvia(e)c,2(t)"You must be here to do my intake form with me.";
 	[3](s)Sylvia(e)c,2(t)"Let's get to it."&3;;
 
+	//(c)Sylvia(i)&3;
+	//[0](s)Sylvia(e)c,2(t)"You're new to this, aren't you? Let me help you out.";
+	//[1](s)Sylvia(e)c,2(t)"To fill out the form, you're going to do some analysis. In this minigame, use your arrow keys and try to match the symbols.";
+	//[X](s)Sylvia(e)c,2(t)"When a patient's speaking to you, make sure to watch how they're feeling and respond.";
+	//go into circumplex game here
+	//success: "Nice job!";
+	//failure: "Let's try again—you can tell how I'm feeling by looking at the color around this box. Remember it and select it on the circumplex in a second."
+	//circumplex again
+	//success: "Nice job!";
+	//failure: "Let's try again—you can tell how I'm feeling by looking at the color around this box. Remember it and select it on the circumplex in a second. Use the arrow keys to move it, and press space when the color you want is highlighted."
+	//circumplex again, don't proceed until success
+
 	//after intake form, before completing List 1//
 	(c)Sylvia(i)b;
 	[0](s)Sylvia(e)c,2(t)"Hi sweetie, do you need anything else from me right now?"<0;
-		(g)0(n)1(f)h,1(l)"No, thanks, just saying hello.";
+		(g)0(n)1(f)h,1(l)"No thanks, just saying hello.";
 		(g)0(n)2(f)h,1(l)"Could you show me how to do the intake form again?";
 	[1](s)Sylvia(e)c,3(t)"Hello!"#;
 	[2](s)Sylvia(e)c,2(t)"Of course!"&3;;
