@@ -172,6 +172,7 @@ public class Convorsation
 					} else if (currentChar == '&') {
 						i++;
 						_currentLine.EncounterToStart = (int)char.GetNumericValue (masterText [i]);
+						_currentLine.BeginEncounter = true;
 					} else
 						_currentLine.LineText = _currentLine.LineText + currentChar;
 

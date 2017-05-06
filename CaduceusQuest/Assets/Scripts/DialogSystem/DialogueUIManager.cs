@@ -12,32 +12,33 @@ public class DialogueUIManager : MonoBehaviour
 	private DialogManager manager;
 	private Convorsation convo;
 	private GameObject _dialogueBox, 
-		_dialogueEmotionBox,
-		_dialoguePanel;
-
+	_dialogueEmotionBox,
+	_dialoguePanel;
 
 	private int _nextLineIndex = 0,
-		_lastLine = 0,
-		_currentDOIndex = 0;
+	_lastLine = 0,
+	_currentDOIndex = 0;
 
 	private Image _dialogueEmotionImage, 
-		_dialogueBoxImage;
+	_dialogueBoxImage;
 
 	private Button _option1, 
-		_option2, 
-		_option3,
-		_option4;
+	_option2, 
+	_option3,
+	_option4;
 
 	private Text _buttonText1, 
-		_buttonText2, 
-		_buttonText3,
-		_buttonText4,
-		_dialogueText;
+	_buttonText2, 
+	_buttonText3,
+	_buttonText4,
+	_dialogueText;
 
 	private bool _inConversation, 
-		_dialogueSelection,
-		_convoFinished;
+	_dialogueSelection,
+	_convoFinished;
 
+	private List<Button> _optionButtonList = new List<Button> ();
+	private List<Text> _optionTextList = new List<Text> ();
 
 	void Start ()
 	{
@@ -50,12 +51,21 @@ public class DialogueUIManager : MonoBehaviour
 		_option3 = GameObject.Find ("Option 3 Button").GetComponent<Button> ();
 		//option4 = GameObject.Find ("Option 4 Button").GetComponent<Button> ();
 
+		//Add option buttons to list 
+		_optionButtonList.Add (_option1);
+		_optionButtonList.Add (_option2);
+		_optionButtonList.Add (_option3);
+
 
 		//Dialogue Option Text
 		_buttonText1 = _option1.GetComponentInChildren<Text> ();
 		_buttonText2 = _option2.GetComponentInChildren<Text> ();
 		_buttonText3 = _option3.GetComponentInChildren<Text> ();
 		//buttonText4 = option4.GetComponentInChildren<Text> ();
+
+		_optionTextList.Add (_buttonText1);
+		_optionTextList.Add (_buttonText2);
+		_optionTextList.Add (_buttonText3);
 
 		//Dialogue Containers, Images and Text
 		_dialoguePanel = GameObject.Find ("Dialogue Box Panel");
@@ -64,6 +74,20 @@ public class DialogueUIManager : MonoBehaviour
 
 		_dialogueText = GameObject.Find ("Dialogue Text").GetComponent<Text> ();
 		_dialogueEmotionImage = GameObject.Find ("Dialogue Emotion Image").GetComponent<Image> ();
+
+
+		_option1.onClick.AddListener (delegate() {
+			DialogueOptionSelected (0);
+		});
+
+		_option2.onClick.AddListener (delegate() {
+			DialogueOptionSelected (1);
+		});
+
+		_option3.onClick.AddListener (delegate() {
+			DialogueOptionSelected (2);
+
+		});
 
 
 
@@ -86,39 +110,16 @@ public class DialogueUIManager : MonoBehaviour
 		_nextLineIndex = 0;
 
 
-		Debug.Log (convo.Name + " has " + convo.MyLines.Count + " lines.");
 		for (int i = 0; i < convo.MyLines.Count; i++) {
-			Debug.Log (convo.Name + ": " + convo.MyLines [i].LineText);
-		}
-
-		Debug.Log ("Simone name has " + convo.MyDialogOptionsList.Count + " lines.");
-
-
-
-
-
-		_option1.onClick.AddListener (delegate() {
-			DialogueOptionSelected (0);
-		});
-
-		_option2.onClick.AddListener (delegate() {
-			DialogueOptionSelected (1);
-		});
-
-		_option3.onClick.AddListener (delegate() {
-			DialogueOptionSelected (3);
-
-		});
-
-		//		option4.onClick.AddListener (delegate() {
-		//			DialogueOptionSelected (4);
-		//		});
+			Debug.Log ("Convo Line " + i + " last line = " + convo.MyLines [i].LastLine);
+				}
+	
 	}
 
 
 	void Update ()
 	{
-
+		
 
 		if (_inConversation) {
 
@@ -126,7 +127,7 @@ public class DialogueUIManager : MonoBehaviour
 
 				if (_dialogueSelection) {
 					ShowDialogueOptions ();
-				} else if (convo.MyLines [_nextLineIndex].LastLine && _dialoguePanel.activeSelf) {
+				} else if (convo.MyLines[_nextLineIndex].LastLine && _dialoguePanel.activeSelf) {
 					_dialoguePanel.SetActive (false);
 					_inConversation = false;
 					_convoFinished = true;
@@ -180,11 +181,13 @@ public class DialogueUIManager : MonoBehaviour
 	{
 
 		_dialoguePanel.SetActive (false);
-		_option1.gameObject.SetActive (true);
-		_option2.gameObject.SetActive (true);
 
-		_buttonText1.text = convo.MyDialogOptionsList [_currentDOIndex].myOptions [0].DialogOptionText;
-		_buttonText2.text = convo.MyDialogOptionsList [_currentDOIndex].myOptions [1].DialogOptionText;
+		for (int i = 0; i < convo.MyDialogOptionsList [_currentDOIndex].myOptions.Count; i++) {
+
+			_optionButtonList [i].gameObject.SetActive (true);
+			_optionTextList [i].text = convo.MyDialogOptionsList [_currentDOIndex].myOptions [i].DialogOptionText;
+
+		}
 
 
 	}
@@ -192,10 +195,10 @@ public class DialogueUIManager : MonoBehaviour
 	private void HideDialogueOptions ()
 	{
 
-		_option1.gameObject.SetActive (false);
-		_option2.gameObject.SetActive (false);
+		foreach (Button b in _optionButtonList) {
+			b.gameObject.SetActive (false);
+		}
 		_dialoguePanel.SetActive (true);
-
 		_dialogueSelection = false;
 
 		GetNextLine ();
@@ -215,35 +218,33 @@ public class DialogueUIManager : MonoBehaviour
 
 		if (convo.MyLines [_nextLineIndex].LastLine) {
 
-			_dialogueEmotionBox.GetComponent<Image> ().color = convo.MyLines [_lastLine].MyEmotion.GetEmotionColor ();
-			_dialogueText.text = convo.MyLines [_lastLine].Speaker + ": " + convo.MyLines [_lastLine].LineText;
+			_dialogueEmotionBox.GetComponent<Image> ().color = convo.MyLines [_nextLineIndex].MyEmotion.GetEmotionColor ();
+			_dialogueText.text = convo.MyLines [_nextLineIndex].Speaker + ": " + convo.MyLines [_nextLineIndex].LineText;
 
 
-		} else if (_nextLineIndex < convo.MyLines.Count && !_dialogueSelection) {
+
+		} else if (!convo.MyLines [_nextLineIndex].LastLine && !_dialogueSelection) {
 
 
 			_dialogueEmotionBox.GetComponent<Image> ().color = convo.MyLines [_nextLineIndex].MyEmotion.GetEmotionColor ();
 			_dialogueText.text = convo.MyLines [_nextLineIndex].Speaker + ": " + convo.MyLines [_nextLineIndex].LineText;
 
+			if (convo.MyLines [_nextLineIndex].NextGroupIndex != -1) {
 
-			if (!convo.MyLines [_nextLineIndex].LastLine) {
-
-				if (convo.MyLines [_nextLineIndex].NextGroupIndex != -1) {
-
-					_currentDOIndex = convo.MyLines [_nextLineIndex].NextGroupIndex;
-					_dialogueSelection = true;
-					Debug.Log ("Some Dialogue Options Here");
-				}
-
-				if (convo.MyLines [_nextLineIndex].NextLineIndex == -1) {
-					_nextLineIndex++;
-				} else {
-					_nextLineIndex = convo.MyLines [_nextLineIndex].NextLineIndex;
-				}
-
-
+				_currentDOIndex = convo.MyLines [_nextLineIndex].NextGroupIndex;
+				_dialogueSelection = true;
+	
 			}
 
+	
+				_nextLineIndex++;
+			
+
+
+			//	}
+
+		} else {
+			_nextLineIndex = convo.MyLines [_nextLineIndex].NextLineIndex;
 		}
 
 	}
