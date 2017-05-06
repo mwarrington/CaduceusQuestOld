@@ -51,7 +51,7 @@
 	[4](s)Mars(e)b,2(t)"Hmm..."&5;;
 
 	//after second encounter but haven't done neck exam 2//
-	(c)Mars(i)c;
+	(c)Mars(i)d;
 	[0](s)Mars(e)g,2(t)"You again.";
 	[1](s)Mars(e)g,2(t)"Look I don't want you doing whatever you wanna do to my neck until I get some proof you're not crazy."<0;
 		(g)0(n)2(f)c,2(l)"I already examined Hyacinth.";
@@ -63,7 +63,7 @@
 	[5](s)Mars(e)b,2(t)"Hmm..."&5;;
 
 	//after neck exam//
-	(c)Mars(i)d;
+	(c)Mars(i)e;
 	[0](s)Mars(e)c,1(t)"Yo. You're not here for another neck exam are you?"<0;
 		(g)0(n)1(f)a,1(l)"No, just saying hi.";
 		(g)0(n)2(f)c,1(l)"Sorry, I didn't actually mean to talk to you.";
