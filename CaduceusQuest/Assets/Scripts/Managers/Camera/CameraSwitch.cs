@@ -15,6 +15,11 @@ public class CameraSwitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _camManager.ActivateCam(_myCamera);
+        if (other.name == "Simone" && this.enabled)
+        {
+            _camManager.ActivateCam(_myCamera);
+            Debug.Log("Man " + _camManager);
+            Debug.Log("Cam " + _myCamera);
+        }
     }
 }

@@ -12,13 +12,19 @@ public class CameraManager : MonoBehaviour
         }
         set
         {
-            _currentCamera = value;
+            if(_currentCamera != value)
+            {
+                _currentCamera.enabled = false;
+                _currentCamera.GetComponent<AudioListener>().enabled = false;
+
+                _currentCamera = value;
+            }
         }
     }
     private Camera _currentCamera;
 
     private List<Camera> _allCameras = new List<Camera>();
-    private Dictionary<int, CameraSwitch> _allSwitches = new Dictionary<int, CameraSwitch>();
+    private List<List<CameraSwitch>> _allSwitches = new List<List<CameraSwitch>>();
     private int _currentCamIndex;
 
     private void Start()
@@ -27,12 +33,10 @@ public class CameraManager : MonoBehaviour
 
         for (int i = 0; i < _allCameras.Count; i++)
         {
-            CameraSwitch[] currentCamSwitches = _allCameras[i].GetComponentsInChildren<CameraSwitch>();
+            List<CameraSwitch> currentCamSwitches = new List<CameraSwitch>();
+            currentCamSwitches.AddRange(_allCameras[i].GetComponentsInChildren<CameraSwitch>());
 
-            for (int j = 0; j < currentCamSwitches.Length; j++)
-            {
-                _allSwitches.Add(i, currentCamSwitches[j]);
-            }
+            _allSwitches.Add(currentCamSwitches);
         }
     }
 
@@ -44,11 +48,23 @@ public class CameraManager : MonoBehaviour
             {
                 _currentCamIndex = i;
                 camToActivate.enabled = true;
+                camToActivate.GetComponent<AudioListener>().enabled = true;
 
-                break;
+                CurrentCamera = camToActivate;
+
+                for (int j = 0; j < _allSwitches[i].Count; j++)
+                {
+                    _allSwitches[i][j].enabled = false;
+                }
             }
-
-            Debug.Log("hyfjhf");
+            else
+            {
+                for (int j = 0; j < _allSwitches[i].Count; j++)
+                {
+                    Debug.Log(_allSwitches[i][j]);
+                    _allSwitches[i][j].enabled = true;
+                }
+            }
         }
     }
 }
