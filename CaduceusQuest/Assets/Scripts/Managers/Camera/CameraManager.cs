@@ -62,7 +62,6 @@ public class CameraManager : MonoBehaviour
             {
                 for (int j = 0; j < _allSwitches[i].Count; j++)
                 {
-                    Debug.Log(_allSwitches[i][j]);
                     _allSwitches[i][j].enabled = true;
                 }
             }

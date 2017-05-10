@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueUIManager : MonoBehaviour
+public class DialogueUIController : MonoBehaviour
 {
 
 	public string CharacterName;
 	public char index;
 
+    private BoxCollider _myTrigger;
 	private DialogManager manager;
 	private Convorsation convo;
 	private GameObject _dialogueBox, 
@@ -35,14 +36,15 @@ public class DialogueUIManager : MonoBehaviour
 
 	private bool _inConversation, 
 	_dialogueSelection,
-	_convoFinished;
+	_convoFinished,
+                 _inConvoZone;
 
 	private List<Button> _optionButtonList = new List<Button> ();
 	private List<Text> _optionTextList = new List<Text> ();
 
 	void Start ()
 	{
-
+        _myTrigger = GetComponentInChildren<BoxCollider>();
 		manager = GameObject.FindObjectOfType<DialogManager> (); 
 
 		//Setting up Dialogue Option Buttons
@@ -116,68 +118,111 @@ public class DialogueUIManager : MonoBehaviour
 	
 	}
 
+    private void test()
+    {
+        if (_dialogueSelection)
+        {
+            ShowDialogueOptions();
+        }
+        else if (convo.MyLines[_nextLineIndex].LastLine && _dialoguePanel.activeSelf)
+        {
+            _dialoguePanel.SetActive(false);
+            _inConversation = false;
+            _convoFinished = true;
+        }
+        else
+        {
+            _dialoguePanel.SetActive(true);
+            GetNextLine();
+        }
+    }
 
 	void Update ()
 	{
-		
+        if (_inConversation)
+        {
 
-		if (_inConversation) {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                test();
+                
+            }
+        }
 
-			if (Input.GetMouseButtonDown (0)) {
+        if (_inConvoZone)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                if (!_inConversation)
+                {
+                    _inConversation = true;
+                    _convoFinished = false;
+                }
 
-				if (_dialogueSelection) {
-					ShowDialogueOptions ();
-				} else if (convo.MyLines[_nextLineIndex].LastLine && _dialoguePanel.activeSelf) {
-					_dialoguePanel.SetActive (false);
-					_inConversation = false;
-					_convoFinished = true;
-				} else {
-					_dialoguePanel.SetActive (true);
-					GetNextLine ();
-				}
-			}
-		}
+                if (_convoFinished)
+                {
+                    _dialoguePanel.SetActive(true);
 
-	}
+                }
 
+                test();
+            }
+        }
+    }
 
-	void OnMouseOver ()
-	{
-		if (!_inConversation)
-			this.gameObject.GetComponent<Renderer> ().material.color = Color.red;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Simone")
+        {
+            _inConvoZone = true;
+        }
+    }
 
-	}
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.name == "Simone")
+        {
+            _inConvoZone = false;
+        }
+    }
 
+    //   void OnMouseOver ()
+    //{
+    //	if (!_inConversation)
+    //		this.gameObject.GetComponent<Renderer> ().material.color = Color.red;
 
-
-
-
-	void OnMouseExit ()
-	{
-
-		this.gameObject.GetComponent<Renderer> ().material.color = Color.white;
-	}
-
-	void OnMouseDown ()
-	{
-		if (!_inConversation) {
-			_inConversation = true;
-			_convoFinished = false;
-		}
-
-
-		if (_convoFinished) {
-			_dialoguePanel.SetActive (true);
-
-		}
-
-
-
-	}
+    //}
 
 
 
-	private void ShowDialogueOptions ()
+
+
+    //void OnMouseExit ()
+    //{
+
+    //	this.gameObject.GetComponent<Renderer> ().material.color = Color.white;
+    //}
+
+    //void OnMouseDown ()
+    //{
+    //	if (!_inConversation) {
+    //		_inConversation = true;
+    //		_convoFinished = false;
+    //	}
+
+
+    //	if (_convoFinished) {
+    //		_dialoguePanel.SetActive (true);
+
+    //	}
+
+
+
+    //}
+
+
+
+    private void ShowDialogueOptions ()
 	{
 
 		_dialoguePanel.SetActive (false);
