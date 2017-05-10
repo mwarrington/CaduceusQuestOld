@@ -283,8 +283,6 @@
 		(g)0(n)1(f)c,2(l)"I guess not.";
 	[1](s)Violet(e)g,2(t)"..."#;;
 
-//Kalil//
-
 //Quinn//
 
 	//cycle through these//

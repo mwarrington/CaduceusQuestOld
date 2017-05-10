@@ -1,0 +1,147 @@
+Sylvia
+
+	a //intake form tutorial 
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+	"You're new to this, aren't you? Let me help you."
+	"You're in an encounter right now. This shows who you're talking to." //arrow to name//
+	"This shows what you're trying to do, and how many steps there are to doing it—in this case, you're filling out my intake form and it takes 3 steps." //arrow to task//
+	"This shows my trust level. More about that later!" //arrow to trust//
+	"To fill out this form here, you're going to do some work."
+	"In this minigame, use your arrow keys and try to match the symbols. You don't know which arrow will make each symbol, and you have 3 strikes before you're out."
+	"You can find "Fill out intake form" under SKILLS in the menu that's about to pop up. We'll do an easy one to start."
+	//easy cs minigame//
+
+	SUCCESS: "Nice job! You're a quick study."
+	FAILURE: "No worries, you'll learn."
+	"The second half of these encounters involves the Emotions Circumplex. When a patient's speaking to you, make sure to watch how they're feeling and respond."
+	"Take a careful look at the color around this text both, then find it on the shape that's about to pop up. Move with the arrow keys and select with "z"."
+
+	//emotion circumplex game//
+
+	SUCCESS: "You got it!"
+	FAILURE: "Not quite..."
+
+
+	b //intake form tutorial recap
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+	c //blood test tutorial
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+	d //blood test recap
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+Violet
+	
+	a //intake form
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+	b //blood test
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+	c //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+Mason
+
+	a //intake form
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+	b //blood test
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+	c //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+Dr. Gallo
+
+	a //neck exam tutorial
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+	b //neck exam tutorial recap
+	Trust start: 
+	Trust threshold:
+	Trust drop:
+	//
+
+Mars
+
+	a //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+Bea
+
+	a //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+Danny
+
+	a //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+Josh
+
+	a //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+Violet
+
+	a //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//
+
+Quinn
+
+	a //neck exam
+	Trust start: 
+	Trust threshold:
+	Trust drop: 
+	//

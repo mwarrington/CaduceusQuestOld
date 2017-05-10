@@ -191,7 +191,7 @@
 	[0](s)Sylvia(e)c,2(t)"Hi honey! How are you doing?"<0;
 		(g)0(n)1(f)h,1(l)"I'm okay. It's been a busy morning.";
 		(g)0(n)3(f)h,1(l)"Pretty good! I'm here to fill out an intake form with you.";
-	[1](s)Sylvia(e)c,2(t)"You look a little frazzled, but don't worry. Dr. Gallo watches out for people.";
+	[1](s)Sylvia(e)c,2(t)"You look a little frazzled, but don't worry. Dr. Gallo watches out for her people.";
 	[2](s)Sylvia(e)c,2(t)"You must be here to do my intake form with me.";
 	[3](s)Sylvia(e)c,2(t)"Let's get to it."&3;;
 
