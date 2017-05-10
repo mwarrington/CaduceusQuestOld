@@ -30,6 +30,7 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         _allCameras.AddRange(FindObjectsOfType<Camera>());
+        _currentCamera = Camera.main;
 
         for (int i = 0; i < _allCameras.Count; i++)
         {

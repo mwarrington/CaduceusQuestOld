@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SimoneController : MovementController
 {
+    private CameraManager _theCamMan;
     private float _currentSpeed;
     private bool _movingOnXAxis,
                  _movingOnZAxis;
 
     private void Start()
     {
+        _theCamMan = FindObjectOfType<CameraManager>();
         _currentSpeed = Speed;
     }
 
@@ -67,5 +69,32 @@ public class SimoneController : MovementController
 
             _movingOnXAxis = false;
         }
+    }
+
+    protected override void Move(CardinalDirections dir)
+    {
+        Vector3 trajectory = new Vector3();
+
+        if (dir == CardinalDirections.FORWARD)
+        {
+            trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z);
+        }
+
+        if (dir == CardinalDirections.BACKWARD)
+        {
+            trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z);
+        }
+
+        if (dir == CardinalDirections.LEFT)
+        {
+            trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
+        }
+
+        if (dir == CardinalDirections.RIGHT)
+        {
+            trajectory = new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+        }
+
+        this.transform.Translate(trajectory * Speed * Time.deltaTime);
     }
 }
