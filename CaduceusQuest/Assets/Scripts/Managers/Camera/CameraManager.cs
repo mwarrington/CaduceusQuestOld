@@ -27,7 +27,7 @@ public class CameraManager : MonoBehaviour
     private List<List<CameraSwitch>> _allSwitches = new List<List<CameraSwitch>>();
     private int _currentCamIndex;
 
-    private void Start()
+    private void Awake()
     {
         _allCameras.AddRange(FindObjectsOfType<Camera>());
         _currentCamera = Camera.main;

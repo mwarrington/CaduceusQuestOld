@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
+    public Camera MoveToCamera;
     public Transform MoveToTransform;
     public float FadeTime;
 
@@ -17,6 +18,7 @@ public class DoorController : MonoBehaviour
     private void Start()
     {
         _theCamMan = FindObjectOfType<CameraManager>();
+        Debug.Log(_theCamMan);
         _currentFadeMask = _theCamMan.CurrentCamera.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -35,7 +37,7 @@ public class DoorController : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Z))
             {
-                _fadingIn = true;
+                _fadingOut = true;
 
                 Invoke("MoveCharacter", FadeTime);
             }
@@ -57,13 +59,24 @@ public class DoorController : MonoBehaviour
 
     private void ScreenFade()
     {
+        _currentFadeMask = _theCamMan.CurrentCamera.GetComponentInChildren<SpriteRenderer>();
+
         if(_fadingOut)
         {
             _currentFadeMask.color = new Color(_currentFadeMask.color.r, _currentFadeMask.color.g, _currentFadeMask.color.b, _currentFadeMask.color.a + (Time.deltaTime * FadeTime));
+            if(_currentFadeMask.color.a > 0.95f)
+            {
+                _fadingOut = false;
+                _fadingIn = true;
+            }
         }
         if(_fadingIn)
         {
             _currentFadeMask.color = new Color(_currentFadeMask.color.r, _currentFadeMask.color.g, _currentFadeMask.color.b, _currentFadeMask.color.a - (Time.deltaTime * FadeTime));
+            if (_currentFadeMask.color.a < 0.05f)
+            {
+                _fadingIn = false;
+            }
         }
     }
 
@@ -71,5 +84,6 @@ public class DoorController : MonoBehaviour
     {
         _simone.transform.position = MoveToTransform.position;
         _simone.transform.rotation = MoveToTransform.rotation;
+        _theCamMan.ActivateCam(MoveToCamera);
     }
 }
