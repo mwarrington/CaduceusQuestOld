@@ -18,8 +18,6 @@ public class CameraSwitch : MonoBehaviour
         if (other.name == "Simone" && this.enabled)
         {
             _camManager.ActivateCam(_myCamera);
-            Debug.Log("Man " + _camManager);
-            Debug.Log("Cam " + _myCamera);
         }
     }
 }

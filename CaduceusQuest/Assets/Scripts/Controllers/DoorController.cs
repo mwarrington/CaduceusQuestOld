@@ -19,7 +19,6 @@ public class DoorController : MonoBehaviour
     private void Start()
     {
         _theCamMan = FindObjectOfType<CameraManager>();
-        Debug.Log(_theCamMan);
         _currentFadeMask = _theCamMan.CurrentCamera.GetComponentInChildren<SpriteRenderer>();
     }
 
