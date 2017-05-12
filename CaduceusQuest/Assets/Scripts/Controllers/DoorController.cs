@@ -9,7 +9,8 @@ public class DoorController : MonoBehaviour
     public float FadeTime;
 
     private CameraManager _theCamMan;
-    private SpriteRenderer _currentFadeMask;
+    private SpriteRenderer _currentFadeMask,
+                           _nextFadeMask;
     private GameObject _simone;
     private bool _nearDoor,
                  _fadingIn,
@@ -64,7 +65,7 @@ public class DoorController : MonoBehaviour
         if(_fadingOut)
         {
             _currentFadeMask.color = new Color(_currentFadeMask.color.r, _currentFadeMask.color.g, _currentFadeMask.color.b, _currentFadeMask.color.a + (Time.deltaTime * FadeTime));
-            if(_currentFadeMask.color.a > 0.95f)
+            if(_currentFadeMask.color.a > 0.99f)
             {
                 _fadingOut = false;
                 _fadingIn = true;
@@ -73,9 +74,22 @@ public class DoorController : MonoBehaviour
         if(_fadingIn)
         {
             _currentFadeMask.color = new Color(_currentFadeMask.color.r, _currentFadeMask.color.g, _currentFadeMask.color.b, _currentFadeMask.color.a - (Time.deltaTime * FadeTime));
-            if (_currentFadeMask.color.a < 0.05f)
+
+            if (_nextFadeMask)
             {
-                _fadingIn = false;
+                _nextFadeMask.color = new Color(_nextFadeMask.color.r, _nextFadeMask.color.g, _nextFadeMask.color.b, _nextFadeMask.color.a - (Time.deltaTime * FadeTime));
+
+                if (_currentFadeMask.color.a < 0.01f && _nextFadeMask.color.a < 0.01f)
+                {
+                    _fadingIn = false;
+                }
+            }
+            else
+            {
+                if (_currentFadeMask.color.a < 0.01f)
+                {
+                    _fadingIn = false;
+                }
             }
         }
     }
@@ -85,5 +99,7 @@ public class DoorController : MonoBehaviour
         _simone.transform.position = MoveToTransform.position;
         _simone.transform.rotation = MoveToTransform.rotation;
         _theCamMan.ActivateCam(MoveToCamera);
+        _nextFadeMask = MoveToCamera.GetComponentInChildren<SpriteRenderer>();
+        _nextFadeMask.color = new Color(_nextFadeMask.color.r, _nextFadeMask.color.g, _nextFadeMask.color.b, 1);
     }
 }
