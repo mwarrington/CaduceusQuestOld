@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterName: Macy
-  index: 97
+  index: 98
 --- !u!65 &118112491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4382,6 +4382,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114137707851254488, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5037067c07fff4d719bb74e237c68026, type: 2}
   m_IsPrefabParent: 0
@@ -4966,9 +4971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20423c419568b74f9992f5bdc3cf4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveToCamera: {fileID: 1243206284}
-  MoveToTransform: {fileID: 12483951}
-  FadeTime: 1
 --- !u!65 &626090481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14513,9 +14515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20423c419568b74f9992f5bdc3cf4ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveToCamera: {fileID: 229622410}
-  MoveToTransform: {fileID: 131055658}
-  FadeTime: 1
 --- !u!65 &1742398971
 BoxCollider:
   m_ObjectHideFlags: 0
