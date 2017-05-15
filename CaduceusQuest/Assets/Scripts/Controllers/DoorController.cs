@@ -53,7 +53,7 @@ public class DoorController : MonoBehaviour
     {
         if (other.name == "Simone")
         {
-            _nearDoor = true;
+            _nearDoor = false;
         }
     }
 
@@ -95,10 +95,12 @@ public class DoorController : MonoBehaviour
 
     private void MoveCharacter()
     {
+        DoorController test = this;
         _simone.transform.position = MoveToTransform.position;
         _simone.transform.rotation = MoveToTransform.rotation;
         _theCamMan.ActivateCam(MoveToCamera);
         _nextFadeMask = MoveToCamera.GetComponentInChildren<SpriteRenderer>();
         _nextFadeMask.color = new Color(_nextFadeMask.color.r, _nextFadeMask.color.g, _nextFadeMask.color.b, 1);
+        _nearDoor = false;
     }
 }
