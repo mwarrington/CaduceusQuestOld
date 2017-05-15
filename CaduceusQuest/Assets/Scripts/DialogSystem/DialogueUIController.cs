@@ -42,7 +42,8 @@ public class DialogueUIController : MonoBehaviour
 		_buttonText2, 
 		_buttonText3,
 		_buttonText4,
-		_dialogueText;
+		_dialogueText,
+		_simoneNameText;
 
 	private bool _inConversation, 
 		_dialogueSelection,
@@ -58,7 +59,7 @@ public class DialogueUIController : MonoBehaviour
 		manager = GameObject.FindObjectOfType<DialogManager> (); 
 		simone = GameObject.FindObjectOfType<SimoneController> ();
 
-		_simoneSpeed = simone.Speed;
+
 
 		//Setting up Dialogue Option Buttons
 		_option1 = GameObject.Find ("Option 1 Button").GetComponent<Button> ();
@@ -66,6 +67,7 @@ public class DialogueUIController : MonoBehaviour
 		_option3 = GameObject.Find ("Option 3 Button").GetComponent<Button> ();
 		//option4 = GameObject.Find ("Option 4 Button").GetComponent<Button> ();
 
+	
 
 		//Setting up Dialogue Button Colors
 		_buttonHighlightedSprite = _option1.spriteState.highlightedSprite;
