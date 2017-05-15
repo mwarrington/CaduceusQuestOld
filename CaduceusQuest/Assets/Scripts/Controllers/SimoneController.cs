@@ -8,16 +8,20 @@ public class SimoneController : MovementController
     private float _currentSpeed;
     private bool _movingOnXAxis,
                  _movingOnZAxis;
+	public bool Movement = true;
 
     private void Start()
     {
         _theCamMan = FindObjectOfType<CameraManager>();
         _currentSpeed = Speed;
+
     }
 
     void Update()
     {
-        InputHandler();   
+		if (Movement) {
+			InputHandler ();  
+		}
     }
 
     private void InputHandler()
