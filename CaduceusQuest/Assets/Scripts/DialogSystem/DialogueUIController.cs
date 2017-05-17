@@ -130,7 +130,7 @@ public class DialogueUIController : MonoBehaviour
 		if (_inConvoZone)
 		{
 
-			if (Input.GetKeyDown(KeyCode.Z))
+			if (Input.GetKeyDown(KeyCode.Z) && !_isWriting)
 			{
 				if (!_inConversation)
 				{
@@ -186,7 +186,8 @@ public class DialogueUIController : MonoBehaviour
 
 			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
 			{
-				DialogueOptionSelected(_buttonSelectionIndex);
+				_nextLineIndex = convo.MyDialogOptionsList[_currentDOIndex].myOptions[_buttonSelectionIndex].MyNextLine;
+				HideDialogueOptions();
 			}
 		}
 
@@ -240,9 +241,9 @@ public class DialogueUIController : MonoBehaviour
 
 		for (int i = 0; i < convo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
 		{
-
+			
 			_optionButtonList[i].gameObject.SetActive(true);
-			_optionTextList[i].text = convo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText;
+			_optionTextList[i].text = convo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Trim();
 
 		}
 
@@ -290,13 +291,6 @@ public class DialogueUIController : MonoBehaviour
 		{
 			_nextLineIndex = convo.MyLines[_nextLineIndex].NextLineIndex;
 		}
-
-	}
-
-	public void DialogueOptionSelected(int o)
-	{
-		_nextLineIndex = convo.MyDialogOptionsList[_currentDOIndex].myOptions[o].MyNextLine;
-		HideDialogueOptions();
 
 	}
 
