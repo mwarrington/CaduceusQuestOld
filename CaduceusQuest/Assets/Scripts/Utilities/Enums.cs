@@ -20,4 +20,10 @@ public enum EncounterActionType
 	EPIDEMIOLOGIST,
 	CHEMENG,
 }
-	
+
+public enum DialogChangeType
+{
+    CONVOEND,
+    ENCOUNTEREND,
+    ITEMTRIGGER
+}
