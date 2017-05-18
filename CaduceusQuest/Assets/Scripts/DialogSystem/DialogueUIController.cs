@@ -10,6 +10,7 @@ public class DialogueUIController : MonoBehaviour
     public DialogChangeType MyChangeType;
 	public string CharacterName;
 	public char index;
+    public int NumberOfConvos;
 
 	private BoxCollider _myTrigger;
 	private DialogManager _dialogueManager;
@@ -343,7 +344,7 @@ public class DialogueUIController : MonoBehaviour
 
     private void DialogueChanger()
     {
-        //Handle the randomey bit
+        
     }
 }
 

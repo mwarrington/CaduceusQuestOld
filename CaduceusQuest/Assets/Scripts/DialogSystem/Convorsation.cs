@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Convorsation
 {
-
 	public string Name;
 	public char Index;
 	public List<Line> MyLines = new List<Line> ();
