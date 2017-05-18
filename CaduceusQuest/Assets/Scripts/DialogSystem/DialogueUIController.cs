@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class DialogueUIController : MonoBehaviour
 {
-	#region initialization
+    #region initialization
 
+    public DialogChangeType MyChangeType;
 	public string CharacterName;
 	public char index;
 
@@ -92,9 +93,9 @@ public class DialogueUIController : MonoBehaviour
 		_optionTextList.Add(_buttonText3);
 
 		//Simone name text
-		_simoneNameText1 = _option1.transform.FindChild("Simone Name Text").GetComponent<Text>();
-		_simoneNameText2 = _option2.transform.FindChild("Simone Name Text").GetComponent<Text>();
-		_simoneNameText3 = _option3.transform.FindChild("Simone Name Text").GetComponent<Text>();
+		_simoneNameText1 = _option1.transform.Find("Simone Name Text").GetComponent<Text>();
+		_simoneNameText2 = _option2.transform.Find("Simone Name Text").GetComponent<Text>();
+		_simoneNameText3 = _option3.transform.Find("Simone Name Text").GetComponent<Text>();
 
 		//Add simone name text to list
 		_optionNameList.Add(_simoneNameText1);
@@ -144,7 +145,11 @@ public class DialogueUIController : MonoBehaviour
 					_dialoguePanel.SetActive(true);
 					_convoFinished = true;
 					simone.Movement = true;
-			
+			        
+                    if(MyChangeType == DialogChangeType.CONVOEND)
+                    {
+                        DialogueChanger();
+                    }
 				}
 
 				StartConversation();
@@ -153,9 +158,7 @@ public class DialogueUIController : MonoBehaviour
 		}
 		else
 		{
-
 			_dialoguePanel.SetActive(false);
-
 		}
 
 		if (_dialogueSelection)
@@ -337,5 +340,10 @@ public class DialogueUIController : MonoBehaviour
 		}
 		_isWriting = false;
 	}
+
+    private void DialogueChanger()
+    {
+        //Handle the randomey bit
+    }
 }
 
