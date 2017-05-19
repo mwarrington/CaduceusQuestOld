@@ -169,10 +169,12 @@ public class MakeEncounterObj
         {
             Encounter theEncounter = ScriptableObject.CreateInstance<Encounter>();
 
-            for (int i = 0; i < goalCount; i++)
-            {
-                theEncounter.EncounterGoals[i] = encounterGoals[i];
-            }
+            //for (int i = 0; i < goalCount; i++)
+            //{
+            //    theEncounter.EncounterGoals[i] = encounterGoals[i];
+            //}
+
+            theEncounter.EncounterGoals = encounterGoals;
             theEncounter.GoalCount = goalCount;
 
             AssetDatabase.CreateAsset(theEncounter, "Assets/Resources/EncounterData/NewEcounterData.asset");

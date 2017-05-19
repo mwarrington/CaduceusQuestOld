@@ -10,9 +10,4 @@ public class GameManager : MonoBehaviour
     {
         _allDialogControllers.AddRange(FindObjectsOfType<DialogueUIController>());
     }
-
-    public void CheckForConvoChange(DialogChangeType changeType, string convoName)
-    {
-
-    }
 }
