@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pasted__lambert11
+  m_Name: lambert6
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -71,5 +71,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.136, g: 0.05639201, b: 0.0374, a: 1}
+    - _Color: {r: 0.0469, g: 0.011, b: 0.0024, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
