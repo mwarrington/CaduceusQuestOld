@@ -23,6 +23,9 @@ public class MakeNPCScritableObject
         int convoCount;
         KeyValuePair<char, DialogChangeType>[] nextConvoInfo;
 
+        private string[] indexes = new string[8];
+        private DialogChangeType[] dctArray = new DialogChangeType[8];
+
         [MenuItem("Assets/Create/NPC")]
         public static void OpenNPCWindow()
         {
@@ -32,13 +35,44 @@ public class MakeNPCScritableObject
         private void NextConvoBit(int i)
         {
             EditorGUILayout.LabelField("Next Convo Info");
-            string index = "";
             DialogChangeType dct = DialogChangeType.CONVOEND;
-            index = EditorGUILayout.TextField("Next Index", index);
-            dct = (DialogChangeType)EditorGUILayout.EnumPopup("Change Reason", dct);
-            Debug.Log("1: " + nextConvoInfo[i]);
-            Debug.Log("2: " + index[0]);
-            nextConvoInfo[i] = new KeyValuePair<char, DialogChangeType>(index[0], dct);
+            switch(i)
+            {
+                case 0:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo a", indexes[i]);
+                    break;
+                case 1:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo b", indexes[i]);
+                    break;
+                case 2:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo c", indexes[i]);
+                    break;
+                case 3:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo d", indexes[i]);
+                    break;
+                case 4:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo e", indexes[i]);
+                    break;
+                case 5:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo f", indexes[i]);
+                    break;
+                case 6:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo g", indexes[i]);
+                    break;
+                case 7:
+                    indexes[i] = EditorGUILayout.TextField("Next convo for convo h", indexes[i]);
+                    break;
+                default:
+                    Debug.LogError("That is too many convos...");
+                    break;
+            }
+
+            dctArray[i] = (DialogChangeType)EditorGUILayout.EnumPopup("Change Reason", dctArray[i]);
+
+            if (indexes[i] == null)
+                nextConvoInfo[i] = new KeyValuePair<char, DialogChangeType>('x', dct);
+            else
+                nextConvoInfo[i] = new KeyValuePair<char, DialogChangeType>(indexes[0][0], dct);
         }
 
         private void OnGUI()
@@ -66,7 +100,7 @@ public class MakeNPCScritableObject
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
-#endregion 3 convos
+                #endregion 3 convos
             }
             else if (convoCount == 4)
             {
@@ -76,7 +110,7 @@ public class MakeNPCScritableObject
                 NextConvoBit(1);
                 EditorGUILayout.Space();
                 NextConvoBit(2);
-#endregion 4 convos
+                #endregion 4 convos
             }
             else if (convoCount == 5)
             {
@@ -102,7 +136,7 @@ public class MakeNPCScritableObject
                 NextConvoBit(3);
                 EditorGUILayout.Space();
                 NextConvoBit(4);
-#endregion 6 convos
+                #endregion 6 convos
             }
             else if (convoCount == 7)
             {
@@ -118,7 +152,7 @@ public class MakeNPCScritableObject
                 NextConvoBit(4);
                 EditorGUILayout.Space();
                 NextConvoBit(5);
-#endregion 7 convos
+                #endregion 7 convos
             }
             else if (convoCount == 8)
             {
@@ -156,9 +190,13 @@ public class MakeNPCScritableObject
                 NextConvoBit(6);
                 EditorGUILayout.Space();
                 NextConvoBit(7);
-#endregion 9 convos
+                #endregion 9 convos
             }
-            //myDialogController = (DialogUIController)EditorGUILayout.EnumPopup()
+
+            if (GUILayout.Button("Create"))
+            {
+                CreateNPC(npcName, convoCount, nextConvoInfo);
+            }
         }
 
         public static void CreateNPC(string npcName, int convoCount, KeyValuePair<char, DialogChangeType>[] nextConvoInfo)
