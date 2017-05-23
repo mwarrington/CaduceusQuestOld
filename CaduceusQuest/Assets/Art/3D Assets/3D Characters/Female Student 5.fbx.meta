@@ -91,7 +91,13 @@ ModelImporter:
     400082: Spine_4
     4300000: Character_geometry
     4300002: pasted__WhiteBoyHair
-    7400000: Take 001
+    7400000: All
+    7400002: Standing
+    7400004: Sitting
+    7400006: Talking
+    7400008: Begin hip lean
+    7400010: Hip lean
+    7400012: 266
     9500000: //RootNode
     13700000: Character_geometry
     13700002: pasted__WhiteBoyHair
@@ -117,7 +123,791 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: All
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_geometry
+        weight: 1
+      - path: Character_skeleton
+        weight: 1
+      - path: Character_skeleton/L_Hip
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+        weight: 1
+      - path: Character_skeleton/R_Hip
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+        weight: 1
+      - path: Character_skeleton/Spine_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Helper_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Helper_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles/L_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base/L_Thumb
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head/Nose
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles/R_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__WhiteBoyHair
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Standing
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_geometry
+        weight: 1
+      - path: Character_skeleton
+        weight: 1
+      - path: Character_skeleton/L_Hip
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+        weight: 1
+      - path: Character_skeleton/R_Hip
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+        weight: 1
+      - path: Character_skeleton/Spine_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Helper_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Helper_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles/L_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base/L_Thumb
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head/Nose
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles/R_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__WhiteBoyHair
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Sitting
+      takeName: Take 001
+      firstFrame: 156
+      lastFrame: 175
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_geometry
+        weight: 1
+      - path: Character_skeleton
+        weight: 1
+      - path: Character_skeleton/L_Hip
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+        weight: 1
+      - path: Character_skeleton/R_Hip
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+        weight: 1
+      - path: Character_skeleton/Spine_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Helper_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Helper_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles/L_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base/L_Thumb
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head/Nose
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles/R_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__WhiteBoyHair
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Talking
+      takeName: Take 001
+      firstFrame: 207
+      lastFrame: 228
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_geometry
+        weight: 1
+      - path: Character_skeleton
+        weight: 1
+      - path: Character_skeleton/L_Hip
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+        weight: 1
+      - path: Character_skeleton/R_Hip
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+        weight: 1
+      - path: Character_skeleton/Spine_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Helper_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Helper_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles/L_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base/L_Thumb
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head/Nose
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles/R_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__WhiteBoyHair
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Begin hip lean
+      takeName: Take 001
+      firstFrame: 228
+      lastFrame: 243
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_geometry
+        weight: 1
+      - path: Character_skeleton
+        weight: 1
+      - path: Character_skeleton/L_Hip
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+        weight: 1
+      - path: Character_skeleton/R_Hip
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+        weight: 1
+      - path: Character_skeleton/Spine_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Helper_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Helper_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles/L_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base/L_Thumb
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head/Nose
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles/R_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__WhiteBoyHair
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hip lean
+      takeName: Take 001
+      firstFrame: 244
+      lastFrame: 265
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_geometry
+        weight: 1
+      - path: Character_skeleton
+        weight: 1
+      - path: Character_skeleton/L_Hip
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+        weight: 1
+      - path: Character_skeleton/R_Hip
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+        weight: 1
+      - path: Character_skeleton/Spine_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Helper_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Helper_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles/L_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base/L_Thumb
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head/Nose
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles/R_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__WhiteBoyHair
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 266
+      takeName: Take 001
+      firstFrame: 266
+      lastFrame: 280
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Character_geometry
+        weight: 1
+      - path: Character_skeleton
+        weight: 1
+      - path: Character_skeleton/L_Hip
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+        weight: 1
+      - path: Character_skeleton/R_Hip
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Character_skeleton/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+        weight: 1
+      - path: Character_skeleton/Spine_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Helper_1
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Helper_4
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Knuckles/L_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Thumb_base/L_Thumb
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/Neck/Head/Nose
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Knuckles/R_Fingers
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base
+        weight: 1
+      - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
+        weight: 1
+      - path: group1
+        weight: 1
+      - path: group1/pasted__WhiteBoyHair
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

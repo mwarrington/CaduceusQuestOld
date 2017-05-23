@@ -1,98 +1,96 @@
 fileFormatVersion: 2
-guid: 71923c4005a4246ae93b0849c440b42c
-timeCreated: 1495567695
+guid: 9849cbe8a16224947b3c4d63e92bb08c
+timeCreated: 1495568696
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: Character_geometry
     100002: Character_skeleton
-    100004: //RootNode
-    100006: group
-    100008: Head
-    100010: Helper_1
-    100012: Helper_2
-    100014: Helper_3
-    100016: Helper_4
-    100018: L_Ankle
-    100020: L_Ball_of_foot
-    100022: L_Clavicle
-    100024: L_Elbow
-    100026: L_Fingers
-    100028: L_Hip
-    100030: L_Knee
-    100032: L_Knuckles
-    100034: L_Shoulder
-    100036: L_Thumb
-    100038: L_Thumb_base
-    100040: L_Toe
-    100042: L_Wrist
-    100044: Neck
-    100046: Nose
-    100048: pasted__pCube11
-    100050: R_Ankle
-    100052: R_Ball_of_foot
-    100054: R_Clavicle
-    100056: R_Elbow
-    100058: R_Fingers
-    100060: R_Hip
-    100062: R_Knee
-    100064: R_Knuckles
-    100066: R_Shoulder
-    100068: R_Thumb
-    100070: R_Thumb_base
-    100072: R_Toe
-    100074: R_Wrist
-    100076: Spine_1
-    100078: Spine_2
-    100080: Spine_3
-    100082: Spine_4
+    100004: Head
+    100006: Helper_1
+    100008: Helper_2
+    100010: Helper_3
+    100012: Helper_4
+    100014: L_Ankle
+    100016: L_Ball_of_foot
+    100018: L_Clavicle
+    100020: L_Elbow
+    100022: L_Fingers
+    100024: L_Hip
+    100026: L_Knee
+    100028: L_Knuckles
+    100030: L_Shoulder
+    100032: L_Thumb
+    100034: L_Thumb_base
+    100036: L_Toe
+    100038: L_Wrist
+    100040: Neck
+    100042: Nose
+    100044: //RootNode
+    100046: Quinn_Hair
+    100048: R_Ankle
+    100050: R_Ball_of_foot
+    100052: R_Clavicle
+    100054: R_Elbow
+    100056: R_Fingers
+    100058: R_Hip
+    100060: R_Knee
+    100062: R_Knuckles
+    100064: R_Shoulder
+    100066: R_Thumb
+    100068: R_Thumb_base
+    100070: R_Toe
+    100072: R_Wrist
+    100074: Spine_1
+    100076: Spine_2
+    100078: Spine_3
+    100080: Spine_4
     400000: Character_geometry
     400002: Character_skeleton
-    400004: //RootNode
-    400006: group
-    400008: Head
-    400010: Helper_1
-    400012: Helper_2
-    400014: Helper_3
-    400016: Helper_4
-    400018: L_Ankle
-    400020: L_Ball_of_foot
-    400022: L_Clavicle
-    400024: L_Elbow
-    400026: L_Fingers
-    400028: L_Hip
-    400030: L_Knee
-    400032: L_Knuckles
-    400034: L_Shoulder
-    400036: L_Thumb
-    400038: L_Thumb_base
-    400040: L_Toe
-    400042: L_Wrist
-    400044: Neck
-    400046: Nose
-    400048: pasted__pCube11
-    400050: R_Ankle
-    400052: R_Ball_of_foot
-    400054: R_Clavicle
-    400056: R_Elbow
-    400058: R_Fingers
-    400060: R_Hip
-    400062: R_Knee
-    400064: R_Knuckles
-    400066: R_Shoulder
-    400068: R_Thumb
-    400070: R_Thumb_base
-    400072: R_Toe
-    400074: R_Wrist
-    400076: Spine_1
-    400078: Spine_2
-    400080: Spine_3
-    400082: Spine_4
+    400004: Head
+    400006: Helper_1
+    400008: Helper_2
+    400010: Helper_3
+    400012: Helper_4
+    400014: L_Ankle
+    400016: L_Ball_of_foot
+    400018: L_Clavicle
+    400020: L_Elbow
+    400022: L_Fingers
+    400024: L_Hip
+    400026: L_Knee
+    400028: L_Knuckles
+    400030: L_Shoulder
+    400032: L_Thumb
+    400034: L_Thumb_base
+    400036: L_Toe
+    400038: L_Wrist
+    400040: Neck
+    400042: Nose
+    400044: //RootNode
+    400046: Quinn_Hair
+    400048: R_Ankle
+    400050: R_Ball_of_foot
+    400052: R_Clavicle
+    400054: R_Elbow
+    400056: R_Fingers
+    400058: R_Hip
+    400060: R_Knee
+    400062: R_Knuckles
+    400064: R_Shoulder
+    400066: R_Thumb
+    400068: R_Thumb_base
+    400070: R_Toe
+    400072: R_Wrist
+    400074: Spine_1
+    400076: Spine_2
+    400078: Spine_3
+    400080: Spine_4
     4300000: Character_geometry
-    4300002: pasted__pCube11
-    7400000: Standing
-    7400002: All
+    4300002: Quinn_Hair
+    7400000: All
+    7400002: Standing
     7400004: Sitting
     7400006: Talking
     7400008: Begin hip lean
@@ -100,7 +98,7 @@ ModelImporter:
     7400012: End hip lean
     9500000: //RootNode
     13700000: Character_geometry
-    13700002: pasted__pCube11
+    13700002: Quinn_Hair
   materials:
     importMaterials: 1
     materialName: 0
@@ -128,7 +126,7 @@ ModelImporter:
       name: All
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 280
+      lastFrame: 300
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -229,9 +227,7 @@ ModelImporter:
         weight: 1
       - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
         weight: 1
-      - path: group
-        weight: 1
-      - path: group/pasted__pCube11
+      - path: Quinn_Hair
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -341,9 +337,7 @@ ModelImporter:
         weight: 1
       - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
         weight: 1
-      - path: group
-        weight: 1
-      - path: group/pasted__pCube11
+      - path: Quinn_Hair
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -453,9 +447,7 @@ ModelImporter:
         weight: 1
       - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
         weight: 1
-      - path: group
-        weight: 1
-      - path: group/pasted__pCube11
+      - path: Quinn_Hair
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -565,9 +557,7 @@ ModelImporter:
         weight: 1
       - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
         weight: 1
-      - path: group
-        weight: 1
-      - path: group/pasted__pCube11
+      - path: Quinn_Hair
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -677,9 +667,7 @@ ModelImporter:
         weight: 1
       - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
         weight: 1
-      - path: group
-        weight: 1
-      - path: group/pasted__pCube11
+      - path: Quinn_Hair
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -789,9 +777,7 @@ ModelImporter:
         weight: 1
       - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
         weight: 1
-      - path: group
-        weight: 1
-      - path: group/pasted__pCube11
+      - path: Quinn_Hair
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
@@ -901,9 +887,7 @@ ModelImporter:
         weight: 1
       - path: Character_skeleton/Spine_1/Spine_2/Spine_3/Spine_4/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Thumb_base/R_Thumb
         weight: 1
-      - path: group
-        weight: 1
-      - path: group/pasted__pCube11
+      - path: Quinn_Hair
         weight: 1
       maskType: 3
       maskSource: {instanceID: 0}
