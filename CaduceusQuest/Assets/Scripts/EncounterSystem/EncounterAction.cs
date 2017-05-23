@@ -49,7 +49,6 @@ public class EncounterAction
                 myDialogPuzzMan.Speaker = myDialogSO.Speaker;
                 myDialogPuzzMan.SpeakerLine = myDialogSO.SpeakerLine;
                 myDialogPuzzMan.BadResponse = myDialogSO.BadResponse;
-                myDialogPuzzMan.MedResponse = myDialogSO.MedResponse;
                 myDialogPuzzMan.GoodResponse = myDialogSO.GoodResponse;
                 myDialogPuzzMan.LineEmotion = myDialogSO.LineEmotion;
                 break;
@@ -67,7 +66,6 @@ public class EncounterActionDialog : ScriptableObject
     public string Speaker,
                   SpeakerLine,
                   BadResponse,
-                  MedResponse,
                   GoodResponse;
     public Emotion LineEmotion = new Emotion('a',0);
 }
@@ -79,7 +77,6 @@ public class MakeEncounterActionDialog
         string speaker,
                speakerLine,
                badResponse,
-               medResponse,
                goodResponse,
                lineEmotionType;
 
@@ -98,7 +95,6 @@ public class MakeEncounterActionDialog
 
             speakerLine = EditorGUILayout.TextField("Speaker Line", speakerLine);
             badResponse = EditorGUILayout.TextField("Bad Response", badResponse);
-            medResponse = EditorGUILayout.TextField("Medium Response", medResponse);
             goodResponse = EditorGUILayout.TextField("Good Response", goodResponse);
             EditorGUILayout.Space();
 
@@ -109,19 +105,18 @@ public class MakeEncounterActionDialog
 
             if (GUILayout.Button("Create"))
             {
-                CreateEADialog(speaker, speakerLine, badResponse, medResponse, goodResponse, char.Parse(lineEmotionType), lineEmotionIntensity);
+                CreateEADialog(speaker, speakerLine, badResponse, goodResponse, char.Parse(lineEmotionType), lineEmotionIntensity);
             }
         }
     }
 
-    public static void CreateEADialog(string speaker, string speakerLine, string badResponse, string medResponse, string goodResponse, char emotionType, int emotionIntensity)
+    public static void CreateEADialog(string speaker, string speakerLine, string badResponse, string goodResponse, char emotionType, int emotionIntensity)
     {
         EncounterActionDialog asset = ScriptableObject.CreateInstance<EncounterActionDialog>();
 
         asset.Speaker = speaker;
         asset.SpeakerLine = speakerLine;
         asset.BadResponse = badResponse;
-        asset.MedResponse = medResponse;
         asset.GoodResponse = goodResponse;
         asset.LineEmotion.EmotionType = emotionType;
         asset.LineEmotion.EmotionIntensity = emotionIntensity;
