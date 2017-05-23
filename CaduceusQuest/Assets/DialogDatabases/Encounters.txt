@@ -64,6 +64,15 @@ Violet
 	Trust drop:
 	//
 
+	//blood test unsuccessfull//
+	(c)Violet(i)e;
+	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
+		(g)0(n)1(f)h,1(l)"Yep.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&1;
+	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
+
+
 Mason
 
 	a //intake form
@@ -97,6 +106,14 @@ Dr. Gallo
 	Trust threshold:
 	Trust drop:
 	//
+
+	//neck exam unsuccessful//
+	(c)Dr. Gallo(i)e;
+	[0](s)Dr. Gallo(e)g,1(t)"That went badly. Let's try again. You ready?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not quite yet...";
+	[1](s)Dr. Gallo(e)g,2(t)"Ok."&13;
+	[2](s)Dr. Gallo(e)g,2(t)"Ok."#;;
 
 Mars
 

@@ -86,7 +86,7 @@
 	[2](s)Dr. Gallo(e)g,2(t)"Great. We need to make sure Mason doesn't have meningoencephalitis, which would make his neck stiff. Let me show you how to do a neck exam."&13;;
 
 	//after neck exam training//
-	(c)Dr. Gallo(i)e;
+	(c)Dr. Gallo(i)f;
 	[0](s)Dr. Gallo(e)g,2(t)"Nice work. Sylvia's here for a regular blood test to check on her C4 count and viral load. She has HIV.";
 	[1](s)Dr. Gallo(e)g,2(t)"She used to be a nurse, so she can show you what to do. Go talk to her and get a sample, then do the same for Violet so we can run a pregnancy test."<0;
 		(g)0(n)2(f)h,1(l)"On it!";
@@ -96,11 +96,11 @@
 	//acquire list 2//
 
 	//before completing list 2 random option 1//
-	(c)Dr. Gallo(i)f;
+	(c)Dr. Gallo(i)g;
 	[0](s)Dr. Gallo(e)g,2(t)"It's tolerably safe. It's fine. Just go."#;;
 
 	//before completing list 2 random option 2//
-	(c)Dr. Gallo(i)g;
+	(c)Dr. Gallo(i)h;
 	[0](s)Dr. Gallo(e)g,2(t)"You need to complete the tasks on List 2. Press I to look at it in your inventory.";
 	[1](s)Dr. Gallo(e)g,2(t)"Do you want me to show you how to do the neck exam again?"<0;
 		(g)0(n)2(f)h,1(l)"No, I think I've got it.";
@@ -194,18 +194,6 @@
 	[1](s)Sylvia(e)c,2(t)"You look a little frazzled, but don't worry. Dr. Gallo watches out for her people.";
 	[2](s)Sylvia(e)c,2(t)"You must be here to do my intake form with me.";
 	[3](s)Sylvia(e)c,2(t)"Let's get to it."&3;;
-
-	//(c)Sylvia(i)&3;
-	//[0](s)Sylvia(e)c,2(t)"You're new to this, aren't you? Let me help you out.";
-	//[1](s)Sylvia(e)c,2(t)"To fill out the form, you're going to do some analysis. In this minigame, use your arrow keys and try to match the symbols.";
-	//[X](s)Sylvia(e)c,2(t)"When a patient's speaking to you, make sure to watch how they're feeling and respond.";
-	//go into circumplex game here
-	//success: "Nice job!";
-	//failure: "Let's try again—you can tell how I'm feeling by looking at the color around this box. Remember it and select it on the circumplex in a second."
-	//circumplex again
-	//success: "Nice job!";
-	//failure: "Let's try again—you can tell how I'm feeling by looking at the color around this box. Remember it and select it on the circumplex in a second. Use the arrow keys to move it, and press space when the color you want is highlighted."
-	//circumplex again, don't proceed until success
 
 	//after intake form, before completing List 1//
 	(c)Sylvia(i)b;
