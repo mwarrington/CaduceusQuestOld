@@ -7,15 +7,13 @@ public class EncounterGoal
 {
     public string Subject,
                   ActionName;
-    public float IndividualTrustGoal,
-                 IndividualTrustMin;
+    public float IndividualTrustMin;
     public EncounterActionType ActionType;
 
     public EncounterGoal()
     {
         Subject = "";
         ActionName = "";
-        IndividualTrustGoal = 0;
         IndividualTrustMin = 0;
         ActionType = EncounterActionType.DIALOG;
     }
@@ -24,10 +22,13 @@ public class EncounterGoal
 public class Encounter : ScriptableObject
 {
     public int GoalCount;
-    public EncounterGoal[] EncounterGoals = new EncounterGoal[5];
+    public EncounterPattern TurnPattern;
+    public EncounterGoal[] EncounterGoals;
 
     void Awake()
     {
+        EncounterGoals = new EncounterGoal[GoalCount];
+
         for (int i = 0; i < 5; i++)
         {
             EncounterGoals[i] = new EncounterGoal();
@@ -40,6 +41,7 @@ public class MakeEncounterObj
     class MakeEncounterWindow : EditorWindow
     {
         int goalCount = 1;
+        EncounterPattern turnPattern;
         EncounterGoal[] encounterGoals = new EncounterGoal[5];
 
         void Awake()
@@ -64,7 +66,6 @@ public class MakeEncounterObj
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Trust Threshold");
-            encounterGoals[i].IndividualTrustGoal = EditorGUILayout.FloatField("Individual Trust Goal", encounterGoals[i].IndividualTrustGoal);
             encounterGoals[i].IndividualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", encounterGoals[i].IndividualTrustMin);
             EditorGUILayout.Space();
 
@@ -74,6 +75,9 @@ public class MakeEncounterObj
         void OnGUI()
         {
             goalCount = EditorGUILayout.IntField("Goal Count", goalCount);
+            EditorGUILayout.Space();
+
+            turnPattern = (EncounterPattern)EditorGUILayout.EnumPopup("Encounter Turn Pattern", turnPattern);
             EditorGUILayout.Space();
 
             //GIVE 'EM THE CLAMPS!!
@@ -161,11 +165,11 @@ public class MakeEncounterObj
 
             if (GUILayout.Button("Create"))
             {
-                CreateEncounterObj(goalCount, encounterGoals);
+                CreateEncounterObj(goalCount, turnPattern, encounterGoals);
             }
         }
 
-        public static void CreateEncounterObj(int goalCount, EncounterGoal[] encounterGoals)
+        public static void CreateEncounterObj(int goalCount, EncounterPattern turnPattern, EncounterGoal[] encounterGoals)
         {
             Encounter theEncounter = ScriptableObject.CreateInstance<Encounter>();
 
@@ -175,6 +179,7 @@ public class MakeEncounterObj
             //}
 
             theEncounter.EncounterGoals = encounterGoals;
+            theEncounter.TurnPattern = turnPattern;
             theEncounter.GoalCount = goalCount;
 
             AssetDatabase.CreateAsset(theEncounter, "Assets/Resources/EncounterData/NewEcounterData.asset");

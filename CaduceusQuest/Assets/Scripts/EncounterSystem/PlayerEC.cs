@@ -13,7 +13,7 @@ public class PlayerEC : EncounterController
 
     private void InstantiateMyMenuItems()
     {
-        EncounterAction DefaultCompSciAction = new EncounterAction(EncounterActionType.COMPSCI, "Default");
+        EncounterAction DefaultCompSciAction = new EncounterAction(EncounterActionType.COMPSCI, 10, "Default");
         EncounterMenuItem compSci = new EncounterMenuItem("CompSci", DefaultCompSciAction);
     }
 }

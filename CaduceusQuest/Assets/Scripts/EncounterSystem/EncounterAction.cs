@@ -7,13 +7,15 @@ using UnityEditor;
 public class EncounterAction
 {
     public EncounterActionType MyType;
+    public float FailPenalty;
     public string Name;
 
     private ScriptableObject _myScriptableObject;
 
-    public EncounterAction(EncounterActionType myType, string name)
+    public EncounterAction(EncounterActionType myType, float failPenalty, string name)
     {
         MyType = myType;
+        FailPenalty = failPenalty;
         Name = name;
 
         _myScriptableObject = Resources.Load<ScriptableObject>("EncounterActions/" + myType.ToString() + "EA" + name);

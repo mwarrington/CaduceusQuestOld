@@ -27,3 +27,11 @@ public enum DialogChangeType
     ENCOUNTEREND,
     ITEMTRIGGER
 }
+
+public enum EncounterPattern
+{
+    ALTERNATE,
+    DOUBLEALTERNATE,
+    PLAYER1DIALOG2,
+    PLAYER2DIALOG1
+}
