@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class SimoneController : MovementController
 {
+    protected bool moving
+    {
+        get
+        {
+            if (_movingOnXAxis || _movingOnZAxis)
+                _moving = true;
+            else
+                _moving = false;
+
+            return _moving;
+        }
+    }
+    private bool _moving;
+
+    private Animator _myAnimator;
     private CameraManager _theCamMan;
     private float _currentSpeed;
     private bool _movingOnXAxis,
@@ -13,15 +28,21 @@ public class SimoneController : MovementController
     private void Start()
     {
         _theCamMan = FindObjectOfType<CameraManager>();
-        _currentSpeed = Speed;
-
+        _myAnimator = this.GetComponent<Animator>();
+        _currentSpeed = CurrentSpeed;
     }
 
     void Update()
     {
-		if (Movement) {
-			InputHandler ();  
-		}
+        if (Movement)
+        {
+            InputHandler();
+        }
+
+        if (moving)
+            _myAnimator.SetFloat("speed", CurrentSpeed);
+        else
+            _myAnimator.SetFloat("speed", 0);
     }
 
     private void InputHandler()
@@ -58,6 +79,8 @@ public class SimoneController : MovementController
         {
             Move(CardinalDirections.RIGHT);
         }
+
+        running = Input.GetKey(KeyCode.LeftShift);
 
         if((Input.GetKeyUp(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow)) || (Input.GetKeyUp(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow)))
         {
@@ -99,6 +122,6 @@ public class SimoneController : MovementController
             trajectory = new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
         }
 
-        this.transform.Translate(trajectory * Speed * Time.deltaTime);
+        this.transform.Translate(trajectory * CurrentSpeed * Time.deltaTime);
     }
 }

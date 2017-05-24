@@ -46,38 +46,38 @@ public class CameraController : MovementController
 
     protected override void Move(CardinalDirections dir)
     {
-        float currentSpeed = Speed,
-              orriginalSpeed = Speed;
+        float myCurrentSpeed = CurrentSpeed,
+              orriginalSpeed = CurrentSpeed;
 
         if(dir == CardinalDirections.FORWARD)
         {
-            currentSpeed *= Mathf.Clamp(Mathf.Abs(((this.transform.position.z + _initialCameraDistance) + CameraFollowDistance.y) - _followSubject.transform.position.z), 0.05f, 1.1f);
+            myCurrentSpeed *= Mathf.Clamp(Mathf.Abs(((this.transform.position.z + _initialCameraDistance) + CameraFollowDistance.y) - _followSubject.transform.position.z), 0.05f, 1.1f);
         }
 
         if (dir == CardinalDirections.BACKWARD)
         {
-            currentSpeed *= Mathf.Clamp(Mathf.Abs(((this.transform.position.z + _initialCameraDistance) - CameraFollowDistance.y) - _followSubject.transform.position.z), 0.05f, 1.1f);
+            myCurrentSpeed *= Mathf.Clamp(Mathf.Abs(((this.transform.position.z + _initialCameraDistance) - CameraFollowDistance.y) - _followSubject.transform.position.z), 0.05f, 1.1f);
         }
 
         if (dir == CardinalDirections.RIGHT)
         {
-            currentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x + CameraFollowDistance.x) - _followSubject.transform.position.x), 0.05f, 1.1f);
+            myCurrentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x + CameraFollowDistance.x) - _followSubject.transform.position.x), 0.05f, 1.1f);
         }
 
         if (dir == CardinalDirections.LEFT)
         {
-            currentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x - CameraFollowDistance.x) - _followSubject.transform.position.x), 0.05f, 1.1f);
+            myCurrentSpeed *= Mathf.Clamp(Mathf.Abs((this.transform.position.x - CameraFollowDistance.x) - _followSubject.transform.position.x), 0.05f, 1.1f);
         }
 
-        if (currentSpeed > _followSubject.Speed)
+        if (myCurrentSpeed > _followSubject.CurrentSpeed)
         {
-            currentSpeed = _followSubject.Speed;
+            myCurrentSpeed = _followSubject.CurrentSpeed;
         }
 
-        Speed = currentSpeed;
+        CurrentSpeed = myCurrentSpeed;
 
         base.Move(dir);
 
-        Speed = orriginalSpeed;
+        CurrentSpeed = orriginalSpeed;
     }
 }
