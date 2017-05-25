@@ -23,6 +23,7 @@ public class SimoneController : MovementController
     private float _currentSpeed;
     private bool _movingOnXAxis,
                  _movingOnZAxis;
+    public Transform MySkeleton;
 	public bool Movement = true;
 
     private void Start()
@@ -121,7 +122,10 @@ public class SimoneController : MovementController
         {
             trajectory = new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
         }
+        
+        this.transform.LookAt(this.transform.position + (trajectory * CurrentSpeed), this.transform.up);
+        Debug.Log(this.transform.forward);
 
-        this.transform.Translate(trajectory * CurrentSpeed * Time.deltaTime);
+        this.transform.Translate(this.transform.forward * CurrentSpeed * Time.deltaTime, Space.World);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public GameObject RotationOrientation;
     public Camera CurrentCamera
     {
         get
