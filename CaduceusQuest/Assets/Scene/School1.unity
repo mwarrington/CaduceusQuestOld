@@ -493,7 +493,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 18300023}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &18300026
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2220,7 +2220,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 172866996}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &172866999
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7054,7 +7054,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 594700951}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &594700954
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8864,7 +8864,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 720686043}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &720686046
 AudioListener:
   m_ObjectHideFlags: 0
@@ -9464,7 +9464,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 771944351}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &771944354
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13304,7 +13304,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1133428969}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!1 &1138966841
 GameObject:
   m_ObjectHideFlags: 0
@@ -16150,7 +16150,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1377002739}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &1377002742
 AudioListener:
   m_ObjectHideFlags: 0
