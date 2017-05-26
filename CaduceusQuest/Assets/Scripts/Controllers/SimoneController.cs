@@ -44,14 +44,14 @@ public class SimoneController : MovementController
 
     private Animator _myAnimator;
     private CameraManager _theCamMan;
-    private float _currentSpeed;
+    private float _currentSpeed,
+                  _idleTimer;
     private bool _movingOnXAxis,
                  _movingOnZAxis,
                  _movingRight,
                  _movingLeft,
                  _movingUp,
                  _movingDown;
-    public Transform MySkeleton;
 	public bool Movement = true;
 
     private void Start()
@@ -66,6 +66,12 @@ public class SimoneController : MovementController
         if (Movement)
         {
             InputHandler();
+
+            _idleTimer += Time.deltaTime;
+            if (_idleTimer > 5 && !_myAnimator.GetBool("longIdle"))
+            {
+                _myAnimator.SetBool("longIdle", true);
+            }
         }
 
         if (moving)
@@ -145,6 +151,12 @@ public class SimoneController : MovementController
                 CurrentSpeed *= 2;
 
             _movingOnXAxis = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            _idleTimer = 0;
+            _myAnimator.SetBool("longIdle", false);
         }
     }
 
