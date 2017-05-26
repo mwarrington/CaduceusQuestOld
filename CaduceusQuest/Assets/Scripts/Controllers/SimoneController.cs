@@ -8,12 +8,36 @@ public class SimoneController : MovementController
     {
         get
         {
-            if (_movingOnXAxis || _movingOnZAxis)
+            if (movingOnXAxis || movingOnZAxis)
                 _moving = true;
             else
                 _moving = false;
 
             return _moving;
+        }
+    }
+    protected bool movingOnXAxis
+    {
+        get
+        {
+            if (_movingLeft || _movingRight)
+                _movingOnXAxis = true;
+            else
+                _movingOnXAxis = false;
+
+            return _movingOnXAxis;
+        }
+    }
+    protected bool movingOnZAxis
+    {
+        get
+        {
+            if (_movingDown || _movingUp)
+                _movingOnZAxis = true;
+            else
+                _movingOnZAxis = false;
+
+            return _movingOnZAxis;
         }
     }
     private bool _moving;
@@ -22,7 +46,11 @@ public class SimoneController : MovementController
     private CameraManager _theCamMan;
     private float _currentSpeed;
     private bool _movingOnXAxis,
-                 _movingOnZAxis;
+                 _movingOnZAxis,
+                 _movingRight,
+                 _movingLeft,
+                 _movingUp,
+                 _movingDown;
     public Transform MySkeleton;
 	public bool Movement = true;
 
@@ -49,36 +77,57 @@ public class SimoneController : MovementController
     private void InputHandler()
     {
         //Movement Control
-        if((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) && !_movingOnZAxis)
+        if((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.DownArrow)) && !movingOnZAxis)
         {
-            if(_movingOnXAxis)
-                _currentSpeed /= 2;
-
-            _movingOnZAxis = true;
+            if (movingOnXAxis)
+            {
+                CurrentSpeed /= 2;
+            }
         }
-        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && !_movingOnXAxis)
+        if ((Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) && !movingOnXAxis)
         {
-            if (_movingOnZAxis)
-                _currentSpeed /= 2;
-
-            _movingOnXAxis = true;
+            if (movingOnZAxis)
+                CurrentSpeed /= 2;
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
             Move(CardinalDirections.FORWARD);
+            _movingUp = true;
         }
+        else
+        {
+            _movingUp = false;
+        }
+
         if (Input.GetKey(KeyCode.DownArrow))
         {
             Move(CardinalDirections.BACKWARD);
+            _movingDown = true;
         }
+        else
+        {
+            _movingDown = false;
+        }
+
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             Move(CardinalDirections.LEFT);
+            _movingLeft = true;
         }
+        else
+        {
+            _movingLeft = false;
+        }
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
             Move(CardinalDirections.RIGHT);
+            _movingRight = true;
+        }
+        else
+        {
+            _movingRight = false;
         }
 
         running = Input.GetKey(KeyCode.LeftShift);
@@ -86,14 +135,14 @@ public class SimoneController : MovementController
         if((Input.GetKeyUp(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow)) || (Input.GetKeyUp(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow)))
         {
             if (_movingOnXAxis)
-                _currentSpeed *= 2;
+                CurrentSpeed *= 2;
 
             _movingOnZAxis = false;
         }
         if ((Input.GetKeyUp(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)) || (Input.GetKeyUp(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)))
         {
             if (_movingOnZAxis)
-                _currentSpeed *= 2;
+                CurrentSpeed *= 2;
 
             _movingOnXAxis = false;
         }
@@ -102,30 +151,85 @@ public class SimoneController : MovementController
     protected override void Move(CardinalDirections dir)
     {
         Vector3 trajectory = new Vector3();
+        bool movingDiagonal = false;
 
         if (dir == CardinalDirections.FORWARD)
         {
-            trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z);
+            if (!movingOnXAxis)
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z);
+            else if(_movingLeft)
+            {
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
+            else if (_movingRight)
+            {
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
         }
 
         if (dir == CardinalDirections.BACKWARD)
         {
-            trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z);
+            if (!movingOnXAxis)
+                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z);
+            else if (_movingLeft)
+            {
+                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
+            else if (_movingRight)
+            {
+                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
         }
 
         if (dir == CardinalDirections.LEFT)
         {
-            trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
+            if (!movingOnZAxis)
+                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
+            else if (_movingUp)
+            {
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
+            else if (_movingDown)
+            {
+                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
         }
 
         if (dir == CardinalDirections.RIGHT)
         {
-            trajectory = new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+            if (!_movingOnZAxis)
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+            else if (_movingUp)
+            {
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
+            else if (_movingDown)
+            {
+                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
         }
-        
-        this.transform.LookAt(this.transform.position + (trajectory * CurrentSpeed), this.transform.up);
-        Debug.Log(this.transform.forward);
 
-        this.transform.Translate(this.transform.forward * CurrentSpeed * Time.deltaTime, Space.World);
+        this.transform.LookAt(this.transform.position + (trajectory), this.transform.up);
+
+        if (movingDiagonal)
+            this.transform.Translate(this.transform.forward * (CurrentSpeed / 2) * Time.deltaTime, Space.World);
+        else
+            this.transform.Translate(this.transform.forward * CurrentSpeed * Time.deltaTime, Space.World);
     }
 }
