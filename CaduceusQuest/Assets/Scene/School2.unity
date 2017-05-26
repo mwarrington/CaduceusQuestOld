@@ -4660,7 +4660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &465241223
 Transform:
   m_ObjectHideFlags: 0
@@ -4681,7 +4681,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 465241222}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &465241225
 AudioListener:
   m_ObjectHideFlags: 0
@@ -5984,7 +5984,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598808225}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &598808228
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11387,7 +11387,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1253963786}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &1253963789
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12834,7 +12834,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1379784984}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &1379784987
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13192,7 +13192,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1427181829}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!81 &1427181832
 AudioListener:
   m_ObjectHideFlags: 0
@@ -19990,7 +19990,7 @@ Skybox:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2143517551}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 721a4f295254047bba679a3cadb7d14f, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: f90589b9cd5644c87a423cd2b1085a91, type: 2}
 --- !u!1001 &2145487111
 Prefab:
   m_ObjectHideFlags: 0
