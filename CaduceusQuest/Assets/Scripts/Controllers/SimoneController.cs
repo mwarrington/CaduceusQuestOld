@@ -189,6 +189,24 @@ public class SimoneController : MovementController
             }
         }
 
+        if (dir == CardinalDirections.RIGHT)
+        {
+            if (!movingOnZAxis)
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+            else if (_movingUp)
+            {
+                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
+            else if (_movingDown)
+            {
+                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z) +
+                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
+                movingDiagonal = true;
+            }
+        }
+
         if (dir == CardinalDirections.LEFT)
         {
             if (!movingOnZAxis)
@@ -203,24 +221,6 @@ public class SimoneController : MovementController
             {
                 trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z) +
                              new Vector3(-_theCamMan.CurrentCamera.transform.right.x, 0, -_theCamMan.CurrentCamera.transform.right.z);
-                movingDiagonal = true;
-            }
-        }
-
-        if (dir == CardinalDirections.RIGHT)
-        {
-            if (!_movingOnZAxis)
-                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
-            else if (_movingUp)
-            {
-                trajectory = new Vector3(_theCamMan.CurrentCamera.transform.forward.x, 0, _theCamMan.CurrentCamera.transform.forward.z) +
-                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
-                movingDiagonal = true;
-            }
-            else if (_movingDown)
-            {
-                trajectory = new Vector3(-_theCamMan.CurrentCamera.transform.forward.x, 0, -_theCamMan.CurrentCamera.transform.forward.z) +
-                             new Vector3(_theCamMan.CurrentCamera.transform.right.x, 0, _theCamMan.CurrentCamera.transform.right.z);
                 movingDiagonal = true;
             }
         }
