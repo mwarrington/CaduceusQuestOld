@@ -62,9 +62,16 @@
 	[4](s)Mars(e)g,2(t)"Quinn, huh? I know her but I don't really know her, you know?"#;
 	[5](s)Mars(e)b,2(t)"Hmm..."&5;;
 
-	//after neck exam//
+	//after successful neck exam//
 	(c)Mars(i)e;
-	[0](s)Mars(e)c,1(t)"Yo. You're not here for another neck exam are you?"<0;
+	[0](s)Mars(e)c,1(t)"Tell me the good news, doc!"<0;
+		(g)0(n)1(f)c,2(l)"Actually, well, your neck is a little stiff and swollen.";
+		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
+	[1](s)Mars(e)c,3(t)"What?? Um, ok..."#;;
+
+	//after e//
+	(c)Mars(i)f;
+	[0](s)Mars(e)c,2(t)"Yo. You're not here for another neck exam are you?"<0;
 		(g)0(n)1(f)a,1(l)"No, just saying hi.";
 		(g)0(n)2(f)c,1(l)"Sorry, I didn't actually mean to talk to you.";
 	[1](s)Mars(e)a,1(t)"Hi"#;
@@ -105,8 +112,15 @@
 		(g)1(n)14(f)h,1(l)"No thanks. Can I examine your neck?";
 	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&6;;
 
-	//after neck exam//
-	(c)Bea(i)b;
+	//after successful neck exam//
+	(c)Bea(i)c;
+	[0](s)Bea(e)a,1(t)"What do you feel?"<0;
+		(g)0(n)1(f)c,2(l)"I'm not sure... your neck is stiff and swollen.";
+		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
+	[1](s)Bea(e)c,2(t)"I was hoping it wasn't true. Just tell me when to go."#;;
+
+	//after b//
+	(c)Bea(i)c;
 	[0](s)Bea(e)a,2(t)"Oh, hey! Neck lady.";
 	[1](s)Bea(e)a,2(t)"Did you want to know more about signs?"<0;
 		(g)0(n)2(f)h,1(l)"Sure.";
@@ -208,10 +222,17 @@
 	[4](s)Danny(e)c,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?";
 	[5](s)Danny(e)a,3(t)"She's me hero!"#;;
 	
-	//after neck exam convo//
+	//after successful neck exam//
+	(c)Danny(i)d;
+	[0](s)Danny(e)c,2(t)"Ok, how's my neck? Now that you mentioned it I feel weird, but maybe I'm a hypochondriac."<0;
+		(g)0(n)1(f)c,2(l)"Well... it actually does feel a little off.";
+		(g)0(n)1(f)c,2(l)"We should go to a real doctor to confirm.";
+	[1](s)Danny(e)c,2(t)"Ok. Oh man. Just let me know what to do."#;;
+
+	//after d//
 	(c)Danny(i)e;
 	[0](s)Danny(e)h,2(t)"Hey, do you know anything about the origins of our town's name?";
-		(g)1(n)1(f)h,1(l)"I've heard more than a few reasons. Do you know the true origin?";
+		(g)1(n)1(f)h,1(l)"I've heard more than a few stories. Do you know the true origin?";
 		(g)1(n)2(f)h,1(l)"No, what have you heard?";
 		(g)1(n)4(f)d,1(l)"What was the town called again?";
 	[1](s)Danny(e)h,1(t)"I haven't actually been able to disprove any of the reasons I've heard.">3;
@@ -279,9 +300,26 @@
 	//second convo//
 	(c)Violet(i)b;
 	[0](s)Violet(e)c,1(t)"Hi, did you need anything this time?"<0;
-		(g)0(n)1(f)a,1(l)"Just saying Hi.";
+		(g)0(n)1(f)a,1(l)"Just saying hi.";
 		(g)0(n)1(f)c,2(l)"I guess not.";
 	[1](s)Violet(e)g,2(t)"..."#;;
+
+	//third convo//
+	(c)Violet(i)c;
+	[0](s)Violet(e)g,2(t)"I heard you're examining everyone's necks. Why aren't you examining mine?"<0;
+		(g)0(n)1(f)h,1(l)"I mean, I could.";
+		(g)0(n)1(f)h,1(l)"If you want me to...";
+	[0](s)Violet(e)g,1(t)"Ok, let's do it."&;;
+
+	//after successful neck exam//
+	(c)Violet(i)c;
+	[0](s)Violet(e)g,2(t)"Ow! You pinched me."<0;
+		(g)0(n)1(f)h,1(l)"I'm sorry! Your neck seems fine though.";
+		(g)0(n)1(f)h,1(l)"Good news: You're totally healthy!";
+	[1](s)Violet(e)g,2(t)"Oh, phew!"#;;
+
+	//after c go back to b//
+
 
 //Quinn//
 
@@ -298,27 +336,36 @@
 	(c)Quinn(i)d;
 	[0](s)Quinn(e)c,3(t)"What's Ashland without its ash trees?! Yeah, I don't know either"#;;
 
-	//first dialogue after you give her the beetle//
+	//after you give her the beetle//
 	(c)Quinn(i)e;
 	[0](s)Quinn(e)a,3(t)"Wait, this is just a green june beetle! Wow! These are harmless.";
 	[1](s)Quinn(e)a,3(t)"I'm SO relieved. Take this Rosy Maple Moth Eraser as a token of my thanks."#;;
 	//acquire eraser//
 
-	//after beetle quest, random option 1//
+	//after beetle quest 1//
 	(c)Quinn(i)f;
+	[0](s)Quinn(e)a,3(t)"Ashland used to be called Ashland Plantations, but I dunno why. Thanks again for the beetle!"#;;
+
+	//after beetle quest 2//
+	(c)Quinn(i)g;
+	[0](s)Quinn(e)a,3(t)"Some say that Ashland is named for the ash its factories used to make, but I think it's the trees."#;;
+
+	//after beetle quest, random option 1//
+	(c)Quinn(i)h;
 	[0](s)Quinn(e)a,3(t)"What's up?"<0;
 		(g)0(n)1(f)h,1(l)"Nothing much.";
 		(g)0(n)2(f)h,1(l)"Would you mind if I examined your neck?";
 	[1](s)Quinn(e)a,3(t)"K, seeya!"#;
-	[2](s)Quinn(e)a,3(t)"Uh, I guess..."&8;;
+	[2](s)Quinn(e)a,1(t)"Uh, I guess..."&;;
 
-	//after beetle quest, random option 2//
-	(c)Quinn(i)g;
-	[0](s)Quinn(e)a,3(t)"Ashland used to be called Ashland Plantations, but I dunno why. Thanks again for the beetle!"#;;
+	//after successful neck exam//
+	(c)Quinn(i)i;
+	[0](s)Quinn(e)a,1(t)"How's my neck?"<0;
+		(g)0(n)1(f)h,1(l)"Totally fine. Thanks for letting me check.";
+		(g)0(n)2(f)h,1(l)"You are A-OK.";
+	[1](s)Quinn(e)a,3(t)"K, cool!"#;;
 
-	//after beetle quest, random option 3//
-	(c)Quinn(i)h;
-	[0](s)Quinn(e)a,3(t)"Some say that Ashland is named for the ash its factories used to make, but I think it's the trees."#;;
+	//after i cycle between f and g//
 
 
 //Principal Gilliam//
