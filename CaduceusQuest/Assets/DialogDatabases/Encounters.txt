@@ -44,6 +44,14 @@ Sylvia
 	Trust drop:
 	//
 
+	//fail convo//
+	(c)Sylvia(i)a;
+	[0](s)Sylvia(e)b,2(t)"Seems like you need some more practice. Shall we try again?"<0;
+		(g)0(n)1(f)h,1(l)"Ok.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Sylvia(e)b,2(t)"Let's get started!"&;
+	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
+
 Violet
 	
 	a //intake form
@@ -64,12 +72,12 @@ Violet
 	Trust drop:
 	//
 
-	//blood test unsuccessfull//
-	(c)Violet(i)e;
+	//fail convo//
+	(c)Violet(i)a;
 	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&1;
+	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&;
 	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
 
 
@@ -93,6 +101,14 @@ Mason
 	Trust drop:
 	//
 
+	//fail convo//
+	(c)Mason(i)a;
+	[0](s)Mason(e)b,1(t)"Hm. That didn't seem right. Want to do it again?"<0
+		(g)0(n)1(f)h,1(l)"Yep.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Mason(e)b,1(t)"Ok!"&;
+	[2](s)Mason(e)b,1(t)"Ok."#;;
+
 Dr. Gallo
 
 	a //neck exam tutorial
@@ -107,12 +123,12 @@ Dr. Gallo
 	Trust drop:
 	//
 
-	//neck exam unsuccessful//
-	(c)Dr. Gallo(i)e;
+	//fail convo//
+	(c)Dr. Gallo(i)a;
 	[0](s)Dr. Gallo(e)g,1(t)"That went badly. Let's try again. You ready?"<0
 		(g)0(n)1(f)h,1(l)"Yes.";
 		(g)0(n)2(f)h,1(l)"Not quite yet...";
-	[1](s)Dr. Gallo(e)g,2(t)"Ok."&13;
+	[1](s)Dr. Gallo(e)g,2(t)"Ok."&;
 	[2](s)Dr. Gallo(e)g,2(t)"Ok."#;;
 
 Mars
@@ -123,6 +139,14 @@ Mars
 	Trust drop: 
 	//
 
+	//fail convo//
+	(c)Mars(i)a;
+	[0](s)Mars(e)g,1(t)"Hm. You want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Mars(e)g,2(t)"Ok."&;
+	[2](s)Mars(e)g,2(t)"Ok."#;;
+
 Bea
 
 	a //neck exam
@@ -130,6 +154,14 @@ Bea
 	Trust threshold:
 	Trust drop: 
 	//
+
+	//fail convo//
+	(c)Bea(i)a;
+	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes please.";
+		(g)0(n)2(f)h,1(l)"Not yet.";
+	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
+	[2](s)Bea(e)a,2(t)"K."#;;
 
 Danny
 
@@ -139,6 +171,14 @@ Danny
 	Trust drop: 
 	//
 
+	//fail convo//
+	(c)Danny(i)a;
+	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Danny(e)h,1(t)"Ok."&;
+	[2](s)Danny(e)h,1(t)"Ok."#;;
+
 Josh
 
 	a //neck exam
@@ -147,13 +187,14 @@ Josh
 	Trust drop: 
 	//
 
-Violet
+	//fail convo//
+	(c)Josh(i)a;
+	[0](s)Josh(e)g,1(t)"That was terrible. Want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Josh(e)g,1(t)"Ok."&;
+	[2](s)Josh(e)g,1(t)"Ok."#;;
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
 
 Quinn
 
@@ -162,3 +203,11 @@ Quinn
 	Trust threshold:
 	Trust drop: 
 	//
+
+	//fail convo//
+	(c)Quinn(i)a;
+	[0](s)Quinn(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
+		(g)0(n)1(f)h,1(l)"Yep.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Quinn(e)g,2(t)"Ok, let's get this over with."&;
+	[2](s)Quinn(e)g,2(t)"Ok, bye..."#;;
