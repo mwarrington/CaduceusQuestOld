@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114016175867838772}
   - component: {fileID: 114599830151991290}
   m_Layer: 5
-  m_Name: Skill 2
+  m_Name: Engineering Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 114320687468954694}
   - component: {fileID: 114171803552104920}
   m_Layer: 5
-  m_Name: Skill 3
+  m_Name: Technology Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 114544713734514954}
   - component: {fileID: 114132393020734726}
   m_Layer: 5
-  m_Name: Skill 3
+  m_Name: Mathamatics Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 114754300784317118}
   - component: {fileID: 114678866298344732}
   m_Layer: 5
-  m_Name: Skill 3
+  m_Name: Science Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 114912583899684140}
   - component: {fileID: 114914261426692104}
   m_Layer: 5
-  m_Name: Skill 1
+  m_Name: Science Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 114519926144361518}
   - component: {fileID: 114782376752876520}
   m_Layer: 5
-  m_Name: Skill 1
+  m_Name: Communication Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 114132258312690306}
   - component: {fileID: 114097204057456714}
   m_Layer: 5
-  m_Name: Skill 3
+  m_Name: Communication Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 114873449179673778}
   - component: {fileID: 114914586210046396}
   m_Layer: 5
-  m_Name: Skill 1
+  m_Name: Technology Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 114602281954696004}
   - component: {fileID: 114986610648351420}
   m_Layer: 5
-  m_Name: Skill 1
+  m_Name: Mathamatics Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 114232529941268052}
   - component: {fileID: 114455424981789032}
   m_Layer: 5
-  m_Name: Skill 2
+  m_Name: Communication Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 114399482903328878}
   - component: {fileID: 114884680048520528}
   m_Layer: 5
-  m_Name: Skill 2
+  m_Name: Science Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 114600865423911786}
   - component: {fileID: 114395525885354718}
   m_Layer: 5
-  m_Name: Skill 1
+  m_Name: Engineering Skill 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 114989793277437188}
   - component: {fileID: 114549124863468140}
   m_Layer: 5
-  m_Name: Skill 3
+  m_Name: Engineering Skill 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 114642701574877622}
   - component: {fileID: 114811857064410002}
   m_Layer: 5
-  m_Name: Skill 2
+  m_Name: Technology Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -798,7 +798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224919186003040464}
   m_Layer: 5
-  m_Name: Engeneering Sub Menu
+  m_Name: Engineering Sub Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -853,7 +853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1786715643577226
 GameObject:
   m_ObjectHideFlags: 1
@@ -915,7 +915,7 @@ GameObject:
   - component: {fileID: 114766984382730862}
   - component: {fileID: 114625837791495850}
   m_Layer: 5
-  m_Name: Skill 2
+  m_Name: Mathamatics Skill 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2428,7 +2428,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682029999156922}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0712400b499286744b572cb0f4743b00, type: 3}
   m_Name: 

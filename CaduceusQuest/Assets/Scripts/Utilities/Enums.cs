@@ -35,3 +35,14 @@ public enum EncounterPattern
     PLAYER1DIALOG2,
     PLAYER2DIALOG1
 }
+
+public enum EncounterMenus
+{
+    BASEMENU,
+    SKILLSUBMENU,
+    SSKILLSUBMENU,
+    ESKILLSUBMENU,
+    TSKILLSUBMENU,
+    MSKILLSUBMENU,
+    CSKILLSUBMENU
+}
