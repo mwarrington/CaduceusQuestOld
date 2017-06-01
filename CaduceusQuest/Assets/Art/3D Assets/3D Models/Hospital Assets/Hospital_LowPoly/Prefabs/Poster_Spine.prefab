@@ -9,45 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1256555775332516}
+  m_RootGameObject: {fileID: 1718675611334836}
   m_IsPrefabParent: 1
---- !u!1 &1256555775332516
+--- !u!1 &1718675611334836
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4519401218320108}
-  - component: {fileID: 33380365990881790}
-  - component: {fileID: 64818038747829036}
-  - component: {fileID: 23086046600406012}
+  - component: {fileID: 4220964840084612}
+  - component: {fileID: 33722940050980588}
+  - component: {fileID: 64792094723821098}
+  - component: {fileID: 23378595267434982}
   m_Layer: 0
-  m_Name: World Map
+  m_Name: Poster_Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4519401218320108
+--- !u!4 &4220964840084612
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1256555775332516}
-  m_LocalRotation: {x: 0.5000002, y: 0.49999985, z: -0.49999985, w: 0.5000002}
-  m_LocalPosition: {x: 2.23, y: 2.11, z: 4.38}
-  m_LocalScale: {x: 0.17458409, y: 0.5589388, z: 0.12559685}
+  m_GameObject: {fileID: 1718675611334836}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: 15.235, y: 2.05, z: -8.01001}
+  m_LocalScale: {x: 0.14557101, y: 1.0000002, z: 0.15993159}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 179.99998, z: 90.00001}
---- !u!23 &23086046600406012
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -180}
+--- !u!23 &23378595267434982
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1256555775332516}
+  m_GameObject: {fileID: 1718675611334836}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: eea813e6921bd27488b8a18b1f8145d8, type: 2}
+  - {fileID: 2100000, guid: 2cfb48958fe8e40e398446acede61225, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,19 +74,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33380365990881790
+--- !u!33 &33722940050980588
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1256555775332516}
+  m_GameObject: {fileID: 1718675611334836}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!64 &64818038747829036
+--- !u!64 &64792094723821098
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1256555775332516}
+  m_GameObject: {fileID: 1718675611334836}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
