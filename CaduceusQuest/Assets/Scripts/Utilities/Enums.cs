@@ -46,3 +46,12 @@ public enum EncounterMenus
     MSKILLSUBMENU,
     CSKILLSUBMENU
 }
+
+public enum SkillType
+{
+    SCIENCE,
+    ENGINEERING,
+    TECHNOLOGY,
+    MATHAMATICS,
+    COMMUNICATION
+}
