@@ -38,13 +38,21 @@ public class EncounterManager : MonoBehaviour
         {
             if(_baseMenuIndex != value)
             {
-                _baseMenu[_baseMenuIndex].GetComponent<Image>().sprite = DefalutButtonSprite;
-                _baseMenu[_baseMenuIndex].GetComponentInChildren<Text>().color = new Color(0, 0, 0);
+                if (_baseMenu[value].interactable)
+                {
+                    _baseMenu[_baseMenuIndex].GetComponent<Image>().sprite = DefalutButtonSprite;
+                    _baseMenu[_baseMenuIndex].GetComponentInChildren<Text>().color = new Color(0, 0, 0);
 
-                _baseMenu[value].GetComponent<Image>().sprite = _baseMenu[value].spriteState.highlightedSprite;
-                _baseMenu[value].GetComponentInChildren<Text>().color = new Color(1, 1, 1);
+                    _baseMenu[value].GetComponent<Image>().sprite = _baseMenu[value].spriteState.highlightedSprite;
+                    _baseMenu[value].GetComponentInChildren<Text>().color = new Color(1, 1, 1);
 
-                _baseMenuIndex = value;
+                    _baseMenuIndex = value;
+                }
+                else
+                {
+                    if (SkipButton(_baseMenuIndex, value, _baseMenu.Length) != -1)
+                        baseMenuIndex = SkipButton(_baseMenuIndex, value, _baseMenu.Length);
+                }
             }
         }
     }
@@ -69,9 +77,14 @@ public class EncounterManager : MonoBehaviour
                         _skillSubMenu[value].GetComponent<Image>().sprite = _skillSubMenu[value].spriteState.highlightedSprite;
                         _skillSubMenu[value].GetComponentInChildren<Text>().color = new Color(1, 1, 1);
                     }
-                }
 
-                _skillSubMenuIndex = value;
+                    _skillSubMenuIndex = value;
+                }
+                else
+                {
+                    if (SkipButton(_skillSubMenuIndex, value, _skillSubMenu.Length) != -1)
+                        skillSubMenuIndex = SkipButton(_skillSubMenuIndex, value, _skillSubMenu.Length);
+                }
             }
         }
     }
@@ -448,15 +461,39 @@ public class EncounterManager : MonoBehaviour
         subMenu.SetActive(false);
     }
 
-    //MASON! START HERE TOMORROW!!!!!!!
-    //private void SkipButton(Button[] parentMenu, bool up)
-    //{
-    //    if(parentMenu == _baseMenu)
-    //    {
-    //        if (up)
-    //            _baseMenu++;
-    //    }
-    //}
+    private int SkipButton(int oldMenuIndex, int newMenuIndex, int menuCount)
+    {
+        int menuMax = menuCount - 1;
+
+        if (newMenuIndex == 0 && oldMenuIndex == menuMax)
+        {
+            return 1;
+        }
+        else if(newMenuIndex == menuMax && oldMenuIndex == 0)
+        {
+            return menuMax - 1;
+        }
+        else if(newMenuIndex == 0 && oldMenuIndex > newMenuIndex)
+        {
+            return menuMax;
+        }
+        else if(newMenuIndex == menuMax && oldMenuIndex < newMenuIndex)
+        {
+            return 0;
+        }
+        else if(oldMenuIndex < newMenuIndex)
+        {
+            return newMenuIndex + 1;
+        }
+        else if (oldMenuIndex > newMenuIndex)
+        {
+            return newMenuIndex - 1;
+        }
+        else
+        {
+            return -1;
+        }
+    }
 
     private void PopulateTypeSkillSubMenu()
     {
