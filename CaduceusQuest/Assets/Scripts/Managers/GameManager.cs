@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private List<DialogueUIController> _allDialogControllers = new List<DialogueUIController>();
     public List<Skill> CurrentSimoneSkills = new List<Skill>();
 
-    private void Start()
+    private void Awake()
     {
         _allDialogControllers.AddRange(FindObjectsOfType<DialogueUIController>());
         AddSkill(new Skill("Complete Intake Form", SkillType.COMMUNICATION));
