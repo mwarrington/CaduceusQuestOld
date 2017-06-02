@@ -171,6 +171,15 @@ Danny
 	Trust drop: 
 	//
 
+	c,2:"I heard you're checking for meningoencephalitis. Is that true?"
+	good:"Ok, I trust you."
+	bad:"It doesn't really seem like you know what you're doing."
+
+	c,3:"Should I be worried? You're scaring me."
+	good: "Just a precautionary checkup? Ok cool."
+	bad: "Why can't you tell me??"
+
+
 	//fail convo//
 	(c)Danny(i)a;
 	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
@@ -199,10 +208,26 @@ Josh
 Quinn
 
 	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
+	Trust start: 80
+	Trust threshold: 50
+	Trust drop: 15
 	//
+
+	a,3:"Thanks again for finding that beetle! I was so relieved."
+	good:"Have you thought about becoming an entomologist?"
+	bad:"Uh, yeah."
+
+	c,2:"Should I be worried? You're scaring me a little."
+	good: "Just a precautionary checkup? Ok cool."
+	bad: "Why can't you tell me??"
+
+	c,3:"Please be careful!!"
+	good:"Ok, I trust you."
+	bad:"It doesn't really seem like you know what you're doing."
+
+	c,2:"I heard you're checking for meningoencephalitis. Is that true?"
+	good:"Ok, I trust you."
+	bad:"It doesn't really seem like you know what you're doing."
 
 	//fail convo//
 	(c)Quinn(i)a;
