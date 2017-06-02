@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[System.Serializable]
 public class EncounterGoal
 {
     public string Subject,
                   ActionName;
-    public float IndividualTrustMin;
+    public float IndividualTrustMin,
+                 InitialTrust;
+    public int TreatmentCount;
     public EncounterActionType ActionType;
 
     public EncounterGoal()
@@ -15,6 +18,7 @@ public class EncounterGoal
         Subject = "";
         ActionName = "";
         IndividualTrustMin = 0;
+        TreatmentCount = 0;
         ActionType = EncounterActionType.DIALOG;
     }
 }
@@ -29,7 +33,7 @@ public class Encounter : ScriptableObject
     {
         EncounterGoals = new EncounterGoal[GoalCount];
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < GoalCount; i++)
         {
             EncounterGoals[i] = new EncounterGoal();
         }
@@ -67,7 +71,10 @@ public class MakeEncounterObj
 
             EditorGUILayout.LabelField("Trust Threshold");
             encounterGoals[i].IndividualTrustMin = EditorGUILayout.FloatField("Individual Trust Minimum", encounterGoals[i].IndividualTrustMin);
+            encounterGoals[i].InitialTrust = EditorGUILayout.FloatField("Individual Initial Trust", encounterGoals[i].InitialTrust);
             EditorGUILayout.Space();
+
+            encounterGoals[i].TreatmentCount = EditorGUILayout.IntField("Treatments Required", encounterGoals[i].TreatmentCount);
 
             encounterGoals[i].ActionType = (EncounterActionType)EditorGUILayout.EnumPopup("Encounter Action Type", encounterGoals[i].ActionType);
         }
@@ -172,11 +179,12 @@ public class MakeEncounterObj
         public static void CreateEncounterObj(int goalCount, EncounterPattern turnPattern, EncounterGoal[] encounterGoals)
         {
             Encounter theEncounter = ScriptableObject.CreateInstance<Encounter>();
+            theEncounter.EncounterGoals = new EncounterGoal[goalCount];
 
-            //for (int i = 0; i < goalCount; i++)
-            //{
-            //    theEncounter.EncounterGoals[i] = encounterGoals[i];
-            //}
+            for (int i = 0; i < goalCount; i++)
+            {
+                theEncounter.EncounterGoals[i] = encounterGoals[i];
+            }
 
             theEncounter.EncounterGoals = encounterGoals;
             theEncounter.TurnPattern = turnPattern;
