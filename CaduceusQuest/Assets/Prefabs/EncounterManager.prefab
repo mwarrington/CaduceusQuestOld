@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1010263529281310}
+  m_IsPrefabParent: 1
+--- !u!1 &1010263529281310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4262673047570902}
+  - component: {fileID: 114782348970601022}
+  m_Layer: 0
+  m_Name: EncounterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4262673047570902
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010263529281310}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 548.3592, y: 608.5987, z: -185.875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114782348970601022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1010263529281310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0712400b499286744b572cb0f4743b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EncounterGoals: []
+  EncounterControllers: []
+  DefalutButtonSprite: {fileID: 21300000, guid: 619e28d1a6d67415eba55b55bb2a0d29,
+    type: 3}
+  CheckedBox: {fileID: 21300000, guid: a05ec672ab6faf346b90915a8e2e272b, type: 3}
+  TrustProgressBarSprites:
+  - {fileID: 21300000, guid: 2741fa1f602c9a2498918ab0ec147b1a, type: 3}
+  - {fileID: 21300000, guid: e0a65b763fbbc814d907facdbaf1fd43, type: 3}
+  - {fileID: 21300000, guid: 8b86ca5a1ef1ced42b7069ff13cd5300, type: 3}
+  - {fileID: 21300000, guid: 3e0006b233ec69f428392551ded730b1, type: 3}
+  - {fileID: 21300000, guid: bfc3a23e8155aea49ad579b6ae2f6da1, type: 3}
+  - {fileID: 21300000, guid: 9f75903c1570141488a1c82b08b7d2f4, type: 3}
+  - {fileID: 21300000, guid: bb71f54d27509814c95507a8dbebb0ad, type: 3}
+  - {fileID: 21300000, guid: 12801b2210d9abd4e9529206fbd680ca, type: 3}
+  - {fileID: 21300000, guid: 401f0afe80cb2e84f94ee35e3c03b8e6, type: 3}
+  - {fileID: 21300000, guid: f7a68a10d3f33de4388a112f99782ce1, type: 3}
+  - {fileID: 21300000, guid: 78867529deb36c541935b84afb9aa6dc, type: 3}
+  EntireMenu: {fileID: 0}

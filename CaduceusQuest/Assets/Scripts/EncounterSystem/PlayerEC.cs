@@ -11,9 +11,9 @@ public class PlayerEC : EncounterController
         //Instantiate my menu items
     }
 
-    private void InstantiateMyMenuItems()
-    {
-        EncounterAction DefaultCompSciAction = new EncounterAction(EncounterActionType.COMPSCI, 10, "Default");
-        EncounterMenuItem compSci = new EncounterMenuItem("CompSci", DefaultCompSciAction);
-    }
+    //private void InstantiateMyMenuItems()
+    //{
+    //    EncounterAction DefaultCompSciAction = new EncounterAction(EncounterActionType.COMPSCI, 10, "Default");
+    //    EncounterMenuItem compSci = new EncounterMenuItem("CompSci", DefaultCompSciAction);
+    //}
 }

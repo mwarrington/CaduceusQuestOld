@@ -7,6 +7,8 @@ public class CompSciPuzzleManager : MonoBehaviour
 {
     public GameObject[] TopRowPositions,
                         BottomRowPositions;
+    public string Name;
+    public float FailPenalty;
     public int Strikes;
 
     private GameObject[] _symbolPrefabs,
@@ -16,12 +18,14 @@ public class CompSciPuzzleManager : MonoBehaviour
     private Dictionary<CardinalDirections, int> _arrowKeyOrder = new Dictionary<CardinalDirections, int>();
     private GameObject _incorrectSymbol,
                        _strikeObj;
+    private EncounterManager _theEncounterManager;
     private int _currentRowIndex,
                 _strikesCount;
     private bool _inputDisabled;
                         
     void Start()
     {
+        _theEncounterManager = FindObjectOfType<EncounterManager>();
         _symbolOrder = new int[TopRowPositions.Length];
         InstantiateTopRow();
         InstantiateStrikes();
@@ -153,7 +157,7 @@ public class CompSciPuzzleManager : MonoBehaviour
         _strikesCount++;
         _inputDisabled = true;
 
-        if (_strikesCount == 3)
+        if (_strikesCount == Strikes)
             YouLose();
     }
 
@@ -165,11 +169,11 @@ public class CompSciPuzzleManager : MonoBehaviour
 
     private void YouLose()
     {
-        Debug.Log("NOOOOOOOOOOOO!!!");
+        _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject);
     }
 
     public void YouWin()
     {
-        Debug.Log("WOOOOOOOOOOOO!!!");
+        _theEncounterManager.PuzzleWin(Name, this.gameObject);
     }
 }
