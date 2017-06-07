@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faf361290e12e8745a9865fa3bfdf3a8, type: 3}
+  m_Name: Examine Neck
+  m_EditorClassIdentifier: 
+  MyType: 3
+  FailPenalty: 10
+  Name: Examine Neck
+  KeyStrokeCount: 5
+  ArrowMinSpeed: 1
+  ArrowMaxSpeed: 3
+  SpawnRate: 1

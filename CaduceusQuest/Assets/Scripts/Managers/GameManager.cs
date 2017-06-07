@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     {
         _allDialogControllers.AddRange(FindObjectsOfType<DialogueUIController>());
         AddSkill(new Skill("Complete Intake Form", SkillType.COMMUNICATION));
-        //AddSkill(new Skill("Examine Neck", SkillType.SCIENCE));
+        AddSkill(new Skill("Examine Neck", SkillType.SCIENCE));
         //AddSkill(new Skill("Collect Blood Sample", SkillType.SCIENCE));
     }
 

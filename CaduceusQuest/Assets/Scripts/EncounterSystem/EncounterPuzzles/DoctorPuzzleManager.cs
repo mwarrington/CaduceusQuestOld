@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoctorPuzzleManager : MonoBehaviour
 {
+    public string Name;
+    public float FailPenalty;
     public float MinArrowSpeed,
                  MaxArrowSpeed,
                  SpawnRate;
@@ -33,6 +35,15 @@ public class DoctorPuzzleManager : MonoBehaviour
     }
     private int _correctKeyPressCount;
 
+    protected float successRate
+    {
+        get
+        {
+            return KeyStrokeCount / CorrectKeyPressCount;
+        }
+    }
+
+    private EncounterManager _theEncounterManager;
     private Camera _myCamera;
     private SpriteRenderer _correctKeyPressIndicator,
                            _incorrectKeyPressIndicator;
@@ -46,6 +57,7 @@ public class DoctorPuzzleManager : MonoBehaviour
     void Start()
     {
         _myCamera = GetComponentInChildren<Camera>();
+        _theEncounterManager = FindObjectOfType<EncounterManager>();
         _topSpawnPoint = GameObject.Find("SpawnPointTop").transform.position;
         _bottomSpawnPoint = GameObject.Find("SpawnPointBottom").transform.position;
         _leftSpawnPoint = GameObject.Find("SpawnPointLeft").transform.position;
@@ -65,6 +77,14 @@ public class DoctorPuzzleManager : MonoBehaviour
             if(_arrowSpawnCount == 0)
             {
                 SimpleArrowSpawn();
+            }
+            else if(successRate > .9f)
+            {
+                _theEncounterManager.PuzzleWin(Name, this.gameObject);
+            }
+            else
+            {
+                _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject);
             }
         }
     }
@@ -151,6 +171,11 @@ public class DoctorPuzzleManager : MonoBehaviour
 
         if (_arrowSpawnCount < KeyStrokeCount)
             Invoke("SimpleArrowSpawn", SpawnRate);
+    }
+
+    private void GameEndHandler()
+    {
+
     }
 
     //private void ComplexArrowSpawn()
