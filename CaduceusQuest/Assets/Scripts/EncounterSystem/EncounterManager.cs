@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class EncounterManager : MonoBehaviour
 {
     public List<EncounterGoal> EncounterGoals = new List<EncounterGoal>();
-    public List<EncounterController> EncounterControllers = new List<EncounterController>();
+    public List<EncounterTurnType> EncounterTurns = new List<EncounterTurnType>();
     public Sprite DefalutButtonSprite, CheckedBox;
     public Sprite[] TrustProgressBarSprites;
-    public Canvas EntireMenu;
+    public GameObject PlayerMenu;
 
     private GameManager _theGameManager;
     private Image _target1CB1, _target1CB2, _target1CB3,
@@ -18,7 +18,8 @@ public class EncounterManager : MonoBehaviour
                   _target4CB1, _target4CB2, _target4CB3,
                   _target1Trust, _target2Trust, _target3Trust, _target4Trust;
     private Text _targetName1, _targetName2, _targetName3, _targetName4,
-                 _treatment1, _treatment2, _treatment3, _treatment4;
+                 _treatment1, _treatment2, _treatment3, _treatment4,
+                 _encounterMessage;
     private Button _skills, _items, _endEncounter,
                    _science, _engineering, _technology, _mathamatics, _communication,
                    _sSkill1, _sSkill2, _sSkill3,
@@ -35,8 +36,14 @@ public class EncounterManager : MonoBehaviour
                          _mSkillSubMenu = new List<Button>(),
                          _cSkillSubMenu = new List<Button>();
 
+    private List<string> _currentEnconterMessages = new List<string>();
+    private GameObject _currentMinigameObj;
+    private EncounterAction _currentEA;
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
-    private bool _inputEnabled = true;
+    private int _turnCount,
+                _currentMessageIndex;
+    private bool _playerMenuEnabled = true,
+                 _encounterMessageEnabled;
 
     #region Menu Index Properties
     //These handle image and text color change for menu navigation
@@ -466,19 +473,112 @@ public class EncounterManager : MonoBehaviour
         _target3Trust = GameObject.Find("Target 3/Trust Level/Image").GetComponent<Image>();
         _target4Trust = GameObject.Find("Target 4/Trust Level/Image").GetComponent<Image>();
 
+        _encounterMessage = GameObject.Find("EncounterMessage").GetComponentInChildren<Text>();
+        _encounterMessage.transform.parent.gameObject.SetActive(false);
         EncounterInfoInitializer();
         #endregion Getting/Setting Encounter Data
+
+        CreateTurnOrder();
     }
 
     private void CreateTurnOrder()
     {
-        //EncounterControllers.Add(???)
+        bool makingPlayer = true;
+
+        switch (_theGameManager.CurrentEncounter.TurnPattern)
+        {
+            case EncounterPattern.ALTERNATE:
+                for (int i = 0; i < 3; i++)
+                {
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+
+                    makingPlayer = !makingPlayer;
+                }
+                break;
+            case EncounterPattern.DOUBLEALTERNATE:
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i == 2)
+                        makingPlayer = false;
+
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                }
+                break;
+            case EncounterPattern.PLAYER1DIALOG2:
+                for (int i = 0; i < 3; i++)
+                {
+                    if (i == 1)
+                        makingPlayer = false;
+
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                }
+                break;
+            case EncounterPattern.PLAYER2DIALOG1:
+                for (int i = 0; i < 3; i++)
+                {
+                    if (i == 2)
+                        makingPlayer = false;
+
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                }
+                break;
+        }
     }
 
     private void Update()
     {
-        if (_inputEnabled)
+        if (_encounterMessageEnabled)
+            MessageUIHandler();
+
+        if (_playerMenuEnabled)
             UIInputHandler();
+    }
+
+    private void MessageUIHandler()
+    {
+        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
+        {
+            if(_currentMessageIndex == _currentEnconterMessages.Count)
+            {
+                if(_currentMinigameObj != null)
+                {
+                    HideEncounterMessage();
+                    LoadMinigame();
+                }
+            }
+            else
+            {
+                DisplayEncounterMessage(_currentEnconterMessages[_currentMessageIndex]);
+            }
+        }
     }
 
     private void UIInputHandler()
@@ -660,42 +760,66 @@ public class EncounterManager : MonoBehaviour
         #endregion Horizontal Menu Naviagion and Select Controls
     }
 
-    public void LoadMiniGame(Text myText)
+    public void PrepMiniGameToInstantiate(Text myText)
     {
         string skillName = myText.text;
         
-        EncounterAction ea = Resources.Load<EncounterAction>("EncounterActions/" + skillName);
+        _currentEA = Resources.Load<EncounterAction>("EncounterActions/" + skillName);
 
-        switch (ea.MyType)
+        switch (_currentEA.MyType)
         {
             case EncounterActionType.COMPSCI:
-                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)ea;
-                GameObject CompSciEAObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/CompSciPuzzle/CompSciPuzzle" + myCompSciSO.SymbolCount);
-                CompSciEAObj = GameObject.Instantiate(CompSciEAObj);
-                CompSciPuzzleManager cspm = CompSciEAObj.GetComponent<CompSciPuzzleManager>();
+                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/CompSciPuzzle/CompSciPuzzle" + myCompSciSO.SymbolCount);
+                _currentEnconterMessages.Add(myCompSciSO.Name);
+                DisplayEncounterMessage(_currentEnconterMessages[0]);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DOCTOR:
+                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Doctor/DoctorPuzzleDefault");
+                _currentEnconterMessages.Add(myDoctorSO.Name);
+                DisplayEncounterMessage(_currentEnconterMessages[0]);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DIALOG:
+                EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Dialog/DialogPuzzle");
+                DisplayEncounterMessage(_currentEnconterMessages[0]);
+                break;
+            default:
+                Debug.LogError("We haven't put together an IntiateAction for that action type.");
+                break;
+        }
+    }
+
+    private void LoadMinigame()
+    {
+        switch (_currentEA.MyType)
+        {
+            case EncounterActionType.COMPSCI:
+                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_currentEA;
+                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj);
+                CompSciPuzzleManager cspm = _currentMinigameObj.GetComponent<CompSciPuzzleManager>();
                 cspm.Strikes = myCompSciSO.StrikeCount;
                 cspm.Name = myCompSciSO.Name;
                 cspm.FailPenalty = myCompSciSO.FailPenalty;
-                ToggleWholeMenu();
                 break;
             case EncounterActionType.DOCTOR:
-                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)ea;
-                GameObject DoctorPuzzleObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Doctor/DoctorPuzzleDefault");
-                DoctorPuzzleObj = GameObject.Instantiate(DoctorPuzzleObj, new Vector3(this.transform.position.x - 1000f, this.transform.position.y - 1000f, this.transform.position.z), Quaternion.identity);
-                DoctorPuzzleManager myDocPuzzMan = DoctorPuzzleObj.GetComponent<DoctorPuzzleManager>();
+                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_currentEA;
+                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj, new Vector3(this.transform.position.x - 1000f, this.transform.position.y - 1000f, this.transform.position.z), Quaternion.identity);
+                DoctorPuzzleManager myDocPuzzMan = _currentMinigameObj.GetComponent<DoctorPuzzleManager>();
                 myDocPuzzMan.Name = myDoctorSO.Name;
                 myDocPuzzMan.FailPenalty = myDoctorSO.FailPenalty;
                 myDocPuzzMan.KeyStrokeCount = myDoctorSO.KeyStrokeCount;
                 myDocPuzzMan.MinArrowSpeed = myDoctorSO.ArrowMinSpeed;
                 myDocPuzzMan.MaxArrowSpeed = myDoctorSO.ArrowMaxSpeed;
                 myDocPuzzMan.SpawnRate = myDoctorSO.SpawnRate;
-                ToggleWholeMenu();
                 break;
             case EncounterActionType.DIALOG:
-                EncounterActionDialog myDialogSO = (EncounterActionDialog)ea;
-                GameObject DialogPuzzleObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Dialog/DialogPuzzle");
-                DialogPuzzleObj = GameObject.Instantiate(DialogPuzzleObj);
-                DialogPuzzleManager myDialogPuzzMan = DialogPuzzleObj.GetComponent<DialogPuzzleManager>();
+                EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
+                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj);
+                DialogPuzzleManager myDialogPuzzMan = _currentMinigameObj.GetComponent<DialogPuzzleManager>();
                 myDialogPuzzMan.Speaker = myDialogSO.Speaker;
                 myDialogPuzzMan.SpeakerLine = myDialogSO.SpeakerLine;
                 myDialogPuzzMan.BadResponse = myDialogSO.BadResponse;
@@ -706,11 +830,27 @@ public class EncounterManager : MonoBehaviour
                 Debug.LogError("We haven't put together an IntiateAction for that action type.");
                 break;
         }
+
+        _currentMinigameObj = null;
+    }
+
+    private void BeginTurn()
+    {
+        if(EncounterTurns[_turnCount] == EncounterTurnType.PLAYER)
+        {
+            TogglePlayerMenu();
+        }
+        else if(EncounterTurns[_turnCount] == EncounterTurnType.EVENT)
+        {
+            //DisplayEncounterMessage();
+        }
+
+        _turnCount++;
     }
 
     public void PuzzleFail(float failPenalty, GameObject currentPuzzle)
     {
-        ToggleWholeMenu();
+        TogglePlayerMenu();
         target1CurrentTrust -= failPenalty;
         GameObject.Destroy(currentPuzzle);
     }
@@ -746,7 +886,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else
                     {
-                        ToggleWholeMenu();
+                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
@@ -775,7 +915,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else
                     {
-                        ToggleWholeMenu();
+                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
@@ -804,7 +944,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else
                     {
-                        ToggleWholeMenu();
+                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
@@ -833,19 +973,32 @@ public class EncounterManager : MonoBehaviour
                     }
                     else
                     {
-                        ToggleWholeMenu();
+                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
             }
         }
-
     }
 
-    private void ToggleWholeMenu()
+    private void TogglePlayerMenu()
     {
-        EntireMenu.gameObject.SetActive(!EntireMenu.gameObject.activeSelf);
-        _inputEnabled = !_inputEnabled;
+        PlayerMenu.SetActive(!PlayerMenu.activeSelf);
+        _playerMenuEnabled = !_playerMenuEnabled;
+    }
+
+    private void DisplayEncounterMessage(string message)
+    {
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = message;
+        _encounterMessageEnabled = true;
+        _currentMessageIndex++;
+    }
+
+    private void HideEncounterMessage()
+    {
+        _encounterMessage.transform.parent.gameObject.SetActive(false);
+        _encounterMessageEnabled = false;
     }
 
     public void ShowSubMenu(GameObject subMenu)

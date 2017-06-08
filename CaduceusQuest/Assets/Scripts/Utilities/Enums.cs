@@ -55,3 +55,10 @@ public enum SkillType
     MATHAMATICS,
     COMMUNICATION
 }
+
+public enum EncounterTurnType
+{
+    PLAYER,
+    EVENT,
+    ALLY
+}

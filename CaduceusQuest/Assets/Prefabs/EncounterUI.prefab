@@ -386,6 +386,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1221730713602540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224684305440165880}
+  - component: {fileID: 222330943825586748}
+  - component: {fileID: 114725834282319752}
+  m_Layer: 5
+  m_Name: EncounterMessage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1230288673194264
 GameObject:
   m_ObjectHideFlags: 1
@@ -1543,6 +1560,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1926359925515084
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224968531002423086}
+  - component: {fileID: 222111074692447468}
+  - component: {fileID: 114514592773459882}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1933476241384978
 GameObject:
   m_ObjectHideFlags: 1
@@ -1846,7 +1880,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114277663876978746}
@@ -1986,7 +2020,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114272991805616268}
@@ -2072,7 +2106,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114277074514926512}
@@ -2550,7 +2584,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114389314048764824}
@@ -2738,7 +2772,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114656639218011656}
@@ -2919,6 +2953,39 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114514592773459882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926359925515084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!114 &114519926144361518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3100,7 +3167,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114341987710375070}
@@ -3246,7 +3313,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114974148206068960}
@@ -3380,7 +3447,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114113998017037420}
@@ -3613,7 +3680,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114651991842160180}
@@ -3724,6 +3791,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Treatment
+--- !u!114 &114725834282319752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221730713602540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114733381159985888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3945,7 +4039,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114633604486666402}
@@ -4111,7 +4205,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114733381159985888}
@@ -4405,7 +4499,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114213502008364656}
@@ -4578,7 +4672,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114007443971649240}
@@ -4631,7 +4725,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114750703314064240}
@@ -5013,7 +5107,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: LoadMiniGame
+        m_MethodName: PrepMiniGameToInstantiate
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 114887185911758830}
@@ -5106,6 +5200,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1641850248314050}
+--- !u!222 &222111074692447468
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926359925515084}
 --- !u!222 &222128205116948014
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -5172,6 +5272,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1107839493561734}
+--- !u!222 &222330943825586748
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221730713602540}
 --- !u!222 &222338843204151978
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -6728,6 +6834,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224684305440165880
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1221730713602540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 13, y: 0.3572842, z: 1}
+  m_Children:
+  - {fileID: 224968531002423086}
+  m_Father: {fileID: 224926343977961622}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 329.7}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224694160088374706
 RectTransform:
   m_ObjectHideFlags: 1
@@ -7200,6 +7325,7 @@ RectTransform:
   m_Children:
   - {fileID: 224564673651108454}
   - {fileID: 224803456890527560}
+  - {fileID: 224684305440165880}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7265,6 +7391,24 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -452, y: -290}
   m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224968531002423086
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926359925515084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.07692307, y: 2.7988923, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224684305440165880}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -16.793335}
+  m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224987988766697130
 RectTransform:

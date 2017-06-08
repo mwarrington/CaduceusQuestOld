@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EncounterGoals: []
-  EncounterControllers: []
+  EncounterTurns: 
   DefalutButtonSprite: {fileID: 21300000, guid: 619e28d1a6d67415eba55b55bb2a0d29,
     type: 3}
   CheckedBox: {fileID: 21300000, guid: a05ec672ab6faf346b90915a8e2e272b, type: 3}
@@ -68,4 +68,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 401f0afe80cb2e84f94ee35e3c03b8e6, type: 3}
   - {fileID: 21300000, guid: f7a68a10d3f33de4388a112f99782ce1, type: 3}
   - {fileID: 21300000, guid: 78867529deb36c541935b84afb9aa6dc, type: 3}
-  EntireMenu: {fileID: 0}
+  PlayerMenu: {fileID: 0}
