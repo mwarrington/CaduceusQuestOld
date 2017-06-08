@@ -242,7 +242,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530186505694150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.899088, y: 3.8744593, z: -12.453226}
+  m_LocalPosition: {x: 14.93, y: 11.41, z: -12.453226}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4712396837687680}
@@ -337,10 +337,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
-  FailPenalty: 0
-  MinArrowSpeed: 0.3
-  MaxArrowSpeed: 0.8
-  SpawnRate: 1
+  FailPenalty: 15
+  MinArrowSpeed: 0.2
+  MaxArrowSpeed: 0.35
+  SpawnRate: 2
   KeyStrokeCount: 4
   ComplexSpawning: 0
   RandomSpawning: 0

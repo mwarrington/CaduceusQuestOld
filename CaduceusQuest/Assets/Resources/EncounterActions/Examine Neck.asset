@@ -15,6 +15,6 @@ MonoBehaviour:
   FailPenalty: 10
   Name: Examine Neck
   KeyStrokeCount: 5
-  ArrowMinSpeed: 1
-  ArrowMaxSpeed: 3
-  SpawnRate: 1
+  ArrowMinSpeed: 0.2
+  ArrowMaxSpeed: 0.35
+  SpawnRate: 2

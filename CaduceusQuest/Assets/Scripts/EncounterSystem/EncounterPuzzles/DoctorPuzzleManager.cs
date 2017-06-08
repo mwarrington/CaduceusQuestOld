@@ -39,7 +39,7 @@ public class DoctorPuzzleManager : MonoBehaviour
     {
         get
         {
-            return KeyStrokeCount / CorrectKeyPressCount;
+            return CorrectKeyPressCount / KeyStrokeCount;
         }
     }
 
@@ -52,7 +52,7 @@ public class DoctorPuzzleManager : MonoBehaviour
                     _leftSpawnPoint,
                     _rightSpawnPoint;
     private int _arrowSpawnCount;
-    private bool _puzzleStarted;
+    private bool _puzzleStarted, _gameOver;
     
     void Start()
     {
@@ -65,26 +65,16 @@ public class DoctorPuzzleManager : MonoBehaviour
         _correctKeyPressIndicator = GameObject.Find("target_green").GetComponent<SpriteRenderer>();
         _incorrectKeyPressIndicator = GameObject.Find("target_red").GetComponent<SpriteRenderer>();
         _correctKeyPressIndicator.enabled = false;
+        Invoke("InitiateGame", 1);
     }
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-            _puzzleStarted = true;
-
         if(_puzzleStarted)
         {
             if(_arrowSpawnCount == 0)
             {
                 SimpleArrowSpawn();
-            }
-            else if(successRate > .9f)
-            {
-                _theEncounterManager.PuzzleWin(Name, this.gameObject);
-            }
-            else
-            {
-                _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject);
             }
         }
     }
@@ -166,16 +156,28 @@ public class DoctorPuzzleManager : MonoBehaviour
 
         GameObject arrow = Resources.Load<GameObject>(path);
         arrow = Instantiate(arrow, spawnPoint, Quaternion.identity);
-        arrow.GetComponent<DocArrowController>().Speed = Random.Range(MinArrowSpeed, MaxArrowSpeed);
+        DocArrowController dac = arrow.GetComponent<DocArrowController>();
+        dac.Speed = Random.Range(MinArrowSpeed, MaxArrowSpeed);
         _arrowSpawnCount++;
+        dac.Index = _arrowSpawnCount;
 
         if (_arrowSpawnCount < KeyStrokeCount)
             Invoke("SimpleArrowSpawn", SpawnRate);
+        else
+            _gameOver = true;
     }
 
-    private void GameEndHandler()
+    private void InitiateGame()
     {
+        _puzzleStarted = true;
+    }
 
+    public void EndGame()
+    {
+        if (successRate > .9f)
+            _theEncounterManager.PuzzleWin(Name, this.gameObject);
+        else
+            _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject);
     }
 
     //private void ComplexArrowSpawn()

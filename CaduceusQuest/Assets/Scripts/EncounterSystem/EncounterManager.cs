@@ -681,7 +681,7 @@ public class EncounterManager : MonoBehaviour
             case EncounterActionType.DOCTOR:
                 EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)ea;
                 GameObject DoctorPuzzleObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Doctor/DoctorPuzzleDefault");
-                DoctorPuzzleObj = GameObject.Instantiate(DoctorPuzzleObj, new Vector3(this.transform.position.x - 1000f, this.transform.position.y - 1000f, this.transform.position.z - 1000f), Quaternion.identity);
+                DoctorPuzzleObj = GameObject.Instantiate(DoctorPuzzleObj, new Vector3(this.transform.position.x - 1000f, this.transform.position.y - 1000f, this.transform.position.z), Quaternion.identity);
                 DoctorPuzzleManager myDocPuzzMan = DoctorPuzzleObj.GetComponent<DoctorPuzzleManager>();
                 myDocPuzzMan.Name = myDoctorSO.Name;
                 myDocPuzzMan.FailPenalty = myDoctorSO.FailPenalty;
