@@ -53,33 +53,87 @@ Sylvia
 	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
 
 Violet
+
+	--VioletEncounter1--
 	
-	a //intake form
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+		Complete Intake Form
+		Initial Trust: 50
+		Treatment Count: 2
+		Action Type: COMPSCI
 
-	b //blood test
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
+		Fail Penalty: 15
+		Name: Violet1
+		Speaker: Violet
+		Emotion: g,2
+		Speaker line: "You don't seem like you know what you're doing."
+		Bad: "Well I'm all you've got!"
+		Good: "I'm new here, but I'll listen to you and get Dr. Gallo when we need her."
 
-	c //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
+		Fail Penalty: 15
+		Name: Violet2
+		Speaker: Violet
+		Emotion: c,2
+		Speaker line: "I've been feeling really tired all the time, and I'm not sure what's wrong."
+		Bad: "Uh oh..."
+		Good: "There could be lots of causes, including a simple iron deficiency. We'll get you a diagnosis as quickly as possible!"
 
-	//fail convo//
-	(c)Violet(i)a;
-	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
-		(g)0(n)1(f)h,1(l)"Yep.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&;
-	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
+		Fail Penalty: 20
+		Name: Violet3
+		Speaker: Violet
+		Emotion: c,3
+		Speaker line: "The morning sickness is making me worried I'm pregnant. Can you test for that?"
+		Bad: "That would be irresponsible of you!"
+		Good: "Of course. And don't worry, if you're pregnant we can talk you through your options."
 
+	--VioletEncounter2--
+		
+		Blood Test
+		Initial Trust: 40
+		Treatment Count: 2
+		Action Type: SCIENCE
+
+		Violet1
+
+		Violet3
+
+		Fail Penalty: 15
+		Name: Violet4
+		Speaker: Violet
+		Emotion: c,4
+		Speaker line: "I really hate needles!!!"
+		Bad: "Violet, you gotta toughen up..."
+		Good: "It'll be a quick pinch and then I'm done. You can do this!"
+
+	--VioletEncounter3--
+		
+		Neck Exam
+		Initial Trust: 60
+		Treatment Count: 2
+		Action Type: SCIENCE
+
+		Fail Penalty: 20
+		Name: Violet5
+		Speaker: Violet
+		Emotion: a,3
+		Speaker line: "Dr. Gallo called and gave me some iron pills for my anemia. I feel SO much better."
+		Bad: "Yeah, thank god you're not pregnant..."
+		Good: "That's great!"
+
+		Fail Penalty: 15
+		Name: Violet6
+		Speaker: Violet
+		Emotion: c,3
+		Speaker line: "I heard you're checking for meningoencephalitis. Is that true?"
+		Bad: "I can't tell you."
+		Good: "I am, but just as a precaution. It's too early to worry."
+
+		Fail Penalty: 10
+		Name: Violet7
+		Speaker: Violet
+		Emotion: b,2
+		Speaker line: "You know, maybe I underestimated you. You're not so bad."
+		Bad: "Gee, thanks a lot..."
+		Good: "Thanks!"
 
 Mason
 
