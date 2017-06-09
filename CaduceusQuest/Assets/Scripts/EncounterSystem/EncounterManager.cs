@@ -40,6 +40,7 @@ public class EncounterManager : MonoBehaviour
     private GameObject _currentMinigameObj;
     private EncounterAction _currentEA;
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
+    private EncounterActionDialog _currentEventDialog;
     private int _turnIndex,
                 _currentMessageIndex;
     private bool _playerMenuEnabled,
@@ -486,24 +487,60 @@ public class EncounterManager : MonoBehaviour
 
     private void BeginTurn()
     {
+        if (_turnIndex == EncounterTurns.Count)
+        {
+            switch (_theGameManager.CurrentEncounter.TurnPattern)
+            {
+                case EncounterPattern.ALTERNATE:
+                    if (EncounterTurns[_turnIndex - 1] == EncounterTurnType.EVENT)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else if (EncounterTurns[_turnIndex - 1] == EncounterTurnType.PLAYER)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                    break;
+                case EncounterPattern.DOUBLEALTERNATE:
+                    break;
+                case EncounterPattern.PLAYER1DIALOG2:
+                    break;
+                case EncounterPattern.PLAYER2DIALOG1:
+                    break;
+            }
+        }
+
         if (EncounterTurns[_turnIndex] == EncounterTurnType.PLAYER)
         {
             TogglePlayerMenu();
         }
         else if (EncounterTurns[_turnIndex] == EncounterTurnType.EVENT)
         {
-            Debug.Log("sdfa");
-            //DisplayEncounterMessage();
+            LoadDialogEvent();
+
+            DisplayEncounterMessage(_currentEventDialog.Speaker + ": " + _currentEventDialog.SpeakerLine, _currentEventDialog.LineEmotion);
+            PrepMiniGameToInstantiate(_currentEventDialog.Name);
         }
 
         _turnIndex++;
     }
 
+    private void LoadDialogEvent()
+    {
+        Encounter currentEncounter = _theGameManager.CurrentEncounter;
+        int rand = Random.Range(0, currentEncounter.GoalCount);
+        string subject = _theGameManager.CurrentEncounter.EncounterGoals[rand].Subject;
+
+        //HACK//
+        subject = "Sylvia";
+        //HACK//
+
+        _currentEventDialog = Resources.Load<EncounterActionDialog>("EncounterActions/" + subject + 1);
+    }
+
     private void CreateTurnOrder()
     {
         bool makingPlayer = true;
-
-        Debug.Log(_theGameManager.CurrentEncounter.TurnPattern);
 
         switch (_theGameManager.CurrentEncounter.TurnPattern)
         {
@@ -795,6 +832,38 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
+    public void PrepMiniGameToInstantiate(string myText)
+    {
+        string skillName = myText;
+
+        _currentEA = Resources.Load<EncounterAction>("EncounterActions/" + skillName);
+
+        switch (_currentEA.MyType)
+        {
+            case EncounterActionType.COMPSCI:
+                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/CompSciPuzzle/CompSciPuzzle" + myCompSciSO.SymbolCount);
+                _currentEncounterMessages.Add(myCompSciSO.Name);
+                DisplayEncounterMessage(myCompSciSO.Name);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DOCTOR:
+                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Doctor/DoctorPuzzleDefault");
+                DisplayEncounterMessage(myDoctorSO.Name);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DIALOG:
+                EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Dialog/DialogPuzzle");
+                //DisplayEncounterMessage(_currentEncounterMessages[0], false);
+                break;
+            default:
+                Debug.LogError("We haven't put together an IntiateAction for that action type.");
+                break;
+        }
+    }
+
     private void LoadMinigame()
     {
         switch (_currentEA.MyType)
@@ -820,8 +889,10 @@ public class EncounterManager : MonoBehaviour
                 break;
             case EncounterActionType.DIALOG:
                 EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
-                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj);
+                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj, new Vector3(this.transform.position.x - 1000f, this.transform.position.y - 1000f, this.transform.position.z), Quaternion.identity);
                 DialogPuzzleManager myDialogPuzzMan = _currentMinigameObj.GetComponent<DialogPuzzleManager>();
+                myDialogPuzzMan.Name = myDialogSO.Name;
+                myDialogPuzzMan.FailPenalty = myDialogSO.FailPenalty;
                 myDialogPuzzMan.Speaker = myDialogSO.Speaker;
                 myDialogPuzzMan.SpeakerLine = myDialogSO.SpeakerLine;
                 myDialogPuzzMan.BadResponse = myDialogSO.BadResponse;
@@ -836,10 +907,43 @@ public class EncounterManager : MonoBehaviour
         _currentMinigameObj = null;
     }
 
+    #region Puzzle Win Fail Methods
     public void PuzzleFail(float failPenalty, GameObject currentPuzzle)
     {
         DisplayEncounterMessage("Dang, that didn't go so well...");
         target1CurrentTrust -= failPenalty;
+        GameObject.Destroy(currentPuzzle);
+    }
+
+    public void PuzzleWin(float failPenalty, GameObject currentPuzzle)
+    {
+        for (int i = 0; i < EncounterGoals.Count; i++)
+        {
+            if (EncounterGoals[i].Subject == _currentEventDialog.Speaker)
+            {
+                if (i == 0)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+                if (i == 1)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+                if (i == 2)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+                if (i == 3)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+            }
+        }
+
+        string[] dialogs = new string[2];
+        dialogs[0] = _currentEventDialog.GoodResponse;
+        dialogs[1] = "Good Job!";
+        DisplayEncounterMessage(dialogs);
         GameObject.Destroy(currentPuzzle);
     }
 
@@ -849,9 +953,9 @@ public class EncounterManager : MonoBehaviour
 
         for (int i = 0; i < EncounterGoals.Count; i++)
         {
-            if(EncounterGoals[i].ActionName == actionName)
+            if (EncounterGoals[i].ActionName == actionName)
             {
-                if(i == 0)
+                if (i == 0)
                 {
                     int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target1SuccessCount;
 
@@ -873,7 +977,7 @@ public class EncounterManager : MonoBehaviour
 
                     _target1SuccessCount++;
 
-                    if(_target1SuccessCount == EncounterGoals[i].TreatmentCount)
+                    if (_target1SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
                         //True win
@@ -987,6 +1091,7 @@ public class EncounterManager : MonoBehaviour
             DisplayEncounterMessage("Good Job!");
         }
     }
+    #endregion Puzzle Win Fail Methods
 
     private void TogglePlayerMenu()
     {
@@ -1016,6 +1121,161 @@ public class EncounterManager : MonoBehaviour
         _encounterMessage.transform.parent.gameObject.SetActive(true);
         _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
         _encounterMessageEnabled = true;
+        Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        messageBox.color = new Color(1f, 1f, 1f, 0.5f);
+        _currentMessageIndex++;
+    }
+
+    private void DisplayEncounterMessage(string message, Emotion messageEmotion)
+    {
+        _currentEncounterMessages.Clear();
+        _currentEncounterMessages.Add(message);
+        _currentMessageIndex = 0;
+
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        _encounterMessageEnabled = true;
+
+        switch(messageEmotion.EmotionType)
+        {
+            case 'a':
+                switch(messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.99f, .99f, .8f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.99f, .95f, .51f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(0.97f, 0.85f, 0.30f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.93f, .76f, 0, 1);
+                        break;
+                }
+                break;
+            case 'b':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.85f, .92f, .62f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.77f, .88f, .38f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.6f, .8f, .2f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.48f, .74f, .05f, 1);
+                        break;
+                }
+                break;
+            case 'c':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.8f, .93f, .80f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.46f, .76f, .47f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.21f, .64f, .31f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(0, .45f, .18f, 1);
+                        break;
+                }
+                break;
+            case 'd':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.85f, .92f, .62f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.05f, .78f, .84f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.24f, .64f, .75f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(0, .51f, .67f, 1);
+                        break;
+                }
+                break;
+            case 'e':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.79f, .87f, .92f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.64f, .73f, .85f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.45f, .62f, .79f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.12f, .42f, .67f, 1);
+                        break;
+                }
+                break;
+            case 'f':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.80f, .70f, .85f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.73f, .6f, .8f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.62f, .47f, .73f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.48f, .31f, .64f, 1);
+                        break;
+                }
+                break;
+            case 'g':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.93f, .65f, .64f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.77f, .88f, .38f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.90f, .19f, .36f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.86f, 0f, .28f, 1);
+                        break;
+                }
+                break;
+            case 'h':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.99f, .85f, .64f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.97f, .73f, .41f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.95f, .6f, .23f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.91f, .44f, .0f, 1);
+                        break;
+                }
+                break;
+        }
         _currentMessageIndex++;
     }
 
@@ -1029,6 +1289,8 @@ public class EncounterManager : MonoBehaviour
         _encounterMessage.transform.parent.gameObject.SetActive(true);
         _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
         _encounterMessageEnabled = true;
+        Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        messageBox.color = new Color(1f, 1f, 1f, 0.5f);
         _currentMessageIndex++;
     }
 

@@ -51,7 +51,7 @@ public class MakeEncounterActionCompSci
             asset.SymbolCount = symbolCount;
             asset.StrikeCount = strikeCount;
 
-            AssetDatabase.CreateAsset(asset, "Assets/Resources/EncounterActions/CompSciEA.asset");
+            AssetDatabase.CreateAsset(asset, "Assets/Resources/EncounterActions/" + name + ".asset");
             AssetDatabase.SaveAssets();
 
             Selection.activeObject = asset;

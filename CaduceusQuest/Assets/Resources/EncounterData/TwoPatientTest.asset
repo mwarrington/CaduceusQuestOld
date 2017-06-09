@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: TwoPatientTest
   m_EditorClassIdentifier: 
   GoalCount: 2
-  TurnPattern: 3
+  TurnPattern: 0
   EncounterGoals:
   - Subject: Sylvia
     ActionName: Complete Intake Form
