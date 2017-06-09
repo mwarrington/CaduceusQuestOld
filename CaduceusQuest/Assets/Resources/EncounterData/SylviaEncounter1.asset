@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: SylviaEncounter1
   m_EditorClassIdentifier: 
   GoalCount: 1
-  TurnPattern: 0
+  TurnPattern: 3
   EncounterGoals:
   - Subject: Sylvia
     ActionName: Complete Intake Form

@@ -36,13 +36,13 @@ public class EncounterManager : MonoBehaviour
                          _mSkillSubMenu = new List<Button>(),
                          _cSkillSubMenu = new List<Button>();
 
-    private List<string> _currentEnconterMessages = new List<string>();
+    private List<string> _currentEncounterMessages = new List<string>();
     private GameObject _currentMinigameObj;
     private EncounterAction _currentEA;
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
-    private int _turnCount,
+    private int _turnIndex,
                 _currentMessageIndex;
-    private bool _playerMenuEnabled = true,
+    private bool _playerMenuEnabled,
                  _encounterMessageEnabled;
 
     #region Menu Index Properties
@@ -479,11 +479,31 @@ public class EncounterManager : MonoBehaviour
         #endregion Getting/Setting Encounter Data
 
         CreateTurnOrder();
+        PlayerMenu.SetActive(false);
+
+        BeginTurn();
+    }
+
+    private void BeginTurn()
+    {
+        if (EncounterTurns[_turnIndex] == EncounterTurnType.PLAYER)
+        {
+            TogglePlayerMenu();
+        }
+        else if (EncounterTurns[_turnIndex] == EncounterTurnType.EVENT)
+        {
+            Debug.Log("sdfa");
+            //DisplayEncounterMessage();
+        }
+
+        _turnIndex++;
     }
 
     private void CreateTurnOrder()
     {
         bool makingPlayer = true;
+
+        Debug.Log(_theGameManager.CurrentEncounter.TurnPattern);
 
         switch (_theGameManager.CurrentEncounter.TurnPattern)
         {
@@ -556,27 +576,30 @@ public class EncounterManager : MonoBehaviour
     private void Update()
     {
         if (_encounterMessageEnabled)
-            MessageUIHandler();
+            MessageInputHandler();
 
         if (_playerMenuEnabled)
             UIInputHandler();
     }
 
-    private void MessageUIHandler()
+    private void MessageInputHandler()
     {
         if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
-            if(_currentMessageIndex == _currentEnconterMessages.Count)
+            if(_currentMessageIndex == _currentEncounterMessages.Count)
             {
-                if(_currentMinigameObj != null)
+                HideEncounterMessage();
+
+                if (_currentMinigameObj != null)
                 {
-                    HideEncounterMessage();
                     LoadMinigame();
                 }
+                else
+                    BeginTurn();
             }
             else
             {
-                DisplayEncounterMessage(_currentEnconterMessages[_currentMessageIndex]);
+                DisplayEncounterMessage();
             }
         }
     }
@@ -702,57 +725,37 @@ public class EncounterManager : MonoBehaviour
                     break;
             }
         }
-        else if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            //Make can't do that sound
-        }
 
-        if(Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftArrow)) && _activeMenu != EncounterMenus.BASEMENU)
         {
             _activeMenu = EncounterMenus.BASEMENU;
+            string buttonName = currentMenu[currentIndex].name;
 
-            switch (currentMenu[currentIndex].name)
+            if (buttonName != "Science" && buttonName != "Engineering" && buttonName != "Technology" && buttonName != "Mathamatics" && buttonName != "Communication")
             {
-                case "Science":
-                    sSkillSubMenuIndex = -1;
-                    break;
-                case "Engineering":
-                    eSkillSubMenuIndex = -1;
-                    break;
-                case "Technology":
-                    tSkillSubMenuIndex = -1;
-                    break;
-                case "Mathamatics":
-                    mSkillSubMenuIndex = -1;
-                    break;
-                case "Communication":
-                    cSkillSubMenuIndex = -1;
-                    break;
-                default:
-                    _activeMenu = EncounterMenus.SKILLSUBMENU;
+                _activeMenu = EncounterMenus.SKILLSUBMENU;
 
-                    switch (currentMenu[currentIndex].transform.parent.parent.name)
-                    {
-                        case "Science":
-                            sSkillSubMenuIndex = -1;
-                            break;
-                        case "Engineering":
-                            eSkillSubMenuIndex = -1;
-                            break;
-                        case "Technology":
-                            tSkillSubMenuIndex = -1;
-                            break;
-                        case "Mathamatics":
-                            mSkillSubMenuIndex = -1;
-                            break;
-                        case "Communication":
-                            cSkillSubMenuIndex = -1;
-                            break;
-                        default:
-                            Debug.LogWarning("This button shouldn't exist");
-                            break;
-                    }
-                    break;
+                switch (currentMenu[currentIndex].transform.parent.parent.name)
+                {
+                    case "Science":
+                        sSkillSubMenuIndex = -1;
+                        break;
+                    case "Engineering":
+                        eSkillSubMenuIndex = -1;
+                        break;
+                    case "Technology":
+                        tSkillSubMenuIndex = -1;
+                        break;
+                    case "Mathamatics":
+                        mSkillSubMenuIndex = -1;
+                        break;
+                    case "Communication":
+                        cSkillSubMenuIndex = -1;
+                        break;
+                    default:
+                        Debug.LogWarning(currentMenu[currentIndex].transform.parent.parent.name + " shouldn't exist");
+                        break;
+                }
             }
             
             HideSubMenu(currentMenu[currentIndex].transform.parent.gameObject);
@@ -771,21 +774,20 @@ public class EncounterManager : MonoBehaviour
             case EncounterActionType.COMPSCI:
                 EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_currentEA;
                 _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/CompSciPuzzle/CompSciPuzzle" + myCompSciSO.SymbolCount);
-                _currentEnconterMessages.Add(myCompSciSO.Name);
-                DisplayEncounterMessage(_currentEnconterMessages[0]);
+                _currentEncounterMessages.Add(myCompSciSO.Name);
+                DisplayEncounterMessage(myCompSciSO.Name);
                 TogglePlayerMenu();
                 break;
             case EncounterActionType.DOCTOR:
                 EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_currentEA;
                 _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Doctor/DoctorPuzzleDefault");
-                _currentEnconterMessages.Add(myDoctorSO.Name);
-                DisplayEncounterMessage(_currentEnconterMessages[0]);
+                DisplayEncounterMessage(myDoctorSO.Name);
                 TogglePlayerMenu();
                 break;
             case EncounterActionType.DIALOG:
                 EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
                 _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Dialog/DialogPuzzle");
-                DisplayEncounterMessage(_currentEnconterMessages[0]);
+                //DisplayEncounterMessage(_currentEncounterMessages[0], false);
                 break;
             default:
                 Debug.LogError("We haven't put together an IntiateAction for that action type.");
@@ -834,29 +836,17 @@ public class EncounterManager : MonoBehaviour
         _currentMinigameObj = null;
     }
 
-    private void BeginTurn()
-    {
-        if(EncounterTurns[_turnCount] == EncounterTurnType.PLAYER)
-        {
-            TogglePlayerMenu();
-        }
-        else if(EncounterTurns[_turnCount] == EncounterTurnType.EVENT)
-        {
-            //DisplayEncounterMessage();
-        }
-
-        _turnCount++;
-    }
-
     public void PuzzleFail(float failPenalty, GameObject currentPuzzle)
     {
-        TogglePlayerMenu();
+        DisplayEncounterMessage("Dang, that didn't go so well...");
         target1CurrentTrust -= failPenalty;
         GameObject.Destroy(currentPuzzle);
     }
 
     public void PuzzleWin(string actionName, GameObject currentPuzzle)
     {
+        bool loadWinMessage = false;
+
         for (int i = 0; i < EncounterGoals.Count; i++)
         {
             if(EncounterGoals[i].ActionName == actionName)
@@ -868,25 +858,28 @@ public class EncounterManager : MonoBehaviour
                     if (checkBoxIndex == 3)
                     {
                         _target1CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
                     {
                         _target1CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 1)
                     {
                         _target1CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
 
                     _target1SuccessCount++;
 
                     if(_target1SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
+                        loadWinMessage = false;
                         //True win
                     }
                     else
                     {
-                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
@@ -897,25 +890,28 @@ public class EncounterManager : MonoBehaviour
                     if (checkBoxIndex == 3)
                     {
                         _target2CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
                     {
                         _target2CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 1)
                     {
                         _target2CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
 
                     _target2SuccessCount++;
 
                     if (_target2SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
+                        loadWinMessage = false;
                         //True win
                     }
                     else
                     {
-                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
@@ -926,25 +922,28 @@ public class EncounterManager : MonoBehaviour
                     if (checkBoxIndex == 3)
                     {
                         _target3CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
                     {
                         _target3CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 1)
                     {
                         _target3CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
 
                     _target3SuccessCount++;
 
                     if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
+                        loadWinMessage = false;
                         //True win
                     }
                     else
                     {
-                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
@@ -955,42 +954,80 @@ public class EncounterManager : MonoBehaviour
                     if (checkBoxIndex == 3)
                     {
                         _target4CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
                     {
                         _target4CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 1)
                     {
                         _target4CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
                     }
 
                     _target4SuccessCount++;
 
                     if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
+                        loadWinMessage = false;
                         //True win
                     }
                     else
                     {
-                        TogglePlayerMenu();
                         GameObject.Destroy(currentPuzzle);
                     }
                 }
             }
         }
+
+        if(loadWinMessage)
+        {
+            DisplayEncounterMessage("Good Job!");
+        }
     }
 
     private void TogglePlayerMenu()
     {
+        if (PlayerMenu.activeSelf)
+            ResetMenu();
+
         PlayerMenu.SetActive(!PlayerMenu.activeSelf);
         _playerMenuEnabled = !_playerMenuEnabled;
     }
 
-    private void DisplayEncounterMessage(string message)
+    //For displaying next in a set
+    private void DisplayEncounterMessage()
     {
         _encounterMessage.transform.parent.gameObject.SetActive(true);
-        _encounterMessage.text = message;
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        _encounterMessageEnabled = true;
+        _currentMessageIndex++;
+    }
+
+    //For displaying one off message
+    private void DisplayEncounterMessage(string message)
+    {
+        _currentEncounterMessages.Clear();
+        _currentEncounterMessages.Add(message);
+        _currentMessageIndex = 0;
+
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        _encounterMessageEnabled = true;
+        _currentMessageIndex++;
+    }
+
+    //For begining and displaying a new set
+    private void DisplayEncounterMessage(string[] messages)
+    {
+        _currentEncounterMessages.Clear();
+        _currentEncounterMessages.AddRange(messages);
+        _currentMessageIndex = 0;
+
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
         _encounterMessageEnabled = true;
         _currentMessageIndex++;
     }
@@ -1008,6 +1045,39 @@ public class EncounterManager : MonoBehaviour
     private void HideSubMenu(GameObject subMenu)
     {
         subMenu.SetActive(false);
+    }
+    private void ResetMenu()
+    {
+        switch (_activeMenu)
+        {
+            case EncounterMenus.SSKILLSUBMENU:
+                HideSubMenu(_sSkillSubMenu[sSkillSubMenuIndex].transform.parent.gameObject);
+                sSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.ESKILLSUBMENU:
+                HideSubMenu(_eSkillSubMenu[eSkillSubMenuIndex].transform.parent.gameObject);
+                eSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.TSKILLSUBMENU:
+                HideSubMenu(_tSkillSubMenu[tSkillSubMenuIndex].transform.parent.gameObject);
+                tSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.MSKILLSUBMENU:
+                HideSubMenu(_mSkillSubMenu[mSkillSubMenuIndex].transform.parent.gameObject);
+                mSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.CSKILLSUBMENU:
+                HideSubMenu(_cSkillSubMenu[cSkillSubMenuIndex].transform.parent.gameObject);
+                cSkillSubMenuIndex = -1;
+                break;
+            default:
+                Debug.LogWarning("This button shouldn't exist");
+                break;
+        }
+
+        _activeMenu = EncounterMenus.BASEMENU;
+
+        HideSubMenu(_skillSubMenu[skillSubMenuIndex].transform.parent.gameObject);
     }
 
     private int SkipButton(int oldMenuIndex, int newMenuIndex, int menuCount, int lastOldIndex)
