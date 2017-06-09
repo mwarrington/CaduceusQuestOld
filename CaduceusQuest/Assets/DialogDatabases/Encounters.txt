@@ -108,7 +108,7 @@ Violet
 		
 		Neck Exam
 		Initial Trust: 60
-		Treatment Count: 2
+		Treatment Count: 3
 		Action Type: SCIENCE
 
 		Fail Penalty: 20
@@ -137,11 +137,20 @@ Violet
 
 Mason
 
-	a //intake form
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--MasonEncounter1--
+	
+		Complete Intake Form
+		Initial Trust: 100
+		Treatment Count: 2
+		Action Type: COMPSCI
+
+		Fail Penalty: 15
+		Name: Violet1
+		Speaker: Violet
+		Emotion: g,2
+		Speaker line: "You don't seem like you know what you're doing."
+		Bad: "Well I'm all you've got!"
+		Good: "I'm new here, but I'll listen to you and get Dr. Gallo when we need her."
 
 	b //blood test
 	Trust start: 
@@ -154,14 +163,6 @@ Mason
 	Trust threshold:
 	Trust drop:
 	//
-
-	//fail convo//
-	(c)Mason(i)a;
-	[0](s)Mason(e)b,1(t)"Hm. That didn't seem right. Want to do it again?"<0
-		(g)0(n)1(f)h,1(l)"Yep.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Mason(e)b,1(t)"Ok!"&;
-	[2](s)Mason(e)b,1(t)"Ok."#;;
 
 Dr. Gallo
 
