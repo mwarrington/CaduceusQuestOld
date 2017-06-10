@@ -178,31 +178,41 @@
 		(g)1(n)2(f)h,1(l)"Dr. Gallo sent me to give this teddy bear to you.";
 	//give teddy bear//
 	[2](s)Mason(e)a,3(t)"Wow!! Thank you. This is from my daughter Macy."<2;
-		(g)1(n)3(f)h,1(l)"I'm here to fill out an intake form with you.";
-		(g)1(n)3(f)h,1(l)"Can you fill out this form with me?";
+		(g)2(n)3(f)h,1(l)"I'm here to fill out an intake form with you.";
+		(g)2(n)3(f)h,1(l)"Can you fill out this form with me?";
 	[3](s)Mason(e)e,2(t)"Sounds good, let's do it."&;;
 	
 	//after intake form, before neck exam training//
 	(c)Mason(i)b;
-	[0](s)Mason(e)e,1(t)"Could you go check on Macy? She's in the waiting room."#;;
+	[0](s)Mason(e)e,2(t)"Could you go check on Macy? She's in the waiting room."#;;
 
 	//after neck exam training//
 	(c)Mason(i)c;
-	[0](s)Mason(e)h,1(t)"Hello!"<0;
+	[0](s)Mason(e)b,2(t)"Hello!"<0;
 		(g)0(n)1(f)h,1(l)"Hi! How are you feeling?";
-		(g)0(n)TK(f)h,1(l)"Hey. I'm here to do a neck exam.";
-	[1](s)Mason(e)h,1(t)"Been better, been worse. How are you?"<1;
-		(g)0(n)TK(f)h,1(l)"I'm alright. Kind of confused.";
-		(g)0(n)TK(f)h,1(l)"I think I'm starting to get the hang of things here.";
+		(g)0(n)3(f)h,1(l)"Hey. I'm here to do a neck exam.";
+	[1](s)Mason(e)b,2(t)"Been better, been worse. How are you?"<1;
+		(g)1(n)2(f)c,1(l)"I'm alright. Kind of confused.";
+		(g)1(n)3(f)a,1(l)"I think I'm starting to get the hang of things here.";
+	[2](s)Mason(e)e,2(t)"Me too! Let me know if you figure out what's going on."#;
+	[3](s)Mason(e)b,2(t)"Great. My neck's sort of stiff actually, could you take a look?"&;;
 
 	//after neck exam//
+	(c)Mason(i)d;
+	[0](s)Mason(e)c,2(t)"What's the good news, doc?"<0;
+		(g)0(n)2(f)c,1(l)"I'm not sure. I'm going to get Dr. Gallo for a second opinion.";
+		(g)0(n)1(f)c,2(l)"Your neck actually does feel stiff.";
+	[1](s)Mason(e)c,2(t)"What does that mean?"<1;
+		(g)1(n)2(f)c,1(l)"I'm sure it's fine, but I'll let Dr. Gallo know.";
+		(g)1(n)2(f)c,2(l)"It's swollen. Um, it could be meningoencephalitis...";
+	[2](s)Mason(e)c,2(t)"Huh. Ok. Just let me know what to do."#;;
 
 	//last convo//
-	(c)Mason(i)TK;
-	[0](s)Mason(e)b,2(t)"Thanks Simone, I can tell you're really looking out for me."#;;
+	(c)Mason(i)e;
+	[0](s)Mason(e)c,1(t)"Thanks Simone. I can tell you're really looking out for me."#;;
 
 	//fail convo//
-	(c)Mason(i)TK;
+	(c)Mason(i)f;
 	[0](s)Mason(e)b,1(t)"Hm. That didn't seem right. Want to do it again?"<0
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";

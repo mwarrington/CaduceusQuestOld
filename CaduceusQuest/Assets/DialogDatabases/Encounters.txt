@@ -144,25 +144,48 @@ Mason
 		Treatment Count: 2
 		Action Type: COMPSCI
 
-		Fail Penalty: 15
-		Name: Violet1
-		Speaker: Violet
-		Emotion: g,2
-		Speaker line: "You don't seem like you know what you're doing."
-		Bad: "Well I'm all you've got!"
-		Good: "I'm new here, but I'll listen to you and get Dr. Gallo when we need her."
+		Fail Penalty: 20
+		Name: Mason1
+		Speaker: Mason
+		Emotion: c,3
+		Speaker line: "I'm worried about Macy all alone in the waiting room."
+		Bad: "She can fend for herself!"
+		Good: "I'll go check on her as soon as we finish this form."
 
-	b //blood test
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
+		Fail Penalty: 20
+		Name: Mason2
+		Speaker: Mason
+		Emotion: c,4
+		Speaker line: "Huh. I'm having a hard time remembering what happened to me."
+		Bad: "What's wrong with you??"
+		Good: "I'm not in a hurry, take your time and we'll figure this out."
 
-	c //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
+		Fail Penalty: 10
+		Name: Mason3
+		Speaker: Mason
+		Emotion: a,2
+		Speaker line: "Mars is on his way. I have such good kids..."
+		Bad: "Thank god, Macy is pretty freaked out."
+		Good: "It sounds like you're a great dad."
+
+	--MasonEncounter2--
+	
+		Neck Exam
+		Initial Trust: 100
+		Treatment Count: 2
+		Action Type: SCIENCE
+
+		Mason2
+
+		Mason3
+
+		Fail Penalty: 20
+		Name: Mason3
+		Speaker: Mason
+		Emotion: c,4
+		Speaker line: "Honestly, the last thing I remember is eating dinner with my kids. Now I'm here."
+		Bad: "Hm. That sounds bad."
+		Good: "Dr. Gallo is the best, we'll figure out what's hurting you."
 
 Dr. Gallo
 
