@@ -244,44 +244,69 @@ Mars
 
 Bea
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--BeaEncounter1--
+	
+		Neck Exam
+		Initial Trust: 70
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	//fail convo//
-	(c)Bea(i)a;
-	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes please.";
-		(g)0(n)2(f)h,1(l)"Not yet.";
-	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
-	[2](s)Bea(e)a,2(t)"K."#;;
+		Fail Penalty: 10
+		Name: Bea1
+		Speaker: Bea
+		Emotion: b,2
+		Speaker line: "Just so you know, I've got to be at the skate park by 4:20."
+		Bad: "The longer you talk the longer it will take."
+		Good: "Cool, no problem. Almost done..."	
+
+		Fail Penalty: 10
+		Name: Bea2
+		Speaker: Bea
+		Emotion: b,3
+		Speaker line: "You look worried. Don't worry, you have what it will take to fight this."
+		Bad: "What? What's wrong with you??"
+		Good: "Huh. Thanks."
+
+		Fail Penalty: 10
+		Name: Bea3
+		Speaker: Bea
+		Emotion: b,2
+		Speaker line: "I'm on the Pisces-Aquarius cusp. That's why I'm so sensitive."
+		Bad: "What? What's wrong with you??"
+		Good: "Neat!"
 
 Danny
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--DannyEncounter1--
+	
+		Neck Exam
+		Initial Trust: 40
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	c,2:"I heard you're checking for meningoencephalitis. Is that true?"
-	good:"Ok, I trust you."
-	bad:"It doesn't really seem like you know what you're doing."
+		Fail Penalty: 10
+		Name: Danny1
+		Speaker: Danny
+		Emotion: g,2
+		Speaker line: "I've got to be at the skate park by 4:20. How long will this take?"
+		Bad: "The longer you talk the longer it will take."
+		Good: "Almost done..."	
 
-	c,3:"Should I be worried? You're scaring me."
-	good: "Just a precautionary checkup? Ok cool."
-	bad: "Why can't you tell me??"
+		Fail Penalty: 10
+		Name: Danny2
+		Speaker: Danny
+		Emotion: c,2
+		Speaker line: "I heard you're checking for meningoencephalitis. Is that true?"
+		Bad: "You wouldn't understand. I'll tell you when you're older."
+		Good: "Stiff neck can be a symptom of many things, but yes—that's what I'm checking for."
 
-
-	//fail convo//
-	(c)Danny(i)a;
-	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Danny(e)h,1(t)"Ok."&;
-	[2](s)Danny(e)h,1(t)"Ok."#;;
+		Fail Penalty: 20
+		Name: Danny3
+		Speaker: Danny
+		Emotion: c,3
+		Speaker line: "It doesn't really seem like you know what you're doing."
+		Bad: "Well I'm all you've got!"
+		Good: "I'm new here, but I'll listen to you and get Dr. Gallo when we need her."
 
 Josh
 

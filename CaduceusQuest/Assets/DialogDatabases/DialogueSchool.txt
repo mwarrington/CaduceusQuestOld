@@ -121,11 +121,11 @@
 	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&6;;
 
 	//after successful neck exam//
-	(c)Bea(i)c;
+	(c)Bea(i)b;
 	[0](s)Bea(e)a,1(t)"What do you feel?"<0;
 		(g)0(n)1(f)c,2(l)"I'm not sure... your neck is stiff and swollen.";
 		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
-	[1](s)Bea(e)c,2(t)"I was hoping it wasn't true. Just tell me when to go."#;;
+	[1](s)Bea(e)c,2(t)"Hm. I was hoping it wasn't true. Just tell me when to go."#;;
 
 	//after b//
 	(c)Bea(i)c;
@@ -164,6 +164,14 @@
 	[16](s)Bea(e)a,2(t)"Let me know if you need anymore guidance."#;
 	[17](s)Bea(e)a,2(t)"Oh, that's nice of you.";
 	[18](s)Bea(e)a,2(t)"Hi!"#;;
+
+	//fail convo//
+	(c)Bea(i)d;
+	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes please.";
+		(g)0(n)2(f)h,1(l)"Not yet.";
+	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
+	[2](s)Bea(e)a,2(t)"K."#;;
 
 
 //Danny//
@@ -247,6 +255,14 @@
 	[2](s)Danny(e)h,2(t)"There seem to be more than one reason and they all check out!">3;
 	[3](s)Danny(e)c,1(t)"It's always kinda bugged me but maybe they're all true."#;
 	[4](s)Danny(e)h,2(t)"Ashland. Apparently there are multiple origin stories but they all seem true!"#;;
+
+	//fail convo//
+	(c)Danny(i)f;
+	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Danny(e)h,1(t)"Ok."&;
+	[2](s)Danny(e)h,1(t)"Ok."#;;
 
 //Josh//
 
