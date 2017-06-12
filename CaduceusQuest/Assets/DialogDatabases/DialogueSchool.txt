@@ -77,6 +77,14 @@
 	[1](s)Mars(e)a,1(t)"Hi"#;
 	[2](s)Mars(e)d,2(t)"Weird how that happens..."#;;
 
+	//fail convo//
+	(c)Mars(i)g;
+	[0](s)Mars(e)g,1(t)"Hm. You want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Mars(e)g,2(t)"Ok."&;
+	[2](s)Mars(e)g,2(t)"Ok."#;;
+
 
 //Bea//
 
@@ -113,11 +121,11 @@
 	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&6;;
 
 	//after successful neck exam//
-	(c)Bea(i)c;
+	(c)Bea(i)b;
 	[0](s)Bea(e)a,1(t)"What do you feel?"<0;
 		(g)0(n)1(f)c,2(l)"I'm not sure... your neck is stiff and swollen.";
 		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
-	[1](s)Bea(e)c,2(t)"I was hoping it wasn't true. Just tell me when to go."#;;
+	[1](s)Bea(e)c,2(t)"Hm. I was hoping it wasn't true. Just tell me when to go."#;;
 
 	//after b//
 	(c)Bea(i)c;
@@ -156,6 +164,14 @@
 	[16](s)Bea(e)a,2(t)"Let me know if you need anymore guidance."#;
 	[17](s)Bea(e)a,2(t)"Oh, that's nice of you.";
 	[18](s)Bea(e)a,2(t)"Hi!"#;;
+
+	//fail convo//
+	(c)Bea(i)d;
+	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes please.";
+		(g)0(n)2(f)h,1(l)"Not yet.";
+	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
+	[2](s)Bea(e)a,2(t)"K."#;;
 
 
 //Danny//
@@ -240,46 +256,68 @@
 	[3](s)Danny(e)c,1(t)"It's always kinda bugged me but maybe they're all true."#;
 	[4](s)Danny(e)h,2(t)"Ashland. Apparently there are multiple origin stories but they all seem true!"#;;
 
+	//fail convo//
+	(c)Danny(i)f;
+	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Danny(e)h,1(t)"Ok."&;
+	[2](s)Danny(e)h,1(t)"Ok."#;;
+
 //Josh//
 
 	//first convo//
 	(c)Josh(i)a;
-	[0](s)Josh(e)a,1(t)"Hey, what are you doing here? You got a high school boyfriend?"<0;
-		(g)0(n)1(f)a,1(l)"Uh... No.";
-		(g)0(n)1(f)a,1(l)"Is that the only possible reason I could be here?";
-	[1](s)Josh(e)a,1(t)"Haha, I was just joking. Relax!";
-	[2](s)Josh(e)a,1(t)"Does graduating high school mean you can't take a joke?"<1;
-		(g)1(n)3(f)a,1(l)"I like jokes. It's just that some jokes can be off-putting.";
-		(g)1(n)4(f)a,1(l)"Jokes, huh? Aren't those supposed to be funny?";
-	[3](s)Josh(e)a,1(t)"What? No way, my jokes are great!"#;
-	[4](s)Josh(e)a,1(t)"So you got jokes, too!"#;;
+	[0](s)Josh(e)h,1(t)"Hey, what are you doing here? You got a high school boyfriend?"<0;
+		(g)0(n)1(f)g,1(l)"Uh... No.";
+		(g)0(n)1(f)g,2(l)"Is that the only possible reason I could be here?";
+	[1](s)Josh(e)h,1(t)"Haha, I was just joking. Relax! Does graduating high school mean you can't take a joke?"<1;
+		(g)1(n)2(f)g,1(l)"I like jokes. It's just that some jokes can be off-putting.";
+		(g)1(n)3(f)g,2(l)"Jokes, huh? Aren't those supposed to be funny?";
+	[2](s)Josh(e)h,1(t)"What? No way, my jokes are great!"#;
+	[3](s)Josh(e)h,2(t)"So you got jokes, too!"#;;
 
 	//second convo//
 	(c)Josh(i)b;
-	[0](s)Josh(e)a,1(t)"Hey! What's her face!";
+	[0](s)Josh(e)h,1(t)"Hey! What's her face!";
 		(g)0(n)1(e)g,2(l)"It's Simone.";
 		(g)0(n)3(e)g,1(l)"Wow, what's her face, huh?";
-	[1](s)Josh(e)a,1(t)"I knew a girl named Simone once. She was so uppity.";
-	[2](s)Josh(e)a,1(t)"She was mixed like you. Are all mixed girls like that?"<1;
-	[3](s)Josh(e)a,1(t)"Haha, yeah, that's my go to for randoms like you."<2;
-		(g)1(n)4(e)a,1(l)"Did you seriously just call me uppity?";
-		(g)1(n)4(e)a,1(l)"You really need more practice talking to people...";
-	[4](s)Josh(e)a,1(t)"What do you mean?"#;
+	[1](s)Josh(e)h,1(t)"I knew a girl named Simone once. She was so uppity.";
+	[2](s)Josh(e)h,1(t)"She was mixed like you. Are all mixed girls like that?"<1;
+	[3](s)Josh(e)h,1(t)"Haha, yeah, that's my go-to for randoms like you."<2;
+		(g)1(n)4(e)g,3(l)"Did you seriously just call me uppity?";
+		(g)1(n)4(e)g,1(l)"You really need more practice talking to people...";
+	[4](s)Josh(e)h,1(t)"What do you mean?"#;
 		(g)2(n)4(e)g,4(t)"Randoms!? I'm done talking to you.";
-		(g)2(n)5(e)a,1(t)"No filter, huh?";
-	[5](s)Josh(e)a,1(t)"Wuh?"#;;
+		(g)2(n)5(e)g,2(t)"No filter, huh?";
+	[5](s)Josh(e)h,1(t)"Wuh?"#;;
 
 	//third convo//
 	(c)Josh(i)c;
 	[0](s)Josh(e)a,1(t)"I noticed you keep talking to me.";
 	[1](s)Josh(e)a,1(t)"What's up? You got a thing for me.";
-		(g)0(n)2(e)a,1(l)"I think I'm starting to understand how your brain works.";
-		(g)1(n)2(e)a,1(l)"No, Josh. I'm here to do neck exams for students.";
-	[2](s)Josh(e)a,1(t)"Wait, what does that mean?";
-	[3](s)Josh(e)a,1(t)"Girls like you are so confusing."#;
-	[4](s)Josh(e)a,1(t)"My neck? That just sounds like an excuse to get close."#;;
+		(g)0(n)2(e)g,1(l)"I think I'm starting to understand how your brain works.";
+		(g)1(n)2(e)g,2(l)"No, Josh. I'm here to do neck exams for students.";
+	[2](s)Josh(e)h,1(t)"Wait, what does that mean? Girls like you are so confusing."<0;
+		(g)0(n)3(e)g,1(l)"Can we just get this over with?";
+		(g)1(n)3(e)g,1(l)"It's my job. Don't make this harder for both of us.";
+	[3](s)Josh(e)h,1(t)"Ha. Alright, I see you. Let's do it."&;;
 
-	//fourth convo//
+	//after successful neck exam//
+	(c)Josh(i)d;
+	[0](s)Josh(e)g,1(t)"Ouch! I thought you'd be gentler"<0;
+		(g)0(n)1(f)h,1(l)"Calm down. But your neck is fine.";
+		(g)0(n)1(f)h,1(l)"Good news: There's nothing wrong with you, health-wise.";
+	[1](s)Josh(e)a,1(t)"Ok. Great."#;;
+	//return to b//
+
+	//fail convo//
+	(c)Josh(i)e;
+	[0](s)Josh(e)g,1(t)"That was terrible. Want to try again?"<0
+		(g)0(n)1(f)a,2(l)"Alright.";
+		(g)0(n)2(f)a,2(l)"Not right now.";
+	[1](s)Josh(e)g,1(t)"Ok."&;
+	[2](s)Josh(e)g,1(t)"Ok."#;;
 
 //Violet//
 
@@ -356,7 +394,7 @@
 	(c)Quinn(i)g;
 	[0](s)Quinn(e)a,3(t)"Some say that Ashland is named for the ash its factories used to make, but I think it's the trees."#;;
 
-	//after beetle quest, random option 1//
+	//after beetle quest 3//
 	(c)Quinn(i)h;
 	[0](s)Quinn(e)a,3(t)"What's up?"<0;
 		(g)0(n)1(f)h,1(l)"Nothing much.";
@@ -373,6 +411,14 @@
 
 	//after i cycle between f and g//
 
+	//fail convo//
+	(c)Quinn(i)j;
+	[0](s)Quinn(e)g,1(t)"Well that went badly! I guess we should try again?"<0;
+		(g)0(n)1(f)h,1(l)"Yep.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Quinn(e)g,1(t)"Ok, let's get this over with."&;
+	[2](s)Quinn(e)g,1(t)"Ok, bye..."#;;
+
 
 //Principal Gilliam//
 
@@ -388,3 +434,11 @@
 	[1](s)Principal Gilliam(e)h,1(l)"You may not!"#;
 	[2](s)Principal Gilliam(e)h,1(l)"Ok, I'm here if you get in trouble."#;;
 
+	//once josh, danny, and bea neck exams are completed—after room switch?//
+	(c)Principal Gilliam(i)c;
+	[0](s)Principal Gilliam(e)g,1(l)"Hello students, this is Principal Gilliam speaking. Would Simone please report to my office immediately? Thank you."#;;
+
+	//in office//
+	(c)Principal Gilliam(i)d;
+	[0](s)Principal Gilliam(e)c,2(l)"Hello young lady. I've received word that you've found evidence of meningoencephalitis in three students here.";
+	[0](s)Principal Gilliam(e)c,2(l)"This is an extremely grave matter, and we must respond immediately. Please go report your findings to Dr. Gallo."#;;

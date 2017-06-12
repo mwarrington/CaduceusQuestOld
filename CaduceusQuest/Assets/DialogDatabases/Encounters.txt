@@ -44,14 +44,6 @@ Sylvia
 	Trust drop:
 	//
 
-	//fail convo//
-	(c)Sylvia(i)a;
-	[0](s)Sylvia(e)b,2(t)"Seems like you need some more practice. Shall we try again?"<0;
-		(g)0(n)1(f)h,1(l)"Ok.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Sylvia(e)b,2(t)"Let's get started!"&;
-	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
-
 Violet
 
 	--VioletEncounter1--
@@ -172,7 +164,7 @@ Mason
 	
 		Neck Exam
 		Initial Trust: 100
-		Treatment Count: 2
+		Treatment Count: 3
 		Action Type: SCIENCE
 
 		Mason2
@@ -185,7 +177,7 @@ Mason
 		Emotion: c,4
 		Speaker line: "Honestly, the last thing I remember is eating dinner with my kids. Now I'm here."
 		Bad: "Hm. That sounds bad."
-		Good: "Dr. Gallo is the best, we'll figure out what's hurting you."
+		Good: "Dr. Gallo is the best. We'll figure out what's hurting you."
 
 Dr. Gallo
 
@@ -201,116 +193,168 @@ Dr. Gallo
 	Trust drop:
 	//
 
-	//fail convo//
-	(c)Dr. Gallo(i)a;
-	[0](s)Dr. Gallo(e)g,1(t)"That went badly. Let's try again. You ready?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not quite yet...";
-	[1](s)Dr. Gallo(e)g,2(t)"Ok."&;
-	[2](s)Dr. Gallo(e)g,2(t)"Ok."#;;
-
 Mars
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--MarsEncounter1--
+	
+		Neck Exam
+		Initial Trust: 80
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	//fail convo//
-	(c)Mars(i)a;
-	[0](s)Mars(e)g,1(t)"Hm. You want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Mars(e)g,2(t)"Ok."&;
-	[2](s)Mars(e)g,2(t)"Ok."#;;
+		Fail Penalty: 20
+		Name: Mars1
+		Speaker: Mars
+		Emotion: c,2
+		Speaker line: "You're acting all shady. When are you going to tell me what's happening?"
+		Bad: "You wouldn't understand. I'll tell you when you're older."
+		Good: "Your dad has a stiff neck, and if you do too we'll get you the same treatment."
+
+		Fail Penalty: 20
+		Name: Mars2
+		Speaker: Mars
+		Emotion: c,3
+		Speaker line: "If you're worried about me, can you check on Macy too?"
+		Bad: "I dunno, if I have time..."
+		Good: "Of course!"
+
+		Fail Penalty: 10
+		Name: Mars3
+		Speaker: Mars
+		Emotion: d,2
+		Speaker line: "I've got to be at the skate park by 4:20. How long will this take?"
+		Bad: "The longer you talk the longer it will take."
+		Good: "Almost done..."		
 
 Bea
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--BeaEncounter1--
+	
+		Neck Exam
+		Initial Trust: 70
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	//fail convo//
-	(c)Bea(i)a;
-	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes please.";
-		(g)0(n)2(f)h,1(l)"Not yet.";
-	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
-	[2](s)Bea(e)a,2(t)"K."#;;
+		Fail Penalty: 10
+		Name: Bea1
+		Speaker: Bea
+		Emotion: b,2
+		Speaker line: "Just so you know, I've got to be at the skate park by 4:20."
+		Bad: "The longer you talk the longer it will take."
+		Good: "Cool, no problem. Almost done..."	
+
+		Fail Penalty: 10
+		Name: Bea2
+		Speaker: Bea
+		Emotion: b,3
+		Speaker line: "You look worried. Don't worry, you have what it will take to fight this."
+		Bad: "What? What's wrong with you??"
+		Good: "Huh. Thanks."
+
+		Fail Penalty: 10
+		Name: Bea3
+		Speaker: Bea
+		Emotion: b,2
+		Speaker line: "I'm on the Pisces-Aquarius cusp. That's why I'm so sensitive."
+		Bad: "What? What's wrong with you??"
+		Good: "Neat!"
 
 Danny
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--DannyEncounter1--
+	
+		Neck Exam
+		Initial Trust: 40
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	c,2:"I heard you're checking for meningoencephalitis. Is that true?"
-	good:"Ok, I trust you."
-	bad:"It doesn't really seem like you know what you're doing."
+		Fail Penalty: 10
+		Name: Danny1
+		Speaker: Danny
+		Emotion: g,2
+		Speaker line: "I've got to be at the skate park by 4:20. How long will this take?"
+		Bad: "The longer you talk the longer it will take."
+		Good: "Almost done..."	
 
-	c,3:"Should I be worried? You're scaring me."
-	good: "Just a precautionary checkup? Ok cool."
-	bad: "Why can't you tell me??"
+		Fail Penalty: 10
+		Name: Danny2
+		Speaker: Danny
+		Emotion: c,2
+		Speaker line: "I heard you're checking for meningoencephalitis. Is that true?"
+		Bad: "You wouldn't understand. I'll tell you when you're older."
+		Good: "Stiff neck can be a symptom of many things, but yes—that's what I'm checking for."
 
-
-	//fail convo//
-	(c)Danny(i)a;
-	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Danny(e)h,1(t)"Ok."&;
-	[2](s)Danny(e)h,1(t)"Ok."#;;
+		Fail Penalty: 20
+		Name: Danny3
+		Speaker: Danny
+		Emotion: c,3
+		Speaker line: "It doesn't really seem like you know what you're doing."
+		Bad: "Well I'm all you've got!"
+		Good: "I'm new here, but I'll listen to you and get Dr. Gallo when we need her."
 
 Josh
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--JoshEncounter1--
+	
+		Neck Exam
+		Initial Trust: 60
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	//fail convo//
-	(c)Josh(i)a;
-	[0](s)Josh(e)g,1(t)"That was terrible. Want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Josh(e)g,1(t)"Ok."&;
-	[2](s)Josh(e)g,1(t)"Ok."#;;
+		Fail Penalty: 10
+		Name: Josh1
+		Speaker: Josh
+		Emotion: c,2
+		Speaker line: "It doesn't really seem like you know what you're doing."
+		Bad: "Well I'm all you've got!"
+		Good: "I'm new here, but I'll listen to you and get Dr. Gallo if we need her."
 
+		Fail Penalty: 10
+		Name: Josh2
+		Speaker: Josh
+		Emotion: g,2
+		Speaker line: "Hey, be careful! My neck is one of my best features."
+		Bad: "Literally what are you talking about."
+		Good: "Alright, hold still..."
+
+		Fail Penalty: 20
+		Name: Josh3
+		Speaker: Josh
+		Emotion: c,3
+		Speaker line: "I heard you're checking for meningoencephalitis. Is that true?"
+		Bad: "You wouldn't understand. I'll tell you when you're older."
+		Good: "Stiff neck can be a symptom of many things, but yes—that's what I'm checking for."
 
 Quinn
 
-	a //neck exam
-	Trust start: 80
-	Trust threshold: 50
-	Trust drop: 15
-	//
+	--QuinnEncounter1--
+	
+		Neck Exam
+		Initial Trust: 80
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	a,3:"Thanks again for finding that beetle! I was so relieved."
-	good:"Have you thought about becoming an entomologist?"
-	bad:"Uh, yeah."
+		Fail Penalty: 20
+		Name: Quinn1
+		Speaker: Quinn
+		Emotion: a,3
+		Speaker line: "Thanks again for finding that beetle! I was so relieved."
+		Bad: "Weirdo..."
+		Good: "No problem! Have you thought about becoming an entomologist?"
 
-	c,2:"Should I be worried? You're scaring me a little."
-	good: "Just a precautionary checkup? Ok cool."
-	bad: "Why can't you tell me??"
+		Fail Penalty: 20
+		Name: Quinn2
+		Speaker: Quinn
+		Emotion: c,2
+		Speaker line: "Should I be worried? You're scaring me a little."
+		Bad: "You wouldn't understand. Don't worry about it."
+		Good: "This is just a precautionary checkup. I'll let you know if I find anything that might be cause for concern."
 
-	c,3:"Please be careful!!"
-	good:"Ok, I trust you."
-	bad:"It doesn't really seem like you know what you're doing."
+		Fail Penalty: 20
+		Name: Quinn3
+		Speaker: Quinn
+		Emotion: a,2
+		Speaker line: "I know some of the adults here are upset you left. But I'm glad you're back."
+		Bad: "Gossiping will give you acne, you know..."
+		Good: "Thanks Quinn, that's sweet."
 
-	c,2:"I heard you're checking for meningoencephalitis. Is that true?"
-	good:"Ok, I trust you."
-	bad:"It doesn't really seem like you know what you're doing."
-
-	//fail convo//
-	(c)Quinn(i)a;
-	[0](s)Quinn(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
-		(g)0(n)1(f)h,1(l)"Yep.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Quinn(e)g,2(t)"Ok, let's get this over with."&;
-	[2](s)Quinn(e)g,2(t)"Ok, bye..."#;;
