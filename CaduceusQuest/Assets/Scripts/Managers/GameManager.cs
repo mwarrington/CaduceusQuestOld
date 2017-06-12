@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private List<DialogueUIController> _allDialogControllers = new List<DialogueUIController>();
     public List<Skill> CurrentSimoneSkills = new List<Skill>();
+    public Dictionary<string, int> CurrentEncounterIndexList = new Dictionary<string, int>();
     public Encounter CurrentEncounter;
 
     private void Awake()
