@@ -5,17 +5,13 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sylvia
+  m_Name: Quinn
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-<<<<<<< Updated upstream
-    m_StateMachine: {fileID: 1107500350971672434}
-=======
-    m_StateMachine: {fileID: 1107851874189883332}
->>>>>>> Stashed changes
+    m_StateMachine: {fileID: 1107369253847618606}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -25,21 +21,13 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
-<<<<<<< Updated upstream
---- !u!1102 &1102075067733914238
-=======
---- !u!1102 &1102192138052042428
->>>>>>> Stashed changes
+--- !u!1102 &1102109769930551972
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< Updated upstream
-  m_Name: Crossed legs
-=======
-  m_Name: Sit, wiggle foot
->>>>>>> Stashed changes
+  m_Name: End hip lean
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -51,30 +39,18 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-<<<<<<< Updated upstream
-  m_Motion: {fileID: 7400008, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
-=======
-  m_Motion: {fileID: 7400004, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
->>>>>>> Stashed changes
+  m_Motion: {fileID: 7400012, guid: 9849cbe8a16224947b3c4d63e92bb08c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-<<<<<<< Updated upstream
---- !u!1102 &1102086746584633342
-=======
---- !u!1102 &1102685067975307954
->>>>>>> Stashed changes
+--- !u!1102 &1102206202637938512
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< Updated upstream
-  m_Name: Sit, wiggle foot
-=======
-  m_Name: Sit
->>>>>>> Stashed changes
+  m_Name: Sitting
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -86,30 +62,18 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-<<<<<<< Updated upstream
-  m_Motion: {fileID: 7400004, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
-=======
-  m_Motion: {fileID: 7400002, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
->>>>>>> Stashed changes
+  m_Motion: {fileID: 7400004, guid: 9849cbe8a16224947b3c4d63e92bb08c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-<<<<<<< Updated upstream
---- !u!1102 &1102124492900878768
-=======
---- !u!1102 &1102784686757949540
->>>>>>> Stashed changes
+--- !u!1102 &1102414895620428510
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< Updated upstream
-  m_Name: Begin cross legs
-=======
-  m_Name: Crossed legs
->>>>>>> Stashed changes
+  m_Name: Standing
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -121,30 +85,18 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-<<<<<<< Updated upstream
-  m_Motion: {fileID: 7400006, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
-=======
-  m_Motion: {fileID: 7400008, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
->>>>>>> Stashed changes
+  m_Motion: {fileID: 7400002, guid: 9849cbe8a16224947b3c4d63e92bb08c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-<<<<<<< Updated upstream
---- !u!1102 &1102447406960880940
-=======
---- !u!1102 &1102887267045449866
->>>>>>> Stashed changes
+--- !u!1102 &1102768182655856856
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< Updated upstream
-  m_Name: Sit
-=======
-  m_Name: Begin cross legs
->>>>>>> Stashed changes
+  m_Name: Begin hip lean
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -156,26 +108,18 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-<<<<<<< Updated upstream
-  m_Motion: {fileID: 7400002, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
-=======
-  m_Motion: {fileID: 7400006, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
->>>>>>> Stashed changes
+  m_Motion: {fileID: 7400008, guid: 9849cbe8a16224947b3c4d63e92bb08c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-<<<<<<< Updated upstream
---- !u!1102 &1102667001258790388
-=======
---- !u!1102 &1102963879457340318
->>>>>>> Stashed changes
+--- !u!1102 &1102933311907967252
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Uncross legs
+  m_Name: Talking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -187,16 +131,35 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400010, guid: 8557467c3f39c4e6bafbeff895ee5de7, type: 3}
+  m_Motion: {fileID: 7400006, guid: 9849cbe8a16224947b3c4d63e92bb08c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
-<<<<<<< Updated upstream
---- !u!1107 &1107500350971672434
-=======
---- !u!1107 &1107851874189883332
->>>>>>> Stashed changes
+--- !u!1102 &1102963712619165658
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Hip lean
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_Motion: {fileID: 7400010, guid: 9849cbe8a16224947b3c4d63e92bb08c, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+--- !u!1107 &1107369253847618606
 AnimatorStateMachine:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -205,51 +168,30 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-<<<<<<< Updated upstream
-    m_State: {fileID: 1102124492900878768}
-    m_Position: {x: -72, y: 408, z: 0}
+    m_State: {fileID: 1102768182655856856}
+    m_Position: {x: 84, y: 216, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102075067733914238}
-    m_Position: {x: 168, y: 492, z: 0}
+    m_State: {fileID: 1102109769930551972}
+    m_Position: {x: 336, y: 216, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102447406960880940}
-    m_Position: {x: 60, y: 336, z: 0}
+    m_State: {fileID: 1102963712619165658}
+    m_Position: {x: 360, y: 288, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102086746584633342}
-    m_Position: {x: 276, y: 288, z: 0}
+    m_State: {fileID: 1102206202637938512}
+    m_Position: {x: 360, y: 384, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102667001258790388}
-    m_Position: {x: -144, y: 240, z: 0}
-=======
-    m_State: {fileID: 1102887267045449866}
-    m_Position: {x: 312, y: 36, z: 0}
+    m_State: {fileID: 1102414895620428510}
+    m_Position: {x: 360, y: 444, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102784686757949540}
-    m_Position: {x: 276, y: 192, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102685067975307954}
-    m_Position: {x: 192, y: 276, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102192138052042428}
-    m_Position: {x: 144, y: 384, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102963879457340318}
-    m_Position: {x: 300, y: 492, z: 0}
->>>>>>> Stashed changes
+    m_State: {fileID: 1102933311907967252}
+    m_Position: {x: 360, y: 516, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
-<<<<<<< Updated upstream
-  m_EntryPosition: {x: 96, y: 204, z: 0}
-  m_ExitPosition: {x: 396, y: -96, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102447406960880940}
-=======
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102887267045449866}
->>>>>>> Stashed changes
+  m_DefaultState: {fileID: 1102768182655856856}
