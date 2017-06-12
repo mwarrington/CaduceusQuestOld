@@ -310,49 +310,67 @@ Danny
 
 Josh
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--JoshEncounter1--
+	
+		Neck Exam
+		Initial Trust: 60
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	//fail convo//
-	(c)Josh(i)a;
-	[0](s)Josh(e)g,1(t)"That was terrible. Want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Josh(e)g,1(t)"Ok."&;
-	[2](s)Josh(e)g,1(t)"Ok."#;;
+		Fail Penalty: 10
+		Name: Josh1
+		Speaker: Josh
+		Emotion: c,2
+		Speaker line: "It doesn't really seem like you know what you're doing."
+		Bad: "Well I'm all you've got!"
+		Good: "I'm new here, but I'll listen to you and get Dr. Gallo if we need her."
 
+		Fail Penalty: 10
+		Name: Josh2
+		Speaker: Josh
+		Emotion: g,2
+		Speaker line: "Hey, be careful! My neck is one of my best features."
+		Bad: "Literally what are you talking about."
+		Good: "Alright, hold still..."
+
+		Fail Penalty: 20
+		Name: Josh3
+		Speaker: Josh
+		Emotion: c,3
+		Speaker line: "I heard you're checking for meningoencephalitis. Is that true?"
+		Bad: "You wouldn't understand. I'll tell you when you're older."
+		Good: "Stiff neck can be a symptom of many things, but yes—that's what I'm checking for."
 
 Quinn
 
-	a //neck exam
-	Trust start: 80
-	Trust threshold: 50
-	Trust drop: 15
-	//
+	--QuinnEncounter1--
+	
+		Neck Exam
+		Initial Trust: 80
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	a,3:"Thanks again for finding that beetle! I was so relieved."
-	good:"Have you thought about becoming an entomologist?"
-	bad:"Uh, yeah."
+		Fail Penalty: 20
+		Name: Quinn1
+		Speaker: Quinn
+		Emotion: a,3
+		Speaker line: "Thanks again for finding that beetle! I was so relieved."
+		Bad: "Weirdo..."
+		Good: "No problem! Have you thought about becoming an entomologist?"
 
-	c,2:"Should I be worried? You're scaring me a little."
-	good: "Just a precautionary checkup? Ok cool."
-	bad: "Why can't you tell me??"
+		Fail Penalty: 20
+		Name: Quinn2
+		Speaker: Quinn
+		Emotion: c,2
+		Speaker line: "Should I be worried? You're scaring me a little."
+		Bad: "You wouldn't understand. Don't worry about it."
+		Good: "This is just a precautionary checkup. I'll let you know if I find anything that might be cause for concern."
 
-	c,3:"Please be careful!!"
-	good:"Ok, I trust you."
-	bad:"It doesn't really seem like you know what you're doing."
+		Fail Penalty: 20
+		Name: Quinn3
+		Speaker: Quinn
+		Emotion: a,2
+		Speaker line: "I know some of the adults here are upset you left. But I'm glad you're back."
+		Bad: "Gossiping will give you acne, you know..."
+		Good: "Thanks Quinn, that's sweet."
 
-	c,2:"I heard you're checking for meningoencephalitis. Is that true?"
-	good:"Ok, I trust you."
-	bad:"It doesn't really seem like you know what you're doing."
-
-	//fail convo//
-	(c)Quinn(i)a;
-	[0](s)Quinn(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
-		(g)0(n)1(f)h,1(l)"Yep.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Quinn(e)g,2(t)"Ok, let's get this over with."&;
-	[2](s)Quinn(e)g,2(t)"Ok, bye..."#;;
