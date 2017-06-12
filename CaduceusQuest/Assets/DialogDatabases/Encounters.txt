@@ -172,7 +172,7 @@ Mason
 	
 		Neck Exam
 		Initial Trust: 100
-		Treatment Count: 2
+		Treatment Count: 3
 		Action Type: SCIENCE
 
 		Mason2
@@ -185,7 +185,7 @@ Mason
 		Emotion: c,4
 		Speaker line: "Honestly, the last thing I remember is eating dinner with my kids. Now I'm here."
 		Bad: "Hm. That sounds bad."
-		Good: "Dr. Gallo is the best, we'll figure out what's hurting you."
+		Good: "Dr. Gallo is the best. We'll figure out what's hurting you."
 
 Dr. Gallo
 
@@ -211,19 +211,36 @@ Dr. Gallo
 
 Mars
 
-	a //neck exam
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--MarsEncounter1--
+	
+		Neck Exam
+		Initial Trust: 80
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	//fail convo//
-	(c)Mars(i)a;
-	[0](s)Mars(e)g,1(t)"Hm. You want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Mars(e)g,2(t)"Ok."&;
-	[2](s)Mars(e)g,2(t)"Ok."#;;
+		Fail Penalty: 20
+		Name: Mars1
+		Speaker: Mars
+		Emotion: c,2
+		Speaker line: "You're acting all shady. When are you going to tell me what's happening?"
+		Bad: "You wouldn't understand. I'll tell you when you're older."
+		Good: "Your dad has a stiff neck, and if you do too we'll get you the same treatment."
+
+		Fail Penalty: 20
+		Name: Mars2
+		Speaker: Mars
+		Emotion: c,3
+		Speaker line: "If you're worried about me, can you check on Macy too?"
+		Bad: "I dunno, if I have time..."
+		Good: "Of course!"
+
+		Fail Penalty: 10
+		Name: Mars3
+		Speaker: Mars
+		Emotion: d,2
+		Speaker line: "I've got to be at the skate park by 4:20. How long will this take?"
+		Bad: "The longer you talk the longer it will take."
+		Good: "Almost done..."		
 
 Bea
 

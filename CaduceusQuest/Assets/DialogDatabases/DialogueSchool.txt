@@ -77,6 +77,14 @@
 	[1](s)Mars(e)a,1(t)"Hi"#;
 	[2](s)Mars(e)d,2(t)"Weird how that happens..."#;;
 
+	//fail convo//
+	(c)Mars(i)g;
+	[0](s)Mars(e)g,1(t)"Hm. You want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Mars(e)g,2(t)"Ok."&;
+	[2](s)Mars(e)g,2(t)"Ok."#;;
+
 
 //Bea//
 
