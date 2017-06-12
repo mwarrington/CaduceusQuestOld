@@ -44,14 +44,6 @@ Sylvia
 	Trust drop:
 	//
 
-	//fail convo//
-	(c)Sylvia(i)a;
-	[0](s)Sylvia(e)b,2(t)"Seems like you need some more practice. Shall we try again?"<0;
-		(g)0(n)1(f)h,1(l)"Ok.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Sylvia(e)b,2(t)"Let's get started!"&;
-	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
-
 Violet
 
 	--VioletEncounter1--
@@ -200,14 +192,6 @@ Dr. Gallo
 	Trust threshold:
 	Trust drop:
 	//
-
-	//fail convo//
-	(c)Dr. Gallo(i)a;
-	[0](s)Dr. Gallo(e)g,1(t)"That went badly. Let's try again. You ready?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not quite yet...";
-	[1](s)Dr. Gallo(e)g,2(t)"Ok."&;
-	[2](s)Dr. Gallo(e)g,2(t)"Ok."#;;
 
 Mars
 

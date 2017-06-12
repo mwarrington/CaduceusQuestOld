@@ -434,3 +434,11 @@
 	[1](s)Principal Gilliam(e)h,1(l)"You may not!"#;
 	[2](s)Principal Gilliam(e)h,1(l)"Ok, I'm here if you get in trouble."#;;
 
+	//once josh, danny, and bea neck exams are completed—after room switch?//
+	(c)Principal Gilliam(i)c;
+	[0](s)Principal Gilliam(e)g,1(l)"Hello students, this is Principal Gilliam speaking. Would Simone please report to my office immediately? Thank you."#;;
+
+	//in office//
+	(c)Principal Gilliam(i)d;
+	[0](s)Principal Gilliam(e)c,2(l)"Hello young lady. I've received word that you've found evidence of meningoencephalitis in three students here.";
+	[0](s)Principal Gilliam(e)c,2(l)"This is an extremely grave matter, and we must respond immediately. Please go report your findings to Dr. Gallo."#;;

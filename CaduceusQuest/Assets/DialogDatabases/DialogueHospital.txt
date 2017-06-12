@@ -116,6 +116,14 @@
 
 	//game end ?//
 
+	//fail convo//
+	(c)Dr. Gallo(i)TK;
+	[0](s)Dr. Gallo(e)g,1(t)"That went badly. Let's try again. You ready?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not quite yet...";
+	[1](s)Dr. Gallo(e)g,2(t)"Ok."&;
+	[2](s)Dr. Gallo(e)g,2(t)"Ok."#;;
+
 //Violet//
 
 	//intake form//
@@ -223,21 +231,44 @@
 
 	//intake form//
 	(c)Sylvia(i)a;
-	[0](s)Sylvia(e)c,2(t)"Hi honey! How are you doing?"<0;
+	[0](s)Sylvia(e)b,2(t)"Hi honey! How are you doing?"<0;
 		(g)0(n)1(f)h,1(l)"I'm okay. It's been a busy morning.";
 		(g)0(n)3(f)h,1(l)"Pretty good! I'm here to fill out an intake form with you.";
-	[1](s)Sylvia(e)c,2(t)"You look a little frazzled, but don't worry. Dr. Gallo watches out for her people.";
-	[2](s)Sylvia(e)c,2(t)"You must be here to do my intake form with me.";
-	[3](s)Sylvia(e)c,2(t)"Let's get to it."&3;;
+	[1](s)Sylvia(e)b,2(t)"You look a little frazzled, but don't worry. Dr. Gallo watches out for her people.";
+	[2](s)Sylvia(e)b,2(t)"You must be here to do my intake form with me.";
+	[3](s)Sylvia(e)b,2(t)"Let's get to it."&;;
 
 	//after intake form, before completing List 1//
 	(c)Sylvia(i)b;
-	[0](s)Sylvia(e)c,2(t)"Hi sweetie, do you need anything else from me right now?"<0;
+	[0](s)Sylvia(e)b,2(t)"Hi sweetie, do you need anything else from me right now?"<0;
 		(g)0(n)1(f)h,1(l)"No thanks, just saying hello.";
-		(g)0(n)2(f)h,1(l)"Could you show me how to do the intake form again?";
-	[1](s)Sylvia(e)c,3(t)"Hello!"#;
-	[2](s)Sylvia(e)c,2(t)"Of course!"&3;;
+		(g)0(n)2(f)h,1(l)"Could you show me again how to complete an intake form?";
+	[1](s)Sylvia(e)b,3(t)"Hello!"#;
+	[2](s)Sylvia(e)b,2(t)"Of course!"&;;
 
 	//blood test//
+	(c)Sylvia(i)c;
+	[0](s)Sylvia(e)c,1(t)"Hi honey. Dr. Gallo asked me to show you how to take a blood sample—it's a little unorthodox, but I'm sure she has her reasons. You ready?"<0;
+		(g)0(n)1(f)h,1(l)"Yep, I think I'm ready.";
+		(g)0(n)2(f)h,1(l)"Not yet. I'll come back later.";
+	[1](s)Sylvia(e)c,2(t)"Ok! Listen carefully."&;
+	[2](s)Sylvia(e)c,1(t)"Sure, see you soon."#;;
 
-	//after blood test//
+	//after intake form, before completing List 1//
+	(c)Sylvia(i)d;
+	[0](s)Sylvia(e)b,2(t)"Nice job on taking that blood sample! You have a steady hand.";
+	[1](s)Sylvia(e)b,2(t)"Do you need anything else from me right now?"<0;
+		(g)0(n)2(f)h,1(l)"No thanks, just saying hello.";
+		(g)0(n)3(f)h,1(l)"Could you show me again how to complete an intake form?";
+		(g)0(n)4(f)h,1(l)"Could you show me again how to take a blood sample?";
+	[2](s)Sylvia(e)b,3(t)"Hello!"#;
+	[3](s)Sylvia(e)c,1(t)"Of course!"&;
+	[4](s)Sylvia(e)c,1(t)"Of course!"&;;
+
+	//fail convo//
+	(c)Sylvia(i)e;
+	[0](s)Sylvia(e)c,1(t)"Seems like you need some more practice. Shall we try again?"<0;
+		(g)0(n)1(f)h,1(l)"Ok.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Sylvia(e)c,1(t)"Let's get started!"&;
+	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
