@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private List<DialogueUIController> _allDialogControllers = new List<DialogueUIController>();
+    public Dictionary<string, char> CurrentDialogIndexList
+    {
+        get
+        {
+            return _currentDialogIndexList;
+        }
+    }
+    private static Dictionary<string, char> _currentDialogIndexList = new Dictionary<string, char>();
+    private static Dictionary<string, int> _currentEncounterIndexList = new Dictionary<string, int>();
+
     public List<Skill> CurrentSimoneSkills = new List<Skill>();
-    public Dictionary<string, int> CurrentEncounterIndexList = new Dictionary<string, int>();
     public Encounter CurrentEncounter;
 
     private void Awake()
     {
-        _allDialogControllers.AddRange(FindObjectsOfType<DialogueUIController>());
+        //Should only happen the first time entering that scene
+        foreach (NPCDialogSwitch npc in FindObjectsOfType<NPCDialogSwitch>())
+        {
+            _currentDialogIndexList.Add(npc.transform.parent.name, 'a');
+        }
+
         AddSkill(new Skill("Complete Intake Form", SkillType.COMMUNICATION));
         AddSkill(new Skill("Examine Neck", SkillType.SCIENCE));
         //AddSkill(new Skill("Collect Blood Sample", SkillType.SCIENCE));
+    }
+
+    public void UpdateDialogIndexList(string npcName, char newIndex)
+    {
+        _currentDialogIndexList[npcName] = newIndex;
     }
 
     public void AddSkill(Skill skillToAdd)

@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 118112491}
   - component: {fileID: 118112490}
   m_Layer: 0
-  m_Name: ConvoController
+  m_Name: ConvoSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1027,7 +1027,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 118112488}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07306417, y: 0.07916641, z: 0.0051500006}
+  m_LocalPosition: {x: 0.0009, y: 0.07916641, z: 0.0343}
   m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
   m_Children: []
   m_Father: {fileID: 190749586}
@@ -1041,13 +1041,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 118112488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85fc72cc3e0e34bbd87eeb0049a15625, type: 3}
+  m_Script: {fileID: 11500000, guid: d384b95a0b9742c47a8d7f2945403ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyChangeType: 0
-  CharacterName: Macy
-  index: 98
-  NumberOfConvos: 0
+  NPCData: {fileID: 11400000, guid: 42a3bee7c186ff14ba53fb7e441285d7, type: 2}
 --- !u!65 &118112491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8412,6 +8409,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 521429520}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &776969935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 776969937}
+  - component: {fileID: 776969936}
+  m_Layer: 0
+  m_Name: DialogController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &776969936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776969935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fc72cc3e0e34bbd87eeb0049a15625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyChangeType: 0
+  CharacterName: 
+  index: 0
+  NumberOfConvos: 0
+--- !u!4 &776969937
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 776969935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.057457, y: 3.429411, z: -1.5819492}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &777122584
 Prefab:
@@ -18573,6 +18614,47 @@ Transform:
   m_PrefabParentObject: {fileID: 4174606362768794, guid: 401f3fa3fdc56d64e93f2f77c66416cb,
     type: 2}
   m_PrefabInternal: {fileID: 1636665950}
+--- !u!1 &1637519815
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1637519817}
+  - component: {fileID: 1637519816}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1637519816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637519815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 414e3a54f4fcb3d4e853bc41bc410a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentEncounter: {fileID: 0}
+--- !u!4 &1637519817
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1637519815}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -21.781189, y: 1.0018721, z: -2.5793543}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1639735057
 Prefab:
   m_ObjectHideFlags: 0
