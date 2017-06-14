@@ -7,15 +7,14 @@ public class NPCDialogSwitch : MonoBehaviour
     public NPC NPCData;
     private BoxCollider _myTrigger;
     private DialogueUIController _theDialogController;
-    private SimoneController _simone;
     private char _currentDialogIndex;
     private bool _inConvoZone,
-                 _inConvorsation;
+                 _inConvorsation,
+                 _convoPrimed;
 
     private void Start()
     {
         _theDialogController = FindObjectOfType<DialogueUIController>();
-        _simone = FindObjectOfType<SimoneController>();
         _myTrigger = GetComponentInChildren<BoxCollider>();
     }
 
@@ -25,10 +24,19 @@ public class NPCDialogSwitch : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Z) && !_inConvorsation)
             {
-                _theDialogController.StartConversation(NPCData);
-                _simone.Movement = false;
-                _inConvorsation = true;
+                _convoPrimed = true;
             }
+
+            if (Input.GetKeyUp(KeyCode.Z) && _convoPrimed)
+            {
+                _theDialogController.StartConversation(NPCData);
+                _inConvorsation = true;
+                _convoPrimed = false;
+            }
+        }
+        else
+        {
+            _convoPrimed = false;
         }
     }
 
