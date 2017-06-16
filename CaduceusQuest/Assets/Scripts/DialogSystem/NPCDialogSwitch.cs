@@ -27,9 +27,9 @@ public class NPCDialogSwitch : MonoBehaviour
                 _convoPrimed = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.Z) && _convoPrimed)
+            if (Input.GetKeyUp(KeyCode.Z) && _convoPrimed && !_inConvorsation)
             {
-                _theDialogController.StartConversation(NPCData);
+                _theDialogController.StartConversation(NPCData, this);
                 _inConvorsation = true;
                 _convoPrimed = false;
             }
@@ -54,5 +54,11 @@ public class NPCDialogSwitch : MonoBehaviour
         {
             _inConvoZone = false;
         }
+    }
+
+    public void ExitDialog()
+    {
+        _inConvorsation = false;
+        _convoPrimed = false;
     }
 }

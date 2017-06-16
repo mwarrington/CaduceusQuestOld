@@ -7,7 +7,23 @@ public class NPC : ScriptableObject
 {
     public string NPCName;
     public int ConvoCount;
-    public KeyValuePair<char, DialogChangeType>[] NextConvoInfo;
+    //This needs to be a class; start here MASON
+    public NextConvoData[] NextConvoInfo;
+}
+
+[System.Serializable]
+public class NextConvoData
+{
+    public char MyIndex,
+                NextIndex;
+    public DialogChangeType MyChangeType;
+
+    public NextConvoData(char myIndex, char nextIndex, DialogChangeType myChangeType)
+    {
+        MyIndex = myIndex;
+        NextIndex = nextIndex;
+        MyChangeType = myChangeType;
+    }
 }
 
 public class MakeNPCScritableObject
@@ -16,7 +32,7 @@ public class MakeNPCScritableObject
     {
         string npcName;
         int convoCount;
-        KeyValuePair<char, DialogChangeType>[] nextConvoInfo;
+        NextConvoData[] nextConvoInfo;
 
         private string[] indexes = new string[8];
         private DialogChangeType[] dctArray = new DialogChangeType[8];
@@ -31,31 +47,41 @@ public class MakeNPCScritableObject
         {
             EditorGUILayout.LabelField("Next Convo Info");
             DialogChangeType dct = DialogChangeType.CONVOEND;
+            char myIndex = 'x';
+
             switch (i)
             {
                 case 0:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo a", indexes[i]);
+                    myIndex = 'a';
                     break;
                 case 1:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo b", indexes[i]);
+                    myIndex = 'b';
                     break;
                 case 2:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo c", indexes[i]);
+                    myIndex = 'c';
                     break;
                 case 3:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo d", indexes[i]);
+                    myIndex = 'd';
                     break;
                 case 4:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo e", indexes[i]);
+                    myIndex = 'e';
                     break;
                 case 5:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo f", indexes[i]);
+                    myIndex = 'f';
                     break;
                 case 6:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo g", indexes[i]);
+                    myIndex = 'g';
                     break;
                 case 7:
                     indexes[i] = EditorGUILayout.TextField("Next convo for convo h", indexes[i]);
+                    myIndex = 'h';
                     break;
                 default:
                     Debug.LogError("That is too many convos...");
@@ -65,9 +91,9 @@ public class MakeNPCScritableObject
             dctArray[i] = (DialogChangeType)EditorGUILayout.EnumPopup("Change Reason", dctArray[i]);
 
             if (indexes[i] == null)
-                nextConvoInfo[i] = new KeyValuePair<char, DialogChangeType>('x', dct);
+                nextConvoInfo[i] = new NextConvoData('x', 'x', dct);
             else
-                nextConvoInfo[i] = new KeyValuePair<char, DialogChangeType>(indexes[0][0], dct);
+                nextConvoInfo[i] = new NextConvoData(myIndex, indexes[i][0], dct);
         }
 
         private void OnGUI()
@@ -78,11 +104,11 @@ public class MakeNPCScritableObject
 
             if (convoCount > 1)
             {
-                nextConvoInfo = new KeyValuePair<char, DialogChangeType>[convoCount - 1];
+                nextConvoInfo = new NextConvoData[convoCount - 1];
             }
             else
             {
-                nextConvoInfo = new KeyValuePair<char, DialogChangeType>[0];
+                nextConvoInfo = new NextConvoData[0];
             }
 
             if (convoCount == 2)
@@ -194,7 +220,7 @@ public class MakeNPCScritableObject
             }
         }
 
-        public static void CreateNPC(string npcName, int convoCount, KeyValuePair<char, DialogChangeType>[] nextConvoInfo)
+        public static void CreateNPC(string npcName, int convoCount, NextConvoData[] nextConvoInfo)
         {
             NPC theNPC = ScriptableObject.CreateInstance<NPC>();
 

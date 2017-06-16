@@ -12,8 +12,12 @@ public class DialogueUIController : MonoBehaviour
     private Convorsation _currentConvo;
     private IEnumerator _currentCoroutine;
 	private GameObject _dialogueBox,
-		_dialogueEmotionBox,
-		_dialoguePanel;
+		               _dialogueEmotionBox,
+		               _dialoguePanel;
+    private DialogChangeType _currentChangeType;
+    private NPCDialogSwitch _currentDialogSwitch;
+
+    private char _nextConvo;
 
 	private int _currentLineIndex = 0,
 		        _currentDOIndex = 0,
@@ -127,6 +131,7 @@ public class DialogueUIController : MonoBehaviour
                     StopCoroutine(_currentCoroutine);
                     _dialogueText.text = _currentConvo.MyLines[_currentLineIndex].LineText;
                     _isWriting = false;
+                    _currentLineIndex++;
                 }
                 else if (_lastLine)
                 {
@@ -134,6 +139,8 @@ public class DialogueUIController : MonoBehaviour
                     _inConversation = false;
                     _convoFinished = true;
                     _simone.Movement = true;
+                    _currentDialogSwitch.ExitDialog();
+                    DialogueChanger(DialogChangeType.CONVOEND);
                 }
                 else if (!_isWriting)
                     GetNextLine();
@@ -173,14 +180,67 @@ public class DialogueUIController : MonoBehaviour
 		}
 	}
 
-	public void StartConversation(NPC npc)
-	{
+    public void StartConversation(NPC npc, NPCDialogSwitch currentDialogSwitch)
+    {
+        _currentLineIndex = 0;
+		_currentDOIndex = 0;
+		_buttonSelectionIndex = 0;
         _currentConvo = new Convorsation(npc.NPCName, _theGameManager.CurrentDialogIndexList[npc.NPCName]);
         _inConversation = true;
+        _currentDialogSwitch = currentDialogSwitch;
         _dialoguePanel.SetActive(true);
+        int nextConvoInfoIndex = GetIndexFromChar(_currentConvo.Index);
+        if (nextConvoInfoIndex >= npc.NextConvoInfo.Length)
+        {
+            _nextConvo = '!';
+        }
+        else
+        {
+            _currentChangeType = npc.NextConvoInfo[nextConvoInfoIndex].MyChangeType;
+            _nextConvo = npc.NextConvoInfo[nextConvoInfoIndex].NextIndex;
+        }
         _simone.Movement = false;
         GetNextLine();
 	}
+
+    private int GetIndexFromChar(char indexChar)
+    {
+        int indexToGive = -1;
+
+        switch(indexChar)
+        {
+            case 'a':
+                indexToGive = 0;
+                break;
+            case 'b':
+                indexToGive = 1;
+                break;
+            case 'c':
+                indexToGive = 2;
+                break;
+            case 'd':
+                indexToGive = 3;
+                break;
+            case 'e':
+                indexToGive = 4;
+                break;
+            case 'f':
+                indexToGive = 5;
+                break;
+            case 'g':
+                indexToGive = 6;
+                break;
+            case 'h':
+                indexToGive = 7;
+                break;
+            default:
+                indexToGive = -1;
+                Debug.Log("We need to expand this switch.");
+                break;
+        }
+
+        return indexToGive;
+    }
 
 	private void ShowDialogueOptions()
 	{
@@ -228,8 +288,6 @@ public class DialogueUIController : MonoBehaviour
 				_currentDOIndex = _currentConvo.MyLines[_currentLineIndex].NextGroupIndex;
 				_dialogueSelection = true;
 			}
-
-            _currentLineIndex++;
 		}
 		else
 		{
@@ -277,11 +335,18 @@ public class DialogueUIController : MonoBehaviour
 			yield return new WaitForSeconds(_dialogueManager.TypeSpeed);
 		}
 		_isWriting = false;
-	}
+        _currentLineIndex++;
+    }
 
-    private void DialogueChanger()
+    private void DialogueChanger(DialogChangeType dct)
     {
-        //Start here
+        if (_nextConvo != '!')
+        {
+            if (dct == _currentChangeType)
+            {
+                _theGameManager.CurrentDialogIndexList[_currentConvo.Name] = _nextConvo;//new Convorsation(_currentConvo.Name, _nextConvo);
+            }
+        }
     }
 }
 
