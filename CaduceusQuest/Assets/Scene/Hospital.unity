@@ -1044,7 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d384b95a0b9742c47a8d7f2945403ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCData: {fileID: 11400000, guid: 42a3bee7c186ff14ba53fb7e441285d7, type: 2}
+  NPCData: {fileID: 11400000, guid: 38cd706a4fd9fba4cafcaa3d8c82591e, type: 2}
 --- !u!65 &118112491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8437,10 +8437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85fc72cc3e0e34bbd87eeb0049a15625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyChangeType: 0
-  CharacterName: 
-  index: 0
-  NumberOfConvos: 0
 --- !u!4 &776969937
 Transform:
   m_ObjectHideFlags: 0

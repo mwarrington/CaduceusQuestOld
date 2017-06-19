@@ -48,6 +48,7 @@ public class DialogueUIController : MonoBehaviour
 		_speakerNameText;
 
 	private bool _inConversation,
+        _optionsNext,
 		_dialogueSelection,
 		_convoFinished,
 		_isWriting,
@@ -122,7 +123,39 @@ public class DialogueUIController : MonoBehaviour
 
 	void Update()
 	{
-        if(_inConversation)
+        if (_dialogueSelection)
+        {
+            if (_buttonSelectionIndex < 0)
+            {
+                _buttonSelectionIndex = 0;
+                HighlightDialogueSelection();
+            }
+            else if (_buttonSelectionIndex >= _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1)
+            {
+                _buttonSelectionIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1;
+                HighlightDialogueSelection();
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _buttonSelectionIndex--;
+                HighlightDialogueSelection();
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                _buttonSelectionIndex++;
+                HighlightDialogueSelection();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Z))
+            {
+                _currentLineIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[_buttonSelectionIndex].MyNextLine;
+                _inConversation = true;
+                HideDialogueOptions();
+            }
+        }
+        else if (_inConversation)
         {
             if(Input.GetKeyDown(KeyCode.Z))
             {
@@ -146,38 +179,6 @@ public class DialogueUIController : MonoBehaviour
                     GetNextLine();
             }
         }
-
-		if (_dialogueSelection)
-		{
-			if (_buttonSelectionIndex < 0)
-			{
-				_buttonSelectionIndex = 0;
-				HighlightDialogueSelection();
-			}
-			else if (_buttonSelectionIndex >= _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1)
-			{
-				_buttonSelectionIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1;
-				HighlightDialogueSelection();
-			}
-
-			if (Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				_buttonSelectionIndex--;
-				HighlightDialogueSelection();
-			}
-
-			if (Input.GetKeyDown(KeyCode.DownArrow))
-			{
-				_buttonSelectionIndex++;
-				HighlightDialogueSelection();
-			}
-
-			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-			{
-				_currentLineIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[_buttonSelectionIndex].MyNextLine;
-				HideDialogueOptions();
-			}
-		}
 	}
 
     public void StartConversation(NPC npc, NPCDialogSwitch currentDialogSwitch)
@@ -185,6 +186,7 @@ public class DialogueUIController : MonoBehaviour
         _currentLineIndex = 0;
 		_currentDOIndex = 0;
 		_buttonSelectionIndex = 0;
+        _lastLine = false;
         _currentConvo = new Convorsation(npc.NPCName, _theGameManager.CurrentDialogIndexList[npc.NPCName]);
         _inConversation = true;
         _currentDialogSwitch = currentDialogSwitch;
@@ -266,7 +268,8 @@ public class DialogueUIController : MonoBehaviour
 		}
 
 		_dialoguePanel.SetActive(true);
-		_dialogueSelection = false;
+        _optionsNext = false;
+        _dialogueSelection = false;
 
 		GetNextLine();
 
@@ -279,23 +282,26 @@ public class DialogueUIController : MonoBehaviour
             _lastLine = true;
 			WriteDialogue();
 		}
-		else if (!_dialogueSelection)
+		else if (!_optionsNext)
 		{
-			WriteDialogue();
+            if (_currentConvo.MyLines[_currentLineIndex].NextGroupIndex != -1)
+            {
+                _currentDOIndex = _currentConvo.MyLines[_currentLineIndex].NextGroupIndex;
+                _optionsNext = true;
+            }
 
-			if (_currentConvo.MyLines[_currentLineIndex].NextGroupIndex != -1)
-			{
-				_currentDOIndex = _currentConvo.MyLines[_currentLineIndex].NextGroupIndex;
-				_dialogueSelection = true;
-			}
-		}
-		else
-		{
-            Debug.Log("YOU WERE WRONG, MASON!!!!");
-            _currentLineIndex = _currentConvo.MyLines[_currentLineIndex].NextLineIndex;
-		}
+            WriteDialogue();
+        }
+        else
+        {
+            ShowDialogueOptions();
+            _inConversation = false;
+            _dialogueSelection = true;
+            //Debug.Log("YOU WERE WRONG, MASON!!!!");
+            //_currentLineIndex = _currentConvo.MyLines[_currentLineIndex].NextLineIndex;
+        }
 
-	}
+    }
 
 	private void HighlightDialogueSelection()
 	{
