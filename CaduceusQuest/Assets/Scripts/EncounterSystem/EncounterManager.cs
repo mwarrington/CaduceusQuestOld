@@ -10,6 +10,7 @@ public class EncounterManager : MonoBehaviour
     public Sprite DefalutButtonSprite, CheckedBox;
     public Sprite[] TrustProgressBarSprites;
     public GameObject PlayerMenu;
+    public Encounter CurrentEncounter;
 
     private GameManager _theGameManager;
     private Image _target1CB1, _target1CB2, _target1CB3,
@@ -527,7 +528,7 @@ public class EncounterManager : MonoBehaviour
 
     private void LoadDialogEvent()
     {
-        Encounter currentEncounter = _theGameManager.CurrentEncounter;
+        Encounter currentEncounter = _theGameManager._currentEncounter;
         int rand = Random.Range(0, currentEncounter.GoalCount);
         string subject = _theGameManager.CurrentEncounter.EncounterGoals[rand].Subject;
 

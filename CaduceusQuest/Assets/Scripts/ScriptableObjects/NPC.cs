@@ -31,10 +31,12 @@ public class MakeNPCScritableObject
     class NPCWindow : EditorWindow
     {
         string npcName;
-        int convoCount;
+        int convoCount,
+            transitionCount;
         NextConvoData[] nextConvoInfo;
 
-        private string[] indexes = new string[8];
+        private string[] newIndexes = new string[8],
+                         oldIndexes = new string[8];
         private DialogChangeType[] dctArray = new DialogChangeType[8];
 
         [MenuItem("Assets/Create/NPC")]
@@ -47,95 +49,59 @@ public class MakeNPCScritableObject
         {
             EditorGUILayout.LabelField("Next Convo Info");
             DialogChangeType dct = DialogChangeType.CONVOEND;
-            char myIndex = 'x';
 
-            switch (i)
-            {
-                case 0:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo a", indexes[i]);
-                    myIndex = 'a';
-                    break;
-                case 1:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo b", indexes[i]);
-                    myIndex = 'b';
-                    break;
-                case 2:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo c", indexes[i]);
-                    myIndex = 'c';
-                    break;
-                case 3:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo d", indexes[i]);
-                    myIndex = 'd';
-                    break;
-                case 4:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo e", indexes[i]);
-                    myIndex = 'e';
-                    break;
-                case 5:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo f", indexes[i]);
-                    myIndex = 'f';
-                    break;
-                case 6:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo g", indexes[i]);
-                    myIndex = 'g';
-                    break;
-                case 7:
-                    indexes[i] = EditorGUILayout.TextField("Next convo for convo h", indexes[i]);
-                    myIndex = 'h';
-                    break;
-                default:
-                    Debug.LogError("That is too many convos...");
-                    break;
-            }
-
+            oldIndexes[i] = EditorGUILayout.TextField("Convo ", oldIndexes[i]);
+            newIndexes[i] = EditorGUILayout.TextField("Becomes convo ", newIndexes[i]);
+            
             dctArray[i] = (DialogChangeType)EditorGUILayout.EnumPopup("Change Reason", dctArray[i]);
 
-            if (indexes[i] == null)
+            if (newIndexes[i] == null || oldIndexes[i] == null)
                 nextConvoInfo[i] = new NextConvoData('x', 'x', dct);
             else
-                nextConvoInfo[i] = new NextConvoData(myIndex, indexes[i][0], dct);
+                nextConvoInfo[i] = new NextConvoData(oldIndexes[i][0], newIndexes[i][0], dct);
         }
 
         private void OnGUI()
         {
             npcName = EditorGUILayout.TextField("NPC Name", npcName);
-            convoCount = EditorGUILayout.IntField("ConvoCount", convoCount);
+            convoCount = EditorGUILayout.IntField("Convo Count", convoCount);
+            transitionCount = EditorGUILayout.IntField("Transition Count", transitionCount);
             EditorGUILayout.Space();
 
-            if (convoCount > 1)
+            if (transitionCount > 0)
             {
-                nextConvoInfo = new NextConvoData[convoCount - 1];
+                nextConvoInfo = new NextConvoData[transitionCount];
             }
             else
             {
                 nextConvoInfo = new NextConvoData[0];
             }
 
-            if (convoCount == 2)
+            if (transitionCount == 1)
             {
                 NextConvoBit(0);
             }
-            else if (convoCount == 3)
+            else if (transitionCount == 2)
             {
-                #region 3 convos
+                #region 2 transitions
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
-                #endregion 3 convos
+                #endregion 2 transitions
             }
-            else if (convoCount == 4)
+            else if (transitionCount == 3)
             {
-                #region 4 convos
+                #region 3 transitions
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
                 EditorGUILayout.Space();
                 NextConvoBit(2);
-                #endregion 4 convos
+                #endregion 3 transitions
             }
-            else if (convoCount == 5)
+            else if (transitionCount == 4)
             {
-                #region 5 convos
+                #region 4 transitions
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
@@ -143,11 +109,11 @@ public class MakeNPCScritableObject
                 NextConvoBit(2);
                 EditorGUILayout.Space();
                 NextConvoBit(3);
-                #endregion 5 convos;
+                #endregion 4 transitions;
             }
-            else if (convoCount == 6)
+            else if (transitionCount == 5)
             {
-                #region 6 convos
+                #region 5 transitions
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
@@ -157,11 +123,11 @@ public class MakeNPCScritableObject
                 NextConvoBit(3);
                 EditorGUILayout.Space();
                 NextConvoBit(4);
-                #endregion 6 convos
+                #endregion 5 transitions
             }
-            else if (convoCount == 7)
+            else if (transitionCount == 6)
             {
-                #region 7 convos
+                #region 6 transitions
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
@@ -173,11 +139,11 @@ public class MakeNPCScritableObject
                 NextConvoBit(4);
                 EditorGUILayout.Space();
                 NextConvoBit(5);
-                #endregion 7 convos
+                #endregion 6 transitions
             }
-            else if (convoCount == 8)
+            else if (transitionCount == 7)
             {
-                #region 8 convos
+                #region 7 transitions
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
@@ -191,11 +157,11 @@ public class MakeNPCScritableObject
                 NextConvoBit(5);
                 EditorGUILayout.Space();
                 NextConvoBit(6);
-                #endregion 8 convos
+                #endregion 7 transitions
             }
-            else if (convoCount == 9)
+            else if (transitionCount == 8)
             {
-                #region 9 convos
+                #region 8 transitions
                 NextConvoBit(0);
                 EditorGUILayout.Space();
                 NextConvoBit(1);
@@ -211,7 +177,7 @@ public class MakeNPCScritableObject
                 NextConvoBit(6);
                 EditorGUILayout.Space();
                 NextConvoBit(7);
-                #endregion 9 convos
+                #endregion 8 transitions
             }
 
             if (GUILayout.Button("Create"))

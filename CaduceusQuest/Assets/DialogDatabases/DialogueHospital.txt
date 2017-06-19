@@ -238,8 +238,16 @@
 	[2](s)Sylvia(e)b,2(t)"You must be here to do my intake form with me.";
 	[3](s)Sylvia(e)b,2(t)"Let's get to it."&;;
 
-	//after intake form, before completing List 1//
+	//fail intake form convo//
 	(c)Sylvia(i)b;
+	[0](s)Sylvia(e)c,1(t)"Seems like you need some more practice. Shall we try again?"<0;
+		(g)0(n)1(f)h,1(l)"Ok.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Sylvia(e)c,1(t)"Let's get started!"&;
+	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
+
+	//after intake form, before completing List 1//
+	(c)Sylvia(i)c;
 	[0](s)Sylvia(e)b,2(t)"Hi sweetie, do you need anything else from me right now?"<0;
 		(g)0(n)1(f)h,1(l)"No thanks, just saying hello.";
 		(g)0(n)2(f)h,1(l)"Could you show me again how to complete an intake form?";
@@ -247,15 +255,23 @@
 	[2](s)Sylvia(e)b,2(t)"Of course!"&;;
 
 	//blood test//
-	(c)Sylvia(i)c;
+	(c)Sylvia(i)d;
 	[0](s)Sylvia(e)c,1(t)"Hi honey. Dr. Gallo asked me to show you how to take a blood sample—it's a little unorthodox, but I'm sure she has her reasons. You ready?"<0;
 		(g)0(n)1(f)h,1(l)"Yep, I think I'm ready.";
 		(g)0(n)2(f)h,1(l)"Not yet. I'll come back later.";
 	[1](s)Sylvia(e)c,2(t)"Ok! Listen carefully."&;
 	[2](s)Sylvia(e)c,1(t)"Sure, see you soon."#;;
+	
+	//blood test fail convo//
+	(c)Sylvia(i)e;
+	[0](s)Sylvia(e)c,1(t)"Seems like you need some more practice. Shall we try again?"<0;
+		(g)0(n)1(f)h,1(l)"Ok.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Sylvia(e)c,1(t)"Let's get started!"&;
+	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
 
-	//after intake form, before completing List 1//
-	(c)Sylvia(i)d;
+	//after blood sample, before completing List 1//
+	(c)Sylvia(i)f;
 	[0](s)Sylvia(e)b,2(t)"Nice job on taking that blood sample! You have a steady hand.";
 	[1](s)Sylvia(e)b,2(t)"Do you need anything else from me right now?"<0;
 		(g)0(n)2(f)h,1(l)"No thanks, just saying hello.";
@@ -264,11 +280,3 @@
 	[2](s)Sylvia(e)b,3(t)"Hello!"#;
 	[3](s)Sylvia(e)c,1(t)"Of course!"&;
 	[4](s)Sylvia(e)c,1(t)"Of course!"&;;
-
-	//fail convo//
-	(c)Sylvia(i)e;
-	[0](s)Sylvia(e)c,1(t)"Seems like you need some more practice. Shall we try again?"<0;
-		(g)0(n)1(f)h,1(l)"Ok.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Sylvia(e)c,1(t)"Let's get started!"&;
-	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;

@@ -280,7 +280,14 @@ public class DialogueUIController : MonoBehaviour
 		if (_currentConvo.MyLines[_currentLineIndex].LastLine)
 		{
             _lastLine = true;
-			WriteDialogue();
+
+            if (_currentConvo.MyLines[_currentLineIndex].BeginEncounter)
+            {
+                string path = "EncounterData/" + _currentConvo.Name + "Enounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
+                _theGameManager.BeginEncounter(path);
+            }
+
+            WriteDialogue();
 		}
 		else if (!_optionsNext)
 		{
