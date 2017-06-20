@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,9 +44,11 @@ public class EncounterManager : MonoBehaviour
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
     private EncounterActionDialog _currentEventDialog;
     private int _turnIndex,
-                _currentMessageIndex;
+                _currentMessageIndex,
+                _patientsTreated;
     private bool _playerMenuEnabled,
-                 _encounterMessageEnabled;
+                 _encounterMessageEnabled,
+                 _encounterFinished;
 
     #region Menu Index Properties
     //These handle image and text color change for menu navigation
@@ -628,7 +631,24 @@ public class EncounterManager : MonoBehaviour
             {
                 HideEncounterMessage();
 
-                if (_currentMinigameObj != null)
+                if(_encounterFinished)
+                {
+                    string sceneToLoad = "",
+                           currentSceneName = SceneManager.GetActiveScene().name;
+
+                    for (int i = 0; i < currentSceneName.Length; i++)
+                    {
+                        if (currentSceneName[i] != 'E')
+                        {
+                            sceneToLoad += currentSceneName[i];
+                        }
+                        else
+                            break;
+                    }
+
+                    SceneManager.LoadScene(sceneToLoad);
+                }
+                else if (_currentMinigameObj != null)
                 {
                     LoadMinigame();
                 }
@@ -951,6 +971,7 @@ public class EncounterManager : MonoBehaviour
     public void PuzzleWin(string actionName, GameObject currentPuzzle)
     {
         bool loadWinMessage = false;
+        int lastTreatedPatientCount = _patientsTreated;
 
         for (int i = 0; i < EncounterGoals.Count; i++)
         {
@@ -981,6 +1002,7 @@ public class EncounterManager : MonoBehaviour
                     if (_target1SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
                     else
@@ -1013,6 +1035,7 @@ public class EncounterManager : MonoBehaviour
                     if (_target2SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
                     else
@@ -1045,6 +1068,7 @@ public class EncounterManager : MonoBehaviour
                     if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
                     else
@@ -1077,6 +1101,7 @@ public class EncounterManager : MonoBehaviour
                     if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
                     else
@@ -1090,6 +1115,19 @@ public class EncounterManager : MonoBehaviour
         if(loadWinMessage)
         {
             DisplayEncounterMessage("Good Job!");
+        }
+        else if(_patientsTreated > lastTreatedPatientCount)
+        {
+            if (_patientsTreated == CurrentEncounter.GoalCount)
+            {
+                _encounterFinished = true;
+                string[] winMessages = new string[2];
+                winMessages[0] = "Wonderful!";
+                winMessages[1] = "You've treated all patients";
+                DisplayEncounterMessage(winMessages);
+            }
+            else
+                DisplayEncounterMessage("Great Job! Patient treated!");
         }
     }
     #endregion Puzzle Win Fail Methods
