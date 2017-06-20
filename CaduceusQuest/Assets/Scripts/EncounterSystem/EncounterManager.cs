@@ -490,7 +490,7 @@ public class EncounterManager : MonoBehaviour
     {
         if (_turnIndex == EncounterTurns.Count)
         {
-            switch (_theGameManager.CurrentEncounter.TurnPattern)
+            switch (CurrentEncounter.TurnPattern)
             {
                 case EncounterPattern.ALTERNATE:
                     if (EncounterTurns[_turnIndex - 1] == EncounterTurnType.EVENT)
@@ -528,9 +528,9 @@ public class EncounterManager : MonoBehaviour
 
     private void LoadDialogEvent()
     {
-        Encounter currentEncounter = _theGameManager._currentEncounter;
+        Encounter currentEncounter = CurrentEncounter;
         int rand = Random.Range(0, currentEncounter.GoalCount);
-        string subject = _theGameManager.CurrentEncounter.EncounterGoals[rand].Subject;
+        string subject = CurrentEncounter.EncounterGoals[rand].Subject;
 
         //HACK//
         subject = "Sylvia";
@@ -543,7 +543,7 @@ public class EncounterManager : MonoBehaviour
     {
         bool makingPlayer = true;
 
-        switch (_theGameManager.CurrentEncounter.TurnPattern)
+        switch (CurrentEncounter.TurnPattern)
         {
             case EncounterPattern.ALTERNATE:
                 for (int i = 0; i < 3; i++)
@@ -1379,11 +1379,11 @@ public class EncounterManager : MonoBehaviour
 
     private void EncounterInfoInitializer()
     {
-        EncounterGoals.AddRange(_theGameManager.CurrentEncounter.EncounterGoals);
+        EncounterGoals.AddRange(CurrentEncounter.EncounterGoals);
 
         for (int i = 0; i < 4; i++)
         {
-            if(i <= _theGameManager.CurrentEncounter.GoalCount - 1)
+            if(i <= CurrentEncounter.GoalCount - 1)
             {
                 if(i == 0)
                 {

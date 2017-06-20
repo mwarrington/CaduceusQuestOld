@@ -53,6 +53,6 @@ public class GameManager : MonoBehaviour
     public void BeginEncounter(string sceneToLoadPath)
     {
         _currentEncounter = Resources.Load<Encounter>(sceneToLoadPath);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().ToString() + "Encounter");
+        SceneManager.LoadScene("Scene/" + SceneManager.GetActiveScene().name + "Encounter");
     }
 }

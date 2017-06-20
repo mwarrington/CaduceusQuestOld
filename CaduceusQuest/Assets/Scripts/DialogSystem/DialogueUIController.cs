@@ -52,6 +52,7 @@ public class DialogueUIController : MonoBehaviour
 		_dialogueSelection,
 		_convoFinished,
 		_isWriting,
+        _beginEncounter,
         _lastLine;
 
 	private List<Button> _optionButtonList = new List<Button>();
@@ -119,9 +120,34 @@ public class DialogueUIController : MonoBehaviour
         _inConversation = _dialogueSelection = false;
 
 		_convoFinished = false;
-	}
+    }
 
-	void Update()
+    public void StartConversation(NPC npc, NPCDialogSwitch currentDialogSwitch)
+    {
+        _currentLineIndex = 0;
+        _currentDOIndex = 0;
+        _buttonSelectionIndex = 0;
+        _lastLine = false;
+        _beginEncounter = false;
+        _currentConvo = new Convorsation(npc.NPCName, _theGameManager.CurrentDialogIndexList[npc.NPCName]);
+        _inConversation = true;
+        _currentDialogSwitch = currentDialogSwitch;
+        _dialoguePanel.SetActive(true);
+        int nextConvoInfoIndex = GetIndexFromChar(_currentConvo.Index);
+        if (nextConvoInfoIndex >= npc.NextConvoInfo.Length)
+        {
+            _nextConvo = '!';
+        }
+        else
+        {
+            _currentChangeType = npc.NextConvoInfo[nextConvoInfoIndex].MyChangeType;
+            _nextConvo = npc.NextConvoInfo[nextConvoInfoIndex].NextIndex;
+        }
+        _simone.Movement = false;
+        GetNextLine();
+    }
+
+    void Update()
 	{
         if (_dialogueSelection)
         {
@@ -164,7 +190,13 @@ public class DialogueUIController : MonoBehaviour
                     StopCoroutine(_currentCoroutine);
                     _dialogueText.text = _currentConvo.MyLines[_currentLineIndex].LineText;
                     _isWriting = false;
-                    _currentLineIndex++;
+                    if (!_lastLine)
+                        _currentLineIndex++;
+                }
+                else if (_beginEncounter)
+                {
+                    string path = "EncounterData/" + _currentConvo.Name + "Encounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
+                    _theGameManager.BeginEncounter(path);
                 }
                 else if (_lastLine)
                 {
@@ -179,30 +211,6 @@ public class DialogueUIController : MonoBehaviour
                     GetNextLine();
             }
         }
-	}
-
-    public void StartConversation(NPC npc, NPCDialogSwitch currentDialogSwitch)
-    {
-        _currentLineIndex = 0;
-		_currentDOIndex = 0;
-		_buttonSelectionIndex = 0;
-        _lastLine = false;
-        _currentConvo = new Convorsation(npc.NPCName, _theGameManager.CurrentDialogIndexList[npc.NPCName]);
-        _inConversation = true;
-        _currentDialogSwitch = currentDialogSwitch;
-        _dialoguePanel.SetActive(true);
-        int nextConvoInfoIndex = GetIndexFromChar(_currentConvo.Index);
-        if (nextConvoInfoIndex >= npc.NextConvoInfo.Length)
-        {
-            _nextConvo = '!';
-        }
-        else
-        {
-            _currentChangeType = npc.NextConvoInfo[nextConvoInfoIndex].MyChangeType;
-            _nextConvo = npc.NextConvoInfo[nextConvoInfoIndex].NextIndex;
-        }
-        _simone.Movement = false;
-        GetNextLine();
 	}
 
     private int GetIndexFromChar(char indexChar)
@@ -250,10 +258,8 @@ public class DialogueUIController : MonoBehaviour
 
 		for (int i = 0; i < _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
 		{
-			
 			_optionButtonList[i].gameObject.SetActive(true);
 			_optionTextList[i].text = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Trim();
-
 		}
 
 		HighlightDialogueSelection();
@@ -261,7 +267,6 @@ public class DialogueUIController : MonoBehaviour
 
 	private void HideDialogueOptions()
 	{
-
 		foreach (Button b in _optionButtonList)
 		{
 			b.gameObject.SetActive(false);
@@ -283,8 +288,7 @@ public class DialogueUIController : MonoBehaviour
 
             if (_currentConvo.MyLines[_currentLineIndex].BeginEncounter)
             {
-                string path = "EncounterData/" + _currentConvo.Name + "Enounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
-                _theGameManager.BeginEncounter(path);
+                _beginEncounter = true;
             }
 
             WriteDialogue();
@@ -304,8 +308,6 @@ public class DialogueUIController : MonoBehaviour
             ShowDialogueOptions();
             _inConversation = false;
             _dialogueSelection = true;
-            //Debug.Log("YOU WERE WRONG, MASON!!!!");
-            //_currentLineIndex = _currentConvo.MyLines[_currentLineIndex].NextLineIndex;
         }
 
     }
@@ -348,7 +350,8 @@ public class DialogueUIController : MonoBehaviour
 			yield return new WaitForSeconds(_dialogueManager.TypeSpeed);
 		}
 		_isWriting = false;
-        _currentLineIndex++;
+        if (!_lastLine)
+            _currentLineIndex++;
     }
 
     private void DialogueChanger(DialogChangeType dct)
