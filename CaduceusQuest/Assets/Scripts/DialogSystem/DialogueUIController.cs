@@ -282,7 +282,13 @@ public class DialogueUIController : MonoBehaviour
 
 	private void GetNextLine()
 	{
-		if (_currentConvo.MyLines[_currentLineIndex].LastLine)
+        if(_optionsNext)
+        {
+            ShowDialogueOptions();
+            _inConversation = false;
+            _dialogueSelection = true;
+        }
+		else if (_currentConvo.MyLines[_currentLineIndex].LastLine)
 		{
             _lastLine = true;
 
@@ -293,7 +299,7 @@ public class DialogueUIController : MonoBehaviour
 
             WriteDialogue();
 		}
-		else if (!_optionsNext)
+		else
 		{
             if (_currentConvo.MyLines[_currentLineIndex].NextGroupIndex != -1)
             {
@@ -302,12 +308,6 @@ public class DialogueUIController : MonoBehaviour
             }
 
             WriteDialogue();
-        }
-        else
-        {
-            ShowDialogueOptions();
-            _inConversation = false;
-            _dialogueSelection = true;
         }
 
     }

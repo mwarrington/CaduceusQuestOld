@@ -25,9 +25,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //Should only happen the first time entering that scene
-        foreach (NPCDialogSwitch npc in FindObjectsOfType<NPCDialogSwitch>())
-        {
+        List<NPCDialogSwitch> allNPCSwitches = new List<NPCDialogSwitch>();
+        allNPCSwitches.AddRange(FindObjectsOfType<NPCDialogSwitch>());
+
+        if(allNPCSwitches.Count > 0)
             _lastNPCList.Clear();
+
+        foreach (NPCDialogSwitch npc in allNPCSwitches)
+        {
             _lastNPCList.Add(npc.NPCData);
 
             if (!_currentDialogIndexList.ContainsKey(npc.transform.parent.name))
