@@ -349,21 +349,29 @@
 		(g)0(n)1(f)h,1(l)"If you want me to...";
 	[0](s)Violet(e)g,1(t)"Ok, let's do it."&;;
 
-	//after successful neck exam//
+	//fail convo//
 	(c)Violet(i)d;
-	[0](s)Violet(e)g,2(t)"Ow! You pinched me."<0;
-		(g)0(n)1(f)h,1(l)"I'm sorry! Your neck seems fine though.";
-		(g)0(n)1(f)h,1(l)"Good news: You're totally healthy!";
-	[1](s)Violet(e)g,2(t)"Oh, phew!"#;;
-	//return to d//
-
-	 //fail convo//
-	(c)Violet(i)a;
 	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
 	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&;
 	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
+
+
+	//after successful neck exam//
+	(c)Violet(i)e;
+	[0](s)Violet(e)g,2(t)"Ow! You pinched me."<0;
+		(g)0(n)1(f)h,1(l)"I'm sorry! Your neck seems fine though.";
+		(g)0(n)1(f)h,1(l)"Good news: You're totally healthy!";
+	[1](s)Violet(e)g,2(t)"Oh, phew!"#;;
+	//return to b//
+
+	//final//
+	(c)Violet(i)f;
+	[0](s)Violet(e)c,1(t)"Hi, did you need anything this time?"<0;
+		(g)0(n)1(f)a,1(l)"Just saying hi.";
+		(g)0(n)1(f)c,2(l)"I guess not.";
+	[1](s)Violet(e)g,2(t)"..."#;;
 
 //Quinn//
 
@@ -426,7 +434,7 @@
 	(c)Principal Gilliam(i)a;
 	[0](s)Principal Gilliam(e)g,1(l)"Hello young lady. Are you a student here? Get to class!"#;;
 
-	//after talking to her 3 times//
+	//second encounter//
 	(c)Principal Gilliam(i)b;
 	[0](s)Principal Gilliam(e)g,2(l)"Why aren't you in class? Are you alright?"<0;
 		(g)0(n)1(f)c,1(l)"Well, actually... could I examine your neck?";
@@ -441,4 +449,8 @@
 	//in office//
 	(c)Principal Gilliam(i)d;
 	[0](s)Principal Gilliam(e)c,2(l)"Hello young lady. I've received word that you've found evidence of meningoencephalitis in three students here.";
-	[0](s)Principal Gilliam(e)c,2(l)"This is an extremely grave matter, and we must respond immediately. Please go report your findings to Dr. Gallo."#;;
+	[1](s)Principal Gilliam(e)c,2(l)"This is an extremely grave matter, and we must respond immediately. Please go report your findings to Dr. Gallo."#;;
+
+	//in office//
+	(c)Principal Gilliam(i)e;
+	[0](s)Principal Gilliam(e)c,3(l)"Hurry!! Go tell Dr. Gallo. I've seen meningoencephalitis before, and it can get ugly.";

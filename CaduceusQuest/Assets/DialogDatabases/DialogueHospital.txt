@@ -200,11 +200,10 @@
 	[1](s)Mason(e)h,1(t)"Oh it's cool, I'm also not a doctor. In fact, I'm not sick either. I'm not really sure why I'm here."<1;
 		(g)1(n)0(f)h,1(l)"That's weird.";
 		(g)1(n)2(f)h,1(l)"Dr. Gallo sent me to give this teddy bear to you.";
-	//give teddy bear//
 	[2](s)Mason(e)a,3(t)"Wow!! Thank you. This is from my daughter Macy."<2;
 		(g)2(n)3(f)h,1(l)"I'm here to fill out an intake form with you.";
 		(g)2(n)3(f)h,1(l)"Can you fill out this form with me?";
-	[3](s)Mason(e)e,2(t)"Sounds good, let's do it."&0;;
+	[3](s)Mason(e)e,2(t)"Sounds good, let's do it."&;;
 	
 	//fail convo intake//
 	(c)Mason(i)b;
@@ -229,8 +228,16 @@
 	[2](s)Mason(e)e,2(t)"Me too! Let me know if you figure out what's going on."#;
 	[3](s)Mason(e)b,2(t)"Great. My neck's sort of stiff actually, could you take a look?"&1;;
 
-	//after neck exam//
+	//fail convo neck exam//
 	(c)Mason(i)e;
+	[0](s)Mason(e)b,1(t)"Hm. That didn't seem right. Want to do it again?"<0
+		(g)0(n)1(f)h,1(l)"Yep.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Mason(e)b,1(t)"Ok!"&0;
+	[2](s)Mason(e)b,1(t)"Ok."#;;
+
+	//after neck exam//
+	(c)Mason(i)f;
 	[0](s)Mason(e)c,2(t)"What's the good news, doc?"<0;
 		(g)0(n)2(f)c,1(l)"I'm not sure. I'm going to get Dr. Gallo for a second opinion.";
 		(g)0(n)1(f)c,2(l)"Your neck actually does feel stiff.";
@@ -240,16 +247,9 @@
 	[2](s)Mason(e)c,2(t)"Huh. Ok. Just let me know what to do."#;;
 
 	//last convo//
-	(c)Mason(i)f;
+	(c)Mason(i)g;
 	[0](s)Mason(e)c,1(t)"Thanks Simone. I can tell you're really looking out for me."#;;
 
-	//fail convo neck//
-	(c)Mason(i)g;
-	[0](s)Mason(e)b,1(t)"Hm. That didn't seem right. Want to do it again?"<0
-		(g)0(n)1(f)h,1(l)"Yep.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Mason(e)b,1(t)"Ok!"&1;
-	[2](s)Mason(e)b,1(t)"Ok."#;;
 
 //Sylvia//
 
