@@ -62,29 +62,28 @@
 	[4](s)Mars(e)g,2(t)"Quinn, huh? I know her but I don't really know her, you know?"#;
 	[5](s)Mars(e)b,2(t)"Hmm..."&5;;
 
-	//after successful neck exam//
-	(c)Mars(i)e;
-	[0](s)Mars(e)c,1(t)"Tell me the good news, doc!"<0;
-		(g)0(n)1(f)c,2(l)"Actually, well, your neck is a little stiff and swollen.";
-		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
-	[1](s)Mars(e)c,3(t)"What?? Um, ok..."#;;
-
-	//after e//
-	(c)Mars(i)f;
-	[0](s)Mars(e)c,2(t)"Yo. You're not here for another neck exam are you?"<0;
-		(g)0(n)1(f)a,1(l)"No, just saying hi.";
-		(g)0(n)2(f)c,1(l)"Sorry, I didn't actually mean to talk to you.";
-	[1](s)Mars(e)a,1(t)"Hi"#;
-	[2](s)Mars(e)d,2(t)"Weird how that happens..."#;;
-
 	//fail convo//
-	(c)Mars(i)g;
+	(c)Mars(i)e;
 	[0](s)Mars(e)g,1(t)"Hm. You want to try again?"<0
 		(g)0(n)1(f)h,1(l)"Yes.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
 	[1](s)Mars(e)g,2(t)"Ok."&;
 	[2](s)Mars(e)g,2(t)"Ok."#;;
 
+	//after successful neck exam//
+	(c)Mars(i)f;
+	[0](s)Mars(e)c,1(t)"Tell me the good news, doc!"<0;
+		(g)0(n)1(f)c,2(l)"Actually, well, your neck is a little stiff and swollen.";
+		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
+	[1](s)Mars(e)c,3(t)"What?? Um, ok..."#;;
+
+	//after e//
+	(c)Mars(i)g;
+	[0](s)Mars(e)c,2(t)"Yo. You're not here for another neck exam are you?"<0;
+		(g)0(n)1(f)a,1(l)"No, just saying hi.";
+		(g)0(n)2(f)c,1(l)"Sorry, I didn't actually mean to talk to you.";
+	[1](s)Mars(e)a,1(t)"Hi"#;
+	[2](s)Mars(e)d,2(t)"Weird how that happens..."#;;
 
 //Bea//
 
@@ -120,15 +119,23 @@
 		(g)1(n)14(f)h,1(l)"No thanks. Can I examine your neck?";
 	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&6;;
 
-	//after successful neck exam//
+	//fail convo//
 	(c)Bea(i)b;
+	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes please.";
+		(g)0(n)2(f)h,1(l)"Not yet.";
+	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
+	[2](s)Bea(e)a,2(t)"K."#;;
+
+	//after successful neck exam//
+	(c)Bea(i)c;
 	[0](s)Bea(e)a,1(t)"What do you feel?"<0;
 		(g)0(n)1(f)c,2(l)"I'm not sure... your neck is stiff and swollen.";
 		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
 	[1](s)Bea(e)c,2(t)"Hm. I was hoping it wasn't true. Just tell me when to go."#;;
 
 	//after b//
-	(c)Bea(i)c;
+	(c)Bea(i)d;
 	[0](s)Bea(e)a,2(t)"Oh, hey! Neck lady.";
 	[1](s)Bea(e)a,2(t)"Did you want to know more about signs?"<0;
 		(g)0(n)2(f)h,1(l)"Sure.";
@@ -164,14 +171,6 @@
 	[16](s)Bea(e)a,2(t)"Let me know if you need anymore guidance."#;
 	[17](s)Bea(e)a,2(t)"Oh, that's nice of you.";
 	[18](s)Bea(e)a,2(t)"Hi!"#;;
-
-	//fail convo//
-	(c)Bea(i)d;
-	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes please.";
-		(g)0(n)2(f)h,1(l)"Not yet.";
-	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
-	[2](s)Bea(e)a,2(t)"K."#;;
 
 
 //Danny//
@@ -238,15 +237,23 @@
 	[4](s)Danny(e)c,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?";
 	[5](s)Danny(e)a,3(t)"She's me hero!"#;;
 	
+	//fail convo neck exam//
+	(c)Danny(i)e;
+	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
+		(g)0(n)1(f)h,1(l)"Yes.";
+		(g)0(n)2(f)h,1(l)"Not right now.";
+	[1](s)Danny(e)h,1(t)"Ok."&;
+	[2](s)Danny(e)h,1(t)"Ok."#;;
+
 	//after successful neck exam//
-	(c)Danny(i)d;
+	(c)Danny(i)f;
 	[0](s)Danny(e)c,2(t)"Ok, how's my neck? Now that you mentioned it I feel weird, but maybe I'm a hypochondriac."<0;
 		(g)0(n)1(f)c,2(l)"Well... it actually does feel a little off.";
 		(g)0(n)1(f)c,2(l)"We should go to a real doctor to confirm.";
 	[1](s)Danny(e)c,2(t)"Ok. Oh man. Just let me know what to do."#;;
 
-	//after d//
-	(c)Danny(i)e;
+	//after f//
+	(c)Danny(i)g;
 	[0](s)Danny(e)h,2(t)"Hey, do you know anything about the origins of our town's name?";
 		(g)1(n)1(f)h,1(l)"I've heard more than a few stories. Do you know the true origin?";
 		(g)1(n)2(f)h,1(l)"No, what have you heard?";
@@ -255,14 +262,6 @@
 	[2](s)Danny(e)h,2(t)"There seem to be more than one reason and they all check out!">3;
 	[3](s)Danny(e)c,1(t)"It's always kinda bugged me but maybe they're all true."#;
 	[4](s)Danny(e)h,2(t)"Ashland. Apparently there are multiple origin stories but they all seem true!"#;;
-
-	//fail convo//
-	(c)Danny(i)f;
-	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
-		(g)0(n)1(f)h,1(l)"Yes.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Danny(e)h,1(t)"Ok."&;
-	[2](s)Danny(e)h,1(t)"Ok."#;;
 
 //Josh//
 
@@ -303,21 +302,36 @@
 		(g)1(n)3(e)g,1(l)"It's my job. Don't make this harder for both of us.";
 	[3](s)Josh(e)h,1(t)"Ha. Alright, I see you. Let's do it."&;;
 
-	//after successful neck exam//
+	//fail convo//
 	(c)Josh(i)d;
+	[0](s)Josh(e)g,1(t)"That was terrible. Want to try again?"<0
+		(g)0(n)1(f)a,2(l)"Alright.";
+		(g)0(n)2(f)a,2(l)"Not right now.";
+	[1](s)Josh(e)g,1(t)"Ok."&;
+	[2](s)Josh(e)g,1(t)"Ok."#;;
+
+	//after successful neck exam//
+	(c)Josh(i)e;
 	[0](s)Josh(e)g,1(t)"Ouch! I thought you'd be gentler"<0;
 		(g)0(n)1(f)h,1(l)"Calm down. But your neck is fine.";
 		(g)0(n)1(f)h,1(l)"Good news: There's nothing wrong with you, health-wise.";
 	[1](s)Josh(e)a,1(t)"Ok. Great."#;;
 	//return to b//
 
-	//fail convo//
-	(c)Josh(i)e;
-	[0](s)Josh(e)g,1(t)"That was terrible. Want to try again?"<0
-		(g)0(n)1(f)a,2(l)"Alright.";
-		(g)0(n)2(f)a,2(l)"Not right now.";
-	[1](s)Josh(e)g,1(t)"Ok."&;
-	[2](s)Josh(e)g,1(t)"Ok."#;;
+	//last convo//
+	(c)Josh(i)f;
+	[0](s)Josh(e)h,1(t)"Hey! What's her face!";
+		(g)0(n)1(e)g,2(l)"It's Simone.";
+		(g)0(n)3(e)g,1(l)"Wow, what's her face, huh?";
+	[1](s)Josh(e)h,1(t)"I knew a girl named Simone once. She was so uppity.";
+	[2](s)Josh(e)h,1(t)"She was mixed like you. Are all mixed girls like that?"<1;
+	[3](s)Josh(e)h,1(t)"Haha, yeah, that's my go-to for randoms like you."<2;
+		(g)1(n)4(e)g,3(l)"Did you seriously just call me uppity?";
+		(g)1(n)4(e)g,1(l)"You really need more practice talking to people...";
+	[4](s)Josh(e)h,1(t)"What do you mean?"#;
+		(g)2(n)4(e)g,4(t)"Randoms!? I'm done talking to you.";
+		(g)2(n)5(e)g,2(t)"No filter, huh?";
+	[5](s)Josh(e)h,1(t)"Wuh?"#;;
 
 //Violet//
 
@@ -453,4 +467,23 @@
 
 	//in office//
 	(c)Principal Gilliam(i)e;
-	[0](s)Principal Gilliam(e)c,3(l)"Hurry!! Go tell Dr. Gallo. I've seen meningoencephalitis before, and it can get ugly.";
+	[0](s)Principal Gilliam(e)c,3(l)"Hurry!! Go tell Dr. Gallo. I've seen meningoencephalitis before, and it can get ugly."#;;
+
+//Student NPCs//
+
+	(c)Student(i)a;
+	[0](s)Student(e)d,1(t)"Have you seen my cats? I lost them on my way here. Oh well."#;;
+
+	(c)Student(i)b;
+	[0](s)Student(e)h,1(t)"Hey, you look kinda lost..."#;;
+
+//Teacher NPCs//
+
+	(c)Teacher(i)a;
+	[0](s)Teacher(e)g,2(t)"Hey, I'm kind of in the middle of something here!"#;;
+
+	(c)Teacher(i)b;
+	[0](s)Teacher(e)e,1(t)"Whoa. It's nice to see you again, Simone."#;;
+
+	(c)Teacher(i)c;
+	[0](s)Teacher(e)e,2(t)"I didn't think you'd be back. That's what people are saying, at least."#;;

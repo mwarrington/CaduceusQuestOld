@@ -555,7 +555,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: 1faac531015cc4051898ca955ef71f0f, type: 2}
     - target: {fileID: 100000, guid: f4e0785d0f63f445b9ea178b53dfd89d, type: 3}
       propertyPath: m_Name
-      value: Patient2
+      value: Patient
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4e0785d0f63f445b9ea178b53dfd89d, type: 3}
@@ -999,7 +999,7 @@ Prefab:
         type: 2}
       propertyPath: NPCData
       value: 
-      objectReference: {fileID: 11400000, guid: c2e7267949c6f457b8d0cad3e72b8f74,
+      objectReference: {fileID: 11400000, guid: 280f396b40cdc439783152cd27cd6701,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ced7260e46324f919952a9484a71c0b, type: 2}
@@ -4088,7 +4088,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: f09b8a09511b44135807d9871cb83980, type: 2}
     - target: {fileID: 100040, guid: c0b3585b6e36848faba255f3e8cbdf45, type: 3}
       propertyPath: m_Name
-      value: Patient1
+      value: Patient
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0b3585b6e36848faba255f3e8cbdf45, type: 3}
@@ -7239,7 +7239,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: b77163bebad09456eb35f08411590ea2, type: 2}
     - target: {fileID: 100040, guid: e9a71fa9889e74499bbf8b6a35bd8af7, type: 3}
       propertyPath: m_Name
-      value: Patient3
+      value: Patient
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9a71fa9889e74499bbf8b6a35bd8af7, type: 3}
@@ -9638,7 +9638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d384b95a0b9742c47a8d7f2945403ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCData: {fileID: 11400000, guid: eb9c0cf3b8457427d99a31abe0022867, type: 2}
+  NPCData: {fileID: 11400000, guid: 42c8736f90eba41f6b3953377ba5cdb0, type: 2}
 --- !u!1001 &905840546
 Prefab:
   m_ObjectHideFlags: 0
@@ -12930,7 +12930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d384b95a0b9742c47a8d7f2945403ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCData: {fileID: 11400000, guid: e075c1e58dd00440ab3398934a897780, type: 2}
+  NPCData: {fileID: 11400000, guid: 6370d05c297e44c31a8e7c4ee5566f18, type: 2}
 --- !u!65 &1156006578
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -35,9 +35,9 @@ public class MakeNPCScritableObject
             transitionCount;
         NextConvoData[] nextConvoInfo;
 
-        private string[] newIndexes = new string[10],
-                         oldIndexes = new string[10];
-        private DialogChangeType[] dctArray = new DialogChangeType[10];
+        private string[] newIndexes = new string[12],
+                         oldIndexes = new string[12];
+        private DialogChangeType[] dctArray = new DialogChangeType[12];
 
         [MenuItem("Assets/Create/NPC")]
         public static void OpenNPCWindow()
@@ -227,6 +227,62 @@ public class MakeNPCScritableObject
 				NextConvoBit(9);
 				#endregion 10 transitions
 			}
+
+            else if (transitionCount == 11)
+            {
+                #region 11 transitions
+                NextConvoBit(0);
+                EditorGUILayout.Space();
+                NextConvoBit(1);
+                EditorGUILayout.Space();
+                NextConvoBit(2);
+                EditorGUILayout.Space();
+                NextConvoBit(3);
+                EditorGUILayout.Space();
+                NextConvoBit(4);
+                EditorGUILayout.Space();
+                NextConvoBit(5);
+                EditorGUILayout.Space();
+                NextConvoBit(6);
+                EditorGUILayout.Space();
+                NextConvoBit(7);
+                EditorGUILayout.Space();
+                NextConvoBit(8);
+                EditorGUILayout.Space();
+                NextConvoBit(9);
+                EditorGUILayout.Space();
+                NextConvoBit(10);
+                #endregion 11 transitions
+            }
+
+            else if (transitionCount == 12)
+            {
+                #region 12 transitions
+                NextConvoBit(0);
+                EditorGUILayout.Space();
+                NextConvoBit(1);
+                EditorGUILayout.Space();
+                NextConvoBit(2);
+                EditorGUILayout.Space();
+                NextConvoBit(3);
+                EditorGUILayout.Space();
+                NextConvoBit(4);
+                EditorGUILayout.Space();
+                NextConvoBit(5);
+                EditorGUILayout.Space();
+                NextConvoBit(6);
+                EditorGUILayout.Space();
+                NextConvoBit(7);
+                EditorGUILayout.Space();
+                NextConvoBit(8);
+                EditorGUILayout.Space();
+                NextConvoBit(9);
+                EditorGUILayout.Space();
+                NextConvoBit(10);
+                EditorGUILayout.Space();
+                NextConvoBit(11);
+                #endregion 12 transitions
+            }
 
             if (GUILayout.Button("Create"))
             {

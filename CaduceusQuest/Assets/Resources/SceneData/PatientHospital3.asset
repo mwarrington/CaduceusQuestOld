@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e07537d9d75f75f47aeba24cb23497cd, type: 3}
-  m_Name: Patient2Hospital
+  m_Name: PatientHospital3
   m_EditorClassIdentifier: 
-  NPCName: Patient2
+  NPCName: Patient
   ConvoCount: 1
   NextConvoInfo: []
