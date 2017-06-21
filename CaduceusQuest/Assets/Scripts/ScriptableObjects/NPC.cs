@@ -35,9 +35,9 @@ public class MakeNPCScritableObject
             transitionCount;
         NextConvoData[] nextConvoInfo;
 
-        private string[] newIndexes = new string[8],
-                         oldIndexes = new string[8];
-        private DialogChangeType[] dctArray = new DialogChangeType[8];
+        private string[] newIndexes = new string[10],
+                         oldIndexes = new string[10];
+        private DialogChangeType[] dctArray = new DialogChangeType[10];
 
         [MenuItem("Assets/Create/NPC")]
         public static void OpenNPCWindow()
@@ -179,6 +179,54 @@ public class MakeNPCScritableObject
                 NextConvoBit(7);
                 #endregion 8 transitions
             }
+
+			else if (transitionCount == 9)
+			{
+				#region 9 transitions
+				NextConvoBit(0);
+				EditorGUILayout.Space();
+				NextConvoBit(1);
+				EditorGUILayout.Space();
+				NextConvoBit(2);
+				EditorGUILayout.Space();
+				NextConvoBit(3);
+				EditorGUILayout.Space();
+				NextConvoBit(4);
+				EditorGUILayout.Space();
+				NextConvoBit(5);
+				EditorGUILayout.Space();
+				NextConvoBit(6);
+				EditorGUILayout.Space();
+				NextConvoBit(7);
+				EditorGUILayout.Space();
+				NextConvoBit(8);
+				#endregion 9 transitions
+			}
+
+			else if (transitionCount == 10)
+			{
+				#region 10 transitions
+				NextConvoBit(0);
+				EditorGUILayout.Space();
+				NextConvoBit(1);
+				EditorGUILayout.Space();
+				NextConvoBit(2);
+				EditorGUILayout.Space();
+				NextConvoBit(3);
+				EditorGUILayout.Space();
+				NextConvoBit(4);
+				EditorGUILayout.Space();
+				NextConvoBit(5);
+				EditorGUILayout.Space();
+				NextConvoBit(6);
+				EditorGUILayout.Space();
+				NextConvoBit(7);
+				EditorGUILayout.Space();
+				NextConvoBit(8);
+				EditorGUILayout.Space();
+				NextConvoBit(9);
+				#endregion 10 transitions
+			}
 
             if (GUILayout.Button("Create"))
             {
