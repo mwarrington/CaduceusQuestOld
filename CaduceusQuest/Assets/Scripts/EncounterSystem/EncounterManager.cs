@@ -257,7 +257,7 @@ public class EncounterManager : MonoBehaviour
         {
             if(_target1CurrentTrust != value)
             {
-                if (value == 0)
+                if (value <= 0)
                     _target1Trust.sprite = TrustProgressBarSprites[0];
                 else if (value < 10)
                     _target1Trust.sprite = TrustProgressBarSprites[1];
@@ -933,9 +933,19 @@ public class EncounterManager : MonoBehaviour
     {
         DisplayEncounterMessage("Dang, that didn't go so well...");
         target1CurrentTrust -= failPenalty;
+        if(target1CurrentTrust <= 0)
+        {
+            _encounterFinished = true;
+            string[] failMessages = new string[2];
+            failMessages[0] = "Oh boy... They don't seem happy.";
+            failMessages[1] = "Maybe we should try again later...";
+            DisplayEncounterMessage(failMessages);
+            _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERFAIL);
+        }
         GameObject.Destroy(currentPuzzle);
     }
 
+    //Event Puzzle Win
     public void PuzzleWin(float failPenalty, GameObject currentPuzzle)
     {
         for (int i = 0; i < EncounterGoals.Count; i++)
@@ -968,6 +978,7 @@ public class EncounterManager : MonoBehaviour
         GameObject.Destroy(currentPuzzle);
     }
 
+    //Player puzzle win
     public void PuzzleWin(string actionName, GameObject currentPuzzle)
     {
         bool loadWinMessage = false;
@@ -983,7 +994,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target1CB3.sprite = CheckedBox;
+                        _target1CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -993,7 +1004,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target1CB1.sprite = CheckedBox;
+                        _target1CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -1005,10 +1016,8 @@ public class EncounterManager : MonoBehaviour
                         _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
                 if (i == 1)
                 {
@@ -1016,7 +1025,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target2CB3.sprite = CheckedBox;
+                        _target2CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -1026,7 +1035,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target2CB1.sprite = CheckedBox;
+                        _target2CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -1038,10 +1047,8 @@ public class EncounterManager : MonoBehaviour
                         _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
                 if (i == 2)
                 {
@@ -1049,7 +1056,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target3CB3.sprite = CheckedBox;
+                        _target3CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -1059,7 +1066,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target3CB1.sprite = CheckedBox;
+                        _target3CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -1071,10 +1078,8 @@ public class EncounterManager : MonoBehaviour
                         _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
                 if (i == 3)
                 {
@@ -1082,7 +1087,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target4CB3.sprite = CheckedBox;
+                        _target4CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -1092,7 +1097,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target4CB1.sprite = CheckedBox;
+                        _target4CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -1104,10 +1109,8 @@ public class EncounterManager : MonoBehaviour
                         _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
             }
         }
@@ -1125,6 +1128,7 @@ public class EncounterManager : MonoBehaviour
                 winMessages[0] = "Wonderful!";
                 winMessages[1] = "You've treated all patients";
                 DisplayEncounterMessage(winMessages);
+                _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERWIN);
             }
             else
                 DisplayEncounterMessage("Great Job! Patient treated!");
