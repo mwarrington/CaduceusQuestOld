@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     }
     private static Dictionary<string, char> _currentDialogIndexList = new Dictionary<string, char>();
     private static Dictionary<string, int> _currentEncounterIndexList = new Dictionary<string, int>();
+    private static List<NPC> _lastNPCList = new List<NPC>();
 
     private static Encounter _currentEncounter;
 
@@ -26,7 +27,11 @@ public class GameManager : MonoBehaviour
         //Should only happen the first time entering that scene
         foreach (NPCDialogSwitch npc in FindObjectsOfType<NPCDialogSwitch>())
         {
-            _currentDialogIndexList.Add(npc.transform.parent.name, 'a');
+            _lastNPCList.Clear();
+            _lastNPCList.Add(npc.NPCData);
+
+            if (!_currentDialogIndexList.ContainsKey(npc.transform.parent.name))
+                _currentDialogIndexList.Add(npc.transform.parent.name, 'a');
         }
 
         AddSkill(new Skill("Complete Intake Form", SkillType.COMMUNICATION));
@@ -54,5 +59,25 @@ public class GameManager : MonoBehaviour
     {
         _currentEncounter = Resources.Load<Encounter>(sceneToLoadPath);
         SceneManager.LoadScene("Scene/" + SceneManager.GetActiveScene().name + "Encounter");
+    }
+
+    public void DialogueChanger(string name, DialogChangeType dct)
+    {
+        for (int i = 0; i < _lastNPCList.Count; i++)
+        {
+            if (_lastNPCList[i].NPCName == name)
+            {
+                for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
+                {
+                    if (_currentDialogIndexList[name] == _lastNPCList[i].NextConvoInfo[j].MyIndex)
+                    {
+                        if (dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
+                        {
+                            _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

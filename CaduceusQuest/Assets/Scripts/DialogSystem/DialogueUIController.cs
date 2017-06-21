@@ -195,7 +195,7 @@ public class DialogueUIController : MonoBehaviour
                 }
                 else if (_beginEncounter)
                 {
-                    string path = "EncounterData/" + _currentConvo.Name + "Encounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
+                    string path = "EncounterData/" + _currentConvo.SpeakerName + "Encounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
                     _theGameManager.BeginEncounter(path);
                 }
                 else if (_lastLine)
@@ -205,7 +205,7 @@ public class DialogueUIController : MonoBehaviour
                     _convoFinished = true;
                     _simone.Movement = true;
                     _currentDialogSwitch.ExitDialog();
-                    DialogueChanger(DialogChangeType.CONVOEND);
+                    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
                 }
                 else if (!_isWriting)
                     GetNextLine();
@@ -352,17 +352,6 @@ public class DialogueUIController : MonoBehaviour
 		_isWriting = false;
         if (!_lastLine)
             _currentLineIndex++;
-    }
-
-    private void DialogueChanger(DialogChangeType dct)
-    {
-        if (_nextConvo != '!')
-        {
-            if (dct == _currentChangeType)
-            {
-                _theGameManager.CurrentDialogIndexList[_currentConvo.Name] = _nextConvo;//new Convorsation(_currentConvo.Name, _nextConvo);
-            }
-        }
     }
 }
 

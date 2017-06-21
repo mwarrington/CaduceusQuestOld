@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Convorsation
 {
-	public string Name;
+	public string SpeakerName;
 	public char Index;
 	public List<Line> MyLines = new List<Line> ();
 	public List<DialogOptions> MyDialogOptionsList = new List<DialogOptions> ();
@@ -26,7 +26,7 @@ public class Convorsation
 
 	public Convorsation (string name, char index)
 	{
-		Name = name;
+		SpeakerName = name;
 		Index = index;    
 
 		PopulateConversation ();
@@ -80,7 +80,7 @@ public class Convorsation
 			if (_readingName) {
 				if (currentChar != '(') {
 					_currentName = _currentName + currentChar;
-				} else if (_currentName == Name) {
+				} else if (_currentName == SpeakerName) {
 					_currentName = "";
 					_readingName = false;
 				} else {
