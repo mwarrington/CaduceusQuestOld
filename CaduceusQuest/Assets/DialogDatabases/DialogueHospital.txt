@@ -169,18 +169,18 @@
 		(g)0(n)1(f)h,1(l)"Not quite yet, I need to take a blood test.";
 		(g)0(n)1(f)h,1(l)"As soon as we take some blood.";;
 
-	//after blood test//
-	(c)Violet(i)f;
-	[0](s)Violet(e)b,2(t)"Dr. Gallo said my blood's fine, I'm outta here!"#;;
-	//return to c//
-
 	//fail convo blood//
-	(c)Violet(i)g;
+	(c)Violet(i)f;
 	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
 	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&1;
 	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
+
+	//after blood test//
+	(c)Violet(i)g;
+	[0](s)Violet(e)b,2(t)"Dr. Gallo said my blood's fine, I'm outta here!"#;;
+	//return to c//
 
 //Mason//
 
