@@ -35,7 +35,15 @@
 		(g)2(n)5(f)h,1(l)"Everything will be okay, but he has to stay here tonight.";
 		(g)2(n)5(f)h,1(l)"The doctors here are very good. Is someone coming to get you?";
 	[5](s)Macy(e)c,1(t)"Alright. My big brother Mars is on his way to pick me up."#;;
-	//Macy disappears//
+	
+	//after b//
+	(c)Macy(i)c;
+	[0](s)Macy(e)c,3(t)"I hope Dad's ok..."#;;
+
+	//after c//
+	(c)Macy(i)d;
+	[0](s)Macy(e)d,2(t)"Mars should be here soon."#;;
+	//return to c//
 
 //Patient - pull from these randomly for Hospital NPCs//
 
