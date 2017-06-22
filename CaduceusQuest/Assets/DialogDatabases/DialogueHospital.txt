@@ -197,7 +197,7 @@
 	[2](s)Mason(e)a,3(t)"Wow!! Thank you. This is from my daughter Macy."<2;
 		(g)2(n)3(f)h,1(l)"I'm here to fill out an intake form with you.";
 		(g)2(n)3(f)h,1(l)"Can you fill out this form with me?";
-	[3](s)Mason(e)e,2(t)"Sounds good, let's do it."&;;
+	[3](s)Mason(e)e,2(t)"Sounds good, let's do it."&0;;
 	
 	//fail convo intake//
 	(c)Mason(i)b;
