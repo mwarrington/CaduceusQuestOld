@@ -67,7 +67,7 @@
 	[0](s)Mars(e)g,1(t)"Hm. You want to try again?"<0
 		(g)0(n)1(f)h,1(l)"Yes.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Mars(e)g,2(t)"Ok."&;
+	[1](s)Mars(e)g,2(t)"Ok."&0;
 	[2](s)Mars(e)g,2(t)"Ok."#;;
 
 	//after successful neck exam//
@@ -124,7 +124,7 @@
 	[0](s)Bea(e)a,2(t)"Whoa! That wasn't right. Want to try again?"<0
 		(g)0(n)1(f)h,1(l)"Yes please.";
 		(g)0(n)2(f)h,1(l)"Not yet.";
-	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&;
+	[1](s)Bea(e)a,2(t)"Ok, let's do it!"&0;
 	[2](s)Bea(e)a,2(t)"K."#;;
 
 	//after successful neck exam//
@@ -242,7 +242,7 @@
 	[0](s)Danny(e)h,1(t)"Hm. You want to try again?"<0
 		(g)0(n)1(f)h,1(l)"Yes.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Danny(e)h,1(t)"Ok."&;
+	[1](s)Danny(e)h,1(t)"Ok."&0;
 	[2](s)Danny(e)h,1(t)"Ok."#;;
 
 	//after successful neck exam//
@@ -300,14 +300,14 @@
 	[2](s)Josh(e)h,1(t)"Wait, what does that mean? Girls like you are so confusing."<0;
 		(g)0(n)3(e)g,1(l)"Can we just get this over with?";
 		(g)1(n)3(e)g,1(l)"It's my job. Don't make this harder for both of us.";
-	[3](s)Josh(e)h,1(t)"Ha. Alright, I see you. Let's do it."&;;
+	[3](s)Josh(e)h,1(t)"Ha. Alright, I see you. Let's do it."&0;;
 
 	//fail convo//
 	(c)Josh(i)d;
 	[0](s)Josh(e)g,1(t)"That was terrible. Want to try again?"<0
 		(g)0(n)1(f)a,2(l)"Alright.";
 		(g)0(n)2(f)a,2(l)"Not right now.";
-	[1](s)Josh(e)g,1(t)"Ok."&;
+	[1](s)Josh(e)g,1(t)"Ok."&0;
 	[2](s)Josh(e)g,1(t)"Ok."#;;
 
 	//after successful neck exam//
@@ -361,14 +361,14 @@
 	[0](s)Violet(e)g,2(t)"I heard you're examining everyone's necks. Why aren't you examining mine?"<0;
 		(g)0(n)1(f)h,1(l)"I mean, I could.";
 		(g)0(n)1(f)h,1(l)"If you want me to...";
-	[0](s)Violet(e)g,1(t)"Ok, let's do it."&;;
+	[0](s)Violet(e)g,1(t)"Ok, let's do it."&0;;
 
 	//fail convo//
 	(c)Violet(i)d;
 	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&;
+	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&0;
 	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
 
 
@@ -422,14 +422,14 @@
 		(g)0(n)1(f)h,1(l)"Nothing much.";
 		(g)0(n)2(f)h,1(l)"Would you mind if I examined your neck?";
 	[1](s)Quinn(e)a,3(t)"K, seeya!"#;
-	[2](s)Quinn(e)a,1(t)"Uh, I guess..."&;;
+	[2](s)Quinn(e)a,1(t)"Uh, I guess..."&0;;
 
 	//after successful neck exam//
 	(c)Quinn(i)i;
 	[0](s)Quinn(e)a,1(t)"How's my neck?"<0;
 		(g)0(n)1(f)h,1(l)"Totally fine. Thanks for letting me check.";
 		(g)0(n)2(f)h,1(l)"You are A-OK.";
-	[1](s)Quinn(e)a,3(t)"K, cool!"#;;
+	[1](s)Quinn(e)a,3(t)"K, cool!"#0;;
 
 	//after i cycle between f and g//
 
@@ -438,7 +438,7 @@
 	[0](s)Quinn(e)g,1(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Quinn(e)g,1(t)"Ok, let's get this over with."&;
+	[1](s)Quinn(e)g,1(t)"Ok, let's get this over with."&0;
 	[2](s)Quinn(e)g,1(t)"Ok, bye..."#;;
 
 
