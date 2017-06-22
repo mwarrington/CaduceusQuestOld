@@ -24,7 +24,8 @@ public enum EncounterActionType
 public enum DialogChangeType
 {
     CONVOEND,
-    ENCOUNTEREND,
+    ENCOUNTERWIN,
+    ENCOUNTERFAIL,
     ITEMTRIGGER
 }
 

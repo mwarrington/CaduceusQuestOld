@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EncounterManager : MonoBehaviour
 {
-    public List<EncounterGoal> EncounterGoals = new List<EncounterGoal>();
+    public List<EncounterGoal> EncounterGoals;
     public List<EncounterTurnType> EncounterTurns = new List<EncounterTurnType>();
     public Sprite DefalutButtonSprite, CheckedBox;
     public Sprite[] TrustProgressBarSprites;
     public GameObject PlayerMenu;
+    public Encounter CurrentEncounter;
 
     private GameManager _theGameManager;
     private Image _target1CB1, _target1CB2, _target1CB3,
@@ -42,9 +44,12 @@ public class EncounterManager : MonoBehaviour
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
     private EncounterActionDialog _currentEventDialog;
     private int _turnIndex,
-                _currentMessageIndex;
+                _currentMessageIndex,
+                _patientsTreated;
     private bool _playerMenuEnabled,
-                 _encounterMessageEnabled;
+                 _encounterMessageEnabled,
+                 _encounterFinished,
+                 _skillAttemptFailed;
 
     #region Menu Index Properties
     //These handle image and text color change for menu navigation
@@ -253,7 +258,7 @@ public class EncounterManager : MonoBehaviour
         {
             if(_target1CurrentTrust != value)
             {
-                if (value == 0)
+                if (value <= 0)
                     _target1Trust.sprite = TrustProgressBarSprites[0];
                 else if (value < 10)
                     _target1Trust.sprite = TrustProgressBarSprites[1];
@@ -489,7 +494,7 @@ public class EncounterManager : MonoBehaviour
     {
         if (_turnIndex == EncounterTurns.Count)
         {
-            switch (_theGameManager.CurrentEncounter.TurnPattern)
+            switch (CurrentEncounter.TurnPattern)
             {
                 case EncounterPattern.ALTERNATE:
                     if (EncounterTurns[_turnIndex - 1] == EncounterTurnType.EVENT)
@@ -527,9 +532,9 @@ public class EncounterManager : MonoBehaviour
 
     private void LoadDialogEvent()
     {
-        Encounter currentEncounter = _theGameManager.CurrentEncounter;
+        Encounter currentEncounter = CurrentEncounter;
         int rand = Random.Range(0, currentEncounter.GoalCount);
-        string subject = _theGameManager.CurrentEncounter.EncounterGoals[rand].Subject;
+        string subject = CurrentEncounter.EncounterGoals[rand].Subject;
 
         //HACK//
         subject = "Sylvia";
@@ -542,7 +547,7 @@ public class EncounterManager : MonoBehaviour
     {
         bool makingPlayer = true;
 
-        switch (_theGameManager.CurrentEncounter.TurnPattern)
+        switch (CurrentEncounter.TurnPattern)
         {
             case EncounterPattern.ALTERNATE:
                 for (int i = 0; i < 3; i++)
@@ -627,7 +632,24 @@ public class EncounterManager : MonoBehaviour
             {
                 HideEncounterMessage();
 
-                if (_currentMinigameObj != null)
+                if(_encounterFinished)
+                {
+                    string sceneToLoad = "",
+                           currentSceneName = SceneManager.GetActiveScene().name;
+
+                    for (int i = 0; i < currentSceneName.Length; i++)
+                    {
+                        if (currentSceneName[i] != 'E')
+                        {
+                            sceneToLoad += currentSceneName[i];
+                        }
+                        else
+                            break;
+                    }
+
+                    SceneManager.LoadScene(sceneToLoad);
+                }
+                else if (_currentMinigameObj != null)
                 {
                     LoadMinigame();
                 }
@@ -732,9 +754,25 @@ public class EncounterManager : MonoBehaviour
         #region Horizontal Menu Naviagion and Select Controls
         if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.RightArrow)) && currentMenu[currentIndex].interactable)
         {
-            currentMenu[currentIndex].onClick.Invoke();
+            bool correctMinigame = false;
+            for (int i = 0; i < EncounterGoals.Count; i++)
+            {
+                if (currentMenu[currentIndex].GetComponentInChildren<Text>().text == EncounterGoals[i].ActionName)
+                {
+                    correctMinigame = true;
+                    break;
+                }
+            }
 
-            switch(currentMenu[currentIndex].name)
+            if (!correctMinigame && currentMenu[currentIndex].tag == "Skill Button")
+            {
+                TogglePlayerMenu();
+                DisplayEncounterMessage("I don't want you to do that!");
+            }
+            else
+                currentMenu[currentIndex].onClick.Invoke();
+
+            switch (currentMenu[currentIndex].name)
             {
                 case "Skills":
                     _activeMenu = EncounterMenus.SKILLSUBMENU;
@@ -912,9 +950,19 @@ public class EncounterManager : MonoBehaviour
     {
         DisplayEncounterMessage("Dang, that didn't go so well...");
         target1CurrentTrust -= failPenalty;
+        if(target1CurrentTrust <= 0)
+        {
+            _encounterFinished = true;
+            string[] failMessages = new string[2];
+            failMessages[0] = "Oh boy... They don't seem happy.";
+            failMessages[1] = "Maybe we should try again later...";
+            DisplayEncounterMessage(failMessages);
+            _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERFAIL);
+        }
         GameObject.Destroy(currentPuzzle);
     }
 
+    //Event Puzzle Win
     public void PuzzleWin(float failPenalty, GameObject currentPuzzle)
     {
         for (int i = 0; i < EncounterGoals.Count; i++)
@@ -947,9 +995,11 @@ public class EncounterManager : MonoBehaviour
         GameObject.Destroy(currentPuzzle);
     }
 
+    //Player puzzle win
     public void PuzzleWin(string actionName, GameObject currentPuzzle)
     {
         bool loadWinMessage = false;
+        int lastTreatedPatientCount = _patientsTreated;
 
         for (int i = 0; i < EncounterGoals.Count; i++)
         {
@@ -961,7 +1011,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target1CB3.sprite = CheckedBox;
+                        _target1CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -971,7 +1021,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target1CB1.sprite = CheckedBox;
+                        _target1CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -980,12 +1030,11 @@ public class EncounterManager : MonoBehaviour
                     if (_target1SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
                 if (i == 1)
                 {
@@ -993,7 +1042,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target2CB3.sprite = CheckedBox;
+                        _target2CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -1003,7 +1052,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target2CB1.sprite = CheckedBox;
+                        _target2CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -1012,12 +1061,11 @@ public class EncounterManager : MonoBehaviour
                     if (_target2SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
                 if (i == 2)
                 {
@@ -1025,7 +1073,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target3CB3.sprite = CheckedBox;
+                        _target3CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -1035,7 +1083,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target3CB1.sprite = CheckedBox;
+                        _target3CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -1044,12 +1092,11 @@ public class EncounterManager : MonoBehaviour
                     if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
                 if (i == 3)
                 {
@@ -1057,7 +1104,7 @@ public class EncounterManager : MonoBehaviour
 
                     if (checkBoxIndex == 3)
                     {
-                        _target4CB3.sprite = CheckedBox;
+                        _target4CB1.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
                     else if (checkBoxIndex == 2)
@@ -1067,7 +1114,7 @@ public class EncounterManager : MonoBehaviour
                     }
                     else if (checkBoxIndex == 1)
                     {
-                        _target4CB1.sprite = CheckedBox;
+                        _target4CB3.sprite = CheckedBox;
                         loadWinMessage = true;
                     }
 
@@ -1076,12 +1123,11 @@ public class EncounterManager : MonoBehaviour
                     if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
                     {
                         loadWinMessage = false;
+                        _patientsTreated++;
                         //True win
                     }
-                    else
-                    {
-                        GameObject.Destroy(currentPuzzle);
-                    }
+
+                    GameObject.Destroy(currentPuzzle);
                 }
             }
         }
@@ -1089,6 +1135,20 @@ public class EncounterManager : MonoBehaviour
         if(loadWinMessage)
         {
             DisplayEncounterMessage("Good Job!");
+        }
+        else if(_patientsTreated > lastTreatedPatientCount)
+        {
+            if (_patientsTreated == CurrentEncounter.GoalCount)
+            {
+                _encounterFinished = true;
+                string[] winMessages = new string[2];
+                winMessages[0] = "Wonderful!";
+                winMessages[1] = "You've treated all patients";
+                DisplayEncounterMessage(winMessages);
+                _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERWIN);
+            }
+            else
+                DisplayEncounterMessage("Great Job! Patient treated!");
         }
     }
     #endregion Puzzle Win Fail Methods
@@ -1378,11 +1438,11 @@ public class EncounterManager : MonoBehaviour
 
     private void EncounterInfoInitializer()
     {
-        EncounterGoals.AddRange(_theGameManager.CurrentEncounter.EncounterGoals);
+        EncounterGoals.AddRange(CurrentEncounter.EncounterGoals);
 
         for (int i = 0; i < 4; i++)
         {
-            if(i <= _theGameManager.CurrentEncounter.GoalCount - 1)
+            if(i <= CurrentEncounter.GoalCount - 1)
             {
                 if(i == 0)
                 {

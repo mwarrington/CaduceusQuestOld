@@ -591,6 +591,12 @@ Prefab:
       propertyPath: PlayerMenu
       value: 
       objectReference: {fileID: 1459873784}
+    - target: {fileID: 114782348970601022, guid: 0fc2cc9863839b64788e9a034c8b8bac,
+        type: 2}
+      propertyPath: CurrentEncounter
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d9709a1f02ff6c40934b8de04167e24,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fc2cc9863839b64788e9a034c8b8bac, type: 2}
   m_IsPrefabParent: 0
@@ -2578,7 +2584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414e3a54f4fcb3d4e853bc41bc410a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentEncounter: {fileID: 11400000, guid: be6d7d8f0714ab94fbce6b96f97f2599, type: 2}
 --- !u!4 &891729983
 Transform:
   m_ObjectHideFlags: 0
@@ -3913,6 +3918,66 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 255716056}
+    - target: {fileID: 1334860568861618, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631151589527242, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137361091230062, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503724343647378, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002871838464914, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133670864350180, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641850248314050, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404032403526288, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1641776656244694, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059270957627496, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933476241384978, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193405664923190, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413007245588430, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612541837420586, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331277089921958, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
+      propertyPath: m_TagString
+      value: Skill Button
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
   m_IsPrefabParent: 0

@@ -6,24 +6,22 @@ using UnityEngine.UI;
 public class DialogueUIController : MonoBehaviour
 {
     #region initialization
-
-    public DialogChangeType MyChangeType;
-	public string CharacterName;
-	public char index;
-    public int NumberOfConvos;
-
-	private BoxCollider _myTrigger;
+    private GameManager _theGameManager;
 	private DialogManager _dialogueManager;
-	private SimoneController simone;
-	private Convorsation convo;
+    private SimoneController _simone;
+    private Convorsation _currentConvo;
+    private IEnumerator _currentCoroutine;
 	private GameObject _dialogueBox,
-		_dialogueEmotionBox,
-		_dialoguePanel;
+		               _dialogueEmotionBox,
+		               _dialoguePanel;
+    private DialogChangeType _currentChangeType;
+    private NPCDialogSwitch _currentDialogSwitch;
 
-	private int _nextLineIndex = 0,
-		_lastLine = 0,
-		_currentDOIndex = 0,
-		_buttonSelectionIndex = 0;
+    private char _nextConvo;
+
+	private int _currentLineIndex = 0,
+		        _currentDOIndex = 0,
+		        _buttonSelectionIndex = 0;
 
 	private Image _dialogueEmotionImage,
 		_dialogueBoxImage;
@@ -50,10 +48,12 @@ public class DialogueUIController : MonoBehaviour
 		_speakerNameText;
 
 	private bool _inConversation,
+        _optionsNext,
 		_dialogueSelection,
 		_convoFinished,
-		_inConvoZone,
-		_isWriting;
+		_isWriting,
+        _beginEncounter,
+        _lastLine;
 
 	private List<Button> _optionButtonList = new List<Button>();
 
@@ -64,9 +64,8 @@ public class DialogueUIController : MonoBehaviour
 
 	void Start()
 	{
-		_myTrigger = GetComponentInChildren<BoxCollider>();
+        _theGameManager = FindObjectOfType<GameManager>();
 		_dialogueManager = GameObject.FindObjectOfType<DialogManager>();
-		simone = GameObject.FindObjectOfType<SimoneController>();
 
 		//Setting up Dialogue Option Buttons
 		_option1 = GameObject.Find("Option 1 Button").GetComponent<Button>();
@@ -116,155 +115,166 @@ public class DialogueUIController : MonoBehaviour
 		_option2.gameObject.SetActive(false);
 		_option3.gameObject.SetActive(false);
 
-		_inConversation = _dialogueSelection = false;
+        _simone = FindObjectOfType<SimoneController>();
 
-		convo = new Convorsation(CharacterName, index);
+        _inConversation = _dialogueSelection = false;
 
-		_lastLine = convo.MyLines.Count - 1;
 		_convoFinished = false;
-		_nextLineIndex = 0;
+    }
 
-	}
+    public void StartConversation(NPC npc, NPCDialogSwitch currentDialogSwitch)
+    {
+        _currentLineIndex = 0;
+        _currentDOIndex = 0;
+        _buttonSelectionIndex = 0;
+        _lastLine = false;
+        _beginEncounter = false;
+        _currentConvo = new Convorsation(npc.NPCName, _theGameManager.CurrentDialogIndexList[npc.NPCName]);
+        _inConversation = true;
+        _currentDialogSwitch = currentDialogSwitch;
+        _dialoguePanel.SetActive(true);
+        int nextConvoInfoIndex = GetIndexFromChar(_currentConvo.Index);
+        if (nextConvoInfoIndex >= npc.NextConvoInfo.Length)
+        {
+            _nextConvo = '!';
+        }
+        else
+        {
+            _currentChangeType = npc.NextConvoInfo[nextConvoInfoIndex].MyChangeType;
+            _nextConvo = npc.NextConvoInfo[nextConvoInfoIndex].NextIndex;
+        }
+        _simone.Movement = false;
+        GetNextLine();
+    }
 
-	void Update()
+    void Update()
 	{
+        if (_dialogueSelection)
+        {
+            if (_buttonSelectionIndex < 0)
+            {
+                _buttonSelectionIndex = 0;
+                HighlightDialogueSelection();
+            }
+            else if (_buttonSelectionIndex >= _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1)
+            {
+                _buttonSelectionIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1;
+                HighlightDialogueSelection();
+            }
 
-		if (_inConvoZone)
-		{
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _buttonSelectionIndex--;
+                HighlightDialogueSelection();
+            }
 
-			if (Input.GetKeyDown(KeyCode.Z) && !_isWriting)
-			{
-				if (!_inConversation)
-				{
-					_inConversation = true;
-					_convoFinished = false;
-					simone.Movement = false;
-				}
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                _buttonSelectionIndex++;
+                HighlightDialogueSelection();
+            }
 
-				if (_convoFinished)
-				{
-					_dialoguePanel.SetActive(true);
-					_convoFinished = true;
-					simone.Movement = true;
-			        
-                    if(MyChangeType == DialogChangeType.CONVOEND)
-                    {
-                        DialogueChanger();
-                    }
-				}
-
-				StartConversation();
-			}
-
-		}
-		else
-		{
-			_dialoguePanel.SetActive(false);
-		}
-
-		if (_dialogueSelection)
-		{
-
-			if (_buttonSelectionIndex < 0)
-			{
-				_buttonSelectionIndex = 0;
-				HighlightDialogueSelection();
-			}
-			else if (_buttonSelectionIndex >= convo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1)
-			{
-				_buttonSelectionIndex = convo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1;
-				HighlightDialogueSelection();
-			}
-
-			if (Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				_buttonSelectionIndex--;
-				HighlightDialogueSelection();
-			}
-
-			if (Input.GetKeyDown(KeyCode.DownArrow))
-			{
-				_buttonSelectionIndex++;
-				HighlightDialogueSelection();
-			}
-
-			if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-			{
-				_nextLineIndex = convo.MyDialogOptionsList[_currentDOIndex].myOptions[_buttonSelectionIndex].MyNextLine;
-				HideDialogueOptions();
-			}
-		}
-
-
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Z))
+            {
+                _currentLineIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[_buttonSelectionIndex].MyNextLine;
+                _inConversation = true;
+                HideDialogueOptions();
+            }
+        }
+        else if (_inConversation)
+        {
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                if(_isWriting)
+                {
+                    StopCoroutine(_currentCoroutine);
+                    _dialogueText.text = _currentConvo.MyLines[_currentLineIndex].LineText;
+                    _isWriting = false;
+                    if (!_lastLine)
+                        _currentLineIndex++;
+                }
+                else if (_beginEncounter)
+                {
+                    string path = "EncounterData/" + _currentConvo.SpeakerName + "Encounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
+                    _theGameManager.BeginEncounter(path);
+                }
+                else if (_lastLine)
+                {
+                    _dialoguePanel.SetActive(false);
+                    _inConversation = false;
+                    _convoFinished = true;
+                    _simone.Movement = true;
+                    _currentDialogSwitch.ExitDialog();
+                    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
+                }
+                else if (!_isWriting)
+                    GetNextLine();
+            }
+        }
 	}
 
-	private void StartConversation()
-	{
-		if (_dialogueSelection)
-		{
-			ShowDialogueOptions();
-		}
-		else if (convo.MyLines[_nextLineIndex].LastLine && _dialoguePanel.activeSelf)
-		{
-			_dialoguePanel.SetActive(false);
-			_inConversation = false;
-			_convoFinished = true;
-			simone.Movement = true;
-		}
-		else if (!_inConversation && _dialoguePanel.activeSelf && _inConvoZone)
-		{
-			_dialoguePanel.SetActive(false);
-			simone.Movement = true;
-		}
-		else
-		{
-			_dialoguePanel.SetActive(true);
-			GetNextLine();
-		}
-	}
+    private int GetIndexFromChar(char indexChar)
+    {
+        int indexToGive = -1;
 
-	private void OnTriggerEnter(Collider other)
-	{
-		if (other.name == "Simone")
-		{
-			_inConvoZone = true;
-		}
-	}
+        switch(indexChar)
+        {
+            case 'a':
+                indexToGive = 0;
+                break;
+            case 'b':
+                indexToGive = 1;
+                break;
+            case 'c':
+                indexToGive = 2;
+                break;
+            case 'd':
+                indexToGive = 3;
+                break;
+            case 'e':
+                indexToGive = 4;
+                break;
+            case 'f':
+                indexToGive = 5;
+                break;
+            case 'g':
+                indexToGive = 6;
+                break;
+            case 'h':
+                indexToGive = 7;
+                break;
+            default:
+                indexToGive = -1;
+                Debug.Log("We need to expand this switch.");
+                break;
+        }
 
-	private void OnTriggerExit(Collider other)
-	{
-		if (other.name == "Simone")
-		{
-			_inConvoZone = false;
-		}
-	}
+        return indexToGive;
+    }
 
 	private void ShowDialogueOptions()
 	{
 		_dialoguePanel.SetActive(false);
 
-		for (int i = 0; i < convo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
+		for (int i = 0; i < _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
 		{
-			
 			_optionButtonList[i].gameObject.SetActive(true);
-			_optionTextList[i].text = convo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Trim();
-
+			_optionTextList[i].text = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Trim();
 		}
 
 		HighlightDialogueSelection();
-
 	}
 
 	private void HideDialogueOptions()
 	{
-
 		foreach (Button b in _optionButtonList)
 		{
 			b.gameObject.SetActive(false);
 		}
 
 		_dialoguePanel.SetActive(true);
-		_dialogueSelection = false;
+        _optionsNext = false;
+        _dialogueSelection = false;
 
 		GetNextLine();
 
@@ -272,79 +282,76 @@ public class DialogueUIController : MonoBehaviour
 
 	private void GetNextLine()
 	{
-
-		if (convo.MyLines[_nextLineIndex].LastLine)
+        if(_optionsNext)
+        {
+            ShowDialogueOptions();
+            _inConversation = false;
+            _dialogueSelection = true;
+        }
+		else if (_currentConvo.MyLines[_currentLineIndex].LastLine)
 		{
+            _lastLine = true;
 
-			WriteDialogue();
-		}
-		else if (!convo.MyLines[_nextLineIndex].LastLine && !_dialogueSelection)
-		{
-			WriteDialogue();
+            if (_currentConvo.MyLines[_currentLineIndex].BeginEncounter)
+            {
+                _beginEncounter = true;
+            }
 
-			if (convo.MyLines[_nextLineIndex].NextGroupIndex != -1)
-			{
-
-				_currentDOIndex = convo.MyLines[_nextLineIndex].NextGroupIndex;
-				_dialogueSelection = true;
-
-			}
-			_nextLineIndex++;
+            WriteDialogue();
 		}
 		else
 		{
-			_nextLineIndex = convo.MyLines[_nextLineIndex].NextLineIndex;
-		}
+            if (_currentConvo.MyLines[_currentLineIndex].NextGroupIndex != -1)
+            {
+                _currentDOIndex = _currentConvo.MyLines[_currentLineIndex].NextGroupIndex;
+                _optionsNext = true;
+            }
 
-	}
+            WriteDialogue();
+        }
+
+    }
 
 	private void HighlightDialogueSelection()
 	{
-
-		for (int i = 0; i < convo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
+		for (int i = 0; i < _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
 		{
 			if (i == _buttonSelectionIndex)
 			{
-
 				_optionButtonList[_buttonSelectionIndex].GetComponent<Image>().sprite = _buttonHighlightedSprite;
 				_optionTextList[_buttonSelectionIndex].color = Color.black;
 				_optionNameList[_buttonSelectionIndex].color = Color.black;
-
 			}
 			else
 			{
 				_optionButtonList[i].GetComponent<Image>().sprite = _buttonNormalSprite;
 				_optionTextList[i].color = Color.white;
 				_optionNameList[i].color = Color.white;
-
 			}
-
 		}
 	}
 
 	private void WriteDialogue()
 	{
 		_isWriting = true;
-		_dialogueEmotionBox.GetComponent<Image>().color = convo.MyLines[_nextLineIndex].MyEmotion.GetEmotionColor();
-		_speakerNameText.text = convo.MyLines[_nextLineIndex].Speaker.ToUpper() + ":";
+		_dialogueEmotionBox.GetComponent<Image>().color = _currentConvo.MyLines[_currentLineIndex].MyEmotion.GetEmotionColor();
+		_speakerNameText.text = _currentConvo.MyLines[_currentLineIndex].Speaker.ToUpper() + ":";
 		_dialogueText.text = "";
 
-		StartCoroutine(TypeText());
+        _currentCoroutine = TypeText();
+		StartCoroutine(_currentCoroutine);
 	}
 
 	IEnumerator TypeText()
 	{
-		foreach (char c in convo.MyLines[_nextLineIndex].LineText.ToCharArray())
+		foreach (char c in _currentConvo.MyLines[_currentLineIndex].LineText.ToCharArray())
 		{
 			_dialogueText.text += c;
 			yield return new WaitForSeconds(_dialogueManager.TypeSpeed);
 		}
 		_isWriting = false;
-	}
-
-    private void DialogueChanger()
-    {
-        
+        if (!_lastLine)
+            _currentLineIndex++;
     }
 }
 

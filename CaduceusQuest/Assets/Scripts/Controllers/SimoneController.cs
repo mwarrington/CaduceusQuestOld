@@ -44,8 +44,7 @@ public class SimoneController : MovementController
 
     private Animator _myAnimator;
     private CameraManager _theCamMan;
-    private float _currentSpeed,
-                  _idleTimer;
+    private float _idleTimer;
     private bool _movingOnXAxis,
                  _movingOnZAxis,
                  _movingRight,
@@ -58,7 +57,6 @@ public class SimoneController : MovementController
     {
         _theCamMan = FindObjectOfType<CameraManager>();
         _myAnimator = this.GetComponent<Animator>();
-        _currentSpeed = CurrentSpeed;
     }
 
     void Update()

@@ -8,8 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: PatientHospital
-  m_EditorClassIdentifier: Assembly-CSharp::NPC
-  NPCName: Patient
-  ConvoCount: 6
+  m_Script: {fileID: 11500000, guid: e07537d9d75f75f47aeba24cb23497cd, type: 3}
+  m_Name: StudentHospital2
+  m_EditorClassIdentifier: 
+  NPCName: Student
+  ConvoCount: 1
+  NextConvoInfo: []
