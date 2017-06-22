@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         //AddSkill(new Skill("Collect Blood Sample", SkillType.SCIENCE));
 
         _theEncounterManager = FindObjectOfType<EncounterManager>();
-        if(_theEncounterManager != null)
+        if(_theEncounterManager != null && _currentEncounter != null)
         {
             _theEncounterManager.CurrentEncounter = _currentEncounter;
         }

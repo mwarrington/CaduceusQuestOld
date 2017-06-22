@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EncounterManager : MonoBehaviour
 {
-    public List<EncounterGoal> EncounterGoals = new List<EncounterGoal>();
+    public List<EncounterGoal> EncounterGoals;
     public List<EncounterTurnType> EncounterTurns = new List<EncounterTurnType>();
     public Sprite DefalutButtonSprite, CheckedBox;
     public Sprite[] TrustProgressBarSprites;
@@ -48,7 +48,8 @@ public class EncounterManager : MonoBehaviour
                 _patientsTreated;
     private bool _playerMenuEnabled,
                  _encounterMessageEnabled,
-                 _encounterFinished;
+                 _encounterFinished,
+                 _skillAttemptFailed;
 
     #region Menu Index Properties
     //These handle image and text color change for menu navigation
@@ -753,9 +754,25 @@ public class EncounterManager : MonoBehaviour
         #region Horizontal Menu Naviagion and Select Controls
         if ((Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.RightArrow)) && currentMenu[currentIndex].interactable)
         {
-            currentMenu[currentIndex].onClick.Invoke();
+            bool correctMinigame = false;
+            for (int i = 0; i < EncounterGoals.Count; i++)
+            {
+                if (currentMenu[currentIndex].GetComponentInChildren<Text>().text == EncounterGoals[i].ActionName)
+                {
+                    correctMinigame = true;
+                    break;
+                }
+            }
 
-            switch(currentMenu[currentIndex].name)
+            if (!correctMinigame && currentMenu[currentIndex].tag == "Skill Button")
+            {
+                TogglePlayerMenu();
+                DisplayEncounterMessage("I don't want you to do that!");
+            }
+            else
+                currentMenu[currentIndex].onClick.Invoke();
+
+            switch (currentMenu[currentIndex].name)
             {
                 case "Skills":
                     _activeMenu = EncounterMenus.SKILLSUBMENU;
