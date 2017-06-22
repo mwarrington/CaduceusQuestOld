@@ -129,6 +129,9 @@ ModelImporter:
     7400004: Crouch down
     7400006: Run
     7400008: 'Stand up '
+    7400010: Begin walk
+    7400012: Walk
+    7400014: End walk
     9500000: //RootNode
     13700000: Geometry
   materials:
@@ -388,7 +391,7 @@ ModelImporter:
       name: Crouch down
       takeName: Take 001
       firstFrame: 60
-      lastFrame: 71
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -623,8 +626,362 @@ ModelImporter:
     - serializedVersion: 16
       name: 'Stand up '
       takeName: Take 001
-      firstFrame: 110
+      firstFrame: 111
       lastFrame: 121
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Geometry
+        weight: 1
+      - path: Spine_Root
+        weight: 1
+      - path: Spine_Root/Head
+        weight: 1
+      - path: Spine_Root/Head/Forehead
+        weight: 1
+      - path: Spine_Root/Head/L_Ear_Base
+        weight: 1
+      - path: Spine_Root/Head/L_Ear_Base/L_Ear_Tip
+        weight: 1
+      - path: Spine_Root/Head/Nose
+        weight: 1
+      - path: Spine_Root/Head/R_Ear_Base
+        weight: 1
+      - path: Spine_Root/Head/R_Ear_Base/R_Ear_Tip
+        weight: 1
+      - path: Spine_Root/L_Clavicle
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Palm
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Palm/L_Toe
+        weight: 1
+      - path: Spine_Root/R_Clavicle
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Palm
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Palm/R_Toe
+        weight: 1
+      - path: Spine_Root/Spine_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Helper_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+          1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+          1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3/Tail_4
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Begin walk
+      takeName: Take 001
+      firstFrame: 121
+      lastFrame: 128
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Geometry
+        weight: 1
+      - path: Spine_Root
+        weight: 1
+      - path: Spine_Root/Head
+        weight: 1
+      - path: Spine_Root/Head/Forehead
+        weight: 1
+      - path: Spine_Root/Head/L_Ear_Base
+        weight: 1
+      - path: Spine_Root/Head/L_Ear_Base/L_Ear_Tip
+        weight: 1
+      - path: Spine_Root/Head/Nose
+        weight: 1
+      - path: Spine_Root/Head/R_Ear_Base
+        weight: 1
+      - path: Spine_Root/Head/R_Ear_Base/R_Ear_Tip
+        weight: 1
+      - path: Spine_Root/L_Clavicle
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Palm
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Palm/L_Toe
+        weight: 1
+      - path: Spine_Root/R_Clavicle
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Palm
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Palm/R_Toe
+        weight: 1
+      - path: Spine_Root/Spine_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Helper_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+          1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+          1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3/Tail_4
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk
+      takeName: Take 001
+      firstFrame: 129
+      lastFrame: 159
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Geometry
+        weight: 1
+      - path: Spine_Root
+        weight: 1
+      - path: Spine_Root/Head
+        weight: 1
+      - path: Spine_Root/Head/Forehead
+        weight: 1
+      - path: Spine_Root/Head/L_Ear_Base
+        weight: 1
+      - path: Spine_Root/Head/L_Ear_Base/L_Ear_Tip
+        weight: 1
+      - path: Spine_Root/Head/Nose
+        weight: 1
+      - path: Spine_Root/Head/R_Ear_Base
+        weight: 1
+      - path: Spine_Root/Head/R_Ear_Base/R_Ear_Tip
+        weight: 1
+      - path: Spine_Root/L_Clavicle
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Palm
+        weight: 1
+      - path: Spine_Root/L_Clavicle/L_Shoulder/L_Elbow/L_Wrist/L_Palm/L_Toe
+        weight: 1
+      - path: Spine_Root/R_Clavicle
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Palm
+        weight: 1
+      - path: Spine_Root/R_Clavicle/R_Shoulder/R_Elbow/R_Wrist/R_Palm/R_Toe
+        weight: 1
+      - path: Spine_Root/Spine_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Helper_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Helper_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Helper_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/L_Hip/L_Knee/L_Ankle/L_Ball_of_foot/L_Toe
+          1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/R_Hip/R_Knee/R_Ankle/R_Ball_of_foot/R_Toe
+          1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3/Tail_4
+        weight: 1
+      - path: Spine_Root/Spine_1/Spine_2/Spine_3/Tail_root/Tail_1/Tail_2/Tail_3/Tail_4/Tail_5
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: End walk
+      takeName: Take 001
+      firstFrame: 160
+      lastFrame: 167
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

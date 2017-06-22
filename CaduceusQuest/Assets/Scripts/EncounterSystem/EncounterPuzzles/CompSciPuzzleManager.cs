@@ -7,6 +7,8 @@ public class CompSciPuzzleManager : MonoBehaviour
 {
     public GameObject[] TopRowPositions,
                         BottomRowPositions;
+    public string Name;
+    public float FailPenalty;
     public int Strikes;
 
     private GameObject[] _symbolPrefabs,
@@ -16,12 +18,14 @@ public class CompSciPuzzleManager : MonoBehaviour
     private Dictionary<CardinalDirections, int> _arrowKeyOrder = new Dictionary<CardinalDirections, int>();
     private GameObject _incorrectSymbol,
                        _strikeObj;
+    private EncounterManager _theEncounterManager;
     private int _currentRowIndex,
                 _strikesCount;
     private bool _inputDisabled;
                         
     void Start()
     {
+        _theEncounterManager = FindObjectOfType<EncounterManager>();
         _symbolOrder = new int[TopRowPositions.Length];
         InstantiateTopRow();
         InstantiateStrikes();
@@ -58,11 +62,14 @@ public class CompSciPuzzleManager : MonoBehaviour
         for (int i = 0; i < TopRowPositions.Length; i++)
         {
             int rand = Random.Range(0, 4);
-            if (i == 0)
-                Instantiate(_symbolPrefabs[rand], TopRowPositions[i].transform.position, Quaternion.identity);
-            else
-                Instantiate(_grayedSymbolPrefabs[rand], TopRowPositions[i].transform.position, Quaternion.identity);
+            GameObject newSymbol;
 
+            if (i == 0)
+                newSymbol = Instantiate(_symbolPrefabs[rand], TopRowPositions[i].transform.position, Quaternion.identity);
+            else
+                newSymbol = Instantiate(_grayedSymbolPrefabs[rand], TopRowPositions[i].transform.position, Quaternion.identity);
+
+            newSymbol.transform.parent = this.transform;
             _symbolOrder[i] = rand;
         }
     }
@@ -77,6 +84,7 @@ public class CompSciPuzzleManager : MonoBehaviour
         {
             _strikeLocs[i] = strikes.transform.GetChild(i).position;
         }
+        strikes.transform.parent = this.transform;
         _strikeObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/CompSciPuzzle/CSstrike");
     }
 
@@ -133,11 +141,16 @@ public class CompSciPuzzleManager : MonoBehaviour
 
     private void SuccessfulButtoPress()
     {
-        Instantiate(_symbolPrefabs[_symbolOrder[_currentRowIndex]], BottomRowPositions[_currentRowIndex].transform.position, Quaternion.identity);
+        GameObject bottomSymbolObj = Instantiate(_symbolPrefabs[_symbolOrder[_currentRowIndex]], BottomRowPositions[_currentRowIndex].transform.position, Quaternion.identity),
+                   topSymbolObj;
+
+        bottomSymbolObj.transform.parent = this.transform;
+
         _currentRowIndex++;
         if (_currentRowIndex < TopRowPositions.Length)
         {
-            Instantiate(_symbolPrefabs[_symbolOrder[_currentRowIndex]], TopRowPositions[_currentRowIndex].transform.position, Quaternion.identity);
+            topSymbolObj = Instantiate(_symbolPrefabs[_symbolOrder[_currentRowIndex]], TopRowPositions[_currentRowIndex].transform.position, Quaternion.identity);
+            topSymbolObj.transform.parent = this.transform;
         }
         else
         {
@@ -148,12 +161,14 @@ public class CompSciPuzzleManager : MonoBehaviour
     private void UnsuccessfulButtonPress(CardinalDirections buttonType)
     {
         _incorrectSymbol = Instantiate(_symbolPrefabs[_arrowKeyOrder[buttonType]], BottomRowPositions[_currentRowIndex].transform.position, Quaternion.identity);
+        _incorrectSymbol.transform.parent = this.transform;
         Invoke("RemoveIncorrectSymbol", 1);
-        Instantiate(_strikeObj, _strikeLocs[_strikesCount], Quaternion.identity);
+        GameObject newStrikeObj = Instantiate(_strikeObj, _strikeLocs[_strikesCount], Quaternion.identity);
+        newStrikeObj.transform.parent = this.transform;
         _strikesCount++;
         _inputDisabled = true;
 
-        if (_strikesCount == 3)
+        if (_strikesCount == Strikes)
             YouLose();
     }
 
@@ -165,11 +180,11 @@ public class CompSciPuzzleManager : MonoBehaviour
 
     private void YouLose()
     {
-        Debug.Log("NOOOOOOOOOOOO!!!");
+        _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject);
     }
 
     public void YouWin()
     {
-        Debug.Log("WOOOOOOOOOOOO!!!");
+        _theEncounterManager.PuzzleWin(Name, this.gameObject);
     }
 }

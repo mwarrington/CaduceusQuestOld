@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:CaduceusQuest/Assets/Art/2D Assets/Logos.meta
 guid: 4bb05c404c04244db8281f7c2913d766
 folderAsset: yes
 timeCreated: 1497037021
+=======
+guid: f1ff95cfd2fc64cefaae6f9c1a01972c
+folderAsset: yes
+timeCreated: 1496691825
+>>>>>>> origin/master:CaduceusQuest/Assets/Art/2D Assets/Logos.meta
 licenseType: Free
 DefaultImporter:
   userData: 

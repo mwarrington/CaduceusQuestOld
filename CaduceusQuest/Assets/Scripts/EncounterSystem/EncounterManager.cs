@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class EncounterManager : MonoBehaviour
 {
     public List<EncounterGoal> EncounterGoals = new List<EncounterGoal>();
-    public List<EncounterController> EncounterControllers = new List<EncounterController>();
-    public Sprite DefalutButtonSprite;
+    public List<EncounterTurnType> EncounterTurns = new List<EncounterTurnType>();
+    public Sprite DefalutButtonSprite, CheckedBox;
     public Sprite[] TrustProgressBarSprites;
+    public GameObject PlayerMenu;
 
     private GameManager _theGameManager;
     private Image _target1CB1, _target1CB2, _target1CB3,
@@ -17,7 +18,8 @@ public class EncounterManager : MonoBehaviour
                   _target4CB1, _target4CB2, _target4CB3,
                   _target1Trust, _target2Trust, _target3Trust, _target4Trust;
     private Text _targetName1, _targetName2, _targetName3, _targetName4,
-                 _treatment1, _treatment2, _treatment3, _treatment4;
+                 _treatment1, _treatment2, _treatment3, _treatment4,
+                 _encounterMessage;
     private Button _skills, _items, _endEncounter,
                    _science, _engineering, _technology, _mathamatics, _communication,
                    _sSkill1, _sSkill2, _sSkill3,
@@ -34,7 +36,15 @@ public class EncounterManager : MonoBehaviour
                          _mSkillSubMenu = new List<Button>(),
                          _cSkillSubMenu = new List<Button>();
 
+    private List<string> _currentEncounterMessages = new List<string>();
+    private GameObject _currentMinigameObj;
+    private EncounterAction _currentEA;
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
+    private EncounterActionDialog _currentEventDialog;
+    private int _turnIndex,
+                _currentMessageIndex;
+    private bool _playerMenuEnabled,
+                 _encounterMessageEnabled;
 
     #region Menu Index Properties
     //These handle image and text color change for menu navigation
@@ -58,8 +68,14 @@ public class EncounterManager : MonoBehaviour
                 }
                 else
                 {
-                    if (SkipButton(_baseMenuIndex, value, _baseMenu.Length) != -1)
-                        baseMenuIndex = SkipButton(_baseMenuIndex, value, _baseMenu.Length);
+                    int skipTo = SkipButton(_baseMenuIndex, value, _baseMenu.Length, _lastSkipIndexTry);
+                    if (skipTo != -1)
+                    {
+                        _lastSkipIndexTry = skipTo;
+                        baseMenuIndex = skipTo;
+                    }
+
+                    _lastSkipIndexTry = -1;
                 }
             }
         }
@@ -90,8 +106,14 @@ public class EncounterManager : MonoBehaviour
                 }
                 else
                 {
-                    if (SkipButton(_skillSubMenuIndex, value, _skillSubMenu.Length) != -1)
-                        skillSubMenuIndex = SkipButton(_skillSubMenuIndex, value, _skillSubMenu.Length);
+                    int skipTo = SkipButton(_skillSubMenuIndex, value, _skillSubMenu.Length, _lastSkipIndexTry);
+                    if (skipTo != -1)
+                    {
+                        _lastSkipIndexTry = skipTo;
+                        skillSubMenuIndex = skipTo;
+                    }
+
+                    _lastSkipIndexTry = -1;
                 }
             }
         }
@@ -216,8 +238,164 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
-    private int _baseMenuIndex = 0, _skillSubMenuIndex = -1, _sSkillSubMenuIndex = -1, _eSkillSubMenuIndex = -1, _tSkillSubMenuIndex = -1, _mSkillSubMenuIndex = -1, _cSkillSubMenuIndex = -1;
+    private int _baseMenuIndex = 0, _skillSubMenuIndex = -1, _sSkillSubMenuIndex = -1, _eSkillSubMenuIndex = -1, _tSkillSubMenuIndex = -1, _mSkillSubMenuIndex = -1, _cSkillSubMenuIndex = -1,
+                _lastSkipIndexTry;
     #endregion Menu Index Properties
+
+    #region Encounter Data Properties
+    protected float target1CurrentTrust
+    {
+        get
+        {
+            return _target1CurrentTrust;
+        }
+        set
+        {
+            if(_target1CurrentTrust != value)
+            {
+                if (value == 0)
+                    _target1Trust.sprite = TrustProgressBarSprites[0];
+                else if (value < 10)
+                    _target1Trust.sprite = TrustProgressBarSprites[1];
+                else if (value < 20)
+                    _target1Trust.sprite = TrustProgressBarSprites[2];
+                else if (value < 30)
+                    _target1Trust.sprite = TrustProgressBarSprites[3];
+                else if (value < 40)
+                    _target1Trust.sprite = TrustProgressBarSprites[4];
+                else if (value < 50)
+                    _target1Trust.sprite = TrustProgressBarSprites[5];
+                else if (value < 60)
+                    _target1Trust.sprite = TrustProgressBarSprites[6];
+                else if (value < 70)
+                    _target1Trust.sprite = TrustProgressBarSprites[7];
+                else if (value < 80)
+                    _target1Trust.sprite = TrustProgressBarSprites[8];
+                else if (value < 90)
+                    _target1Trust.sprite = TrustProgressBarSprites[9];
+                else if (value > 90)
+                    _target1Trust.sprite = TrustProgressBarSprites[10];
+
+                _target1CurrentTrust = value;
+            }
+        }
+
+    }
+    protected float target2CurrentTrust
+    {
+        get
+        {
+            return _target2CurrentTrust;
+        }
+        set
+        {
+            if (_target2CurrentTrust != value)
+            {
+                if (value == 0)
+                    _target2Trust.sprite = TrustProgressBarSprites[0];
+                else if (value < 10)
+                    _target2Trust.sprite = TrustProgressBarSprites[1];
+                else if (value < 20)
+                    _target2Trust.sprite = TrustProgressBarSprites[2];
+                else if (value < 30)
+                    _target2Trust.sprite = TrustProgressBarSprites[3];
+                else if (value < 40)
+                    _target2Trust.sprite = TrustProgressBarSprites[4];
+                else if (value < 50)
+                    _target2Trust.sprite = TrustProgressBarSprites[5];
+                else if (value < 60)
+                    _target2Trust.sprite = TrustProgressBarSprites[6];
+                else if (value < 70)
+                    _target2Trust.sprite = TrustProgressBarSprites[7];
+                else if (value < 80)
+                    _target2Trust.sprite = TrustProgressBarSprites[8];
+                else if (value < 90)
+                    _target2Trust.sprite = TrustProgressBarSprites[9];
+                else if (value > 90)
+                    _target2Trust.sprite = TrustProgressBarSprites[10];
+
+                _target2CurrentTrust = value;
+            }
+        }
+    }
+    protected float target3CurrentTrust
+    {
+        get
+        {
+            return _target3CurrentTrust;
+        }
+        set
+        {
+            if (_target3CurrentTrust != value)
+            {
+                if (value == 0)
+                    _target3Trust.sprite = TrustProgressBarSprites[0];
+                else if (value < 10)
+                    _target3Trust.sprite = TrustProgressBarSprites[1];
+                else if (value < 20)
+                    _target3Trust.sprite = TrustProgressBarSprites[2];
+                else if (value < 30)
+                    _target3Trust.sprite = TrustProgressBarSprites[3];
+                else if (value < 40)
+                    _target3Trust.sprite = TrustProgressBarSprites[4];
+                else if (value < 50)
+                    _target3Trust.sprite = TrustProgressBarSprites[5];
+                else if (value < 60)
+                    _target3Trust.sprite = TrustProgressBarSprites[6];
+                else if (value < 70)
+                    _target3Trust.sprite = TrustProgressBarSprites[7];
+                else if (value < 80)
+                    _target3Trust.sprite = TrustProgressBarSprites[8];
+                else if (value < 90)
+                    _target3Trust.sprite = TrustProgressBarSprites[9];
+                else if (value > 90)
+                    _target3Trust.sprite = TrustProgressBarSprites[10];
+
+                _target3CurrentTrust = value;
+            }
+        }
+    }
+    protected float target4CurrentTrust
+    {
+        get
+        {
+            return _target4CurrentTrust;
+        }
+        set
+        {
+            if (_target4CurrentTrust != value)
+            {
+                if (value == 0)
+                    _target4Trust.sprite = TrustProgressBarSprites[0];
+                else if (value < 10)
+                    _target4Trust.sprite = TrustProgressBarSprites[1];
+                else if (value < 20)
+                    _target4Trust.sprite = TrustProgressBarSprites[2];
+                else if (value < 30)
+                    _target4Trust.sprite = TrustProgressBarSprites[3];
+                else if (value < 40)
+                    _target4Trust.sprite = TrustProgressBarSprites[4];
+                else if (value < 50)
+                    _target4Trust.sprite = TrustProgressBarSprites[5];
+                else if (value < 60)
+                    _target4Trust.sprite = TrustProgressBarSprites[6];
+                else if (value < 70)
+                    _target4Trust.sprite = TrustProgressBarSprites[7];
+                else if (value < 80)
+                    _target4Trust.sprite = TrustProgressBarSprites[8];
+                else if (value < 90)
+                    _target4Trust.sprite = TrustProgressBarSprites[9];
+                else if (value > 90)
+                    _target4Trust.sprite = TrustProgressBarSprites[10];
+
+                _target4CurrentTrust = value;
+            }
+        }
+    }
+    private float _target1CurrentTrust, _target2CurrentTrust, _target3CurrentTrust, _target4CurrentTrust;
+
+    private int _target1SuccessCount, _target2SuccessCount, _target3SuccessCount, _target4SuccessCount;
+    #endregion Encounter Data Properties
 
     private int _sSkillCount, _eSkillCount, _tSkillCount, _mSkillCount, _cSkillCount;
 
@@ -294,19 +472,173 @@ public class EncounterManager : MonoBehaviour
         _target1Trust = GameObject.Find("Target 1/Trust Level/Image").GetComponent<Image>();
         _target2Trust = GameObject.Find("Target 2/Trust Level/Image").GetComponent<Image>();
         _target3Trust = GameObject.Find("Target 3/Trust Level/Image").GetComponent<Image>();
+        _target4Trust = GameObject.Find("Target 4/Trust Level/Image").GetComponent<Image>();
 
+        _encounterMessage = GameObject.Find("EncounterMessage").GetComponentInChildren<Text>();
+        _encounterMessage.transform.parent.gameObject.SetActive(false);
         EncounterInfoInitializer();
         #endregion Getting/Setting Encounter Data
+
+        CreateTurnOrder();
+        PlayerMenu.SetActive(false);
+
+        BeginTurn();
+    }
+
+    private void BeginTurn()
+    {
+        if (_turnIndex == EncounterTurns.Count)
+        {
+            switch (_theGameManager.CurrentEncounter.TurnPattern)
+            {
+                case EncounterPattern.ALTERNATE:
+                    if (EncounterTurns[_turnIndex - 1] == EncounterTurnType.EVENT)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else if (EncounterTurns[_turnIndex - 1] == EncounterTurnType.PLAYER)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                    break;
+                case EncounterPattern.DOUBLEALTERNATE:
+                    break;
+                case EncounterPattern.PLAYER1DIALOG2:
+                    break;
+                case EncounterPattern.PLAYER2DIALOG1:
+                    break;
+            }
+        }
+
+        if (EncounterTurns[_turnIndex] == EncounterTurnType.PLAYER)
+        {
+            TogglePlayerMenu();
+        }
+        else if (EncounterTurns[_turnIndex] == EncounterTurnType.EVENT)
+        {
+            LoadDialogEvent();
+
+            DisplayEncounterMessage(_currentEventDialog.Speaker + ": " + _currentEventDialog.SpeakerLine, _currentEventDialog.LineEmotion);
+            PrepMiniGameToInstantiate(_currentEventDialog.Name);
+        }
+
+        _turnIndex++;
+    }
+
+    private void LoadDialogEvent()
+    {
+        Encounter currentEncounter = _theGameManager.CurrentEncounter;
+        int rand = Random.Range(0, currentEncounter.GoalCount);
+        string subject = _theGameManager.CurrentEncounter.EncounterGoals[rand].Subject;
+
+        //HACK//
+        subject = "Sylvia";
+        //HACK//
+
+        _currentEventDialog = Resources.Load<EncounterActionDialog>("EncounterActions/" + subject + 1);
     }
 
     private void CreateTurnOrder()
     {
-        //EncounterControllers.Add(???)
+        bool makingPlayer = true;
+
+        switch (_theGameManager.CurrentEncounter.TurnPattern)
+        {
+            case EncounterPattern.ALTERNATE:
+                for (int i = 0; i < 3; i++)
+                {
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+
+                    makingPlayer = !makingPlayer;
+                }
+                break;
+            case EncounterPattern.DOUBLEALTERNATE:
+                for (int i = 0; i < 4; i++)
+                {
+                    if (i == 2)
+                        makingPlayer = false;
+
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                }
+                break;
+            case EncounterPattern.PLAYER1DIALOG2:
+                for (int i = 0; i < 3; i++)
+                {
+                    if (i == 1)
+                        makingPlayer = false;
+
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                }
+                break;
+            case EncounterPattern.PLAYER2DIALOG1:
+                for (int i = 0; i < 3; i++)
+                {
+                    if (i == 2)
+                        makingPlayer = false;
+
+                    if (makingPlayer)
+                    {
+                        EncounterTurns.Add(EncounterTurnType.PLAYER);
+                    }
+                    else
+                    {
+                        EncounterTurns.Add(EncounterTurnType.EVENT);
+                    }
+                }
+                break;
+        }
     }
 
     private void Update()
     {
-        UIInputHandler();
+        if (_encounterMessageEnabled)
+            MessageInputHandler();
+
+        if (_playerMenuEnabled)
+            UIInputHandler();
+    }
+
+    private void MessageInputHandler()
+    {
+        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
+        {
+            if(_currentMessageIndex == _currentEncounterMessages.Count)
+            {
+                HideEncounterMessage();
+
+                if (_currentMinigameObj != null)
+                {
+                    LoadMinigame();
+                }
+                else
+                    BeginTurn();
+            }
+            else
+            {
+                DisplayEncounterMessage();
+            }
+        }
     }
 
     private void UIInputHandler()
@@ -430,62 +762,542 @@ public class EncounterManager : MonoBehaviour
                     break;
             }
         }
-        else if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            //Make can't do that sound
-        }
 
-        if(Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftArrow)) && _activeMenu != EncounterMenus.BASEMENU)
         {
             _activeMenu = EncounterMenus.BASEMENU;
+            string buttonName = currentMenu[currentIndex].name;
 
-            switch (currentMenu[currentIndex].name)
+            if (buttonName != "Science" && buttonName != "Engineering" && buttonName != "Technology" && buttonName != "Mathamatics" && buttonName != "Communication")
             {
-                case "Science":
-                    sSkillSubMenuIndex = -1;
-                    break;
-                case "Engineering":
-                    eSkillSubMenuIndex = -1;
-                    break;
-                case "Technology":
-                    tSkillSubMenuIndex = -1;
-                    break;
-                case "Mathamatics":
-                    mSkillSubMenuIndex = -1;
-                    break;
-                case "Communication":
-                    cSkillSubMenuIndex = -1;
-                    break;
-                default:
-                    _activeMenu = EncounterMenus.SKILLSUBMENU;
+                _activeMenu = EncounterMenus.SKILLSUBMENU;
 
-                    switch (currentMenu[currentIndex].transform.parent.parent.name)
-                    {
-                        case "Science":
-                            sSkillSubMenuIndex = -1;
-                            break;
-                        case "Engineering":
-                            eSkillSubMenuIndex = -1;
-                            break;
-                        case "Technology":
-                            tSkillSubMenuIndex = -1;
-                            break;
-                        case "Mathamatics":
-                            mSkillSubMenuIndex = -1;
-                            break;
-                        case "Communication":
-                            cSkillSubMenuIndex = -1;
-                            break;
-                        default:
-                            Debug.LogWarning("This button shouldn't exist");
-                            break;
-                    }
-                    break;
+                switch (currentMenu[currentIndex].transform.parent.parent.name)
+                {
+                    case "Science":
+                        sSkillSubMenuIndex = -1;
+                        break;
+                    case "Engineering":
+                        eSkillSubMenuIndex = -1;
+                        break;
+                    case "Technology":
+                        tSkillSubMenuIndex = -1;
+                        break;
+                    case "Mathamatics":
+                        mSkillSubMenuIndex = -1;
+                        break;
+                    case "Communication":
+                        cSkillSubMenuIndex = -1;
+                        break;
+                    default:
+                        Debug.LogWarning(currentMenu[currentIndex].transform.parent.parent.name + " shouldn't exist");
+                        break;
+                }
             }
             
             HideSubMenu(currentMenu[currentIndex].transform.parent.gameObject);
         }
         #endregion Horizontal Menu Naviagion and Select Controls
+    }
+
+    public void PrepMiniGameToInstantiate(Text myText)
+    {
+        string skillName = myText.text;
+        
+        _currentEA = Resources.Load<EncounterAction>("EncounterActions/" + skillName);
+
+        switch (_currentEA.MyType)
+        {
+            case EncounterActionType.COMPSCI:
+                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/CompSciPuzzle/CompSciPuzzle" + myCompSciSO.SymbolCount);
+                _currentEncounterMessages.Add(myCompSciSO.Name);
+                DisplayEncounterMessage(myCompSciSO.Name);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DOCTOR:
+                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Doctor/DoctorPuzzleDefault");
+                DisplayEncounterMessage(myDoctorSO.Name);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DIALOG:
+                EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Dialog/DialogPuzzle");
+                //DisplayEncounterMessage(_currentEncounterMessages[0], false);
+                break;
+            default:
+                Debug.LogError("We haven't put together an IntiateAction for that action type.");
+                break;
+        }
+    }
+
+    public void PrepMiniGameToInstantiate(string myText)
+    {
+        string skillName = myText;
+
+        _currentEA = Resources.Load<EncounterAction>("EncounterActions/" + skillName);
+
+        switch (_currentEA.MyType)
+        {
+            case EncounterActionType.COMPSCI:
+                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/CompSciPuzzle/CompSciPuzzle" + myCompSciSO.SymbolCount);
+                _currentEncounterMessages.Add(myCompSciSO.Name);
+                DisplayEncounterMessage(myCompSciSO.Name);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DOCTOR:
+                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Doctor/DoctorPuzzleDefault");
+                DisplayEncounterMessage(myDoctorSO.Name);
+                TogglePlayerMenu();
+                break;
+            case EncounterActionType.DIALOG:
+                EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
+                _currentMinigameObj = Resources.Load<GameObject>("Prefabs/EncounterPuzzles/Dialog/DialogPuzzle");
+                //DisplayEncounterMessage(_currentEncounterMessages[0], false);
+                break;
+            default:
+                Debug.LogError("We haven't put together an IntiateAction for that action type.");
+                break;
+        }
+    }
+
+    private void LoadMinigame()
+    {
+        switch (_currentEA.MyType)
+        {
+            case EncounterActionType.COMPSCI:
+                EncounterActionCompSci myCompSciSO = (EncounterActionCompSci)_currentEA;
+                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj);
+                CompSciPuzzleManager cspm = _currentMinigameObj.GetComponent<CompSciPuzzleManager>();
+                cspm.Strikes = myCompSciSO.StrikeCount;
+                cspm.Name = myCompSciSO.Name;
+                cspm.FailPenalty = myCompSciSO.FailPenalty;
+                break;
+            case EncounterActionType.DOCTOR:
+                EncounterActionDoctor myDoctorSO = (EncounterActionDoctor)_currentEA;
+                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj, new Vector3(this.transform.position.x - 1000f, this.transform.position.y - 1000f, this.transform.position.z), Quaternion.identity);
+                DoctorPuzzleManager myDocPuzzMan = _currentMinigameObj.GetComponent<DoctorPuzzleManager>();
+                myDocPuzzMan.Name = myDoctorSO.Name;
+                myDocPuzzMan.FailPenalty = myDoctorSO.FailPenalty;
+                myDocPuzzMan.KeyStrokeCount = myDoctorSO.KeyStrokeCount;
+                myDocPuzzMan.MinArrowSpeed = myDoctorSO.ArrowMinSpeed;
+                myDocPuzzMan.MaxArrowSpeed = myDoctorSO.ArrowMaxSpeed;
+                myDocPuzzMan.SpawnRate = myDoctorSO.SpawnRate;
+                break;
+            case EncounterActionType.DIALOG:
+                EncounterActionDialog myDialogSO = (EncounterActionDialog)_currentEA;
+                _currentMinigameObj = GameObject.Instantiate(_currentMinigameObj, new Vector3(this.transform.position.x - 1000f, this.transform.position.y - 1000f, this.transform.position.z), Quaternion.identity);
+                DialogPuzzleManager myDialogPuzzMan = _currentMinigameObj.GetComponent<DialogPuzzleManager>();
+                myDialogPuzzMan.Name = myDialogSO.Name;
+                myDialogPuzzMan.FailPenalty = myDialogSO.FailPenalty;
+                myDialogPuzzMan.Speaker = myDialogSO.Speaker;
+                myDialogPuzzMan.SpeakerLine = myDialogSO.SpeakerLine;
+                myDialogPuzzMan.BadResponse = myDialogSO.BadResponse;
+                myDialogPuzzMan.GoodResponse = myDialogSO.GoodResponse;
+                myDialogPuzzMan.LineEmotion = myDialogSO.LineEmotion;
+                break;
+            default:
+                Debug.LogError("We haven't put together an IntiateAction for that action type.");
+                break;
+        }
+
+        _currentMinigameObj = null;
+    }
+
+    #region Puzzle Win Fail Methods
+    public void PuzzleFail(float failPenalty, GameObject currentPuzzle)
+    {
+        DisplayEncounterMessage("Dang, that didn't go so well...");
+        target1CurrentTrust -= failPenalty;
+        GameObject.Destroy(currentPuzzle);
+    }
+
+    public void PuzzleWin(float failPenalty, GameObject currentPuzzle)
+    {
+        for (int i = 0; i < EncounterGoals.Count; i++)
+        {
+            if (EncounterGoals[i].Subject == _currentEventDialog.Speaker)
+            {
+                if (i == 0)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+                if (i == 1)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+                if (i == 2)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+                if (i == 3)
+                {
+                    target1CurrentTrust += failPenalty;
+                }
+            }
+        }
+
+        string[] dialogs = new string[2];
+        dialogs[0] = _currentEventDialog.GoodResponse;
+        dialogs[1] = "Good Job!";
+        DisplayEncounterMessage(dialogs);
+        GameObject.Destroy(currentPuzzle);
+    }
+
+    public void PuzzleWin(string actionName, GameObject currentPuzzle)
+    {
+        bool loadWinMessage = false;
+
+        for (int i = 0; i < EncounterGoals.Count; i++)
+        {
+            if (EncounterGoals[i].ActionName == actionName)
+            {
+                if (i == 0)
+                {
+                    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target1SuccessCount;
+
+                    if (checkBoxIndex == 3)
+                    {
+                        _target1CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 2)
+                    {
+                        _target1CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 1)
+                    {
+                        _target1CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+
+                    _target1SuccessCount++;
+
+                    if (_target1SuccessCount == EncounterGoals[i].TreatmentCount)
+                    {
+                        loadWinMessage = false;
+                        //True win
+                    }
+                    else
+                    {
+                        GameObject.Destroy(currentPuzzle);
+                    }
+                }
+                if (i == 1)
+                {
+                    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target2SuccessCount;
+
+                    if (checkBoxIndex == 3)
+                    {
+                        _target2CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 2)
+                    {
+                        _target2CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 1)
+                    {
+                        _target2CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+
+                    _target2SuccessCount++;
+
+                    if (_target2SuccessCount == EncounterGoals[i].TreatmentCount)
+                    {
+                        loadWinMessage = false;
+                        //True win
+                    }
+                    else
+                    {
+                        GameObject.Destroy(currentPuzzle);
+                    }
+                }
+                if (i == 2)
+                {
+                    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target3SuccessCount;
+
+                    if (checkBoxIndex == 3)
+                    {
+                        _target3CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 2)
+                    {
+                        _target3CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 1)
+                    {
+                        _target3CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+
+                    _target3SuccessCount++;
+
+                    if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
+                    {
+                        loadWinMessage = false;
+                        //True win
+                    }
+                    else
+                    {
+                        GameObject.Destroy(currentPuzzle);
+                    }
+                }
+                if (i == 3)
+                {
+                    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target4SuccessCount;
+
+                    if (checkBoxIndex == 3)
+                    {
+                        _target4CB3.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 2)
+                    {
+                        _target4CB2.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+                    else if (checkBoxIndex == 1)
+                    {
+                        _target4CB1.sprite = CheckedBox;
+                        loadWinMessage = true;
+                    }
+
+                    _target4SuccessCount++;
+
+                    if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
+                    {
+                        loadWinMessage = false;
+                        //True win
+                    }
+                    else
+                    {
+                        GameObject.Destroy(currentPuzzle);
+                    }
+                }
+            }
+        }
+
+        if(loadWinMessage)
+        {
+            DisplayEncounterMessage("Good Job!");
+        }
+    }
+    #endregion Puzzle Win Fail Methods
+
+    private void TogglePlayerMenu()
+    {
+        if (PlayerMenu.activeSelf)
+            ResetMenu();
+
+        PlayerMenu.SetActive(!PlayerMenu.activeSelf);
+        _playerMenuEnabled = !_playerMenuEnabled;
+    }
+
+    //For displaying next in a set
+    private void DisplayEncounterMessage()
+    {
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        _encounterMessageEnabled = true;
+        _currentMessageIndex++;
+    }
+
+    //For displaying one off message
+    private void DisplayEncounterMessage(string message)
+    {
+        _currentEncounterMessages.Clear();
+        _currentEncounterMessages.Add(message);
+        _currentMessageIndex = 0;
+
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        _encounterMessageEnabled = true;
+        Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        messageBox.color = new Color(1f, 1f, 1f, 0.5f);
+        _currentMessageIndex++;
+    }
+
+    private void DisplayEncounterMessage(string message, Emotion messageEmotion)
+    {
+        _currentEncounterMessages.Clear();
+        _currentEncounterMessages.Add(message);
+        _currentMessageIndex = 0;
+
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        _encounterMessageEnabled = true;
+
+        switch(messageEmotion.EmotionType)
+        {
+            case 'a':
+                switch(messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.99f, .99f, .8f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.99f, .95f, .51f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(0.97f, 0.85f, 0.30f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.93f, .76f, 0, 1);
+                        break;
+                }
+                break;
+            case 'b':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.85f, .92f, .62f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.77f, .88f, .38f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.6f, .8f, .2f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.48f, .74f, .05f, 1);
+                        break;
+                }
+                break;
+            case 'c':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.8f, .93f, .80f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.46f, .76f, .47f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.21f, .64f, .31f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(0, .45f, .18f, 1);
+                        break;
+                }
+                break;
+            case 'd':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.85f, .92f, .62f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.05f, .78f, .84f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.24f, .64f, .75f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(0, .51f, .67f, 1);
+                        break;
+                }
+                break;
+            case 'e':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.79f, .87f, .92f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.64f, .73f, .85f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.45f, .62f, .79f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.12f, .42f, .67f, 1);
+                        break;
+                }
+                break;
+            case 'f':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.80f, .70f, .85f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.73f, .6f, .8f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.62f, .47f, .73f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.48f, .31f, .64f, 1);
+                        break;
+                }
+                break;
+            case 'g':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.93f, .65f, .64f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.77f, .88f, .38f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.90f, .19f, .36f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.86f, 0f, .28f, 1);
+                        break;
+                }
+                break;
+            case 'h':
+                switch (messageEmotion.EmotionIntensity)
+                {
+                    case 1:
+                        messageBox.color = new Color(.99f, .85f, .64f, 1);
+                        break;
+                    case 2:
+                        messageBox.color = new Color(.97f, .73f, .41f, 1);
+                        break;
+                    case 3:
+                        messageBox.color = new Color(.95f, .6f, .23f, 1);
+                        break;
+                    case 4:
+                        messageBox.color = new Color(.91f, .44f, .0f, 1);
+                        break;
+                }
+                break;
+        }
+        _currentMessageIndex++;
+    }
+
+    //For begining and displaying a new set
+    private void DisplayEncounterMessage(string[] messages)
+    {
+        _currentEncounterMessages.Clear();
+        _currentEncounterMessages.AddRange(messages);
+        _currentMessageIndex = 0;
+
+        _encounterMessage.transform.parent.gameObject.SetActive(true);
+        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        _encounterMessageEnabled = true;
+        Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        messageBox.color = new Color(1f, 1f, 1f, 0.5f);
+        _currentMessageIndex++;
+    }
+
+    private void HideEncounterMessage()
+    {
+        _encounterMessage.transform.parent.gameObject.SetActive(false);
+        _encounterMessageEnabled = false;
     }
 
     public void ShowSubMenu(GameObject subMenu)
@@ -496,12 +1308,45 @@ public class EncounterManager : MonoBehaviour
     {
         subMenu.SetActive(false);
     }
+    private void ResetMenu()
+    {
+        switch (_activeMenu)
+        {
+            case EncounterMenus.SSKILLSUBMENU:
+                HideSubMenu(_sSkillSubMenu[sSkillSubMenuIndex].transform.parent.gameObject);
+                sSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.ESKILLSUBMENU:
+                HideSubMenu(_eSkillSubMenu[eSkillSubMenuIndex].transform.parent.gameObject);
+                eSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.TSKILLSUBMENU:
+                HideSubMenu(_tSkillSubMenu[tSkillSubMenuIndex].transform.parent.gameObject);
+                tSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.MSKILLSUBMENU:
+                HideSubMenu(_mSkillSubMenu[mSkillSubMenuIndex].transform.parent.gameObject);
+                mSkillSubMenuIndex = -1;
+                break;
+            case EncounterMenus.CSKILLSUBMENU:
+                HideSubMenu(_cSkillSubMenu[cSkillSubMenuIndex].transform.parent.gameObject);
+                cSkillSubMenuIndex = -1;
+                break;
+            default:
+                Debug.LogWarning("This button shouldn't exist");
+                break;
+        }
 
-    private int SkipButton(int oldMenuIndex, int newMenuIndex, int menuCount)
+        _activeMenu = EncounterMenus.BASEMENU;
+
+        HideSubMenu(_skillSubMenu[skillSubMenuIndex].transform.parent.gameObject);
+    }
+
+    private int SkipButton(int oldMenuIndex, int newMenuIndex, int menuCount, int lastOldIndex)
     {
         int menuMax = menuCount - 1;
 
-        if (newMenuIndex == 0 && oldMenuIndex == menuMax)
+        if (newMenuIndex == 0 && oldMenuIndex == menuMax && (lastOldIndex == menuMax - 1 || lastOldIndex == -1))
         {
             return 1;
         }
@@ -533,166 +1378,84 @@ public class EncounterManager : MonoBehaviour
 
     private void EncounterInfoInitializer()
     {
+        EncounterGoals.AddRange(_theGameManager.CurrentEncounter.EncounterGoals);
+
         for (int i = 0; i < 4; i++)
         {
             if(i <= _theGameManager.CurrentEncounter.GoalCount - 1)
             {
                 if(i == 0)
                 {
-                    _targetName1.text = _theGameManager.CurrentEncounter.EncounterGoals[i].Subject;
-                    _treatment1.text = _theGameManager.CurrentEncounter.EncounterGoals[i].ActionName;
+                    _targetName1.text = EncounterGoals[i].Subject;
+                    _treatment1.text = EncounterGoals[i].ActionName;
 
                     //checkboxes
-                    if(_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 1)
+                    if(EncounterGoals[i].TreatmentCount == 1)
                     {
                         _target1CB1.gameObject.SetActive(false);
                         _target1CB2.gameObject.SetActive(false);
                     }
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 2)
+                    if (EncounterGoals[i].TreatmentCount == 2)
                     {
                         _target1CB1.gameObject.SetActive(false);
                     }
 
                     //trust
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust == 0)
-                        _target1Trust.sprite = TrustProgressBarSprites[0];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 10)
-                        _target1Trust.sprite = TrustProgressBarSprites[1];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 20)
-                        _target1Trust.sprite = TrustProgressBarSprites[2];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 30)
-                        _target1Trust.sprite = TrustProgressBarSprites[3];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 40)
-                        _target1Trust.sprite = TrustProgressBarSprites[4];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 50)
-                        _target1Trust.sprite = TrustProgressBarSprites[5];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 60)
-                        _target1Trust.sprite = TrustProgressBarSprites[6];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 70)
-                        _target1Trust.sprite = TrustProgressBarSprites[7];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 80)
-                        _target1Trust.sprite = TrustProgressBarSprites[8];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 90)
-                        _target1Trust.sprite = TrustProgressBarSprites[9];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust > 90)
-                        _target1Trust.sprite = TrustProgressBarSprites[10];
+                    target1CurrentTrust = EncounterGoals[i].InitialTrust;
                 }
                 if (i == 1)
                 {
-                    _targetName2.text = _theGameManager.CurrentEncounter.EncounterGoals[i].Subject;
-                    _treatment2.text = _theGameManager.CurrentEncounter.EncounterGoals[i].ActionName;
+                    _targetName2.text = EncounterGoals[i].Subject;
+                    _treatment2.text = EncounterGoals[i].ActionName;
 
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 1)
+                    if (EncounterGoals[i].TreatmentCount == 1)
                     {
                         _target2CB1.gameObject.SetActive(false);
                         _target2CB2.gameObject.SetActive(false);
                     }
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 2)
+                    if (EncounterGoals[i].TreatmentCount == 2)
                     {
                         _target2CB1.gameObject.SetActive(false);
                     }
 
                     //trust
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust == 0)
-                        _target2Trust.sprite = TrustProgressBarSprites[0];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 10)
-                        _target2Trust.sprite = TrustProgressBarSprites[1];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 20)
-                        _target2Trust.sprite = TrustProgressBarSprites[2];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 30)
-                        _target2Trust.sprite = TrustProgressBarSprites[3];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 40)
-                        _target2Trust.sprite = TrustProgressBarSprites[4];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 50)
-                        _target2Trust.sprite = TrustProgressBarSprites[5];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 60)
-                        _target2Trust.sprite = TrustProgressBarSprites[6];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 70)
-                        _target2Trust.sprite = TrustProgressBarSprites[7];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 80)
-                        _target2Trust.sprite = TrustProgressBarSprites[8];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 90)
-                        _target2Trust.sprite = TrustProgressBarSprites[9];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust > 90)
-                        _target2Trust.sprite = TrustProgressBarSprites[10];
+                    target2CurrentTrust = EncounterGoals[i].InitialTrust;
                 }
                 if (i == 2)
                 {
-                    _targetName3.text = _theGameManager.CurrentEncounter.EncounterGoals[i].Subject;
-                    _treatment3.text = _theGameManager.CurrentEncounter.EncounterGoals[i].ActionName;
+                    _targetName3.text = EncounterGoals[i].Subject;
+                    _treatment3.text = EncounterGoals[i].ActionName;
 
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 1)
+                    if (EncounterGoals[i].TreatmentCount == 1)
                     {
                         _target3CB1.gameObject.SetActive(false);
                         _target3CB2.gameObject.SetActive(false);
                     }
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 2)
+                    if (EncounterGoals[i].TreatmentCount == 2)
                     {
                         _target3CB1.gameObject.SetActive(false);
                     }
 
                     //trust
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust == 0)
-                        _target3Trust.sprite = TrustProgressBarSprites[0];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 10)
-                        _target3Trust.sprite = TrustProgressBarSprites[1];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 20)
-                        _target3Trust.sprite = TrustProgressBarSprites[2];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 30)
-                        _target3Trust.sprite = TrustProgressBarSprites[3];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 40)
-                        _target3Trust.sprite = TrustProgressBarSprites[4];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 50)
-                        _target3Trust.sprite = TrustProgressBarSprites[5];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 60)
-                        _target3Trust.sprite = TrustProgressBarSprites[6];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 70)
-                        _target3Trust.sprite = TrustProgressBarSprites[7];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 80)
-                        _target3Trust.sprite = TrustProgressBarSprites[8];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 90)
-                        _target3Trust.sprite = TrustProgressBarSprites[9];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust > 90)
-                        _target3Trust.sprite = TrustProgressBarSprites[10];
+                    target3CurrentTrust = EncounterGoals[i].InitialTrust;
                 }
                 if (i == 3)
                 {
-                    _targetName4.text = _theGameManager.CurrentEncounter.EncounterGoals[i].Subject;
-                    _treatment4.text = _theGameManager.CurrentEncounter.EncounterGoals[i].ActionName;
+                    _targetName4.text = EncounterGoals[i].Subject;
+                    _treatment4.text = EncounterGoals[i].ActionName;
 
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 1)
+                    if (EncounterGoals[i].TreatmentCount == 1)
                     {
                         _target4CB1.gameObject.SetActive(false);
                         _target4CB2.gameObject.SetActive(false);
                     }
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].TreatmentCount == 2)
+                    if (EncounterGoals[i].TreatmentCount == 2)
                     {
                         _target4CB1.gameObject.SetActive(false);
                     }
 
                     //trust
-                    if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust == 0)
-                        _target4Trust.sprite = TrustProgressBarSprites[0];
-                    else if(_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 10)
-                        _target4Trust.sprite = TrustProgressBarSprites[1];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 20)
-                        _target4Trust.sprite = TrustProgressBarSprites[2];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 30)
-                        _target4Trust.sprite = TrustProgressBarSprites[3];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 40)
-                        _target4Trust.sprite = TrustProgressBarSprites[4];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 50)
-                        _target4Trust.sprite = TrustProgressBarSprites[5];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 60)
-                        _target4Trust.sprite = TrustProgressBarSprites[6];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 70)
-                        _target4Trust.sprite = TrustProgressBarSprites[7];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 80)
-                        _target4Trust.sprite = TrustProgressBarSprites[8];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust < 90)
-                        _target4Trust.sprite = TrustProgressBarSprites[9];
-                    else if (_theGameManager.CurrentEncounter.EncounterGoals[i].InitialTrust > 90)
-                        _target4Trust.sprite = TrustProgressBarSprites[10];
+                    target4CurrentTrust = EncounterGoals[i].InitialTrust;
                 }
             }
             else

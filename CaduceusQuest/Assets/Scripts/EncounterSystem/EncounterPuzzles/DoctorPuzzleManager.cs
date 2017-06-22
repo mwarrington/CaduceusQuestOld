@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoctorPuzzleManager : MonoBehaviour
 {
+    public string Name;
+    public float FailPenalty;
     public float MinArrowSpeed,
                  MaxArrowSpeed,
                  SpawnRate;
@@ -33,6 +35,15 @@ public class DoctorPuzzleManager : MonoBehaviour
     }
     private int _correctKeyPressCount;
 
+    protected float successRate
+    {
+        get
+        {
+            return CorrectKeyPressCount / KeyStrokeCount;
+        }
+    }
+
+    private EncounterManager _theEncounterManager;
     private Camera _myCamera;
     private SpriteRenderer _correctKeyPressIndicator,
                            _incorrectKeyPressIndicator;
@@ -41,11 +52,12 @@ public class DoctorPuzzleManager : MonoBehaviour
                     _leftSpawnPoint,
                     _rightSpawnPoint;
     private int _arrowSpawnCount;
-    private bool _puzzleStarted;
+    private bool _puzzleStarted, _gameOver;
     
     void Start()
     {
         _myCamera = GetComponentInChildren<Camera>();
+        _theEncounterManager = FindObjectOfType<EncounterManager>();
         _topSpawnPoint = GameObject.Find("SpawnPointTop").transform.position;
         _bottomSpawnPoint = GameObject.Find("SpawnPointBottom").transform.position;
         _leftSpawnPoint = GameObject.Find("SpawnPointLeft").transform.position;
@@ -53,13 +65,11 @@ public class DoctorPuzzleManager : MonoBehaviour
         _correctKeyPressIndicator = GameObject.Find("target_green").GetComponent<SpriteRenderer>();
         _incorrectKeyPressIndicator = GameObject.Find("target_red").GetComponent<SpriteRenderer>();
         _correctKeyPressIndicator.enabled = false;
+        Invoke("InitiateGame", 1);
     }
     
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-            _puzzleStarted = true;
-
         if(_puzzleStarted)
         {
             if(_arrowSpawnCount == 0)
@@ -146,11 +156,28 @@ public class DoctorPuzzleManager : MonoBehaviour
 
         GameObject arrow = Resources.Load<GameObject>(path);
         arrow = Instantiate(arrow, spawnPoint, Quaternion.identity);
-        arrow.GetComponent<DocArrowController>().Speed = Random.Range(MinArrowSpeed, MaxArrowSpeed);
+        DocArrowController dac = arrow.GetComponent<DocArrowController>();
+        dac.Speed = Random.Range(MinArrowSpeed, MaxArrowSpeed);
         _arrowSpawnCount++;
+        dac.Index = _arrowSpawnCount;
 
         if (_arrowSpawnCount < KeyStrokeCount)
             Invoke("SimpleArrowSpawn", SpawnRate);
+        else
+            _gameOver = true;
+    }
+
+    private void InitiateGame()
+    {
+        _puzzleStarted = true;
+    }
+
+    public void EndGame()
+    {
+        if (successRate > .9f)
+            _theEncounterManager.PuzzleWin(Name, this.gameObject);
+        else
+            _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject);
     }
 
     //private void ComplexArrowSpawn()

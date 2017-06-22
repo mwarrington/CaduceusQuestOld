@@ -4,13 +4,37 @@ using UnityEngine;
 
 public class DocArrowController : MonoBehaviour
 {
+    public int Index;
     public float Speed;
     public CardinalDirections MyButtonType;
     private DoctorPuzzleManager _myDocPuzzleManager;
     private Vector2 _targetLoc,
                     _movementVector;
     private float _maxDistance;
-    private bool _atTarget;
+    protected bool atTarget
+    {
+        get
+        {
+            return _atTarget;
+        }
+
+        set
+        {
+            if(_atTarget != value)
+            {
+                if(value == false)
+                {
+                    if (_myDocPuzzleManager.KeyStrokeCount == Index)
+                        _myDocPuzzleManager.EndGame();
+
+                    GameObject.Destroy(gameObject);
+                }
+
+                _atTarget = value;
+            }
+        }
+    }
+    private bool _atTarget = false;
 
     private void Start()
     {
@@ -26,7 +50,7 @@ public class DocArrowController : MonoBehaviour
         //We might need something here for movement type if that ends up being a thing
         SimpleMoveAt();
 
-        if (_atTarget)
+        if (atTarget)
         {
             switch (MyButtonType)
             {
@@ -62,24 +86,22 @@ public class DocArrowController : MonoBehaviour
     {
         transform.Translate(_movementVector * Time.deltaTime * Speed);
 
-        if (Vector2.Distance(transform.position, _targetLoc) > _maxDistance)
-        {
-            GameObject.Destroy(gameObject);
-        }
-        else if ((Vector2.Distance(transform.position, _targetLoc) < (Speed / 0.444444f) && (MyButtonType == CardinalDirections.BACKWARD || MyButtonType == CardinalDirections.FORWARD)) ||
+        if ((Vector2.Distance(transform.position, _targetLoc) < (Speed / 0.444444f) && (MyButtonType == CardinalDirections.BACKWARD || MyButtonType == CardinalDirections.FORWARD)) ||
                  (Vector2.Distance(transform.position, _targetLoc) < (Speed / 0.25f) && (MyButtonType == CardinalDirections.RIGHT || MyButtonType == CardinalDirections.LEFT)))
         {
-            _atTarget = true;
+            atTarget = true;
         }
         else
         {
-            _atTarget = false;
+            atTarget = false;
         }
     }
 
     private void SuccessfulButtonPress()
     {
         _myDocPuzzleManager.CorrectKeyPressCount++;
+        if (_myDocPuzzleManager.KeyStrokeCount == Index)
+            _myDocPuzzleManager.EndGame();
         GameObject.Destroy(gameObject);
     }
 }

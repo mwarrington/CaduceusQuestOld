@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class DialogPuzzleManager : MonoBehaviour
 {
-    public string Speaker,
+    public string Name,
+                  Speaker,
                   SpeakerLine,
                   BadResponse,
-                  MedResponse,
                   GoodResponse;
+    public float FailPenalty;
     public Emotion LineEmotion = new Emotion('g', 2);
+
+    private EncounterManager _theEncounterMan;
+
+    private void Start()
+    {
+        _theEncounterMan = FindObjectOfType<EncounterManager>();
+    }
 
     public void SelectEmotion(Emotion emotion)
     {
@@ -18,20 +26,24 @@ public class DialogPuzzleManager : MonoBehaviour
             if (Mathf.Abs(emotion.EmotionIntensity - LineEmotion.EmotionIntensity) < 1)
             {
                 //Pefect
+                _theEncounterMan.PuzzleWin(FailPenalty, this.gameObject);
                 Debug.Log("+5");
             }
             else if (Mathf.Abs(emotion.EmotionIntensity - LineEmotion.EmotionIntensity) < 2)
             {
                 //Perfect type one off intensity
+                _theEncounterMan.PuzzleWin(FailPenalty, this.gameObject);
                 Debug.Log("+3");
             }
             else if (Mathf.Abs(emotion.EmotionIntensity - LineEmotion.EmotionIntensity) < 3)
             {
                 //Perfect type two off intensity
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
                 Debug.Log("+1");
             }
             else
             {
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
                 Debug.Log("-2");
             }
         }
@@ -40,15 +52,18 @@ public class DialogPuzzleManager : MonoBehaviour
             if(Mathf.Abs(emotion.EmotionIntensity - LineEmotion.EmotionIntensity) < 1)
             {
                 //Pefect intensity wrong close type
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
                 Debug.Log("+2");
             }
             else
             {
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
                 Debug.Log("-" + (Mathf.Abs(emotion.EmotionIntensity - LineEmotion.EmotionIntensity) + 2));
             }
         }
         else
         {
+            _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
             Debug.Log("-4");
         }
     }

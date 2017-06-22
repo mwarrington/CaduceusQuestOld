@@ -57,7 +57,21 @@ public class CircumplexController : MonoBehaviour
     }
 
     private DialogPuzzleManager _myDialogPuzzMan;
+
+    protected Emotion currentEmotion
+    {
+        get { return _currentEmotion = new Emotion(currentEmotionType, currentEmotionIntensity); }
+
+        set
+        {
+            if (value != _currentEmotion)
+            {
+                _currentEmotion = value;
+            }
+        }
+    }
     private Emotion _currentEmotion;
+    
     private int _currentEmotionIntensity,
                 _targetEmotionIntensity;
     private char _currentEmotionType,
@@ -98,7 +112,7 @@ public class CircumplexController : MonoBehaviour
             _lastRotation = this.transform.eulerAngles;
 
             _targetRotation = new Vector3(_lastRotation.x, _lastRotation.y, _lastRotation.z - 45);
-            _targetEmotionType = _currentEmotion.GetLastEmotionType();
+            _targetEmotionType = currentEmotion.GetLastEmotionType();
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -106,7 +120,7 @@ public class CircumplexController : MonoBehaviour
             _lastRotation = this.transform.eulerAngles;
 
             _targetRotation = new Vector3(_lastRotation.x, _lastRotation.y, _lastRotation.z + 45);
-            _targetEmotionType = _currentEmotion.GetNextEmotionType();
+            _targetEmotionType = currentEmotion.GetNextEmotionType();
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -157,9 +171,9 @@ public class CircumplexController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
-            _myDialogPuzzMan.SelectEmotion(_currentEmotion);
+            _myDialogPuzzMan.SelectEmotion(currentEmotion);
         }
     }
 
