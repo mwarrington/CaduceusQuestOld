@@ -20,7 +20,7 @@ public class NPCDialogSwitch : MonoBehaviour
 
     private void Update()
     {
-        if(_inConvoZone)
+        if(_inConvoZone && !_inConvorsation)
         {
             if(Input.GetKeyDown(KeyCode.Z) && !_inConvorsation)
             {

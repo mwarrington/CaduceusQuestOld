@@ -59,7 +59,7 @@ public class EncounterManager : MonoBehaviour
 
         set
         {
-            if(_currentDialogEvent == value)
+            if (_currentDialogEvent == value)
             {
                 _allDialogEvents.Add(value);
                 _currentDialogEvent = value;
@@ -77,7 +77,7 @@ public class EncounterManager : MonoBehaviour
 
         set
         {
-            if(_baseMenuIndex != value)
+            if (_baseMenuIndex != value)
             {
                 if (_baseMenu[value].interactable)
                 {
@@ -274,7 +274,7 @@ public class EncounterManager : MonoBehaviour
         }
         set
         {
-            if(_target1CurrentTrust != value)
+            if (_target1CurrentTrust != value)
             {
                 if (value <= 0)
                     _target1Trust.sprite = TrustProgressBarSprites[0];
@@ -639,28 +639,15 @@ public class EncounterManager : MonoBehaviour
 
     private void MessageInputHandler()
     {
-        if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
-            if(_currentMessageIndex == _currentEncounterMessages.Count)
+            if (_currentMessageIndex == _currentEncounterMessages.Count)
             {
                 HideEncounterMessage();
 
-                if(_encounterFinished)
+                if (_encounterFinished)
                 {
-                    string sceneToLoad = "",
-                           currentSceneName = SceneManager.GetActiveScene().name;
-
-                    for (int i = 0; i < currentSceneName.Length; i++)
-                    {
-                        if (currentSceneName[i] != 'E')
-                        {
-                            sceneToLoad += currentSceneName[i];
-                        }
-                        else
-                            break;
-                    }
-
-                    SceneManager.LoadScene(sceneToLoad);
+                    EndEncounter();
                 }
                 else if (_currentMinigameObj != null)
                 {
@@ -674,6 +661,24 @@ public class EncounterManager : MonoBehaviour
                 DisplayEncounterMessage();
             }
         }
+    }
+
+    public void EndEncounter()
+    {
+        string sceneToLoad = "",
+               currentSceneName = SceneManager.GetActiveScene().name;
+
+        for (int i = 0; i < currentSceneName.Length; i++)
+        {
+            if (currentSceneName[i] != 'E')
+            {
+                sceneToLoad += currentSceneName[i];
+            }
+            else
+                break;
+        }
+
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     private void UIInputHandler()
@@ -1206,6 +1211,7 @@ public class EncounterManager : MonoBehaviour
         _playerMenuEnabled = !_playerMenuEnabled;
     }
 
+#region Display Encounter Message Methods
     //For displaying next in a set
     private void DisplayEncounterMessage()
     {
@@ -1417,6 +1423,7 @@ public class EncounterManager : MonoBehaviour
         _encounterMessage.transform.parent.gameObject.SetActive(false);
         _encounterMessageEnabled = false;
     }
+    #endregion Display Encounter Message Methods
 
     public void ShowSubMenu(GameObject subMenu)
     {

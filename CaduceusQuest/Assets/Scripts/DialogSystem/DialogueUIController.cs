@@ -183,7 +183,7 @@ public class DialogueUIController : MonoBehaviour
         }
         else if (_inConversation)
         {
-            if(Input.GetKeyDown(KeyCode.Z))
+            if(Input.GetKeyUp(KeyCode.Z))
             {
                 if(_isWriting)
                 {

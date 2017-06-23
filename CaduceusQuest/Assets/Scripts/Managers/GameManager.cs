@@ -28,15 +28,17 @@ public class GameManager : MonoBehaviour
         List<NPCDialogSwitch> allNPCSwitches = new List<NPCDialogSwitch>();
         allNPCSwitches.AddRange(FindObjectsOfType<NPCDialogSwitch>());
 
-        if(allNPCSwitches.Count > 0)
+        if (allNPCSwitches.Count > 0)
+        {
             _lastNPCList.Clear();
 
-        foreach (NPCDialogSwitch npc in allNPCSwitches)
-        {
-            _lastNPCList.Add(npc.NPCData);
+            foreach (NPCDialogSwitch npc in allNPCSwitches)
+            {
+                _lastNPCList.Add(npc.NPCData);
 
-            if (!_currentDialogIndexList.ContainsKey(npc.transform.parent.name))
-                _currentDialogIndexList.Add(npc.transform.parent.name, 'a');
+                if (!_currentDialogIndexList.ContainsKey(npc.transform.parent.name))
+                    _currentDialogIndexList.Add(npc.transform.parent.name, 'a');
+            }
         }
 
         AddSkill(new Skill("Complete Intake Form", SkillType.COMMUNICATION));
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
                         if (dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
                         {
                             _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+                            break;
                         }
                     }
                 }
