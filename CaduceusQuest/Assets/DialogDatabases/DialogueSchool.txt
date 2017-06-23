@@ -471,19 +471,19 @@
 
 //Student NPCs//
 
-	(c)Student(i)a;
-	[0](s)Student(e)d,1(t)"Have you seen my cats? I lost them on my way here. Oh well."#;;
+	(c)Student0(i)a;
+	[0](s)Student0(e)d,1(t)"Have you seen my cats? I lost them on my way here. Oh well."#;;
 
-	(c)Student(i)b;
-	[0](s)Student(e)h,1(t)"Hey, you look kinda lost..."#;;
+	(c)Student1(i)a;
+	[0](s)Student1(e)h,1(t)"Hey, you look kinda lost..."#;;
 
 //Teacher NPCs//
 
-	(c)Teacher(i)a;
-	[0](s)Teacher(e)g,2(t)"Hey, I'm kind of in the middle of something here!"#;;
+	(c)Teacher0(i)a;
+	[0](s)Teacher0(e)g,2(t)"Hey, I'm kind of in the middle of something here!"#;;
 
-	(c)Teacher(i)b;
-	[0](s)Teacher(e)e,1(t)"Whoa. It's nice to see you again, Simone."#;;
+	(c)Teacher1(i)a;
+	[0](s)Teacher1(e)e,1(t)"Whoa. It's nice to see you again, Simone."#;;
 
-	(c)Teacher(i)c;
-	[0](s)Teacher(e)e,2(t)"I didn't think you'd be back. That's what people are saying, at least."#;;
+	(c)Teacher2(i)a;
+	[0](s)Teacher2(e)e,2(t)"I didn't think you'd be back. That's what people are saying, at least."#;;

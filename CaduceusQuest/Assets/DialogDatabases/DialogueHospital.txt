@@ -47,14 +47,14 @@
 
 //Hospital NPCs//
 
-	(c)Patient(i)a;
-	[0](s)Patient(e)b,1(t)"What's that? You'll have to speak up."#;;
+	(c)Patient0(i)a;
+	[0](s)Patient0(e)b,1(t)"What's that? You'll have to speak up."#;;
 
-	(c)Patient(i)b;
-	[0](s)Patient(e)a,2(t)"You're back, wow! I thought you were gone for good."#;;
+	(c)Patient1(i)a;
+	[0](s)Patient1(e)a,2(t)"You're back, wow! I thought you were gone for good."#;;
 
-	(c)Patient(i)c;
-	[0](s)Patient(e)d,1(t)"Have you seen my cats? I lost them on my way here. Oh well."#;;
+	(c)Patient2(i)a;
+	[0](s)Patient2(e)d,1(t)"Have you seen my cats? I lost them on my way here. Oh well."#;;
 
 //Dr. Gallo//
 

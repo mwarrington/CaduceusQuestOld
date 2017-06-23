@@ -16,7 +16,7 @@ MonoBehaviour:
   NextConvoInfo:
   - MyIndex: 97
     NextIndex: 98
-    MyChangeType: 0
+    MyChangeType: 3
   - MyIndex: 98
     NextIndex: 99
     MyChangeType: 0
