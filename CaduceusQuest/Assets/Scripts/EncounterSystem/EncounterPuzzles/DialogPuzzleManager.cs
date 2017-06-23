@@ -36,11 +36,11 @@ public class DialogPuzzleManager : MonoBehaviour
             else if (Mathf.Abs(emotion.EmotionIntensity - LineEmotion.EmotionIntensity) < 3)
             {
                 //Perfect type two off intensity
-                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.DIALOG);
             }
             else
             {
-                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.DIALOG);
             }
         }
         else if(emotion.EmotionType == LineEmotion.GetNextEmotionType() || emotion.EmotionType == LineEmotion.GetLastEmotionType())
@@ -48,16 +48,16 @@ public class DialogPuzzleManager : MonoBehaviour
             if(Mathf.Abs(emotion.EmotionIntensity - LineEmotion.EmotionIntensity) < 1)
             {
                 //Pefect intensity wrong close type
-                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.DIALOG);
             }
             else
             {
-                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
+                _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.DIALOG);
             }
         }
         else
         {
-            _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject);
+            _theEncounterMan.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.DIALOG);
         }
     }
 }
