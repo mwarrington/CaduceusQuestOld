@@ -180,7 +180,7 @@ public class CompSciPuzzleManager : MonoBehaviour
 
     private void YouLose()
     {
-        _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject);
+        _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.COMPSCI);
     }
 
     public void YouWin()

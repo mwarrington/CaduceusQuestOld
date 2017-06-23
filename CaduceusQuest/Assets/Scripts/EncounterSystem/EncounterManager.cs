@@ -42,7 +42,6 @@ public class EncounterManager : MonoBehaviour
     private GameObject _currentMinigameObj;
     private EncounterAction _currentEA;
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
-    private EncounterActionDialog _currentEventDialog;
     private int _turnIndex,
                 _currentMessageIndex,
                 _patientsTreated;
@@ -50,6 +49,25 @@ public class EncounterManager : MonoBehaviour
                  _encounterMessageEnabled,
                  _encounterFinished,
                  _skillAttemptFailed;
+
+    protected EncounterActionDialog currentDialogEvent
+    {
+        get
+        {
+            return _currentDialogEvent;
+        }
+
+        set
+        {
+            if(_currentDialogEvent == value)
+            {
+                _allDialogEvents.Add(value);
+                _currentDialogEvent = value;
+            }
+        }
+    }
+    private EncounterActionDialog _currentDialogEvent;
+    private List<EncounterActionDialog> _allDialogEvents;
 
     #region Menu Index Properties
     //These handle image and text color change for menu navigation
@@ -523,8 +541,8 @@ public class EncounterManager : MonoBehaviour
         {
             LoadDialogEvent();
 
-            DisplayEncounterMessage(_currentEventDialog.Speaker + ": " + _currentEventDialog.SpeakerLine, _currentEventDialog.LineEmotion);
-            PrepMiniGameToInstantiate(_currentEventDialog.Name);
+            DisplayEncounterMessage(_currentDialogEvent.Speaker + ": " + _currentDialogEvent.SpeakerLine, _currentDialogEvent.LineEmotion);
+            PrepMiniGameToInstantiate(_currentDialogEvent.Name);
         }
 
         _turnIndex++;
@@ -532,15 +550,10 @@ public class EncounterManager : MonoBehaviour
 
     private void LoadDialogEvent()
     {
-        Encounter currentEncounter = CurrentEncounter;
-        int rand = Random.Range(0, currentEncounter.GoalCount);
+        int rand = Random.Range(0, CurrentEncounter.GoalCount);
         string subject = CurrentEncounter.EncounterGoals[rand].Subject;
 
-        //HACK//
-        subject = "Sylvia";
-        //HACK//
-
-        _currentEventDialog = Resources.Load<EncounterActionDialog>("EncounterActions/" + subject + 1);
+        _currentDialogEvent = Resources.Load<EncounterActionDialog>("EncounterActions/" + subject + 1);
     }
 
     private void CreateTurnOrder()
@@ -946,11 +959,42 @@ public class EncounterManager : MonoBehaviour
     }
 
     #region Puzzle Win Fail Methods
-    public void PuzzleFail(float failPenalty, GameObject currentPuzzle)
+    public void PuzzleFail(float failPenalty, GameObject currentPuzzle, EncounterActionType myType)
     {
-        DisplayEncounterMessage("Dang, that didn't go so well...");
-        target1CurrentTrust -= failPenalty;
-        if(target1CurrentTrust <= 0)
+        for (int i = 0; i < EncounterGoals.Count; i++)
+        {
+            if (EncounterGoals[i].Subject == _currentDialogEvent.Speaker)
+            {
+                if (i == 0)
+                {
+                    target1CurrentTrust -= failPenalty;
+                }
+                if (i == 1)
+                {
+                    target2CurrentTrust -= failPenalty;
+                }
+                if (i == 2)
+                {
+                    target3CurrentTrust -= failPenalty;
+                }
+                if (i == 3)
+                {
+                    target4CurrentTrust -= failPenalty;
+                }
+            }
+        }
+
+        if (myType == EncounterActionType.DIALOG)
+        {
+            DisplayEncounterMessage(currentDialogEvent.BadResponse);
+        }
+
+        if (target1CurrentTrust > 0 || target2CurrentTrust > 0 || target3CurrentTrust > 0 || target4CurrentTrust > 0)
+        {
+
+            DisplayEncounterMessage("Dang, that didn't go so well...");
+        }
+        else
         {
             _encounterFinished = true;
             string[] failMessages = new string[2];
@@ -967,7 +1011,7 @@ public class EncounterManager : MonoBehaviour
     {
         for (int i = 0; i < EncounterGoals.Count; i++)
         {
-            if (EncounterGoals[i].Subject == _currentEventDialog.Speaker)
+            if (EncounterGoals[i].Subject == _currentDialogEvent.Speaker)
             {
                 if (i == 0)
                 {
@@ -975,21 +1019,21 @@ public class EncounterManager : MonoBehaviour
                 }
                 if (i == 1)
                 {
-                    target1CurrentTrust += failPenalty;
+                    target2CurrentTrust += failPenalty;
                 }
                 if (i == 2)
                 {
-                    target1CurrentTrust += failPenalty;
+                    target3CurrentTrust += failPenalty;
                 }
                 if (i == 3)
                 {
-                    target1CurrentTrust += failPenalty;
+                    target4CurrentTrust += failPenalty;
                 }
             }
         }
 
         string[] dialogs = new string[2];
-        dialogs[0] = _currentEventDialog.GoodResponse;
+        dialogs[0] = "Simone: " + _currentDialogEvent.GoodResponse;
         dialogs[1] = "Good Job!";
         DisplayEncounterMessage(dialogs);
         GameObject.Destroy(currentPuzzle);
@@ -1168,22 +1212,31 @@ public class EncounterManager : MonoBehaviour
         _encounterMessage.transform.parent.gameObject.SetActive(true);
         _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
         _encounterMessageEnabled = true;
-        _currentMessageIndex++;
-    }
-
-    //For displaying one off message
-    private void DisplayEncounterMessage(string message)
-    {
-        _currentEncounterMessages.Clear();
-        _currentEncounterMessages.Add(message);
-        _currentMessageIndex = 0;
-
-        _encounterMessage.transform.parent.gameObject.SetActive(true);
-        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
-        _encounterMessageEnabled = true;
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
         messageBox.color = new Color(1f, 1f, 1f, 0.5f);
         _currentMessageIndex++;
+    }
+
+    //For displaying or adding one message
+    private void DisplayEncounterMessage(string message)
+    {
+        if (!_encounterMessageEnabled)
+        {
+            _currentEncounterMessages.Clear();
+            _currentMessageIndex = 0;
+            _encounterMessage.transform.parent.gameObject.SetActive(true);
+            _currentEncounterMessages.Add(message);
+            _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+            _encounterMessageEnabled = true;
+            _currentMessageIndex++;
+        }
+        else
+        {
+            _currentEncounterMessages.Add(message);
+        }
+        
+        Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        messageBox.color = new Color(1f, 1f, 1f, 0.5f);
     }
 
     private void DisplayEncounterMessage(string message, Emotion messageEmotion)
@@ -1342,16 +1395,21 @@ public class EncounterManager : MonoBehaviour
     //For begining and displaying a new set
     private void DisplayEncounterMessage(string[] messages)
     {
-        _currentEncounterMessages.Clear();
-        _currentEncounterMessages.AddRange(messages);
-        _currentMessageIndex = 0;
-
-        _encounterMessage.transform.parent.gameObject.SetActive(true);
-        _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
-        _encounterMessageEnabled = true;
+        if (!_encounterMessageEnabled)
+        {
+            _currentEncounterMessages.Clear();
+            _currentMessageIndex = 0;
+            _encounterMessage.transform.parent.gameObject.SetActive(true);
+            _currentEncounterMessages.AddRange(messages);
+            _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+            _encounterMessageEnabled = true;
+            _currentMessageIndex++;
+        }
+        else
+            _currentEncounterMessages.AddRange(messages);
+        
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
         messageBox.color = new Color(1f, 1f, 1f, 0.5f);
-        _currentMessageIndex++;
     }
 
     private void HideEncounterMessage()
