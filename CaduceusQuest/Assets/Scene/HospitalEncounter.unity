@@ -595,7 +595,7 @@ Prefab:
         type: 2}
       propertyPath: CurrentEncounter
       value: 
-      objectReference: {fileID: 11400000, guid: 5d9709a1f02ff6c40934b8de04167e24,
+      objectReference: {fileID: 11400000, guid: a2e17f2406a5fc044b81ec8a2459c798,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fc2cc9863839b64788e9a034c8b8bac, type: 2}

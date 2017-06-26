@@ -44,7 +44,8 @@ public class EncounterManager : MonoBehaviour
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
     private int _turnIndex,
                 _currentMessageIndex,
-                _patientsTreated;
+                _patientsTreated,
+                _eventIndex;
     private bool _playerMenuEnabled,
                  _encounterMessageEnabled,
                  _encounterFinished,
@@ -551,9 +552,18 @@ public class EncounterManager : MonoBehaviour
     private void LoadDialogEvent()
     {
         int rand = Random.Range(0, CurrentEncounter.GoalCount);
-        string subject = CurrentEncounter.EncounterGoals[rand].Subject;
+        _eventIndex++;
+        string path = "EncounterActions/" + CurrentEncounter.EncounterGoals[rand].Subject + "/" + CurrentEncounter.EncounterGoals[rand].ActionName + _eventIndex;
 
-        _currentDialogEvent = Resources.Load<EncounterActionDialog>("EncounterActions/" + subject + 1);
+        _currentDialogEvent = Resources.Load<EncounterActionDialog>(path);
+
+        if(_currentDialogEvent == null)
+        {
+            _eventIndex = 1;
+            path = "EncounterActions/" + CurrentEncounter.EncounterGoals[rand].Subject + "/" + CurrentEncounter.EncounterGoals[rand].ActionName + _eventIndex;
+            _currentDialogEvent = Resources.Load<EncounterActionDialog>(path);
+        }
+
     }
 
     private void CreateTurnOrder()
@@ -892,7 +902,10 @@ public class EncounterManager : MonoBehaviour
     {
         string skillName = myText;
 
-        _currentEA = Resources.Load<EncounterAction>("EncounterActions/" + skillName);
+        if (_currentDialogEvent == null)
+            _currentEA = Resources.Load<EncounterAction>("EncounterActions/" + skillName);
+        else
+            _currentEA = _currentDialogEvent;
 
         switch (_currentEA.MyType)
         {
@@ -968,7 +981,29 @@ public class EncounterManager : MonoBehaviour
     {
         for (int i = 0; i < EncounterGoals.Count; i++)
         {
-            if (EncounterGoals[i].Subject == _currentDialogEvent.Speaker)
+            if (myType == EncounterActionType.DIALOG)
+            {
+                if(EncounterGoals[i].Subject == _currentDialogEvent.Speaker)
+                {
+                    if (i == 0)
+                    {
+                        target1CurrentTrust -= failPenalty;
+                    }
+                    if (i == 1)
+                    {
+                        target2CurrentTrust -= failPenalty;
+                    }
+                    if (i == 2)
+                    {
+                        target3CurrentTrust -= failPenalty;
+                    }
+                    if (i == 3)
+                    {
+                        target4CurrentTrust -= failPenalty;
+                    }
+                }
+            }
+            else if (EncounterGoals[i].ActionType == myType)
             {
                 if (i == 0)
                 {
