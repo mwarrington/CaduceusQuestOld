@@ -673,6 +673,13 @@ public class EncounterManager : MonoBehaviour
         }
     }
 
+    public void LoadVoluntaryEnd()
+    {
+        _encounterFinished = true;
+        TogglePlayerMenu();
+        DisplayEncounterMessage("Looks like we'll have to come back to this one.");
+    }
+
     public void EndEncounter()
     {
         string sceneToLoad = "",
@@ -1499,7 +1506,14 @@ public class EncounterManager : MonoBehaviour
 
         _activeMenu = EncounterMenus.BASEMENU;
 
-        HideSubMenu(_skillSubMenu[skillSubMenuIndex].transform.parent.gameObject);
+        try
+        {
+            HideSubMenu(_skillSubMenu[skillSubMenuIndex].transform.parent.gameObject);
+        }
+        catch
+        {
+            Debug.Log("I believe " + _skillSubMenu + " is null...");
+        }
     }
 
     private int SkipButton(int oldMenuIndex, int newMenuIndex, int menuCount, int lastOldIndex)

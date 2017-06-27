@@ -3978,6 +3978,16 @@ Prefab:
       propertyPath: m_TagString
       value: Skill Button
       objectReference: {fileID: 0}
+    - target: {fileID: 114448553217966496, guid: 363f3809a67eacb4fa23b92e411b8e6b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 255716056}
+    - target: {fileID: 114448553217966496, guid: 363f3809a67eacb4fa23b92e411b8e6b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadVoluntaryEnd
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 363f3809a67eacb4fa23b92e411b8e6b, type: 2}
   m_IsPrefabParent: 0
