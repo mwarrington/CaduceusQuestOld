@@ -124,8 +124,8 @@ Violet
 		Speaker: Violet
 		Emotion: b,2
 		Speaker line: "You know, maybe I underestimated you. You're not so bad."
-		Bad: "Gee, thanks a lot..."
-		Good: "Thanks!"
+		Bad: "Gee, thanks a lot."
+		Good: "Thanks a lot!"
 
 Mason
 
