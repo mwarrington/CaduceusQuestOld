@@ -157,7 +157,7 @@ Mason
 		Speaker: Mason
 		Emotion: a,2
 		Speaker line: "Mars is on his way. I have such good kids..."
-		Bad: "Thank god, Macy is pretty freaked out."
+		Bad: "Thank god. Macy is pretty freaked out."
 		Good: "It sounds like you're a great dad."
 
 	--MasonEncounter2--

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57efbf1c493ae8542b3affd1af203d49, type: 3}
+  m_Name: Examine Neck3
+  m_EditorClassIdentifier: 
+  MyType: 0
+  FailPenalty: 20
+  Name: Examine Neck3
+  Speaker: Mason
+  SpeakerLine: Honestly, the last thing I remember is eating dinner with my kids.
+    Now I'm here.
+  BadResponse: Hm. That sounds bad.
+  GoodResponse: Dr. Gallo is the best. We'll figure out what's hurting you.
+  LineEmotion:
+    EmotionType: 99
+    EmotionIntensity: 4
