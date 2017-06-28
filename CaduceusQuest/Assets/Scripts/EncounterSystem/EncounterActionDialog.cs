@@ -73,7 +73,7 @@ public class MakeEncounterActionDialog
         asset.LineEmotion.EmotionType = emotionType;
         asset.LineEmotion.EmotionIntensity = emotionIntensity;
 
-        AssetDatabase.CreateAsset(asset, "Assets/Resources/EncounterActions/DialogEA.asset");
+        AssetDatabase.CreateAsset(asset, "Assets/Resources/EncounterActions/" + speaker + "/" + name + ".asset");
         AssetDatabase.SaveAssets();
 
         Selection.activeObject = asset;
