@@ -39,9 +39,11 @@ public class EncounterManager : MonoBehaviour
                          _cSkillSubMenu = new List<Button>();
 
     private List<string> _currentEncounterMessages = new List<string>();
-    private GameObject _currentMinigameObj;
+    private GameObject _currentMinigameObj,
+                       _eaAnimation;
     private EncounterAction _currentEA;
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
+    private Transform _skillAnimTransform;
     private int _turnIndex,
                 _currentMessageIndex,
                 _patientsTreated,
@@ -426,6 +428,7 @@ public class EncounterManager : MonoBehaviour
     private void Start()
     {
         _theGameManager = FindObjectOfType<GameManager>();
+        _skillAnimTransform = GameObject.Find("Main Camera/SkillAnimLoadPoint").transform;
 
         #region Getting/Setting Encounter Buttons
         _skills = GameObject.Find("Skills").GetComponent<Button>();
@@ -942,6 +945,14 @@ public class EncounterManager : MonoBehaviour
 
     private void LoadMinigame()
     {
+        if (_currentEA.MyType != EncounterActionType.DIALOG)
+        {
+            string path = "Prefabs/" + _currentEA.Name + "Animation";
+            path = path.Replace(" ", "");
+            _eaAnimation = Resources.Load<GameObject>(path);
+            _eaAnimation = GameObject.Instantiate(_eaAnimation, _skillAnimTransform.position, _skillAnimTransform.rotation);
+        }
+
         switch (_currentEA.MyType)
         {
             case EncounterActionType.COMPSCI:
@@ -1051,6 +1062,7 @@ public class EncounterManager : MonoBehaviour
             _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERFAIL);
         }
         GameObject.Destroy(currentPuzzle);
+        GameObject.Destroy(_eaAnimation);
     }
 
     //Event Puzzle Win
@@ -1084,6 +1096,7 @@ public class EncounterManager : MonoBehaviour
         dialogs[1] = "Good Job!";
         DisplayEncounterMessage(dialogs);
         GameObject.Destroy(currentPuzzle);
+        GameObject.Destroy(_eaAnimation);
     }
 
     //Player puzzle win
@@ -1126,6 +1139,7 @@ public class EncounterManager : MonoBehaviour
                     }
 
                     GameObject.Destroy(currentPuzzle);
+                    GameObject.Destroy(_eaAnimation);
                 }
                 if (i == 1)
                 {
@@ -1157,6 +1171,7 @@ public class EncounterManager : MonoBehaviour
                     }
 
                     GameObject.Destroy(currentPuzzle);
+                    GameObject.Destroy(_eaAnimation);
                 }
                 if (i == 2)
                 {
@@ -1188,6 +1203,7 @@ public class EncounterManager : MonoBehaviour
                     }
 
                     GameObject.Destroy(currentPuzzle);
+                    GameObject.Destroy(_eaAnimation);
                 }
                 if (i == 3)
                 {
@@ -1219,6 +1235,7 @@ public class EncounterManager : MonoBehaviour
                     }
 
                     GameObject.Destroy(currentPuzzle);
+                    GameObject.Destroy(_eaAnimation);
                 }
             }
         }

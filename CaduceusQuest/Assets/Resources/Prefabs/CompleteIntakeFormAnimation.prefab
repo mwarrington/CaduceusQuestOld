@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4414902313877908}
   - component: {fileID: 95957670460534626}
   m_Layer: 0
-  m_Name: Fill out Form Animation
+  m_Name: CompleteIntakeFormAnimation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4830531224144246}
   - component: {fileID: 212183246931585232}
   m_Layer: 0
-  m_Name: check 3
+  m_Name: check3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 4637563338962518}
   - component: {fileID: 212246831896862472}
   m_Layer: 0
-  m_Name: check 2
+  m_Name: check2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,9 +126,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1134145912058004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -252.8536, y: -8.137124, z: -481.22607}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.049950194, y: -0.91597563, z: 0.12059044, w: 0.3794095}
+  m_LocalPosition: {x: 21.845741, y: 1.8255584, z: 14.690022}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.30000004}
   m_Children:
   - {fileID: 4905479104028288}
   - {fileID: 4999722082104420}
