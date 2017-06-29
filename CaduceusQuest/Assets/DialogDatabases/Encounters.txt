@@ -124,8 +124,8 @@ Violet
 		Speaker: Violet
 		Emotion: b,2
 		Speaker line: "You know, maybe I underestimated you. You're not so bad."
-		Bad: "Gee, thanks a lot..."
-		Good: "Thanks!"
+		Bad: "Gee, thanks a lot."
+		Good: "Thanks a lot!"
 
 Mason
 
@@ -157,7 +157,7 @@ Mason
 		Speaker: Mason
 		Emotion: a,2
 		Speaker line: "Mars is on his way. I have such good kids..."
-		Bad: "Thank god, Macy is pretty freaked out."
+		Bad: "Thank god. Macy is pretty freaked out."
 		Good: "It sounds like you're a great dad."
 
 	--MasonEncounter2--

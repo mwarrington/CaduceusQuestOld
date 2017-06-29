@@ -9,17 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57efbf1c493ae8542b3affd1af203d49, type: 3}
-  m_Name: Complete Intake Form3
+  m_Name: Examine Neck1
   m_EditorClassIdentifier: 
   MyType: 0
   FailPenalty: 20
-  Name: Complete Intake Form3
+  Name: Examine Neck1
   Speaker: Violet
-  SpeakerLine: The morning sickness is making me worried I'm pregnant. Can you test
-    for that?
-  BadResponse: That would be irresponsible of you!
-  GoodResponse: Of course. And don't worry, if you're pregnant we can talk you through
-    your options.
+  SpeakerLine: Dr. Gallo called and gave me some iron pills for my anemia. I feel
+    SO much better.
+  BadResponse: Yeah, thank god you're not pregnant...
+  GoodResponse: That's great!
   LineEmotion:
-    EmotionType: 99
+    EmotionType: 97
     EmotionIntensity: 3

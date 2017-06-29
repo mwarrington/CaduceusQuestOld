@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Name: Complete Intake Form3
   m_EditorClassIdentifier: 
   MyType: 0
-  FailPenalty: 20
+  FailPenalty: 10
   Name: Complete Intake Form3
-  Speaker: Violet
-  SpeakerLine: The morning sickness is making me worried I'm pregnant. Can you test
-    for that?
-  BadResponse: That would be irresponsible of you!
-  GoodResponse: Of course. And don't worry, if you're pregnant we can talk you through
-    your options.
+  Speaker: Mason
+  SpeakerLine: Mars is on his way. I have such good kids...
+  BadResponse: Thank god. Macy is pretty freaked out.
+  GoodResponse: It sounds like you're a great dad.
   LineEmotion:
-    EmotionType: 99
-    EmotionIntensity: 3
+    EmotionType: 97
+    EmotionIntensity: 2
