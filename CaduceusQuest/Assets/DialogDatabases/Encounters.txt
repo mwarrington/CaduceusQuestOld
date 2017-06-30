@@ -46,7 +46,7 @@ Sylvia
 
 Violet
 
-	--VioletEncounter1--
+	--VioletEncounter0--
 	
 		Complete Intake Form
 		Initial Trust: 50
@@ -77,7 +77,7 @@ Violet
 		Bad: "That would be irresponsible of you!"
 		Good: "Of course. And don't worry, if you're pregnant we can talk you through your options."
 
-	--VioletEncounter2--
+	--VioletEncounter1--
 		
 		Blood Test
 		Initial Trust: 40
@@ -96,7 +96,7 @@ Violet
 		Bad: "Violet, you gotta toughen up..."
 		Good: "It'll be a quick pinch and then I'm done. You can do this!"
 
-	--VioletEncounter3--
+	--VioletEncounter2--
 		
 		Neck Exam
 		Initial Trust: 60
@@ -129,7 +129,7 @@ Violet
 
 Mason
 
-	--MasonEncounter1--
+	--MasonEncounter0--
 	
 		Complete Intake Form
 		Initial Trust: 100
@@ -160,7 +160,7 @@ Mason
 		Bad: "Thank god. Macy is pretty freaked out."
 		Good: "It sounds like you're a great dad."
 
-	--MasonEncounter2--
+	--MasonEncounter1--
 	
 		Neck Exam
 		Initial Trust: 100
@@ -195,7 +195,7 @@ Dr. Gallo
 
 Mars
 
-	--MarsEncounter1--
+	--MarsEncounter0--
 	
 		Neck Exam
 		Initial Trust: 80
@@ -228,7 +228,7 @@ Mars
 
 Bea
 
-	--BeaEncounter1--
+	--BeaEncounter0--
 	
 		Neck Exam
 		Initial Trust: 70
@@ -261,7 +261,7 @@ Bea
 
 Danny
 
-	--DannyEncounter1--
+	--DannyEncounter0--
 	
 		Neck Exam
 		Initial Trust: 40
@@ -294,7 +294,7 @@ Danny
 
 Josh
 
-	--JoshEncounter1--
+	--JoshEncounter0--
 	
 		Neck Exam
 		Initial Trust: 60
@@ -327,7 +327,7 @@ Josh
 
 Quinn
 
-	--QuinnEncounter1--
+	--QuinnEncounter0--
 	
 		Neck Exam
 		Initial Trust: 80
