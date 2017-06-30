@@ -9,16 +9,16 @@ public class Event : ScriptableObject
     public List<EventGoal> EventGoals = new List<EventGoal>();
     public int GoalCount;
 
-    public void GoalReached()
+    public void GoalReached(string NPC, string Treatment)
     {
         for (int i = 0; i < GoalCount; i++)
         {
-            //if(!EventGoals[i])
-            //{
-            //    EventGoals[i] = true;
+            if (EventGoals[i].NPC == NPC && EventGoals[i].Treatment == Treatment)
+            {
+                EventGoals[i].Achieved = true;
 
-            //    break;
-            //}
+                break;
+            }
         }
     }
 }
