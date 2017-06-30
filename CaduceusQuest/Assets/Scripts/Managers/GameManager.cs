@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private static List<NPC> _lastNPCList = new List<NPC>();
 
     private static Encounter _currentEncounter;
+    private static Event _currentEvent;
 
     public List<Skill> CurrentSimoneSkills = new List<Skill>();
 
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         //Should only happen the first time entering that scene
         List<NPCDialogSwitch> allNPCSwitches = new List<NPCDialogSwitch>();
         allNPCSwitches.AddRange(FindObjectsOfType<NPCDialogSwitch>());
+        //_currentEvent = new Event(3);
 
         if (allNPCSwitches.Count > 0)
         {

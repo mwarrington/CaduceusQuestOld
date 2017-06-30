@@ -1279,6 +1279,8 @@ public class EncounterManager : MonoBehaviour
         _encounterMessageEnabled = true;
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
         messageBox.color = new Color(1f, 1f, 1f, 0.5f);
+        Text emotionCoordinate = GameObject.Find("EncounterMessage/EmotionCoordinate").GetComponent<Text>();
+        emotionCoordinate.text = "";
         _currentMessageIndex++;
     }
 
@@ -1302,6 +1304,8 @@ public class EncounterManager : MonoBehaviour
         
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
         messageBox.color = new Color(1f, 1f, 1f, 0.5f);
+        Text emotionCoordinate = GameObject.Find("EncounterMessage/EmotionCoordinate").GetComponent<Text>();
+        emotionCoordinate.text = "";
     }
 
     private void DisplayEncounterMessage(string message, Emotion messageEmotion)
@@ -1313,6 +1317,8 @@ public class EncounterManager : MonoBehaviour
         _encounterMessage.transform.parent.gameObject.SetActive(true);
         _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
+        Text emotionCoordinate = GameObject.Find("EncounterMessage/EmotionCoordinate").GetComponent<Text>();
+        emotionCoordinate.text = messageEmotion.EmotionType + ", " + messageEmotion.EmotionIntensity;
         _encounterMessageEnabled = true;
 
         switch(messageEmotion.EmotionType)
@@ -1475,6 +1481,8 @@ public class EncounterManager : MonoBehaviour
         
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
         messageBox.color = new Color(1f, 1f, 1f, 0.5f);
+        Text emotionCoordinate = GameObject.Find("EncounterMessage/EmotionCoordinate").GetComponent<Text>();
+        emotionCoordinate.text = "";
     }
 
     private void HideEncounterMessage()

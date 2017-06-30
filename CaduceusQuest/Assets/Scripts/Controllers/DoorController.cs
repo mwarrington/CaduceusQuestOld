@@ -97,7 +97,8 @@ public class DoorController : MonoBehaviour
     {
         DoorController test = this;
         _simone.transform.position = MoveToTransform.position;
-        _simone.transform.rotation = MoveToTransform.rotation;
+        //Mason: FIX THIS!!
+        //_simone.transform.rotation = new E(_simone.transform.rotation.x, MoveToTransform.rotation.y, _simone.transform.rotation.z);
         _theCamMan.ActivateCam(MoveToCamera);
         _nextFadeMask = MoveToCamera.GetComponentInChildren<SpriteRenderer>();
         _nextFadeMask.color = new Color(_nextFadeMask.color.r, _nextFadeMask.color.g, _nextFadeMask.color.b, 1);
