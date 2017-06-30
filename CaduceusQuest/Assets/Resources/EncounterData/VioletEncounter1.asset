@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a2dcbef378d9c459a97c83c1f7a1e4, type: 3}
-  m_Name: VioletEcounter0
+  m_Name: VioletEncounter1
   m_EditorClassIdentifier: 
   GoalCount: 1
   TurnPattern: 0
   EncounterGoals:
   - Subject: Violet
-    ActionName: Complete Intake Form
+    ActionName: Collect Blood Sample
     IndividualTrustMin: 0
     InitialTrust: 40
     TreatmentCount: 2
-    ActionType: 2
+    ActionType: 3
