@@ -636,6 +636,10 @@ Prefab:
       propertyPath: MoveToCamera
       value: 
       objectReference: {fileID: 2143517555}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -7027,6 +7031,10 @@ Prefab:
       propertyPath: MoveToCamera
       value: 
       objectReference: {fileID: 2143517555}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -8041,6 +8049,10 @@ Prefab:
       propertyPath: MoveToTransform
       value: 
       objectReference: {fileID: 1248168121}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -13801,6 +13813,10 @@ Prefab:
       propertyPath: MoveToTransform
       value: 
       objectReference: {fileID: 695126613}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -16722,6 +16738,10 @@ Prefab:
       propertyPath: MoveToCamera
       value: 
       objectReference: {fileID: 1427181835}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -20649,6 +20669,10 @@ Prefab:
       propertyPath: MoveToCamera
       value: 
       objectReference: {fileID: 1379784990}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -20718,6 +20742,10 @@ Prefab:
       propertyPath: MoveToTransform
       value: 
       objectReference: {fileID: 1840353583}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -21083,6 +21111,10 @@ Prefab:
       propertyPath: MoveToCamera
       value: 
       objectReference: {fileID: 2143517555}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -22377,6 +22409,10 @@ Prefab:
       propertyPath: MoveToCamera
       value: 
       objectReference: {fileID: 2143517555}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
@@ -23468,6 +23504,10 @@ Prefab:
       propertyPath: MoveToTransform
       value: 
       objectReference: {fileID: 1840353583}
+    - target: {fileID: 4578095898343916, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cf2697c07b44ffb9fc3aa21dfa16b, type: 2}
   m_IsPrefabParent: 0
