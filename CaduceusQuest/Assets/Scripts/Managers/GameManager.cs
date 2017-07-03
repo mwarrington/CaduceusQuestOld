@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
         //Should only happen the first time entering that scene
         List<NPCDialogSwitch> allNPCSwitches = new List<NPCDialogSwitch>();
         allNPCSwitches.AddRange(FindObjectsOfType<NPCDialogSwitch>());
-        _currentEvent = Resources.Load<Event>("Events/Event1.asset");
+        if (!_currentEvent)
+            _currentEvent = Resources.Load<Event>("Events/Event1");
 
         if (allNPCSwitches.Count > 0)
         {

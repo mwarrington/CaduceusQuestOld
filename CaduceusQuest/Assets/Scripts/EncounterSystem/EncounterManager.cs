@@ -1096,7 +1096,6 @@ public class EncounterManager : MonoBehaviour
         dialogs[1] = "Good Job!";
         DisplayEncounterMessage(dialogs);
         //MASON: Continue here
-        _theGameManager.CurrentEvent.GoalReached(EncounterGoals[0].Subject, EncounterGoals[0].ActionName);
         GameObject.Destroy(currentPuzzle);
         GameObject.Destroy(_eaAnimation);
     }
@@ -1137,6 +1136,7 @@ public class EncounterManager : MonoBehaviour
                     {
                         loadWinMessage = false;
                         _patientsTreated++;
+                        _theGameManager.CurrentEvent.GoalReached(EncounterGoals[i].Subject, EncounterGoals[i].ActionName);
                         //True win
                     }
 

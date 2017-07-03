@@ -26,7 +26,7 @@ public enum DialogChangeType
     CONVOEND,
     ENCOUNTERWIN,
     ENCOUNTERFAIL,
-    ITEMTRIGGER
+    EVENTTRIGGER
 }
 
 public enum EncounterPattern
