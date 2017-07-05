@@ -12,7 +12,6 @@ public class DialogueUIController : MonoBehaviour
     private Convorsation _currentConvo;
     private IEnumerator _currentCoroutine;
 	private GameObject _dialogueBox,
-		               _dialogueEmotionBox,
 		               _dialoguePanel;
     private DialogChangeType _currentChangeType;
     private NPCDialogSwitch _currentDialogSwitch;
@@ -105,10 +104,10 @@ public class DialogueUIController : MonoBehaviour
 		//Dialogue Containers, Images and Text
 		_dialoguePanel = GameObject.Find("Dialogue Box Panel");
 		_dialogueBox = GameObject.Find("Dialogue Box Image");
-		_dialogueEmotionBox = GameObject.Find("Dialogue Emotion Image");
+		//_dialogueEmotionBox = GameObject.Find("Dialogue Emotion Image");
 		_dialogueText = GameObject.Find("Dialogue Text").GetComponent<Text>();
-		_dialogueEmotionImage = GameObject.Find("Dialogue Emotion Image").GetComponent<Image>();
 		_speakerNameText = GameObject.Find("Speaker Name Text").GetComponent<Text>();
+        _dialogueEmotionImage = _dialogueBox.GetComponent<Image>();
 
 		_dialoguePanel.SetActive(false);
 		_option1.gameObject.SetActive(false);
@@ -277,7 +276,6 @@ public class DialogueUIController : MonoBehaviour
         _dialogueSelection = false;
 
 		GetNextLine();
-
 	}
 
 	private void GetNextLine()
@@ -319,14 +317,14 @@ public class DialogueUIController : MonoBehaviour
 			if (i == _buttonSelectionIndex)
 			{
 				_optionButtonList[_buttonSelectionIndex].GetComponent<Image>().sprite = _buttonHighlightedSprite;
-				_optionTextList[_buttonSelectionIndex].color = Color.black;
-				_optionNameList[_buttonSelectionIndex].color = Color.black;
-			}
+                _optionTextList[i].color = Color.white;
+                _optionNameList[i].color = Color.white;
+            }
 			else
 			{
 				_optionButtonList[i].GetComponent<Image>().sprite = _buttonNormalSprite;
-				_optionTextList[i].color = Color.white;
-				_optionNameList[i].color = Color.white;
+                _optionTextList[i].color = Color.black;
+                _optionNameList[i].color = Color.black;
 			}
 		}
 	}
@@ -334,7 +332,7 @@ public class DialogueUIController : MonoBehaviour
 	private void WriteDialogue()
 	{
 		_isWriting = true;
-		_dialogueEmotionBox.GetComponent<Image>().color = _currentConvo.MyLines[_currentLineIndex].MyEmotion.GetEmotionColor();
+		_dialogueEmotionImage.color = _currentConvo.MyLines[_currentLineIndex].MyEmotion.GetEmotionColor();
 		_speakerNameText.text = _currentConvo.MyLines[_currentLineIndex].Speaker.ToUpper() + ":";
 		_dialogueText.text = "";
 
