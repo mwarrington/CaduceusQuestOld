@@ -10,4 +10,7 @@ EditorBuildSettings:
     guid: b0984606fa8d448388065a63837da68a
   - enabled: 1
     path: Assets/Scene/HospitalEncounter.unity
-    guid: 00000000000000000000000000000000
+    guid: a0ba837d7b4344b0aaa022d61bcce202
+  - enabled: 1
+    path: Assets/Scene/AshlandTown.unity
+    guid: 148d376a8af944bd39d08dcd3c4689f8
