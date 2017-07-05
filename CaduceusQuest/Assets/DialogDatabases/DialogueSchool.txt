@@ -487,3 +487,21 @@
 
 	(c)Teacher2(i)a;
 	[0](s)Teacher2(e)e,2(t)"I didn't think you'd be back. That's what people are saying, at least."#;;
+
+	//Locked doors, named by room number//
+
+	(c)Teacher3(i)a;
+	[0](s)Teacher3(e)g,2(t)"Hey, I'm kind of in the middle of something here!"#;;
+
+	(c)Teacher4(i)a;
+	[0](s)Teacher4(e)g,2(t)"Excuse me miss, class is in session!"#;;
+
+	(c)Teacher14(i)a;
+	[0](s)Teacher14(e)g,2(t)"Hey, I'm kind of in the middle of something here!"#;;
+
+	(c)Teacher16(i)a;
+	[0](s)Teacher16(e)g,2(t)"Excuse me miss, class is in session!"#;;
+
+//Beetle//
+	(c)Beetle(i)a;
+	[0](s)Beetle(e)a,2(t)"Bbzzzzzzzzzxx..."#;;
