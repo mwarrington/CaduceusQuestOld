@@ -6,8 +6,10 @@ public class DoorController : MonoBehaviour
 {
     public Camera MoveToCamera;
     public Transform MoveToTransform;
+    public string SceneToLoad;
     public float FadeTime;
 
+    private NiceSceneTransition _sceneTrans;
     private CameraManager _theCamMan;
     private SpriteRenderer _currentFadeMask,
                            _nextFadeMask;
@@ -19,6 +21,7 @@ public class DoorController : MonoBehaviour
     private void Start()
     {
         _theCamMan = FindObjectOfType<CameraManager>();
+        _sceneTrans = FindObjectOfType<NiceSceneTransition>();
         _currentFadeMask = _theCamMan.CurrentCamera.GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -35,11 +38,18 @@ public class DoorController : MonoBehaviour
     {
         if(_nearDoor)
         {
-            if(Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
-                _fadingOut = true;
+                if (SceneToLoad != "")
+                {
+                    _sceneTrans.LoadScene(SceneToLoad);
+                }
+                else
+                {
+                    _fadingOut = true;
 
-                Invoke("MoveCharacter", FadeTime);
+                    Invoke("MoveCharacter", FadeTime);
+                }
             }
         }
 
