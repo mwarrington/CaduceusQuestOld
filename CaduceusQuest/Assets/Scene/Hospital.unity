@@ -2392,7 +2392,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 1094996275}
   MoveToTransform: {fileID: 717201208}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &243113445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4863,7 +4865,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 284186596}
   MoveToTransform: {fileID: 705157497}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &453898152
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5465,7 +5469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 1005836229}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &521429522
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7067,7 +7073,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 878038616}
   MoveToTransform: {fileID: 1131992245}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &661092389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9789,6 +9797,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8bbf678c2646d304c9d6f5db45032ed9, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &916119995
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 429584, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f9005fb8532483d409e5c23a1117b797, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &927910468
 Prefab:
   m_ObjectHideFlags: 0
@@ -9894,7 +9944,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 1811132047}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &929514968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11288,7 +11340,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 2075962475}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1008496141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13686,7 +13740,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 1054276230}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1213176148
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15004,7 +15060,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 624732441}
   MoveToTransform: {fileID: 1182128673}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1307627103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15540,7 +15598,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 460125637}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1344035363
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17120,7 +17180,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 989650792}
   MoveToTransform: {fileID: 773709261}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1490894008
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18137,7 +18199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 1742028039}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1585673677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18487,7 +18551,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 977361755}
   MoveToTransform: {fileID: 1266666052}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1613410316
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19938,7 +20004,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 229622410}
   MoveToTransform: {fileID: 12483951}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1742398971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20123,7 +20191,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 1100354748}
   MoveToTransform: {fileID: 868157313}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1750962212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20883,7 +20953,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 748832938}
   MoveToTransform: {fileID: 1231440489}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &1789815221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23313,6 +23385,7 @@ Transform:
   - {fileID: 876054060}
   - {fileID: 1848519927}
   - {fileID: 2093924790}
+  - {fileID: 2135945784}
   m_Father: {fileID: 1005728266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24450,7 +24523,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 2056769119}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &2120255361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24764,6 +24839,64 @@ Transform:
   m_PrefabParentObject: {fileID: 4582214242550630, guid: 9e391e0844c0485419f4f63c80f88b95,
     type: 2}
   m_PrefabInternal: {fileID: 2135543288}
+--- !u!1 &2135945783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2135945784}
+  - component: {fileID: 2135945786}
+  - component: {fileID: 2135945785}
+  m_Layer: 0
+  m_Name: DoorToWorld
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2135945784
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135945783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.91, y: 0.476, z: -0.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2055352704}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2135945785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135945783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2135945786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135945783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77db6b15937a4b5ea03d53e5066ed89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveToCamera: {fileID: 0}
+  MoveToTransform: {fileID: 0}
+  SceneToLoad: AshlandTown
+  FadeTime: 1
+  DoorLocked: 0
 --- !u!1 &2138553234
 GameObject:
   m_ObjectHideFlags: 0
@@ -24808,7 +24941,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveToCamera: {fileID: 691176945}
   MoveToTransform: {fileID: 1396044340}
+  SceneToLoad: 
   FadeTime: 1
+  DoorLocked: 0
 --- !u!65 &2138553237
 BoxCollider:
   m_ObjectHideFlags: 0

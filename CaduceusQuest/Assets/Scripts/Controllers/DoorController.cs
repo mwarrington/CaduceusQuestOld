@@ -8,6 +8,7 @@ public class DoorController : MonoBehaviour
     public Transform MoveToTransform;
     public string SceneToLoad;
     public float FadeTime;
+    public bool DoorLocked;
 
     private NiceSceneTransition _sceneTrans;
     private CameraManager _theCamMan;
@@ -36,7 +37,7 @@ public class DoorController : MonoBehaviour
 
     private void Update()
     {
-        if(_nearDoor)
+        if(_nearDoor && !DoorLocked)
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {

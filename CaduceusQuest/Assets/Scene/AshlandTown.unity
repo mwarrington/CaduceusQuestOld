@@ -1431,19 +1431,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 183540, guid: a0988e59b4cbc0a4c968bac255ec9401, type: 2}
   m_PrefabInternal: {fileID: 1316451072}
---- !u!114 &42952780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 42952779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73657bfb9dab646219b151d8208dc5a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectionUI: {fileID: 1721323506}
-  sceneName: 
 --- !u!65 &42952782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14022,7 +14009,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73657bfb9dab646219b151d8208dc5a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionUI: {fileID: 0}
+  UISelections:
+  - {fileID: 610726853}
+  - {fileID: 1721323506}
   sceneName: 
 --- !u!4 &540209699
 Transform:
@@ -18263,19 +18252,6 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 181850, guid: f8493556649c98c4dbec8467db9de353, type: 2}
   m_PrefabInternal: {fileID: 2000809048}
---- !u!114 &721936513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 721936512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73657bfb9dab646219b151d8208dc5a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectionUI: {fileID: 610726853}
-  sceneName: Hospital
 --- !u!65 &721936515
 BoxCollider:
   m_ObjectHideFlags: 0
