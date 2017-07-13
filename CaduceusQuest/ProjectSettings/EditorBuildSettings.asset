@@ -14,3 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/AshlandTown.unity
     guid: 148d376a8af944bd39d08dcd3c4689f8
+  - enabled: 1
+    path: Assets/Scene/School1.unity
+    guid: 5f2642ce763d248a19790e156345716b
+  - enabled: 1
+    path: Assets/Scene/School2.unity
+    guid: 00000000000000000000000000000000

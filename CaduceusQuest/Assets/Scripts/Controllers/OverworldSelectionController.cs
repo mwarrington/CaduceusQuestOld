@@ -40,8 +40,18 @@ public class OverworldSelectionController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
-            //Make this work
-            //transition.LoadScene(sceneName);
+            switch(currentUISelection )
+            {
+                case 0:
+                    transition.LoadScene("Hospital");
+                    break;
+                case 1:
+                    transition.LoadScene("School1");
+                    break;
+                default:
+                    Debug.LogError("We don't have that many locations...");
+                    break;
+            }
         }
 
         UpdateMenu();
