@@ -428,7 +428,7 @@ public class EncounterManager : MonoBehaviour
     private void Start()
     {
         _theGameManager = FindObjectOfType<GameManager>();
-        _skillAnimTransform = GameObject.Find("Main Camera/SkillAnimLoadPoint").transform;
+        _skillAnimTransform = GameObject.Find("Encounter Camera/SkillAnimLoadPoint").transform;
 
         #region Getting/Setting Encounter Buttons
         _skills = GameObject.Find("Skills").GetComponent<Button>();

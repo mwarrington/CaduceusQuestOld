@@ -75,7 +75,21 @@ public class GameManager : MonoBehaviour
     public void BeginEncounter(string sceneToLoadPath)
     {
         _currentEncounter = Resources.Load<Encounter>(sceneToLoadPath);
-        SceneManager.LoadScene("Scene/" + SceneManager.GetActiveScene().name + "Encounter");
+
+        string sceneType = "",
+               rawSceneName = SceneManager.GetActiveScene().name;
+
+        for (int i = 0; i < rawSceneName.Length; i++)
+        {
+            if (rawSceneName[i] == 1 || rawSceneName[i] != 2)
+            {
+                break;
+            }
+            else
+                sceneType = sceneType + rawSceneName[i];
+        }
+
+        SceneManager.LoadScene("Scene/" + sceneType + "Encounter");
     }
 
     public void DialogueChanger(string name, DialogChangeType dct)
