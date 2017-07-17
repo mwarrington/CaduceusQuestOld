@@ -16,6 +16,20 @@ public class GameManager : MonoBehaviour
     private static Dictionary<string, int> _currentEncounterIndexList = new Dictionary<string, int>();
     private static List<NPC> _lastNPCList = new List<NPC>();
 
+    private static Transform _lastTransform;
+    public Transform LastTransform
+    {
+        get
+        {
+            return _lastTransform;
+        }
+
+        set
+        {
+            _lastTransform = value;
+        }
+    }
+
     private static Encounter _currentEncounter;
     public Event CurrentEvent
     {
@@ -59,6 +73,13 @@ public class GameManager : MonoBehaviour
         if(_theEncounterManager != null && _currentEncounter != null)
         {
             _theEncounterManager.CurrentEncounter = _currentEncounter;
+        }
+
+        if((SceneManager.GetActiveScene().name == "School1" ||
+           SceneManager.GetActiveScene().name == "School2" ||
+           SceneManager.GetActiveScene().name == "Hospital") && LastTransform != null)
+        {
+            FindObjectOfType<SimoneController>().transform.position = LastTransform.position;
         }
     }
 

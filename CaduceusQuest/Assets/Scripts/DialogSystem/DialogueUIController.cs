@@ -150,17 +150,6 @@ public class DialogueUIController : MonoBehaviour
 	{
         if (_dialogueSelection)
         {
-            if (_buttonSelectionIndex < 0)
-            {
-                _buttonSelectionIndex = 0;
-                HighlightDialogueSelection();
-            }
-            else if (_buttonSelectionIndex >= _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1)
-            {
-                _buttonSelectionIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1;
-                HighlightDialogueSelection();
-            }
-
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 _buttonSelectionIndex--;
@@ -170,6 +159,17 @@ public class DialogueUIController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 _buttonSelectionIndex++;
+                HighlightDialogueSelection();
+            }
+
+            if (_buttonSelectionIndex < 0)
+            {
+                _buttonSelectionIndex = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count - 1;
+                HighlightDialogueSelection();
+            }
+            else if (_buttonSelectionIndex >= _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count)
+            {
+                _buttonSelectionIndex = 0;
                 HighlightDialogueSelection();
             }
 
@@ -195,6 +195,7 @@ public class DialogueUIController : MonoBehaviour
                 else if (_beginEncounter)
                 {
                     string path = "EncounterData/" + _currentConvo.SpeakerName + "Encounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
+                    _theGameManager.LastTransform = _simone.transform;
                     _theGameManager.BeginEncounter(path);
                 }
                 else if (_lastLine)
@@ -316,15 +317,19 @@ public class DialogueUIController : MonoBehaviour
 		{
 			if (i == _buttonSelectionIndex)
 			{
-				_optionButtonList[_buttonSelectionIndex].GetComponent<Image>().sprite = _buttonHighlightedSprite;
-                _optionTextList[i].color = Color.white;
-                _optionNameList[i].color = Color.white;
+                Image currentButtonImage = _optionButtonList[i].GetComponent<Image>();
+
+                currentButtonImage.sprite = _buttonHighlightedSprite;
+                currentButtonImage.color = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionEmotion.GetEmotionColor();
+
+                _optionTextList[i].color = Color.black;
+                _optionNameList[i].color = Color.black;
             }
 			else
 			{
 				_optionButtonList[i].GetComponent<Image>().sprite = _buttonNormalSprite;
-                _optionTextList[i].color = Color.black;
-                _optionNameList[i].color = Color.black;
+                _optionTextList[i].color = Color.white;
+                _optionNameList[i].color = Color.white;
 			}
 		}
 	}
