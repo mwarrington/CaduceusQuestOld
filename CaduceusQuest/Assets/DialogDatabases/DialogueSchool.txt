@@ -389,7 +389,6 @@
 
 //Quinn//
 
-	//cycle through these//
 	(c)Quinn(i)a;
 	[0](s)Quinn(e)c,2(t)"Don't panic, but do you see all these beetles around? They're emerald ash borers!!"#;;
 
@@ -399,47 +398,42 @@
 	(c)Quinn(i)c;
 	[0](s)Quinn(e)c,3(t)"They're going to kill all the trees!! No one will listen to me because I'm just a kid."#;;
 
-	(c)Quinn(i)d;
-	[0](s)Quinn(e)c,3(t)"What's Ashland without its ash trees?! Yeah, I don't know either"#;;
-
 	//after you give her the beetle//
-	(c)Quinn(i)e;
+	(c)Quinn(i)d;
 	[0](s)Quinn(e)a,3(t)"Wait, this is just a green june beetle! Wow! These are harmless.";
 	[1](s)Quinn(e)a,3(t)"I'm SO relieved. Take this Rosy Maple Moth Eraser as a token of my thanks."#;;
 	//acquire eraser//
 
-	//after beetle quest 1//
-	(c)Quinn(i)f;
+	//after beetle quest//
+	(c)Quinn(i)e;
 	[0](s)Quinn(e)a,3(t)"Ashland used to be called Ashland Plantations, but I dunno why. Thanks again for the beetle!"#;;
 
 	//after beetle quest 2//
-	(c)Quinn(i)g;
-	[0](s)Quinn(e)a,3(t)"Some say that Ashland is named for the ash its factories used to make, but I think it's the trees."#;;
-
-	//after beetle quest 3//
-	(c)Quinn(i)h;
+	(c)Quinn(i)f;
 	[0](s)Quinn(e)a,3(t)"What's up?"<0;
 		(g)0(n)1(f)h,1(l)"Nothing much.";
 		(g)0(n)2(f)h,1(l)"Would you mind if I examined your neck?";
 	[1](s)Quinn(e)a,3(t)"K, seeya!"#;
 	[2](s)Quinn(e)a,1(t)"Uh, I guess..."&0;;
 
-	//after successful neck exam//
-	(c)Quinn(i)i;
-	[0](s)Quinn(e)a,1(t)"How's my neck?"<0;
-		(g)0(n)1(f)h,1(l)"Totally fine. Thanks for letting me check.";
-		(g)0(n)2(f)h,1(l)"You are A-OK.";
-	[1](s)Quinn(e)a,3(t)"K, cool!"#0;;
-
-	//after i cycle between f and g//
-
 	//fail convo//
-	(c)Quinn(i)j;
+	(c)Quinn(i)g;
 	[0](s)Quinn(e)g,1(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
 	[1](s)Quinn(e)g,1(t)"Ok, let's get this over with."&0;
 	[2](s)Quinn(e)g,1(t)"Ok, bye..."#;;
+
+	//after successful neck exam//
+	(c)Quinn(i)h;
+	[0](s)Quinn(e)a,1(t)"How's my neck?"<0;
+		(g)0(n)1(f)h,1(l)"Totally fine. Thanks for letting me check.";
+		(g)0(n)2(f)h,1(l)"You are A-OK.";
+	[1](s)Quinn(e)a,3(t)"K, cool!"#0;;
+
+	//last convo//
+	(c)Quinn(i)i;
+	[0](s)Quinn(e)a,3(t)"Some say that Ashland is named for the ash its factories used to make, but I think it's the trees."#;;
 
 
 //Principal Gilliam//
@@ -489,7 +483,6 @@
 	[0](s)Teacher2(e)e,2(t)"I didn't think you'd be back. That's what people are saying, at least."#;;
 
 	//Locked doors, named by room number//
-
 	(c)Teacher3(i)a;
 	[0](s)Teacher3(e)g,2(t)"Hey, I'm kind of in the middle of something here!"#;;
 
