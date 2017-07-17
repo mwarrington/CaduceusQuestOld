@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < rawSceneName.Length; i++)
         {
-            if (rawSceneName[i] == 1 || rawSceneName[i] != 2)
+            if (rawSceneName[i] == 1 || rawSceneName[i] == 2)
             {
                 break;
             }
