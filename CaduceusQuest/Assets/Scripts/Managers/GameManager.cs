@@ -16,17 +16,19 @@ public class GameManager : MonoBehaviour
     private static Dictionary<string, int> _currentEncounterIndexList = new Dictionary<string, int>();
     private static List<NPC> _lastNPCList = new List<NPC>();
 
-    private static Transform _lastTransform;
-    public Transform LastTransform
+    private static Dictionary<string, string> _sceneCameras = new Dictionary<string, string>();
+
+    private static Vector3 _lastPosition;
+    public Vector3 LastPosition
     {
         get
         {
-            return _lastTransform;
+            return _lastPosition;
         }
 
         set
         {
-            _lastTransform = value;
+            _lastPosition = value;
         }
     }
 
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
     public List<Skill> CurrentSimoneSkills = new List<Skill>();
 
     private EncounterManager _theEncounterManager;
+    private CameraManager _theCamMan;
 
     private void Awake()
     {
@@ -70,16 +73,28 @@ public class GameManager : MonoBehaviour
         //AddSkill(new Skill("Collect Blood Sample", SkillType.SCIENCE));
 
         _theEncounterManager = FindObjectOfType<EncounterManager>();
-        if(_theEncounterManager != null && _currentEncounter != null)
+        if (_theEncounterManager != null && _currentEncounter != null)
         {
             _theEncounterManager.CurrentEncounter = _currentEncounter;
         }
 
-        if((SceneManager.GetActiveScene().name == "School1" ||
+        if ((SceneManager.GetActiveScene().name == "School1" ||
            SceneManager.GetActiveScene().name == "School2" ||
-           SceneManager.GetActiveScene().name == "Hospital") && LastTransform != null)
+           SceneManager.GetActiveScene().name == "Hospital") && LastPosition != Vector3.zero)
         {
-            FindObjectOfType<SimoneController>().transform.position = LastTransform.position;
+            FindObjectOfType<SimoneController>().transform.position = LastPosition;
+        }
+
+        _theCamMan = FindObjectOfType<CameraManager>();
+
+        if (_sceneCameras.Count == 0)
+        {
+            _sceneCameras.Add(SceneManager.GetActiveScene().name, "MainCamera1");
+        }
+        else
+        {
+            Camera newCam = GameObject.Find(_sceneCameras[SceneManager.GetActiveScene().name]).GetComponent<Camera>();
+            _theCamMan.ActivateCam(newCam);
         }
     }
 
@@ -109,6 +124,8 @@ public class GameManager : MonoBehaviour
             else
                 sceneType = sceneType + rawSceneName[i];
         }
+
+        _sceneCameras[SceneManager.GetActiveScene().name] = _theCamMan.CurrentCamera.name;
 
         SceneManager.LoadScene("Scene/" + sceneType + "Encounter");
     }

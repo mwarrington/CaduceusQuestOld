@@ -7598,7 +7598,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 691176941}
   m_LocalRotation: {x: 0.049950194, y: -0.91597563, z: 0.12059044, w: 0.3794095}
-  m_LocalPosition: {x: 13.98, y: 5, z: 12.64}
+  m_LocalPosition: {x: -4.220001, y: 5, z: 12.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 300298013}
@@ -7606,8 +7606,8 @@ Transform:
   - {fileID: 723281728}
   - {fileID: 1220960603}
   - {fileID: 779325551}
-  m_Father: {fileID: 1240729246}
-  m_RootOrder: 12
+  m_Father: {fileID: 2055352704}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 15, y: -135, z: 0}
 --- !u!45 &691176947
 Skybox:
@@ -14170,7 +14170,6 @@ Transform:
   - {fileID: 2078027819}
   - {fileID: 1025200596}
   - {fileID: 320188837}
-  - {fileID: 691176946}
   m_Father: {fileID: 2055352704}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23386,6 +23385,7 @@ Transform:
   - {fileID: 1848519927}
   - {fileID: 2093924790}
   - {fileID: 2135945784}
+  - {fileID: 691176946}
   m_Father: {fileID: 1005728266}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
