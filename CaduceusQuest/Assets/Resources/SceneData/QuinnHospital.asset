@@ -25,13 +25,13 @@ MonoBehaviour:
     MyChangeType: 0
   - MyIndex: 97
     NextIndex: 100
-    MyChangeType: 0
+    MyChangeType: 3
   - MyIndex: 98
     NextIndex: 100
-    MyChangeType: 0
+    MyChangeType: 3
   - MyIndex: 99
     NextIndex: 100
-    MyChangeType: 0
+    MyChangeType: 3
   - MyIndex: 100
     NextIndex: 101
     MyChangeType: 0
@@ -40,13 +40,13 @@ MonoBehaviour:
     MyChangeType: 0
   - MyIndex: 102
     NextIndex: 103
-    MyChangeType: 0
+    MyChangeType: 2
   - MyIndex: 102
     NextIndex: 104
-    MyChangeType: 0
+    MyChangeType: 1
   - MyIndex: 103
     NextIndex: 104
-    MyChangeType: 0
+    MyChangeType: 1
   - MyIndex: 104
     NextIndex: 105
     MyChangeType: 0

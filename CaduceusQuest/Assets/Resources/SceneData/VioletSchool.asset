@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07537d9d75f75f47aeba24cb23497cd, type: 3}
   m_Name: VioletSchool
   m_EditorClassIdentifier: 
-  NPCName: VioletSchool
+  NPCName: Violet
   ConvoCount: 6
   NextConvoInfo:
   - MyIndex: 97
@@ -22,16 +22,13 @@ MonoBehaviour:
     MyChangeType: 0
   - MyIndex: 99
     NextIndex: 100
-    MyChangeType: 0
+    MyChangeType: 2
   - MyIndex: 99
     NextIndex: 101
-    MyChangeType: 0
+    MyChangeType: 1
   - MyIndex: 100
     NextIndex: 101
-    MyChangeType: 0
+    MyChangeType: 1
   - MyIndex: 101
-    NextIndex: 102
-    MyChangeType: 0
-  - MyIndex: 102
     NextIndex: 102
     MyChangeType: 0

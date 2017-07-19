@@ -9,15 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57efbf1c493ae8542b3affd1af203d49, type: 3}
-  m_Name: Complete Intake Form1
+  m_Name: Examine Neck1
   m_EditorClassIdentifier: 
   MyType: 0
-  FailPenalty: 20
-  Name: Complete Intake Form1
-  Speaker: Mason
-  SpeakerLine: I'm worried about Macy all alone in the waiting room.
-  BadResponse: She can fend for herself!
-  GoodResponse: I'll go check on her as soon as we finish this form.
+  FailPenalty: 0
+  Name: Examine Neck1
+  Speaker: Dr. Gallo
+  SpeakerLine: Performing a neck exam takes careful attention and quick thinking.
+    As each arrow reaches the center, press the matching arrow key.
+  BadResponse: Huh. That didn't feel right.
+  GoodResponse: I got it!
   LineEmotion:
-    EmotionType: 99
-    EmotionIntensity: 3
+    EmotionType: 103
+    EmotionIntensity: 2

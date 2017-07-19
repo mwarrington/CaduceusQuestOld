@@ -17,6 +17,6 @@ MonoBehaviour:
   - Subject: Sylvia
     ActionName: Complete Intake Form
     IndividualTrustMin: 0
-    InitialTrust: 70
-    TreatmentCount: 2
+    InitialTrust: 90
+    TreatmentCount: 3
     ActionType: 2

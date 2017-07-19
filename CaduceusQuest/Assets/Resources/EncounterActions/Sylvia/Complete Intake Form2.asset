@@ -15,9 +15,10 @@ MonoBehaviour:
   FailPenalty: 10
   Name: CompleteIntakeFrom2
   Speaker: Sylvia
-  SpeakerLine: Hey, this is a temporary line.
-  BadResponse: I can't believe you don't have a real line to say...
-  GoodResponse: It's cool, I bet you'll have lots to say in the final version
+  SpeakerLine: Ok. The puzzle for filling out my intake form is a little trickier.
+    Use your arrow keys to match the symbols shown.
+  BadResponse: Huh. That didn't feel right.
+  GoodResponse: I got it!
   LineEmotion:
-    EmotionType: 99
-    EmotionIntensity: 2
+    EmotionType: 98
+    EmotionIntensity: 1

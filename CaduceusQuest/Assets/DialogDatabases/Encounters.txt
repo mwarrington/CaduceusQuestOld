@@ -34,7 +34,7 @@ Sylvia
 
 	--SylviaEncounter1--
 	
-		Complete Intake Form
+		Collect Blood Sample
 		Initial Trust: 90
 		Treatment Count: 2
 		Action Type: SCIENCE
@@ -140,20 +140,13 @@ Violet
 
 Mason
 
+
 	--MasonEncounter0--
 	
-		Complete Intake Form
+		Neck Exam
 		Initial Trust: 100
-		Treatment Count: 2
-		Action Type: COMPSCI
-
-		Fail Penalty: 20
-		Name: Mason1
-		Speaker: Mason
-		Emotion: c,3
-		Speaker line: "I'm worried about Macy all alone in the waiting room."
-		Bad: "She can fend for herself!"
-		Good: "I'll go check on her as soon as we finish this form."
+		Treatment Count: 3
+		Action Type: SCIENCE
 
 		Fail Penalty: 20
 		Name: Mason2
@@ -171,17 +164,6 @@ Mason
 		Bad: "Thank god. Macy is pretty freaked out."
 		Good: "It sounds like you're a great dad."
 
-	--MasonEncounter1--
-	
-		Neck Exam
-		Initial Trust: 100
-		Treatment Count: 3
-		Action Type: SCIENCE
-
-		Mason2
-
-		Mason3
-
 		Fail Penalty: 20
 		Name: Mason3
 		Speaker: Mason
@@ -192,17 +174,28 @@ Mason
 
 Dr. Gallo
 
-	a //neck exam tutorial
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	--DrGalloEncounter0--
+	
+		Neck Exam
+		Initial Trust: 70
+		Treatment Count: 3
+		Action Type: SCIENCE
 
-	b //neck exam tutorial recap
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
+		Fail Penalty: 0
+		Name: DrGallo1
+		Speaker: Dr. Gallo
+		Emotion: g,2
+		Speaker line: "Performing a neck exam takes careful attention and quick thinking. As each arrow reaches the center, press the matching arrow key."
+		Bad: "Huh. That didn't feel right."
+		Good: "I got it!"
+
+		Fail Penalty: 0
+		Name: DrGallo2
+		Speaker: Dr. Gallo
+		Emotion: g,2
+		Speaker line: "When performing the neck exam you're checking for stiffness, which could mean meningoencephalitis."
+		Bad: "I don't think I'm qualified for this..."
+		Good: "Ok, got it."
 
 Mars
 

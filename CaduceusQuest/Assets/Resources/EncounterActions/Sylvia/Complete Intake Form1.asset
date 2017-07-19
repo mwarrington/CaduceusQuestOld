@@ -15,9 +15,11 @@ MonoBehaviour:
   FailPenalty: 10
   Name: CompleteIntakeFrom1
   Speaker: Sylvia
-  SpeakerLine: I haven't had a chance to see Dr. Gallo today...
-  BadResponse: Good for you! She's so mean.
-  GoodResponse: That's too bad, I'll ask her to stop by if I see her.
+  SpeakerLine: Listen carefully, you're going to have to get good at this. In this
+    first puzzle you're trying to match my tone on the Emotion Circumplex. Note the
+    color of this text box right now, then try to pick it.
+  BadResponse: Huh. That didn't feel right.
+  GoodResponse: I got it!
   LineEmotion:
-    EmotionType: 101
+    EmotionType: 98
     EmotionIntensity: 2

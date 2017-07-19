@@ -9,20 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e07537d9d75f75f47aeba24cb23497cd, type: 3}
-  m_Name: PrincipalGilliamSchool
+  m_Name: Teacher4School
   m_EditorClassIdentifier: 
-  NPCName: PrincipalGilliam
-  ConvoCount: 5
-  NextConvoInfo:
-  - MyIndex: 97
-    NextIndex: 98
-    MyChangeType: 0
-  - MyIndex: 98
-    NextIndex: 99
-    MyChangeType: 3
-  - MyIndex: 99
-    NextIndex: 100
-    MyChangeType: 3
-  - MyIndex: 100
-    NextIndex: 101
-    MyChangeType: 0
+  NPCName: Teacher4
+  ConvoCount: 1
+  NextConvoInfo: []
