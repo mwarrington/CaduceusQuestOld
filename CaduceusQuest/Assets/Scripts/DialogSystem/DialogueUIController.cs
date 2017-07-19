@@ -12,7 +12,8 @@ public class DialogueUIController : MonoBehaviour
     private Convorsation _currentConvo;
     private IEnumerator _currentCoroutine;
 	private GameObject _dialogueBox,
-		               _dialoguePanel;
+		               _dialoguePanel,
+                       _interactObject;
     private DialogChangeType _currentChangeType;
     private NPCDialogSwitch _currentDialogSwitch;
 
@@ -113,6 +114,9 @@ public class DialogueUIController : MonoBehaviour
 		_option1.gameObject.SetActive(false);
 		_option2.gameObject.SetActive(false);
 		_option3.gameObject.SetActive(false);
+
+        _interactObject = GameObject.Find("Button Press Object");
+        _interactObject.SetActive(false);
 
         _simone = FindObjectOfType<SimoneController>();
 
@@ -355,6 +359,11 @@ public class DialogueUIController : MonoBehaviour
         _currentCoroutine = TypeText();
 		StartCoroutine(_currentCoroutine);
 	}
+
+    public void ToggleInteractObj(bool onOff)
+    {
+        _interactObject.SetActive(onOff);
+    }
 
 	IEnumerator TypeText()
 	{

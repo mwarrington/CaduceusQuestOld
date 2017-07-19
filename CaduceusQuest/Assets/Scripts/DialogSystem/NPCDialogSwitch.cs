@@ -50,6 +50,7 @@ public class NPCDialogSwitch : MonoBehaviour
                 _simone = other.gameObject;
 
             _inConvoZone = true;
+            _theDialogController.ToggleInteractObj(true);
         }
     }
 
@@ -58,6 +59,7 @@ public class NPCDialogSwitch : MonoBehaviour
         if (other.name == "Simone")
         {
             _inConvoZone = false;
+            _theDialogController.ToggleInteractObj(false);
         }
     }
 
