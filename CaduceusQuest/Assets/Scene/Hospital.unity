@@ -532,7 +532,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: 1faac531015cc4051898ca955ef71f0f, type: 2}
     - target: {fileID: 100000, guid: f4e0785d0f63f445b9ea178b53dfd89d, type: 3}
       propertyPath: m_Name
-      value: Patient
+      value: Patient1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4e0785d0f63f445b9ea178b53dfd89d, type: 3}
@@ -4073,7 +4073,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: f09b8a09511b44135807d9871cb83980, type: 2}
     - target: {fileID: 100040, guid: c0b3585b6e36848faba255f3e8cbdf45, type: 3}
       propertyPath: m_Name
-      value: Patient
+      value: Patient0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c0b3585b6e36848faba255f3e8cbdf45, type: 3}
@@ -5421,6 +5421,31 @@ Prefab:
     - target: {fileID: 1307398721663882, guid: 5037067c07fff4d719bb74e237c68026, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224217852881023440, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -317
+      objectReference: {fileID: 0}
+    - target: {fileID: 114246593071326312, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224217852881023440, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 224711121495612670, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 59.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224461481510122356, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 5670
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5037067c07fff4d719bb74e237c68026, type: 2}
@@ -7178,7 +7203,7 @@ Prefab:
       objectReference: {fileID: 9100000, guid: b77163bebad09456eb35f08411590ea2, type: 2}
     - target: {fileID: 100040, guid: e9a71fa9889e74499bbf8b6a35bd8af7, type: 3}
       propertyPath: m_Name
-      value: Patient
+      value: Patient2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9a71fa9889e74499bbf8b6a35bd8af7, type: 3}
@@ -23029,6 +23054,60 @@ Transform:
   m_PrefabParentObject: {fileID: 4180083040263888, guid: e94dc9f422bc0404ca21f37718e9a9a4,
     type: 2}
   m_PrefabInternal: {fileID: 2007499333}
+--- !u!1 &2008734965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2008734966}
+  - component: {fileID: 2008734968}
+  - component: {fileID: 2008734967}
+  m_Layer: 0
+  m_Name: ConvoSwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2008734966
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008734965}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 813486222}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2008734967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008734965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d384b95a0b9742c47a8d7f2945403ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPCData: {fileID: 11400000, guid: 8df1b8cd7ddeb9846aee37665f17e866, type: 2}
+--- !u!65 &2008734968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008734965}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.19, y: 0.5, z: 0.16}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2019159099
 Prefab:
   m_ObjectHideFlags: 0

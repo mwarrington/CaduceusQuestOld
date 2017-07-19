@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCDialogSwitch : MonoBehaviour
 {
     public NPC NPCData;
+    private GameObject _simone;
     private BoxCollider _myTrigger;
     private DialogueUIController _theDialogController;
     private char _currentDialogIndex;
@@ -32,6 +33,7 @@ public class NPCDialogSwitch : MonoBehaviour
                 _theDialogController.StartConversation(NPCData, this);
                 _inConvorsation = true;
                 _convoPrimed = false;
+                _simone.transform.LookAt(this.transform, this.transform.up);
             }
         }
         else
@@ -44,6 +46,9 @@ public class NPCDialogSwitch : MonoBehaviour
     {
         if (other.name == "Simone")
         {
+            if (_simone == null)
+                _simone = other.gameObject;
+
             _inConvoZone = true;
         }
     }

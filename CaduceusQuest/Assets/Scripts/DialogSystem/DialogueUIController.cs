@@ -338,7 +338,18 @@ public class DialogueUIController : MonoBehaviour
 	{
 		_isWriting = true;
 		_dialogueEmotionImage.color = _currentConvo.MyLines[_currentLineIndex].MyEmotion.GetEmotionColor();
-		_speakerNameText.text = _currentConvo.MyLines[_currentLineIndex].Speaker.ToUpper() + ":";
+        string speakerName = _currentConvo.MyLines[_currentLineIndex].Speaker.ToUpper();
+        string trueName = "";
+        for (int i = 0; i < speakerName.Length; i++)
+        {
+            if (speakerName[i] != '0' && speakerName[i] != '1' && speakerName[i] != '2' && speakerName[i] != '3')
+            {
+                trueName += speakerName[i];
+            }
+            else
+                break;
+        }
+        _speakerNameText.text = trueName + ":";
 		_dialogueText.text = "";
 
         _currentCoroutine = TypeText();
