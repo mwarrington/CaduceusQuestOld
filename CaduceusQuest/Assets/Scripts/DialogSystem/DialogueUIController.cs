@@ -12,7 +12,8 @@ public class DialogueUIController : MonoBehaviour
     private Convorsation _currentConvo;
     private IEnumerator _currentCoroutine;
 	private GameObject _dialogueBox,
-		               _dialoguePanel;
+		               _dialoguePanel,
+                       _interactObject;
     private DialogChangeType _currentChangeType;
     private NPCDialogSwitch _currentDialogSwitch;
 
@@ -113,6 +114,9 @@ public class DialogueUIController : MonoBehaviour
 		_option1.gameObject.SetActive(false);
 		_option2.gameObject.SetActive(false);
 		_option3.gameObject.SetActive(false);
+
+        _interactObject = GameObject.Find("Button Press Object");
+        _interactObject.SetActive(false);
 
         _simone = FindObjectOfType<SimoneController>();
 
@@ -338,12 +342,28 @@ public class DialogueUIController : MonoBehaviour
 	{
 		_isWriting = true;
 		_dialogueEmotionImage.color = _currentConvo.MyLines[_currentLineIndex].MyEmotion.GetEmotionColor();
-		_speakerNameText.text = _currentConvo.MyLines[_currentLineIndex].Speaker.ToUpper() + ":";
+        string speakerName = _currentConvo.MyLines[_currentLineIndex].Speaker.ToUpper();
+        string trueName = "";
+        for (int i = 0; i < speakerName.Length; i++)
+        {
+            if (speakerName[i] != '0' && speakerName[i] != '1' && speakerName[i] != '2' && speakerName[i] != '3')
+            {
+                trueName += speakerName[i];
+            }
+            else
+                break;
+        }
+        _speakerNameText.text = trueName + ":";
 		_dialogueText.text = "";
 
         _currentCoroutine = TypeText();
 		StartCoroutine(_currentCoroutine);
 	}
+
+    public void ToggleInteractObj(bool onOff)
+    {
+        _interactObject.SetActive(onOff);
+    }
 
 	IEnumerator TypeText()
 	{

@@ -134,7 +134,7 @@ public class SimoneController : MovementController
             _movingRight = false;
         }
 
-        running = Input.GetKey(KeyCode.LeftShift);
+        walking = Input.GetKey(KeyCode.LeftShift);
 
         if((Input.GetKeyUp(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow)) || (Input.GetKeyUp(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow)))
         {

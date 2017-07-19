@@ -10,6 +10,7 @@ public class DoorController : MonoBehaviour
     public float FadeTime;
     public bool DoorLocked;
 
+    private DialogueUIController _theDialogUIController;
     private NiceSceneTransition _sceneTrans;
     private CameraManager _theCamMan;
     private SpriteRenderer _currentFadeMask,
@@ -24,6 +25,7 @@ public class DoorController : MonoBehaviour
         _theCamMan = FindObjectOfType<CameraManager>();
         _sceneTrans = FindObjectOfType<NiceSceneTransition>();
         _currentFadeMask = _theCamMan.CurrentCamera.GetComponentInChildren<SpriteRenderer>();
+        _theDialogUIController = FindObjectOfType<DialogueUIController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,6 +34,7 @@ public class DoorController : MonoBehaviour
         {
             _nearDoor = true;
             _simone = other.gameObject;
+            _theDialogUIController.ToggleInteractObj(true);
         }
     }
 
@@ -65,6 +68,7 @@ public class DoorController : MonoBehaviour
         if (other.name == "Simone")
         {
             _nearDoor = false;
+            _theDialogUIController.ToggleInteractObj(false);
         }
     }
 

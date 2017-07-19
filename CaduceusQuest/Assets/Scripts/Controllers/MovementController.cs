@@ -11,10 +11,10 @@ public class MovementController : MonoBehaviour
     {
         get
         {
-            if(running)
-                _currentSpeed = RunSpeed;
-            else
+            if (walking)
                 _currentSpeed = WalkSpeed;
+            else
+                _currentSpeed = RunSpeed;
 
             return _currentSpeed;
         }
@@ -29,7 +29,7 @@ public class MovementController : MonoBehaviour
     }
     private float _currentSpeed;
 
-    protected bool running;
+    protected bool walking;
 
     protected virtual void Move(CardinalDirections dir)
     {
