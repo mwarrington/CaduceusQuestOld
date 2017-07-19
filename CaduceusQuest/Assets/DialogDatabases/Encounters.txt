@@ -1,48 +1,59 @@
 Sylvia
 
-	a //intake form tutorial 
-	Trust start: 
-	Trust threshold:
-	Trust drop: 
-	//
+	
+	--SylviaEncounter0--
+	
+		Complete Intake Form
+		Initial Trust: 90
+		Treatment Count: 3
+		Action Type: COMPSCI
 
-	"You're new to this, aren't you? Let me help you."
-	"You're in an encounter right now. This shows who you're talking to." //arrow to name//
-	"This shows what you're trying to do, and how many steps there are to doing it—in this case, you're filling out my intake form and it takes 3 steps." //arrow to task//
-	"This shows my trust level. More about that later!" //arrow to trust//
-	"To fill out this form here, you're going to do some work."
-	"In this minigame, use your arrow keys and try to match the symbols. You don't know which arrow will make each symbol, and you have 3 strikes before you're out."
-	"You can find "Fill out intake form" under SKILLS in the menu that's about to pop up. We'll do an easy one to start."
-	//easy cs minigame//
+		Fail Penalty: 10
+		Name: Sylvia1
+		Speaker: Sylvia
+		Emotion: b,2
+		Speaker line: "Listen carefully, you're going to have to get good at this. In this first puzzle you're trying to match my tone on the Emotion Circumplex. Note the color of this text box right now, then try to pick it."
+		Bad: "Huh. That didn't feel right."
+		Good: "I got it!"
 
-	SUCCESS: "Nice job! You're a quick study."
-	FAILURE: "No worries, you'll learn."
-	"The second half of these encounters involves the Emotions Circumplex. When a patient's speaking to you, make sure to watch how they're feeling and respond."
-	"Take a careful look at the color around this text both, then find it on the shape that's about to pop up. Move with the arrow keys and select with "z"."
+		Fail Penalty: 10
+		Name: Sylvia2
+		Speaker: Sylvia
+		Emotion: b,1
+		Speaker line: "Ok. The puzzle for filling out my intake form is a little trickier. Use your arrow keys to match the symbols shown."
+		Bad: "Huh. That didn't feel right."
+		Good: "I got it!"
 
-	//emotion circumplex game//
+		Fail Penalty: 10
+		Name: Sylvia3
+		Speaker: Sylvia
+		Emotion: b,2
+		Speaker line: "The intake puzzle takes some skill and some luck... keep practicing!"
+		Bad: "Huh. That didn't feel right."
+		Good: "I got it!"
 
-	SUCCESS: "You got it!"
-	FAILURE: "Not quite..."
+	--SylviaEncounter1--
+	
+		Complete Intake Form
+		Initial Trust: 90
+		Treatment Count: 2
+		Action Type: SCIENCE
 
+		Fail Penalty: 10
+		Name: Sylvia1
+		Speaker: Sylvia
+		Emotion: b,2
+		Speaker line: "The blood sample puzzle tests your quick thinking and steady hand. As each arrow reaches the center, press the matching arrow key."
+		Bad: "Huh. That didn't feel right."
+		Good: "I got it!"
 
-	b //intake form tutorial recap
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
-
-	c //blood test tutorial
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
-
-	d //blood test recap
-	Trust start: 
-	Trust threshold:
-	Trust drop:
-	//
+		Fail Penalty: 10
+		Name: Sylvia2
+		Speaker: Sylvia
+		Emotion: b,1
+		Speaker line: "There's not much room for error in a blood test, so think fast!"
+		Bad: "Huh. That didn't feel right."
+		Good: "I got it!"
 
 Violet
 

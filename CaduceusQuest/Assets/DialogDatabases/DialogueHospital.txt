@@ -9,7 +9,7 @@
 	[0](s)Receptionist(e)a,1(t)"Hi sweetie! Welcome to the Ashland Community Hospital. What can I do for you?"<0;
 		(g)0(n)1(f)h,1(l)"I'm looking for Dr. Gallo.";
 		(g)0(n)1(f)h,1(l)"My internship starts today.";
-	[1](s)Receptionist(e)a,1(t)"Right through the doors on your left. Watch out, the doctor can take a while to warm up..."#;;
+	[1](s)Receptionist(e)a,1(t)"Go right down the hallway in front of me and in the last door on your right. Watch out, the doctor can take a while to warm up..."#;;
 
 	//subsequent encounters//
 	(c)Receptionist(i)b;
@@ -43,7 +43,6 @@
 	//after c//
 	(c)Macy(i)d;
 	[0](s)Macy(e)d,2(t)"Mars should be here soon."#;;
-	//return to c//
 
 //Hospital NPCs//
 
@@ -74,13 +73,10 @@
 
 	//before completing intake forms//
 	(c)Dr. Gallo(i)b;
-	[0](s)Dr. Gallo(e)g,2(t)"Do I have to do everything around here? Go talk to those patients."#;;
-
-	(c)Dr. Gallo(i)c;
-	[0](s)Dr. Gallo(e)g,2(t)"Check the list in your inventory by pressing I. Do what it says, then come back here."#;;
+	[0](s)Dr. Gallo(e)g,2(t)"Do I have to do everything around here? Go talk to those patients. Check the list in your inventory by pressing L. Do what it says, then come back here."#;;
 
 	//After intake forms are completed//
-	(c)Dr. Gallo(i)d;
+	(c)Dr. Gallo(i)c;
 	[0](s)Dr. Gallo(e)g,2(t)"Great, you've completed the forms. Ok, look, listen. Something's happening and I need to investigate.";
 	[1](s)Dr. Gallo(e)g,2(t)"I wouldn't normally ask this of an intern, but can I teach you to do a few things for me?"<0;
 		(g)0(n)2(f)g,1(l)"Um… ok…";
@@ -88,7 +84,7 @@
 	[2](s)Dr. Gallo(e)g,2(t)"Great. We need to make sure Mason doesn't have meningoencephalitis, which would make his neck stiff. Let me show you how to do a neck exam."&0;;
 
 	//after neck exam training//
-	(c)Dr. Gallo(i)f;
+	(c)Dr. Gallo(i)d;
 	[0](s)Dr. Gallo(e)g,2(t)"Nice work. Sylvia's here for a regular blood test to check on her C4 count and viral load. She has HIV.";
 	[1](s)Dr. Gallo(e)g,2(t)"She used to be a nurse, so she can show you what to do. Go talk to her and get a sample, then do the same for Violet so we can run a pregnancy test."<0;
 		(g)0(n)2(f)h,1(l)"On it!";
@@ -97,12 +93,12 @@
 	[3](s)Dr. Gallo(e)g,3(t)"It's tolerably safe. Just go."#;;
 	//acquire list 2//
 
-	//before completing list 2 random option 1//
-	(c)Dr. Gallo(i)g;
+	//before completing list 2 1//
+	(c)Dr. Gallo(i)e;
 	[0](s)Dr. Gallo(e)g,2(t)"It's tolerably safe. It's fine. Just go."#;;
 
-	//before completing list 2 random option 2//
-	(c)Dr. Gallo(i)h;
+	//before completing list 2 2//
+	(c)Dr. Gallo(i)f;
 	[0](s)Dr. Gallo(e)g,2(t)"You need to complete the tasks on List 2. Press I to look at it in your inventory.";
 	[1](s)Dr. Gallo(e)g,2(t)"Do you want me to show you how to do the neck exam again?"<0;
 		(g)0(n)2(f)h,1(l)"No, I think I've got it.";
@@ -111,8 +107,12 @@
 	[3](s)Dr. Gallo(e)g,2(t)"Ok, listen carefully this time..."&0;
 	
 	//after completing list 2 --> go to school first thing tomorrow//
+	(c)Dr. Gallo(i)g;
+	[0](s)Dr. Gallo(e)g,2(t)"This is where I tell you to go to school TK"#;;
 
 	//before completing school exams//
+	(c)Dr. Gallo(i)h;
+	[0](s)Dr. Gallo(e)g,2(t)"Get back to school! TK"#;;
 
 	//after completing school exams//
 

@@ -36,7 +36,7 @@
 		(g)3(n)7(f)c,1(l)"You mean Danny?";
 		(g)3(n)8(f)h,1(l)"You mean Quinn?";
 	[6](s)Mars(e)g,1(t)"I don't know him..."#;
-	[7](s)Mars(e)b,2(t)"Hmm..."&5;
+	[7](s)Mars(e)b,2(t)"Hmm..."&0;
 	[8](s)Mars(e)f,1(t)"We don't really hang out."#;;
 
 	//after second encounter but haven't done neck exam 1//
@@ -77,7 +77,7 @@
 		(g)0(n)1(f)c,2(l)"You might need to come to the hospital with me.";
 	[1](s)Mars(e)c,3(t)"What?? Um, ok..."#;;
 
-	//after e//
+	//after f//
 	(c)Mars(i)g;
 	[0](s)Mars(e)c,2(t)"Yo. You're not here for another neck exam are you?"<0;
 		(g)0(n)1(f)a,1(l)"No, just saying hi.";
@@ -117,7 +117,7 @@
 	[13](s)Bea(e)a,2(t)"Do you want to hear another one?"<1;
 		(g)1(n)0(f)h,1(l)"Sure.";
 		(g)1(n)14(f)h,1(l)"No thanks. Can I examine your neck?";
-	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&6;;
+	[14](s)Bea(e)a,2(t)"Of course, I thought you might ask."&0;;
 
 	//fail convo//
 	(c)Bea(i)b;
@@ -206,7 +206,7 @@
 		(g)2(n)6(f)c,1(l)"Yeah, do you know Bea?";
 		(g)2(n)7(f)c,1(l)"Sure, Violet let me examine her.";
 		(g)2(n)8(f)c,1(l)"Do you know Sarah?";
-	[6](s)Danny(e)b,1(t)"Hmm..."&7;
+	[6](s)Danny(e)b,1(t)"Hmm..."&0;
 	[7](s)Danny(e)a,3(t)"Haha! There's no way that's true."#;
 	[8](s)Danny(e)f,1(t)"I don't."#;;
 
@@ -220,7 +220,7 @@
 		(g)1(n)3(f)c,1(l)"Mars didn't seem to have a problem.";
 		(g)1(n)4(f)c,1(l)"Mason let me examine him.";
 	[2](s)Danny(e)h,1(t)"You know, I haven't really talked to her much. I wonder what her deal is."#;
-	[3](s)Danny(e)b,1(t)"Hmm..."&7;
+	[3](s)Danny(e)b,1(t)"Hmm..."&0;
 	[4](s)Danny(e)c,2(t)"Mars's dad? Um, that's cool. I guess."#;;
 
 	//fourth convo//
@@ -232,7 +232,7 @@
 		(g)1(n)2(f)h,1(l)"You know Bea, right? She was cool with it.";
 		(g)1(n)3(f)h,1(l)"What about Josh?";
 		(g)1(n)4(f)h,1(l)"Ida let me check her neck.";
-	[2](s)Danny(e)a,1(t)"Hmm..."&7;
+	[2](s)Danny(e)a,1(t)"Hmm..."&0;
 	[3](s)Danny(e)f,2(t)"Ugh, not the best example."#;
 	[4](s)Danny(e)c,1(t)"There's no Ida in this school. Did you get that name from Ida B. Wells?";
 	[5](s)Danny(e)a,3(t)"She's me hero!"#;;
@@ -316,7 +316,6 @@
 		(g)0(n)1(f)h,1(l)"Calm down. But your neck is fine.";
 		(g)0(n)1(f)h,1(l)"Good news: There's nothing wrong with you, health-wise.";
 	[1](s)Josh(e)a,1(t)"Ok. Great."#;;
-	//return to b//
 
 	//last convo//
 	(c)Josh(i)f;
