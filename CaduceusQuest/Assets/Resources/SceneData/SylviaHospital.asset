@@ -12,26 +12,32 @@ MonoBehaviour:
   m_Name: SylviaHospital
   m_EditorClassIdentifier: 
   NPCName: Sylvia
-  ConvoCount: 6
+  ConvoCount: 8
   NextConvoInfo:
   - MyIndex: 97
     NextIndex: 98
-    MyChangeType: 2
-  - MyIndex: 97
-    NextIndex: 99
-    MyChangeType: 1
+    MyChangeType: 3
   - MyIndex: 98
     NextIndex: 99
+    MyChangeType: 2
+  - MyIndex: 98
+    NextIndex: 100
     MyChangeType: 1
   - MyIndex: 99
     NextIndex: 100
-    MyChangeType: 3
+    MyChangeType: 1
   - MyIndex: 100
     NextIndex: 101
     MyChangeType: 2
-  - MyIndex: 100
-    NextIndex: 102
-    MyChangeType: 1
   - MyIndex: 101
     NextIndex: 102
+    MyChangeType: 3
+  - MyIndex: 102
+    NextIndex: 103
+    MyChangeType: 2
+  - MyIndex: 102
+    NextIndex: 104
+    MyChangeType: 1
+  - MyIndex: 103
+    NextIndex: 104
     MyChangeType: 1

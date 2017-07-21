@@ -9,15 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57efbf1c493ae8542b3affd1af203d49, type: 3}
-  m_Name: Complete Intake Form3
+  m_Name: Examine Neck2
   m_EditorClassIdentifier: 
   MyType: 0
-  FailPenalty: 10
-  Name: CompleteIntakeFrom3
-  Speaker: Sylvia
-  SpeakerLine: The intake puzzle takes some skill and some luck... keep practicing!
-  BadResponse: Huh. That didn't feel right.
+  FailPenalty: 0
+  Name: Examine Neck2
+  Speaker: Dr. Gallo
+  SpeakerLine: When performing the neck exam you're checking for stiffness, which
+    could mean meningoencephalitis.
+  BadResponse: I don't think I'm qualified for this...
   GoodResponse: I got it!
   LineEmotion:
-    EmotionType: 98
+    EmotionType: 103
     EmotionIntensity: 2

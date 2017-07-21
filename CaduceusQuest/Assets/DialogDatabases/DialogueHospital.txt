@@ -65,15 +65,15 @@
 	[1](s)Dr. Gallo(e)g,1(t)"Yes, yes, and who are you?"<1;
 		(g)1(n)2(f)h,1(l)"I'm Simone. I think I'm interning with you this summer—";
 		(g)1(n)2(f)h,1(l)"I'm Simone. My aunt said you—";
-	[2](s)Dr. Gallo(e)g,1(t)"I don't have time to teach you anything right now, can you go talk to these patients and do what the list says? Make sure you grab the teddy bear."<2;
+	[2](s)Dr. Gallo(e)g,1(t)"I don't have time to teach you anything right now, can you go fill out intake forms with Sylvia and Violet? Take this teddy bear to Mason too."<2;
 		(g)2(n)3(f)h,1(l)"Ok, I—";
 		(g)2(n)3(f)g,1(l)"Sure, uh—";
 	[3](s)Dr. Gallo(e)g,1(t)"Don't waste my time!"#;;
-	//acquire list 1 + teddy bear//
+	//acquire teddy bear//
 
 	//before completing intake forms//
 	(c)Dr. Gallo(i)b;
-	[0](s)Dr. Gallo(e)g,2(t)"Do I have to do everything around here? Go talk to those patients. Check the list in your inventory by pressing L. Do what it says, then come back here."#;;
+	[0](s)Dr. Gallo(e)g,2(t)"Do I have to do everything around here? Go talk to Sylvia and Violet and fill out intake forms, and drop off the teddy bear with Mason. They're all somewhere around here."#;;
 
 	//After intake forms are completed//
 	(c)Dr. Gallo(i)c;
@@ -91,7 +91,6 @@
 		(g)0(n)3(f)c,1(l)"Are you sure I should be doing this?";
 	[2](s)Dr. Gallo(e)g,2(t)"Great. See you soon.";
 	[3](s)Dr. Gallo(e)g,3(t)"It's tolerably safe. Just go."#;;
-	//acquire list 2//
 
 	//before completing list 2 1//
 	(c)Dr. Gallo(i)e;
@@ -99,7 +98,7 @@
 
 	//before completing list 2 2//
 	(c)Dr. Gallo(i)f;
-	[0](s)Dr. Gallo(e)g,2(t)"You need to complete the tasks on List 2. Press I to look at it in your inventory.";
+	[0](s)Dr. Gallo(e)g,2(t)"You need to perform a neck exam on Mason and take blood samples from Sylvia and Violet.";
 	[1](s)Dr. Gallo(e)g,2(t)"Do you want me to show you how to do the neck exam again?"<0;
 		(g)0(n)2(f)h,1(l)"No, I think I've got it.";
 		(g)0(n)3(f)h,1(l)"Yes please.";
@@ -108,11 +107,11 @@
 	
 	//after completing list 2 --> go to school first thing tomorrow//
 	(c)Dr. Gallo(i)g;
-	[0](s)Dr. Gallo(e)g,2(t)"This is where I tell you to go to school TK"#;;
+	[0](s)Dr. Gallo(e)c,3(t)"I'm concerned by Mason's stiff neck. Go to Ashland Community High School and see if you can find any other cases of his symptoms."#;;
 
 	//before completing school exams//
 	(c)Dr. Gallo(i)h;
-	[0](s)Dr. Gallo(e)g,2(t)"Get back to school! TK"#;;
+	[0](s)Dr. Gallo(e)g,2(t)"Hurry!!"#;;
 
 	//after completing school exams//
 
@@ -128,8 +127,12 @@
 
 //Violet//
 
-	//intake form//
+	//first convo//
 	(c)Violet(i)a;
+	[0](s)Violet(e)g,2(t)"Wow you look lost!"#;;
+
+	//intake form//
+	(c)Violet(i)b;
 	[0](s)Violet(e)g,2(t)"Hi. You startled me. Who let you in here?"<0;
 		(g)0(n)1(f)h,1(l)"I'm sorry. Dr. Gallo sent me.";
 		(g)0(n)1(f)h,1(l)"Are you Violet?";
@@ -145,23 +148,23 @@
 	[4](s)Violet(e)c,1(t)"Let's do it"&0;;
 
 	//fail convo intake//
-	(c)Violet(i)b;
+	(c)Violet(i)c;
 	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
 	[1](s)Violet(e)g,2(t)"Ok, let's get this over with."&0;
 	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
 
-	//after intake form, before blood test skill has been learned 1//
-	(c)Violet(i)c;
+	//successful intake form//
+	(c)Violet(i)d;
+	[0](s)Violet(e)g,2(t)"Cool, glad that's over..."#;;
+
+	//after intake form, before blood test skill has been learned//
+	(c)Violet(i)e;
 	[0](s)Violet(e)f,2(t)"Did Dr. Gallo say I can leave yet? Have you even brought her my form?"#;;
 
-	//after intake form, before blood test skill has been learned 2//
-	(c)Violet(i)d;
-	[0](s)Violet(e)g,2(t)"..."#;;
-
 	//blood test//
-	(c)Violet(i)e;
+	(c)Violet(i)f;
 	[0](s)Violet(e)g,2(t)"Did Dr. Gallo say I can leave?"<0;
 		(g)0(n)1(f)h,1(l)"Not quite yet, I need to take a blood test.";
 		(g)0(n)3(f)h,1(l)"Hey, I know things too...";
@@ -172,7 +175,7 @@
 		(g)0(n)1(f)h,1(l)"As soon as we take some blood.";;
 
 	//fail convo blood//
-	(c)Violet(i)f;
+	(c)Violet(i)g;
 	[0](s)Violet(e)g,3(t)"Well that went badly! I guess we should try again?"<0;
 		(g)0(n)1(f)h,1(l)"Yep.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
@@ -180,34 +183,29 @@
 	[2](s)Violet(e)g,2(t)"Ok, bye..."#;;
 
 	//after blood test//
-	(c)Violet(i)g;
+	(c)Violet(i)h;
 	[0](s)Violet(e)b,2(t)"Dr. Gallo said my blood's fine, I'm outta here!"#;;
-	//return to c//
 
 //Mason//
 
-	//intake form//
+	//first convo//
 	(c)Mason(i)a;
+	[0](s)Mason(e)h,1(t)"Hi, are you a doctor?"<0;
+		(g)0(n)1(f)h,1(l)"No, I'm Simone.";
+		(g)0(n)1(f)h,1(l)"Not technically...";
+	[1](s)Mason(e)h,1(t)"Oh it's cool, I'm also not a doctor. In fact, I'm not sick either. I'm not really sure why I'm here."#;;
+
+	//teddy//
+	(c)Mason(i)b;
 	[0](s)Mason(e)h,1(t)"Hi, are you a doctor?"<0;
 		(g)0(n)1(f)h,1(l)"No, I'm Simone.";
 		(g)0(n)1(f)h,1(l)"Not technically...";
 	[1](s)Mason(e)h,1(t)"Oh it's cool, I'm also not a doctor. In fact, I'm not sick either. I'm not really sure why I'm here."<1;
 		(g)1(n)0(f)h,1(l)"That's weird.";
 		(g)1(n)2(f)h,1(l)"Dr. Gallo sent me to give this teddy bear to you.";
-	[2](s)Mason(e)a,3(t)"Wow!! Thank you. This is from my daughter Macy."<2;
-		(g)2(n)3(f)h,1(l)"I'm here to fill out an intake form with you.";
-		(g)2(n)3(f)h,1(l)"Can you fill out this form with me?";
-	[3](s)Mason(e)e,2(t)"Sounds good, let's do it."&0;;
-	
-	//fail convo intake//
-	(c)Mason(i)b;
-	[0](s)Mason(e)b,1(t)"Hm. That didn't seem right. Want to do it again?"<0
-		(g)0(n)1(f)h,1(l)"Yep.";
-		(g)0(n)2(f)h,1(l)"Not right now.";
-	[1](s)Mason(e)b,1(t)"Ok!"&0;
-	[2](s)Mason(e)b,1(t)"Ok."#;;
+	[2](s)Mason(e)a,3(t)"Wow!! Thank you. This is from my daughter Macy."#;;
 
-	//after intake form, before neck exam training//
+	//after teddy, before neck exam training//
 	(c)Mason(i)c;
 	[0](s)Mason(e)e,2(t)"Could you go check on Macy? She's in the waiting room."#;;
 
@@ -220,7 +218,7 @@
 		(g)1(n)2(f)c,1(l)"I'm alright. Kind of confused.";
 		(g)1(n)3(f)a,1(l)"I think I'm starting to get the hang of things here.";
 	[2](s)Mason(e)e,2(t)"Me too! Let me know if you figure out what's going on."#;
-	[3](s)Mason(e)b,2(t)"Great. My neck's sort of stiff actually, could you take a look?"&1;;
+	[3](s)Mason(e)b,2(t)"Great. My neck's sort of stiff actually, could you take a look?"&0;;
 
 	//fail convo neck exam//
 	(c)Mason(i)e;
@@ -244,11 +242,14 @@
 	(c)Mason(i)g;
 	[0](s)Mason(e)c,1(t)"Thanks Simone. I can tell you're really looking out for me."#;;
 
-
 //Sylvia//
 
-	//intake form//
+	//first convo//
 	(c)Sylvia(i)a;
+	[0](s)Sylvia(e)b,2(t)"Hi sweetie! Are you looking for Dr. Gallo? She's right across the hall."#;;
+
+	//intake form//
+	(c)Sylvia(i)b;
 	[0](s)Sylvia(e)b,2(t)"Hi honey! How are you doing?"<0;
 		(g)0(n)1(f)h,1(l)"I'm okay. It's been a busy morning.";
 		(g)0(n)3(f)h,1(l)"Pretty good! I'm here to fill out an intake form with you.";
@@ -257,15 +258,19 @@
 	[3](s)Sylvia(e)b,2(t)"Let's get to it."&0;;
 
 	//fail intake form convo//
-	(c)Sylvia(i)b;
+	(c)Sylvia(i)c;
 	[0](s)Sylvia(e)c,1(t)"Seems like you need some more practice. Shall we try again?"<0;
 		(g)0(n)1(f)h,1(l)"Ok.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
 	[1](s)Sylvia(e)c,1(t)"Let's get started!"&0;
 	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
 
+	//successful intake form//
+	(c)Sylvia(i)d;
+	[0](s)Sylvia(e)c,1(t)"Beautiful job! I knew you could do it!"#;;
+
 	//after intake form, before completing List 1//
-	(c)Sylvia(i)c;
+	(c)Sylvia(i)e;
 	[0](s)Sylvia(e)b,2(t)"Hi sweetie, do you need anything else from me right now?"<0;
 		(g)0(n)1(f)h,1(l)"No thanks, just saying hello.";
 		(g)0(n)2(f)h,1(l)"Could you show me again how to complete an intake form?";
@@ -273,7 +278,7 @@
 	[2](s)Sylvia(e)b,2(t)"Of course!"&0;;
 
 	//blood test//
-	(c)Sylvia(i)d;
+	(c)Sylvia(i)f;
 	[0](s)Sylvia(e)c,1(t)"Hi honey. Dr. Gallo asked me to show you how to take a blood sample—it's a little unorthodox, but I'm sure she has her reasons. You ready?"<0;
 		(g)0(n)1(f)h,1(l)"Yep, I think I'm ready.";
 		(g)0(n)2(f)h,1(l)"Not yet. I'll come back later.";
@@ -281,7 +286,7 @@
 	[2](s)Sylvia(e)c,1(t)"Sure, see you soon."#;;
 	
 	//blood test fail convo//
-	(c)Sylvia(i)e;
+	(c)Sylvia(i)g;
 	[0](s)Sylvia(e)c,1(t)"Seems like you need some more practice. Shall we try again?"<0;
 		(g)0(n)1(f)h,1(l)"Ok.";
 		(g)0(n)2(f)h,1(l)"Not right now.";
@@ -289,7 +294,7 @@
 	[2](s)Sylvia(e)b,2(t)"Ok, come by any time."#;;
 
 	//after blood sample, before completing List 1//
-	(c)Sylvia(i)f;
+	(c)Sylvia(i)h;
 	[0](s)Sylvia(e)b,2(t)"Nice job on taking that blood sample! You have a steady hand.";
 	[1](s)Sylvia(e)b,2(t)"Do you need anything else from me right now?"<0;
 		(g)0(n)2(f)h,1(l)"No thanks, just saying hello.";
