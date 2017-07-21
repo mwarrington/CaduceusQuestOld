@@ -243,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 1352000049202632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4661595897619330}
   m_RootOrder: 0
@@ -427,6 +427,8 @@ MonoBehaviour:
   - {fileID: 1929529718666508}
   - {fileID: 1138824851977178}
   - {fileID: 1626102382432570}
+  Name: 
+  FailPenalty: 0
   Strikes: 3
 --- !u!124 &124885103700720994
 Behaviour:

@@ -346,7 +346,8 @@ public class DialogueUIController : MonoBehaviour
         string trueName = "";
         for (int i = 0; i < speakerName.Length; i++)
         {
-            if (speakerName[i] != '0' && speakerName[i] != '1' && speakerName[i] != '2' && speakerName[i] != '3')
+            if (speakerName[i] != '0' && speakerName[i] != '1' && speakerName[i] != '2' && speakerName[i] != '3' && speakerName[i] != '4' &&
+                speakerName[i] != '5' && speakerName[i] != '6' && speakerName[i] != '7' && speakerName[i] != '8' && speakerName[i] != '9')
             {
                 trueName += speakerName[i];
             }

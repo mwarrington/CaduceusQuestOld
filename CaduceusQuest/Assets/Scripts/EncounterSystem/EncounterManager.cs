@@ -1533,6 +1533,7 @@ public class EncounterManager : MonoBehaviour
 
         _activeMenu = EncounterMenus.BASEMENU;
 
+        //MASON: look at this
         try
         {
             HideSubMenu(_skillSubMenu[skillSubMenuIndex].transform.parent.gameObject);

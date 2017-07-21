@@ -33,7 +33,7 @@ public class NPCDialogSwitch : MonoBehaviour
                 _theDialogController.StartConversation(NPCData, this);
                 _inConvorsation = true;
                 _convoPrimed = false;
-                _simone.transform.LookAt(this.transform, this.transform.up);
+                _simone.transform.LookAt(new Vector3(this.transform.position.x, _simone.transform.position.y, this.transform.position.z), _simone.transform.up);
             }
         }
         else
