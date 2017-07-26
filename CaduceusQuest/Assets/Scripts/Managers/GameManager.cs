@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
                 if (!_currentDialogIndexList.ContainsKey(npc.transform.parent.name))
                 {
                     _currentDialogIndexList.Add(npc.transform.parent.name, 'a');
-                    Debug.Log(npc.transform.parent.name);
                 }
             }
         }
@@ -96,8 +95,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Camera newCam = GameObject.Find(_sceneCameras[SceneManager.GetActiveScene().name]).GetComponent<Camera>();
-            _theCamMan.ActivateCam(newCam);
+            string activeScene = SceneManager.GetActiveScene().name;
+            if (_sceneCameras.ContainsKey(activeScene))
+            {
+                Camera newCam = GameObject.Find(_sceneCameras[activeScene]).GetComponent<Camera>();
+                _theCamMan.ActivateCam(newCam);
+            }
         }
     }
 
@@ -146,6 +149,33 @@ public class GameManager : MonoBehaviour
                         if (dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
                         {
                             _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void DialogueChanger(string name, DialogChangeType dct, string[] otherNames)
+    {
+        for (int i = 0; i < _lastNPCList.Count; i++)
+        {
+            if (_lastNPCList[i].NPCName == name)
+            {
+                for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
+                {
+                    if (_currentDialogIndexList[name] == _lastNPCList[i].NextConvoInfo[j].MyIndex)
+                    {
+                        if (dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
+                        {
+                            _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+
+                            for (int t = 0; t < otherNames.Length; t++)
+                            {
+                                _currentDialogIndexList[otherNames[t]] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+                            }
+
                             break;
                         }
                     }

@@ -299,7 +299,7 @@ public class EncounterManager : MonoBehaviour
                     _target1Trust.sprite = TrustProgressBarSprites[8];
                 else if (value < 90)
                     _target1Trust.sprite = TrustProgressBarSprites[9];
-                else if (value > 90)
+                else if (value >= 90)
                     _target1Trust.sprite = TrustProgressBarSprites[10];
 
                 _target1CurrentTrust = value;
@@ -337,7 +337,7 @@ public class EncounterManager : MonoBehaviour
                     _target2Trust.sprite = TrustProgressBarSprites[8];
                 else if (value < 90)
                     _target2Trust.sprite = TrustProgressBarSprites[9];
-                else if (value > 90)
+                else if (value >= 90)
                     _target2Trust.sprite = TrustProgressBarSprites[10];
 
                 _target2CurrentTrust = value;
@@ -374,7 +374,7 @@ public class EncounterManager : MonoBehaviour
                     _target3Trust.sprite = TrustProgressBarSprites[8];
                 else if (value < 90)
                     _target3Trust.sprite = TrustProgressBarSprites[9];
-                else if (value > 90)
+                else if (value >= 90)
                     _target3Trust.sprite = TrustProgressBarSprites[10];
 
                 _target3CurrentTrust = value;
@@ -411,7 +411,7 @@ public class EncounterManager : MonoBehaviour
                     _target4Trust.sprite = TrustProgressBarSprites[8];
                 else if (value < 90)
                     _target4Trust.sprite = TrustProgressBarSprites[9];
-                else if (value > 90)
+                else if (value >= 90)
                     _target4Trust.sprite = TrustProgressBarSprites[10];
 
                 _target4CurrentTrust = value;

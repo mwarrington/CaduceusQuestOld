@@ -209,7 +209,17 @@ public class DialogueUIController : MonoBehaviour
                     _convoFinished = true;
                     _simone.Movement = true;
                     _currentDialogSwitch.ExitDialog();
-                    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
+
+                    //HACK: I'm gonna have to make a more fleshed out event system
+                    if (_currentConvo.SpeakerName == "Dr. Gallo" && _currentConvo.Index == 'a')
+                    {
+                        string[] names = new string[3] { "Sylvia", "Mason", "Violet" };
+                        _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND, names);
+                    }
+                    else
+                    {
+                        _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
+                    }
                 }
                 else if (!_isWriting)
                     GetNextLine();

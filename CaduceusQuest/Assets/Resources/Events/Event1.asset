@@ -18,10 +18,7 @@ MonoBehaviour:
   EventGoals:
   - NPC: Sylvia
     Treatment: Complete Intake Form
-    Achieved: 0
-  - NPC: Mason
-    Treatment: Complete Intake Form
-    Achieved: 0
+    Achieved: 1
   - NPC: Violet
     Treatment: Complete Intake Form
     Achieved: 0
