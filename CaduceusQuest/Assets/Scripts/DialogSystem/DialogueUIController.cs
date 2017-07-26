@@ -247,9 +247,63 @@ public class DialogueUIController : MonoBehaviour
             case 'h':
                 indexToGive = 7;
                 break;
+            case 'i':
+                indexToGive = 8;
+                break;
+            case 'j':
+                indexToGive = 9;
+                break;
+            case 'k':
+                indexToGive = 10;
+                break;
+            case 'l':
+                indexToGive = 11;
+                break;
+            case 'm':
+                indexToGive = 12;
+                break;
+            case 'n':
+                indexToGive = 13;
+                break;
+            case 'o':
+                indexToGive = 14;
+                break;
+            case 'p':
+                indexToGive = 15;
+                break;
+            case 'q':
+                indexToGive = 16;
+                break;
+            case 'r':
+                indexToGive = 17;
+                break;
+            case 's':
+                indexToGive = 18;
+                break;
+            case 't':
+                indexToGive = 19;
+                break;
+            case 'u':
+                indexToGive = 20;
+                break;
+            case 'v':
+                indexToGive = 21;
+                break;
+            case 'w':
+                indexToGive = 22;
+                break;
+            case 'x':
+                indexToGive = 23;
+                break;
+            case 'y':
+                indexToGive = 24;
+                break;
+            case 'z':
+                indexToGive = 25;
+                break;
             default:
                 indexToGive = -1;
-                Debug.Log("We need to expand this switch.");
+                Debug.Log("I don't think we can expand this switch...");
                 break;
         }
 

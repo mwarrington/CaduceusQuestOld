@@ -64,7 +64,10 @@ public class GameManager : MonoBehaviour
                 _lastNPCList.Add(npc.NPCData);
 
                 if (!_currentDialogIndexList.ContainsKey(npc.transform.parent.name))
+                {
                     _currentDialogIndexList.Add(npc.transform.parent.name, 'a');
+                    Debug.Log(npc.transform.parent.name);
+                }
             }
         }
 

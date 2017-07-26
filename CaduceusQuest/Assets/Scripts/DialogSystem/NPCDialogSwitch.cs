@@ -30,6 +30,7 @@ public class NPCDialogSwitch : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.Z) && _convoPrimed && !_inConvorsation)
             {
+                _theDialogController.ToggleInteractObj(false);
                 _theDialogController.StartConversation(NPCData, this);
                 _inConvorsation = true;
                 _convoPrimed = false;
@@ -67,5 +68,6 @@ public class NPCDialogSwitch : MonoBehaviour
     {
         _inConvorsation = false;
         _convoPrimed = false;
+        _theDialogController.ToggleInteractObj(true);
     }
 }

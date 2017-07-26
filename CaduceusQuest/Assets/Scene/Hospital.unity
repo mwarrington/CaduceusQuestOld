@@ -2732,6 +2732,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 530c9c02aacb84501b38f05a27d4b652, type: 2}
+    - target: {fileID: 100004, guid: b622aa3bde9dd4b86a2af8bebf4bb2a9, type: 3}
+      propertyPath: m_Name
+      value: Dr. Gallo
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b622aa3bde9dd4b86a2af8bebf4bb2a9, type: 3}
   m_IsPrefabParent: 0
