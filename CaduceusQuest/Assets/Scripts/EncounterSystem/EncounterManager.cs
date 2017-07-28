@@ -12,8 +12,8 @@ public class EncounterManager : MonoBehaviour
     public Sprite[] TrustProgressBarSprites;
     public GameObject PlayerMenu;
     public Encounter CurrentEncounter;
-    public Transform TargetSpawnPoint;
 
+    private Transform _targetSpawnPoint;
     private GameManager _theGameManager;
     private Image _target1CB1, _target1CB2, _target1CB3,
                   _target2CB1, _target2CB2, _target2CB3,
@@ -1607,9 +1607,10 @@ public class EncounterManager : MonoBehaviour
                     target1CurrentTrust = EncounterGoals[i].InitialTrust;
 
                     //Spawn target
+                    _targetSpawnPoint = GameObject.Find("SpawnPoints/" + EncounterGoals[i].Subject).transform;
                     GameObject characterToSpawn = Resources.Load<GameObject>("Prefabs/NPCs/" + EncounterGoals[i].Subject);
                     if (characterToSpawn)
-                        Instantiate(characterToSpawn, TargetSpawnPoint.position, Quaternion.identity);
+                        Instantiate(characterToSpawn, _targetSpawnPoint.position, _targetSpawnPoint.transform.rotation);
                 }
                 if (i == 1)
                 {
