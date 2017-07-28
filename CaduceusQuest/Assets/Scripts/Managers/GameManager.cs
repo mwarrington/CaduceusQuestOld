@@ -114,9 +114,9 @@ public class GameManager : MonoBehaviour
         CurrentSimoneSkills.Add(skillToAdd);
     }
 
-    public void BeginEncounter(string sceneToLoadPath)
+    public void BeginEncounter(string encounterToLoadPath)
     {
-        _currentEncounter = Resources.Load<Encounter>(sceneToLoadPath);
+        _currentEncounter = Resources.Load<Encounter>(encounterToLoadPath);
 
         string sceneType = "",
                rawSceneName = SceneManager.GetActiveScene().name;
