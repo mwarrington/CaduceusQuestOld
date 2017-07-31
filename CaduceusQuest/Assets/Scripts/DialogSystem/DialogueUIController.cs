@@ -432,9 +432,13 @@ public class DialogueUIController : MonoBehaviour
 
 	IEnumerator TypeText()
 	{
-		foreach (char c in _currentConvo.MyLines[_currentLineIndex].LineText.ToCharArray())
+		for (int i = 0; i < _currentConvo.MyLines[_currentLineIndex].LineText.Length; i++) //char c in _currentConvo.MyLines[_currentLineIndex].LineText.ToCharArray())
 		{
-			_dialogueText.text += c;
+            if (i != 0 && i != (_currentConvo.MyLines[_currentLineIndex].LineText.Length - 1))
+            {
+                _dialogueText.text += _currentConvo.MyLines[_currentLineIndex].LineText[i];
+            }
+
 			yield return new WaitForSeconds(_dialogueManager.TypeSpeed);
 		}
 		_isWriting = false;
