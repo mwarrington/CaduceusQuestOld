@@ -13,7 +13,8 @@ public class DialogueUIController : MonoBehaviour
     private IEnumerator _currentCoroutine;
 	private GameObject _dialogueBox,
 		               _dialoguePanel,
-                       _interactObject;
+                       _interactObject,
+                       _lockedObject;
     private DialogChangeType _currentChangeType;
     private NPCDialogSwitch _currentDialogSwitch;
 
@@ -117,6 +118,8 @@ public class DialogueUIController : MonoBehaviour
 
         _interactObject = GameObject.Find("Button Press Object");
         _interactObject.SetActive(false);
+        _lockedObject = GameObject.Find("Locked Object");
+        _lockedObject.SetActive(false);
 
         _simone = FindObjectOfType<SimoneController>();
 
@@ -430,7 +433,12 @@ public class DialogueUIController : MonoBehaviour
         _interactObject.SetActive(onOff);
     }
 
-	IEnumerator TypeText()
+    public void ToggleLockedObj(bool onOff)
+    {
+        _lockedObject.SetActive(onOff);
+    }
+
+    IEnumerator TypeText()
 	{
 		for (int i = 0; i < _currentConvo.MyLines[_currentLineIndex].LineText.Length; i++) //char c in _currentConvo.MyLines[_currentLineIndex].LineText.ToCharArray())
 		{
