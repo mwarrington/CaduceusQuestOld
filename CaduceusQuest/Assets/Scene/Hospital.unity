@@ -1238,6 +1238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCData: {fileID: 11400000, guid: 985409be73d7e41a0b03309ecd243b2e, type: 2}
+  TurnToLook: 0
 --- !u!65 &118112491
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1732,6 +1733,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: e5d9857b2968d364cb06e9782501530d,
         type: 2}
+    - target: {fileID: 114587999961771336, guid: 1ced7260e46324f919952a9484a71c0b,
+        type: 2}
+      propertyPath: TurnToLook
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ced7260e46324f919952a9484a71c0b, type: 2}
   m_IsPrefabParent: 0
@@ -3050,6 +3056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCData: {fileID: 11400000, guid: 19e66f982f5c341e2a3c4683c062e8fb, type: 2}
+  TurnToLook: 0
 --- !u!1 &300298012
 GameObject:
   m_ObjectHideFlags: 0
@@ -10071,6 +10078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCData: {fileID: 11400000, guid: 7373c2d27d392446b9dfa7a798699dc7, type: 2}
+  TurnToLook: 0
 --- !u!1 &904293926
 GameObject:
   m_ObjectHideFlags: 0
@@ -13699,6 +13707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCData: {fileID: 11400000, guid: 6370d05c297e44c31a8e7c4ee5566f18, type: 2}
+  TurnToLook: 0
 --- !u!65 &1156006578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16777,6 +16786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCData: {fileID: 11400000, guid: df9f8b985f80445c6841e0d0b60c44ae, type: 2}
+  TurnToLook: 0
 --- !u!1 &1383780833
 GameObject:
   m_ObjectHideFlags: 0
@@ -21182,6 +21192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCData: {fileID: 11400000, guid: e98f53c1568774fb9882bac75ed015be, type: 2}
+  TurnToLook: 0
 --- !u!1 &1750962209
 GameObject:
   m_ObjectHideFlags: 0
@@ -24235,6 +24246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NPCData: {fileID: 11400000, guid: 8df1b8cd7ddeb9846aee37665f17e866, type: 2}
+  TurnToLook: 0
 --- !u!65 &2008734968
 BoxCollider:
   m_ObjectHideFlags: 0

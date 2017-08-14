@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCDialogSwitch : MonoBehaviour
 {
     public NPC NPCData;
+    public bool TurnToLook;
     private GameObject _simone;
     private BoxCollider _myTrigger;
     private DialogueUIController _theDialogController;
@@ -35,6 +36,8 @@ public class NPCDialogSwitch : MonoBehaviour
                 _inConvorsation = true;
                 _convoPrimed = false;
                 _simone.transform.LookAt(new Vector3(this.transform.position.x, _simone.transform.position.y, this.transform.position.z), _simone.transform.up);
+                if (TurnToLook)
+                    this.transform.LookAt(new Vector3(_simone.transform.position.x, this.transform.position.y, _simone.transform.position.z), this.transform.up);
             }
         }
         else

@@ -44,6 +44,8 @@ public class DoorController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
+                _simone.transform.LookAt(new Vector3(this.transform.position.x, _simone.transform.position.y, this.transform.position.z), _simone.transform.up);
+
                 if (SceneToLoad != "")
                 {
                     _sceneTrans.LoadScene(SceneToLoad);
