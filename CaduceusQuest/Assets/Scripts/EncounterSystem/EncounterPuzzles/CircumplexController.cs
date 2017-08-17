@@ -20,19 +20,19 @@ public class CircumplexController : MonoBehaviour
         {
             if (value != _currentEmotionIntensity)
             {
-                if (value == 3)
+                if (value == 4)
                 {
                     TopIndicator.enabled = true;
                 }
-                else if (value == 2)
+                else if (value == 3)
                 {
                     TopMiddleIndicator.enabled = true;
                 }
-                else if (value == 1)
+                else if (value == 2)
                 {
                     BottomMiddleIndicator.enabled = true;
                 }
-                else if (value == 0)
+                else if (value == 1)
                 {
                     BottomIndicator.enabled = true;
                 }
