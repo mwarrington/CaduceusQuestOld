@@ -14,7 +14,8 @@ public class DialogueUIController : MonoBehaviour
 	private GameObject _dialogueBox,
 		               _dialoguePanel,
                        _interactObject,
-                       _lockedObject;
+                       _lockedObject,
+                       _eventMessageObject;
     private DialogChangeType _currentChangeType;
     private NPCDialogSwitch _currentDialogSwitch;
 
@@ -46,7 +47,8 @@ public class DialogueUIController : MonoBehaviour
 		_simoneNameText1,
 		_simoneNameText2,
 		_simoneNameText3,
-		_speakerNameText;
+		_speakerNameText,
+        _eventMessageText;
 
 	private bool _inConversation,
         _optionsNext,
@@ -59,7 +61,7 @@ public class DialogueUIController : MonoBehaviour
 	private List<Button> _optionButtonList = new List<Button>();
 
 	private List<Text> _optionTextList = new List<Text>(),
-		_optionNameList = new List<Text>();
+		               _optionNameList = new List<Text>();
 
 	#endregion
 
@@ -120,6 +122,10 @@ public class DialogueUIController : MonoBehaviour
         _interactObject.SetActive(false);
         _lockedObject = GameObject.Find("Locked Object");
         _lockedObject.SetActive(false);
+
+        _eventMessageText = GameObject.Find("EventMessageImage/Text").GetComponent<Text>();
+        _eventMessageObject = GameObject.Find("Event Message Panel");
+        _eventMessageObject.SetActive(false);
 
         _simone = FindObjectOfType<SimoneController>();
 
@@ -436,6 +442,27 @@ public class DialogueUIController : MonoBehaviour
     public void ToggleLockedObj(bool onOff)
     {
         _lockedObject.SetActive(onOff);
+    }
+
+    public void ShowEventMessage(string eventGoal)
+    {
+        _eventMessageObject.SetActive(true);
+        
+        switch(eventGoal)
+        {
+            case "Complete Intake Form":
+                _eventMessageText.text = "Alright! You've completed all Intake Forms!";
+                break;
+            default:
+                break;
+        }
+
+        Invoke("HideEventMessage", 3);
+    }
+
+    private void HideEventMessage()
+    {
+        _eventMessageObject.SetActive(false);
     }
 
     IEnumerator TypeText()

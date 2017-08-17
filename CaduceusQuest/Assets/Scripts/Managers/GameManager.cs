@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    static public GameManager TheGameManager;
     public Dictionary<string, char> CurrentDialogIndexList
     {
         get
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
     private static List<NPC> _lastNPCList = new List<NPC>();
 
     private static Dictionary<string, string> _sceneCameras = new Dictionary<string, string>();
+    private static string _completedEvent = "";
 
     private static Vector3 _lastPosition;
     public Vector3 LastPosition
@@ -49,11 +51,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (!TheGameManager)
+            TheGameManager = this;
         //Should only happen the first time entering that scene
         List<NPCDialogSwitch> allNPCSwitches = new List<NPCDialogSwitch>();
         allNPCSwitches.AddRange(FindObjectsOfType<NPCDialogSwitch>());
         if (!_currentEvent)
+        {
             _currentEvent = Resources.Load<Event>("Events/Event1");
+            for (int i = 0; i < _currentEvent.EventGoals.Count; i++)
+            {
+                _currentEvent.EventGoals[i].Achieved = false;
+            }
+        }
 
         if (allNPCSwitches.Count > 0)
         {
@@ -101,6 +111,14 @@ public class GameManager : MonoBehaviour
                 Camera newCam = GameObject.Find(_sceneCameras[activeScene]).GetComponent<Camera>();
                 _theCamMan.ActivateCam(newCam);
             }
+        }
+    }
+
+    private void Start()
+    {
+        if(_completedEvent != "")
+        {
+            EventCompletionMessage();
         }
     }
 
@@ -182,5 +200,18 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetEventsDone()
+    {
+        _completedEvent = CurrentEvent.EventGoals[0].Treatment;
+    }
+
+    private void EventCompletionMessage()
+    {
+        DialogueUIController dialogController = FindObjectOfType<DialogueUIController>();
+
+        dialogController.ShowEventMessage(_completedEvent);
+        _completedEvent = "";
     }
 }

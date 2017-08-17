@@ -36,7 +36,9 @@ public class Event : ScriptableObject
         }
         if(goalsReached)
         {
-            GameManager gameManager = FindObjectOfType<GameManager>();
+            GameManager gameManager = GameManager.TheGameManager;
+            gameManager.SetEventsDone();
+
             for (int j = 0; j < Subjects.Count; j++)
             {
                 gameManager.DialogueChanger(Subjects[j], DialogChangeType.EVENTTRIGGER);
