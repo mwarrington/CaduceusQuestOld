@@ -82,9 +82,9 @@ public class CircumplexController : MonoBehaviour
 
     private void Start()
     {
-        _currentEmotion = new Emotion('c', 3);
-        _currentEmotionIntensity = 3;
-        _currentEmotionType = 'c';
+        _currentEmotion = new Emotion('b', 4);
+        _currentEmotionIntensity = 4;
+        _currentEmotionType = 'b';
 
         _myDialogPuzzMan = this.GetComponentInParent<DialogPuzzleManager>();
         _targetEmotionIntensity = _currentEmotionIntensity;
@@ -128,14 +128,14 @@ public class CircumplexController : MonoBehaviour
             //this.transform.eulerAngles = new Vector3(transform.eulerAngles.x - (30 * Time.deltaTime), transform.eulerAngles.y, transform.eulerAngles.z);//.Rotate(Vector3.left * Time.deltaTime * 60);
             _lastRotation = this.transform.eulerAngles;
 
-            if (currentEmotionIntensity == 3)
+            if (currentEmotionIntensity == 4)
                 _targetRotation = new Vector3(_lastRotation.x - 20, _lastRotation.y, _lastRotation.z);
-            else if (currentEmotionIntensity == 2)
+            else if (currentEmotionIntensity == 3)
                 _targetRotation = new Vector3(_lastRotation.x - 50, _lastRotation.y, _lastRotation.z);
-            else if (currentEmotionIntensity == 1)
+            else if (currentEmotionIntensity == 2)
                 _targetRotation = new Vector3(_lastRotation.x + 57, _lastRotation.y, _lastRotation.z);
 
-            if (currentEmotionIntensity != 0)
+            if (currentEmotionIntensity != 1)
             {
                 TopIndicator.enabled = false;
                 TopMiddleIndicator.enabled = false;
@@ -152,14 +152,14 @@ public class CircumplexController : MonoBehaviour
             //this.transform.eulerAngles = new Vector3(transform.eulerAngles.x - (30 * Time.deltaTime), transform.eulerAngles.y, transform.eulerAngles.z);//.Rotate(Vector3.left * Time.deltaTime * 60);
             _lastRotation = this.transform.eulerAngles;
 
-            if (currentEmotionIntensity == 2)
+            if (currentEmotionIntensity == 3)
                 _targetRotation = new Vector3(_lastRotation.x + 20, _lastRotation.y, _lastRotation.z);
-            else if (currentEmotionIntensity == 1)
+            else if (currentEmotionIntensity == 2)
                 _targetRotation = new Vector3(_lastRotation.x - 50, _lastRotation.y, _lastRotation.z);
-            else if (currentEmotionIntensity == 0)
+            else if (currentEmotionIntensity == 1)
                 _targetRotation = new Vector3(_lastRotation.x - 57, _lastRotation.y, _lastRotation.z);
 
-            if (currentEmotionIntensity != 3)
+            if (currentEmotionIntensity != 4)
             {
                 TopIndicator.enabled = false;
                 TopMiddleIndicator.enabled = false;
