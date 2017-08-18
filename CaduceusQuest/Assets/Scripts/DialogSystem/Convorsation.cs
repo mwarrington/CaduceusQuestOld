@@ -127,8 +127,15 @@ public class Convorsation
 				}
 
 				//Line Finished
-				if (currentChar == ';') {
-					if (masterText [i + 1] == ';') {
+				if (currentChar == ';')
+                {
+                    _writingSpeaker = false;
+                    _writingEmotion = false;
+                    _writingLineText = false;
+                    _writingDialogOptionLine = false;
+                    _writingDialogOptionEmotion = false;
+
+                    if (masterText [i + 1] == ';') {
 						MyLines.Add (_currentLine);
 						break;
 					} else {

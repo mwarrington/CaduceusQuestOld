@@ -200,7 +200,16 @@ public class DialogueUIController : MonoBehaviour
                 if(_isWriting)
                 {
                     StopCoroutine(_currentCoroutine);
-                    _dialogueText.text = _currentConvo.MyLines[_currentLineIndex].LineText;
+                    _dialogueText.text = "";
+
+                    for (int i = 0; i < _currentConvo.MyLines[_currentLineIndex].LineText.Length; i++)
+                    {
+                        if (i != 0 && i != (_currentConvo.MyLines[_currentLineIndex].LineText.Length - 1))
+                        {
+                            _dialogueText.text += _currentConvo.MyLines[_currentLineIndex].LineText[i];
+                        }
+                    }
+                    
                     _isWriting = false;
                     if (!_lastLine)
                         _currentLineIndex++;
@@ -336,7 +345,16 @@ public class DialogueUIController : MonoBehaviour
 		for (int i = 0; i < _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
 		{
 			_optionButtonList[i].gameObject.SetActive(true);
-			_optionTextList[i].text = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Trim();
+
+            for (int j = 0; j < _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Length; j++) //char c in _currentConvo.MyLines[_currentLineIndex].LineText.ToCharArray())
+            {
+                if (j != 0 && j != (_currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Length - 1))
+                {
+                    _optionTextList[i].text += _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText[j];
+                }
+            }
+
+            //_optionTextList[i].text = _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText;
 		}
 
 		HighlightDialogueSelection();
