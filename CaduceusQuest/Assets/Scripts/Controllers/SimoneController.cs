@@ -51,7 +51,29 @@ public class SimoneController : MovementController
                  _movingLeft,
                  _movingUp,
                  _movingDown;
-	public bool Movement = true;
+	public bool Movement
+    {
+        get
+        {
+            return _movement;
+        }
+
+        set
+        {
+            if(_movement != value)
+            {
+                if(!value)
+                {
+                    _movingLeft = false;
+                    _movingRight = false;
+                    _movingUp = false;
+                    _movingDown = false;
+                }
+                _movement = value;
+            }
+        }
+    }
+    private bool _movement = true;
 
     private void Start()
     {

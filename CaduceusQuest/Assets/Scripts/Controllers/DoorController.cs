@@ -10,6 +10,7 @@ public class DoorController : MonoBehaviour
     public float FadeTime;
     public bool DoorLocked;
 
+    private SimoneController _theSimoneController;
     private DialogueUIController _theDialogUIController;
     private NiceSceneTransition _sceneTrans;
     private CameraManager _theCamMan;
@@ -34,6 +35,7 @@ public class DoorController : MonoBehaviour
         {
             _nearDoor = true;
             _simone = other.gameObject;
+            _theSimoneController = _simone.GetComponent<SimoneController>();
             if (DoorLocked)
                 _theDialogUIController.ToggleLockedObj(true);
             else
@@ -48,6 +50,7 @@ public class DoorController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z))
             {
                 _simone.transform.LookAt(new Vector3(this.transform.position.x, _simone.transform.position.y, this.transform.position.z), _simone.transform.up);
+                _theSimoneController.Movement = false;
 
                 if (SceneToLoad != "")
                 {
@@ -105,6 +108,7 @@ public class DoorController : MonoBehaviour
                 if (_currentFadeMask.color.a < 0.01f && _nextFadeMask.color.a < 0.01f)
                 {
                     _fadingIn = false;
+                    _theSimoneController.Movement = true;
                 }
             }
             else
@@ -112,6 +116,7 @@ public class DoorController : MonoBehaviour
                 if (_currentFadeMask.color.a < 0.01f)
                 {
                     _fadingIn = false;
+                    _theSimoneController.Movement = true;
                 }
             }
         }
