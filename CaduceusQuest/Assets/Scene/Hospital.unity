@@ -11694,6 +11694,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114098682379580174, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_Text
+      value: button to interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361070690429250, guid: 5037067c07fff4d719bb74e237c68026,
+        type: 2}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 1.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5037067c07fff4d719bb74e237c68026, type: 2}
   m_IsPrefabParent: 0
@@ -21163,7 +21173,7 @@ Transform:
   m_GameObject: {fileID: 1747842608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.86, y: 1, z: 0.75}
   m_Children: []
   m_Father: {fileID: 1629610733}
   m_RootOrder: 3
