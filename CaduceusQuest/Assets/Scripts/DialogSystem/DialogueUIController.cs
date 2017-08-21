@@ -345,6 +345,7 @@ public class DialogueUIController : MonoBehaviour
 		for (int i = 0; i < _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions.Count; i++)
 		{
 			_optionButtonList[i].gameObject.SetActive(true);
+            _optionTextList[i].text = "";
 
             for (int j = 0; j < _currentConvo.MyDialogOptionsList[_currentDOIndex].myOptions[i].DialogOptionText.Length; j++) //char c in _currentConvo.MyLines[_currentLineIndex].LineText.ToCharArray())
             {
