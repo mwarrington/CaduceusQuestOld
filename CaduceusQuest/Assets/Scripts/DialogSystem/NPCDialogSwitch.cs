@@ -37,7 +37,7 @@ public class NPCDialogSwitch : MonoBehaviour
                 _convoPrimed = false;
                 _simone.transform.LookAt(new Vector3(this.transform.position.x, _simone.transform.position.y, this.transform.position.z), _simone.transform.up);
                 if (TurnToLook)
-                    this.transform.LookAt(new Vector3(_simone.transform.position.x, this.transform.position.y, _simone.transform.position.z), this.transform.up);
+                    this.transform.parent.LookAt(new Vector3(_simone.transform.position.x, this.transform.parent.position.y, _simone.transform.position.z), this.transform.up);
             }
         }
         else
