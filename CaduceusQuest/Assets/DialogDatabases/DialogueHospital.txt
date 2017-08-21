@@ -15,6 +15,10 @@
 	(c)Receptionist(i)b;
 	[0](s)Receptionist(e)a,1(t)"If you need Dr. Gallo's help with something, just keep asking. It can take a couple tries."#;;
 
+	//when trying to leave hospital//
+	(c)Receptionist2(i)a;
+	[0](s)Receptionist2(e)a,1(t)"Whoa there, slow down! Don't you still have things to do here?"#;;
+
 //Macy//
 
 	//first encounter//
