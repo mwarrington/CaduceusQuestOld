@@ -429,7 +429,6 @@ public class EncounterManager : MonoBehaviour
     private void Start()
     {
         _theGameManager = FindObjectOfType<GameManager>();
-        _skillAnimTransform = GameObject.Find("Encounter Camera/SkillAnimLoadPoint").transform;
 
         #region Getting/Setting Encounter Buttons
         _skills = GameObject.Find("Skills").GetComponent<Button>();
@@ -946,14 +945,6 @@ public class EncounterManager : MonoBehaviour
 
     private void LoadMinigame()
     {
-        if (_currentEA.MyType != EncounterActionType.DIALOG)
-        {
-            string path = "Prefabs/" + _currentEA.Name + "Animation";
-            path = path.Replace(" ", "");
-            _eaAnimation = Resources.Load<GameObject>(path);
-            _eaAnimation = GameObject.Instantiate(_eaAnimation, _skillAnimTransform.position, _skillAnimTransform.rotation);
-        }
-
         switch (_currentEA.MyType)
         {
             case EncounterActionType.COMPSCI:
@@ -990,6 +981,15 @@ public class EncounterManager : MonoBehaviour
             default:
                 Debug.LogError("We haven't put together an IntiateAction for that action type.");
                 break;
+        }
+
+        if (_currentEA.MyType != EncounterActionType.DIALOG)
+        {
+            _skillAnimTransform = GameObject.Find("SkillAnimLoadPoint").transform;
+            string path = "Prefabs/" + _currentEA.Name + "Animation";
+            path = path.Replace(" ", "");
+            _eaAnimation = Resources.Load<GameObject>(path);
+            _eaAnimation = GameObject.Instantiate(_eaAnimation, _skillAnimTransform.position, _skillAnimTransform.rotation);
         }
 
         _currentMinigameObj = null;
