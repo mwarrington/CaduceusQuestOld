@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class Event : ScriptableObject
 {
+    public bool Complete;
     public string Name;
     public List<string> Subjects;
     public List<EventGoal> EventGoals = new List<EventGoal>();
@@ -16,7 +17,18 @@ public class Event : ScriptableObject
             if (EventGoals[i].NPC == NPC && EventGoals[i].Treatment == Treatment)
             {
                 EventGoals[i].Achieved = true;
-                AllGoalsReached();
+
+                for (int j = 0; j < EventGoals.Count; j++)
+                {
+                    if (!EventGoals[j].Achieved)
+                    {
+                        break;
+                    }
+                    else if (j == EventGoals.Count)
+                    {
+                        AllGoalsReached();
+                    }
+                }
 
                 break;
             }
@@ -25,24 +37,12 @@ public class Event : ScriptableObject
 
     private void AllGoalsReached()
     {
-        bool goalsReached = true;
-        for (int j = 0; j < EventGoals.Count; j++)
-        {
-            if(!EventGoals[j].Achieved)
-            {
-                goalsReached = false;
-                break;
-            }
-        }
-        if(goalsReached)
-        {
-            GameManager gameManager = GameManager.TheGameManager;
-            gameManager.SetEventsDone();
+        GameManager gameManager = GameManager.TheGameManager;
+        gameManager.SetEventsDone();
 
-            for (int j = 0; j < Subjects.Count; j++)
-            {
-                gameManager.DialogueChanger(Subjects[j], DialogChangeType.EVENTTRIGGER);
-            }
+        for (int j = 0; j < Subjects.Count; j++)
+        {
+            gameManager.DialogueChanger(Subjects[j], DialogChangeType.EVENTTRIGGER);
         }
     }
 }

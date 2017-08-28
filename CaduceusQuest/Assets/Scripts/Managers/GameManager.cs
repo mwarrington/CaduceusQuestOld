@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //Lets make this a methods
         if(_completedEvent != "")
         {
             EventCompletionMessage();
