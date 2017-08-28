@@ -2232,7 +2232,7 @@ GameObject:
   - component: {fileID: 229622407}
   - component: {fileID: 229622411}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera (Empty Room 1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2917,7 +2917,7 @@ GameObject:
   - component: {fileID: 284186593}
   - component: {fileID: 284186597}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera (Gallo Office)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3947,7 +3947,7 @@ GameObject:
   - component: {fileID: 377492001}
   - component: {fileID: 377492000}
   m_Layer: 0
-  m_Name: Camera (3)
+  m_Name: Camera (Hall Forward)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6920,7 +6920,7 @@ GameObject:
   - component: {fileID: 624732442}
   - component: {fileID: 624732446}
   m_Layer: 0
-  m_Name: Camera (1)
+  m_Name: Camera (Sylvia Room)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8528,7 +8528,7 @@ GameObject:
   - component: {fileID: 748832935}
   - component: {fileID: 748832939}
   m_Layer: 0
-  m_Name: Camera (2)
+  m_Name: Camera (Patient Room 1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9832,7 +9832,7 @@ GameObject:
   - component: {fileID: 878038613}
   - component: {fileID: 878038617}
   m_Layer: 0
-  m_Name: Camera (7)
+  m_Name: Camera (Violet Room)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11049,7 +11049,7 @@ GameObject:
   - component: {fileID: 977361752}
   - component: {fileID: 977361756}
   m_Layer: 0
-  m_Name: Camera (6)
+  m_Name: Camera (Patient Room 2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11319,7 +11319,7 @@ GameObject:
   - component: {fileID: 989650789}
   - component: {fileID: 989650793}
   m_Layer: 0
-  m_Name: Camera (4)
+  m_Name: Camera (Mason Room)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12942,7 +12942,7 @@ GameObject:
   - component: {fileID: 1094996272}
   - component: {fileID: 1094996276}
   m_Layer: 0
-  m_Name: Camera (5)
+  m_Name: Camera (Empty Room 3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13041,7 +13041,7 @@ GameObject:
   - component: {fileID: 1100354745}
   - component: {fileID: 1100354749}
   m_Layer: 0
-  m_Name: Camera (3)
+  m_Name: Camera (Empty Room 2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15057,7 +15057,7 @@ GameObject:
   - component: {fileID: 1243206282}
   - component: {fileID: 1243206281}
   m_Layer: 0
-  m_Name: Camera (1)
+  m_Name: Camera (Left Hall)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21526,7 +21526,7 @@ GameObject:
   - component: {fileID: 1756905116}
   - component: {fileID: 1756905115}
   m_Layer: 0
-  m_Name: Camera (2)
+  m_Name: Camera (Hall Right)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
