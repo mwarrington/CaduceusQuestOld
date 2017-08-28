@@ -22,11 +22,10 @@ public class CameraManager : MonoBehaviour
             }
         }
     }
-    private Camera _currentCamera;
+    static private Camera _currentCamera;
 
     private List<Camera> _allCameras = new List<Camera>();
     private List<List<CameraSwitch>> _allSwitches = new List<List<CameraSwitch>>();
-    private int _currentCamIndex;
 
     private void Awake()
     {
@@ -44,16 +43,15 @@ public class CameraManager : MonoBehaviour
 
     public void ActivateCam(Camera camToActivate)
     {
+        camToActivate.enabled = true;
+        camToActivate.GetComponent<AudioListener>().enabled = true;
+
+        CurrentCamera = camToActivate;
+
         for (int i = 0; i < _allCameras.Count; i++)
         {
             if (_allCameras[i] == camToActivate)
             {
-                _currentCamIndex = i;
-                camToActivate.enabled = true;
-                camToActivate.GetComponent<AudioListener>().enabled = true;
-
-                CurrentCamera = camToActivate;
-
                 for (int j = 0; j < _allSwitches[i].Count; j++)
                 {
                     _allSwitches[i][j].enabled = false;

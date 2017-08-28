@@ -36,10 +36,7 @@ public class DoorController : MonoBehaviour
             _nearDoor = true;
             _simone = other.gameObject;
             _theSimoneController = _simone.GetComponent<SimoneController>();
-            if (DoorLocked)
-                _theDialogUIController.ToggleLockedObj(true);
-            else
-                _theDialogUIController.ToggleInteractObj(true);
+            _theDialogUIController.ToggleInteractObj(true);
         }
     }
 
@@ -77,10 +74,7 @@ public class DoorController : MonoBehaviour
         {
             _nearDoor = false;
 
-            if (DoorLocked)
-                _theDialogUIController.ToggleLockedObj(false);
-            else
-                _theDialogUIController.ToggleInteractObj(false);
+            _theDialogUIController.ToggleInteractObj(false);
         }
     }
 

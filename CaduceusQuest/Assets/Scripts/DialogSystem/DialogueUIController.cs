@@ -14,7 +14,6 @@ public class DialogueUIController : MonoBehaviour
 	private GameObject _dialogueBox,
 		               _dialoguePanel,
                        _interactObject,
-                       _lockedObject,
                        _eventMessageObject;
     private DialogChangeType _currentChangeType;
     private NPCDialogSwitch _currentDialogSwitch;
@@ -120,8 +119,6 @@ public class DialogueUIController : MonoBehaviour
 
         _interactObject = GameObject.Find("Button Press Object");
         _interactObject.SetActive(false);
-        _lockedObject = GameObject.Find("Locked Object");
-        _lockedObject.SetActive(false);
 
         _eventMessageText = GameObject.Find("EventMessageImage/Text").GetComponent<Text>();
         _eventMessageObject = GameObject.Find("Event Message Panel");
@@ -458,11 +455,6 @@ public class DialogueUIController : MonoBehaviour
         _interactObject.SetActive(onOff);
     }
 
-    public void ToggleLockedObj(bool onOff)
-    {
-        _lockedObject.SetActive(onOff);
-    }
-
     public void ShowEventMessage(string eventGoal)
     {
         _eventMessageObject.SetActive(true);
@@ -471,6 +463,9 @@ public class DialogueUIController : MonoBehaviour
         {
             case "Complete Intake Form":
                 _eventMessageText.text = "Alright! You've completed all Intake Forms!";
+                break;
+            case "Collect Blood Sample":
+                _eventMessageText.text = "Good Job! You've collected all blood samples!";
                 break;
             default:
                 break;

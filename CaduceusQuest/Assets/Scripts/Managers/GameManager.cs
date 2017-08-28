@@ -44,6 +44,36 @@ public class GameManager : MonoBehaviour
     }
     private static Event _currentEvent;
 
+    public bool FrontDoorGoesToOverworld
+    {
+        get
+        {
+            return _frontDoorGoesToOverworld;
+        }
+
+        set
+        {
+            if (value != _frontDoorGoesToOverworld)
+            {
+                GameObject actualDoor = GameObject.Find("DoorToAshland/ActualDoor"),
+                           doorDialog = GameObject.Find("DoorToAshland/DoorDialog");
+                if(value)
+                {
+                    actualDoor.GetComponent<DoorController>().enabled = true;
+                    doorDialog.GetComponent<NPCDialogSwitch>().enabled = false;
+                }
+                else
+                {
+                    actualDoor.GetComponent<DoorController>().enabled = false;
+                    doorDialog.GetComponent<NPCDialogSwitch>().enabled = true;
+                }
+
+                _frontDoorGoesToOverworld = value;
+            }
+        }
+    }
+    private bool _frontDoorGoesToOverworld;
+
     public List<Skill> CurrentSimoneSkills = new List<Skill>();
 
     private EncounterManager _theEncounterManager;
@@ -119,6 +149,15 @@ public class GameManager : MonoBehaviour
         if(_completedEvent != "")
         {
             EventCompletionMessage();
+
+            if (_completedEvent == "Collect Blood Sample")
+            {
+                FrontDoorGoesToOverworld = true;
+            }
+        }
+        else
+        {
+            FrontDoorGoesToOverworld = false;
         }
     }
 
@@ -214,4 +253,6 @@ public class GameManager : MonoBehaviour
         dialogController.ShowEventMessage(_completedEvent);
         _completedEvent = "";
     }
+
+    
 }
