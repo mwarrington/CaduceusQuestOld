@@ -24,7 +24,7 @@ public class Event : ScriptableObject
                     {
                         break;
                     }
-                    else if (j == EventGoals.Count)
+                    else if (j == EventGoals.Count - 1)
                     {
                         AllGoalsReached();
                     }
