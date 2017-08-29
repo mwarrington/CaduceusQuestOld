@@ -214,6 +214,7 @@ public class DialogueUIController : MonoBehaviour
                 else if (_beginEncounter)
                 {
                     string path = "EncounterData/" + _currentConvo.SpeakerName + "Encounter" + _currentConvo.MyLines[_currentLineIndex].EncounterToStart;
+                    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
                     _theGameManager.LastPosition = _simone.transform.position;
                     _theGameManager.BeginEncounter(path);
                 }

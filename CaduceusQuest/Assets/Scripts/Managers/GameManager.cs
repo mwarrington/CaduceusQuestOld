@@ -74,7 +74,14 @@ public class GameManager : MonoBehaviour
     }
     private bool _frontDoorGoesToOverworld;
 
-    public List<Skill> CurrentSimoneSkills = new List<Skill>();
+    private static List<Skill> _currentSimoneSkills = new List<Skill>();
+    public List<Skill> CurrentSimoneSkills //Public accessor fro static skills list
+    {
+        get
+        {
+            return _currentSimoneSkills;
+        }
+    }
 
     private EncounterManager _theEncounterManager;
     private CameraManager _theCamMan;
@@ -110,8 +117,8 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        AddSkill(new Skill("Complete Intake Form", SkillType.COMMUNICATION));
-        AddSkill(new Skill("Examine Neck", SkillType.SCIENCE));
+        //AddSkill(new Skill("Complete Intake Form", SkillType.COMMUNICATION));
+        //AddSkill(new Skill("Examine Neck", SkillType.SCIENCE));
         //AddSkill(new Skill("Collect Blood Sample", SkillType.SCIENCE));
 
         _theEncounterManager = FindObjectOfType<EncounterManager>();
@@ -167,9 +174,21 @@ public class GameManager : MonoBehaviour
         _currentDialogIndexList[npcName] = newIndex;
     }
 
-    public void AddSkill(Skill skillToAdd)
+    public void AddSkill(string skillName, EncounterActionType actionType)
     {
-        CurrentSimoneSkills.Add(skillToAdd);
+        SkillType st = SkillType.COMMUNICATION;
+
+        if (actionType == EncounterActionType.COMPSCI)
+            st = SkillType.COMMUNICATION;
+        else if (actionType == EncounterActionType.DOCTOR)
+            st = SkillType.SCIENCE;
+        else
+            Debug.LogError("We don't have actions like that yet...");
+
+        Skill newSkill = new Skill(skillName, st);
+
+        if (!_currentSimoneSkills.Contains(newSkill))
+            _currentSimoneSkills.Add(newSkill);
     }
 
     public void BeginEncounter(string encounterToLoadPath)
