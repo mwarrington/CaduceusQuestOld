@@ -16,43 +16,43 @@ public class EncounterManager : MonoBehaviour
     private Transform _targetSpawnPoint;
     private GameManager _theGameManager;
     private Image _target1CB1, _target1CB2, _target1CB3,
-                  _target2CB1, _target2CB2, _target2CB3,
-                  _target3CB1, _target3CB2, _target3CB3,
-                  _target4CB1, _target4CB2, _target4CB3,
-                  _target1Trust, _target2Trust, _target3Trust, _target4Trust;
+        _target2CB1, _target2CB2, _target2CB3,
+        _target3CB1, _target3CB2, _target3CB3,
+        _target4CB1, _target4CB2, _target4CB3,
+        _target1Trust, _target2Trust, _target3Trust, _target4Trust;
     private Text _targetName1, _targetName2, _targetName3, _targetName4,
-                 _treatment1, _treatment2, _treatment3, _treatment4,
-                 _encounterMessage;
+        _treatment1, _treatment2, _treatment3, _treatment4,
+        _encounterMessage, _speakerName;
     private Button _skills, _items, _endEncounter,
-                   _science, _engineering, _technology, _mathamatics, _communication,
-                   _sSkill1, _sSkill2, _sSkill3,
-                   _eSkill1, _eSkill2, _eSkill3,
-                   _tSkill1, _tSkill2, _tSkill3,
-                   _mSkill1, _mSkill2, _mSkill3,
-                   _cSkill1, _cSkill2, _cSkill3;
+        _science, _engineering, _technology, _mathamatics, _communication,
+        _sSkill1, _sSkill2, _sSkill3,
+        _eSkill1, _eSkill2, _eSkill3,
+        _tSkill1, _tSkill2, _tSkill3,
+        _mSkill1, _mSkill2, _mSkill3,
+        _cSkill1, _cSkill2, _cSkill3;
 
     private Button[] _baseMenu = new Button[3],
-                     _skillSubMenu = new Button[5];
+        _skillSubMenu = new Button[5];
     private List<Button> _sSkillSubMenu = new List<Button>(),
-                         _eSkillSubMenu = new List<Button>(),
-                         _tSkillSubMenu = new List<Button>(),
-                         _mSkillSubMenu = new List<Button>(),
-                         _cSkillSubMenu = new List<Button>();
+        _eSkillSubMenu = new List<Button>(),
+        _tSkillSubMenu = new List<Button>(),
+        _mSkillSubMenu = new List<Button>(),
+        _cSkillSubMenu = new List<Button>();
 
     private List<string> _currentEncounterMessages = new List<string>();
     private GameObject _currentMinigameObj,
-                       _eaAnimation;
+        _eaAnimation;
     private EncounterAction _currentEA;
     private EncounterMenus _activeMenu = EncounterMenus.BASEMENU;
     private Transform _skillAnimTransform;
     private int _turnIndex,
-                _currentMessageIndex,
-                _patientsTreated,
-                _eventIndex;
+        _currentMessageIndex,
+        _patientsTreated,
+        _eventIndex;
     private bool _playerMenuEnabled,
-                 _encounterMessageEnabled,
-                 _encounterFinished,
-                 _skillAttemptFailed;
+        _encounterMessageEnabled,
+        _encounterFinished,
+        _skillAttemptFailed;
 
     protected EncounterActionDialog currentDialogEvent
     {
@@ -70,10 +70,12 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     private EncounterActionDialog _currentDialogEvent;
     private List<EncounterActionDialog> _allDialogEvents;
 
     #region Menu Index Properties
+
     //These handle image and text color change for menu navigation
     protected int baseMenuIndex
     {
@@ -107,6 +109,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected int skillSubMenuIndex
     {
         get { return _skillSubMenuIndex; }
@@ -145,6 +148,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected int sSkillSubMenuIndex
     {
         get { return _sSkillSubMenuIndex; }
@@ -169,6 +173,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected int eSkillSubMenuIndex
     {
         get { return _eSkillSubMenuIndex; }
@@ -193,6 +198,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected int tSkillSubMenuIndex
     {
         get { return _tSkillSubMenuIndex; }
@@ -217,6 +223,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected int mSkillSubMenuIndex
     {
         get { return _mSkillSubMenuIndex; }
@@ -241,6 +248,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected int cSkillSubMenuIndex
     {
         get { return _cSkillSubMenuIndex; }
@@ -265,11 +273,14 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     private int _baseMenuIndex = 0, _skillSubMenuIndex = -1, _sSkillSubMenuIndex = -1, _eSkillSubMenuIndex = -1, _tSkillSubMenuIndex = -1, _mSkillSubMenuIndex = -1, _cSkillSubMenuIndex = -1,
-                _lastSkipIndexTry;
+        _lastSkipIndexTry;
+
     #endregion Menu Index Properties
 
     #region Encounter Data Properties
+
     protected float target1CurrentTrust
     {
         get
@@ -308,6 +319,7 @@ public class EncounterManager : MonoBehaviour
         }
 
     }
+
     protected float target2CurrentTrust
     {
         get
@@ -345,6 +357,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected float target3CurrentTrust
     {
         get
@@ -382,6 +395,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     protected float target4CurrentTrust
     {
         get
@@ -419,9 +433,11 @@ public class EncounterManager : MonoBehaviour
             }
         }
     }
+
     private float _target1CurrentTrust, _target2CurrentTrust, _target3CurrentTrust, _target4CurrentTrust;
 
     private int _target1SuccessCount, _target2SuccessCount, _target3SuccessCount, _target4SuccessCount;
+
     #endregion Encounter Data Properties
 
     private int _sSkillCount, _eSkillCount, _tSkillCount, _mSkillCount, _cSkillCount;
@@ -501,6 +517,9 @@ public class EncounterManager : MonoBehaviour
         _target3Trust = GameObject.Find("Target 3/Trust Level/Image").GetComponent<Image>();
         _target4Trust = GameObject.Find("Target 4/Trust Level/Image").GetComponent<Image>();
 
+        _speakerName = GameObject.Find("EncounterMessage/Speaker Name").GetComponent<Text>();
+
+
         _encounterMessage = GameObject.Find("EncounterMessage").GetComponentInChildren<Text>();
         _encounterMessage.transform.parent.gameObject.SetActive(false);
         EncounterInfoInitializer();
@@ -545,7 +564,7 @@ public class EncounterManager : MonoBehaviour
         {
             LoadDialogEvent();
 
-            DisplayEncounterMessage(_currentDialogEvent.Speaker + ": " + _currentDialogEvent.SpeakerLine, _currentDialogEvent.LineEmotion);
+            DisplayEncounterMessage(_currentDialogEvent.Speaker, _currentDialogEvent.SpeakerLine, _currentDialogEvent.LineEmotion);
             PrepMiniGameToInstantiate(_currentDialogEvent.Name);
         }
 
@@ -560,7 +579,7 @@ public class EncounterManager : MonoBehaviour
 
         _currentDialogEvent = Resources.Load<EncounterActionDialog>(path);
 
-        if(_currentDialogEvent == null)
+        if (_currentDialogEvent == null)
         {
             _eventIndex = 1;
             path = "EncounterActions/" + CurrentEncounter.EncounterGoals[rand].Subject + "/" + CurrentEncounter.EncounterGoals[rand].ActionName + _eventIndex;
@@ -680,13 +699,13 @@ public class EncounterManager : MonoBehaviour
     {
         _encounterFinished = true;
         TogglePlayerMenu();
-        DisplayEncounterMessage("Looks like we'll have to come back to this one.");
+        DisplayEncounterMessage("SIMONE", "Looks like we'll have to come back to this one.");
     }
 
     public void EndEncounter()
     {
         string sceneToLoad = "",
-               currentSceneName = SceneManager.GetActiveScene().name;
+        currentSceneName = SceneManager.GetActiveScene().name;
 
         for (int i = 0; i < currentSceneName.Length; i++)
         {
@@ -755,7 +774,7 @@ public class EncounterManager : MonoBehaviour
         {
             currentIndex--;
 
-            if(currentIndex < 0)
+            if (currentIndex < 0)
             {
                 currentIndex = currentMenu.Count - 1;
             }
@@ -805,7 +824,7 @@ public class EncounterManager : MonoBehaviour
             if (!correctMinigame && currentMenu[currentIndex].tag == "Skill Button")
             {
                 TogglePlayerMenu();
-                DisplayEncounterMessage("I don't want you to do that!");
+                DisplayEncounterMessage(CurrentEncounter.EncounterGoals[0].Subject, "I don't want you to do that!");
             }
             else
                 currentMenu[currentIndex].onClick.Invoke();
@@ -839,7 +858,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
 
-        if((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftArrow)) && _activeMenu != EncounterMenus.BASEMENU)
+        if ((Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.LeftArrow)) && _activeMenu != EncounterMenus.BASEMENU)
         {
             _activeMenu = EncounterMenus.BASEMENU;
             string buttonName = currentMenu[currentIndex].name;
@@ -996,13 +1015,14 @@ public class EncounterManager : MonoBehaviour
     }
 
     #region Puzzle Win Fail Methods
+
     public void PuzzleFail(float failPenalty, GameObject currentPuzzle, EncounterActionType myType)
     {
         for (int i = 0; i < EncounterGoals.Count; i++)
         {
             if (myType == EncounterActionType.DIALOG)
             {
-                if(EncounterGoals[i].Subject == _currentDialogEvent.Speaker)
+                if (EncounterGoals[i].Subject == _currentDialogEvent.Speaker)
                 {
                     if (i == 0)
                     {
@@ -1051,7 +1071,7 @@ public class EncounterManager : MonoBehaviour
         if (target1CurrentTrust > 0 || target2CurrentTrust > 0 || target3CurrentTrust > 0 || target4CurrentTrust > 0)
         {
 
-            DisplayEncounterMessage("Dang, that didn't go so well...");
+            DisplayEncounterMessage("SIMONE", "Dang, that didn't go so well...");
         }
         else
         {
@@ -1059,7 +1079,7 @@ public class EncounterManager : MonoBehaviour
             string[] failMessages = new string[2];
             failMessages[0] = "Oh boy... They don't seem happy.";
             failMessages[1] = "Maybe we should try again later...";
-            DisplayEncounterMessage(failMessages);
+            DisplayEncounterMessage("Simone", failMessages);
             _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERFAIL);
         }
         GameObject.Destroy(currentPuzzle);
@@ -1093,9 +1113,9 @@ public class EncounterManager : MonoBehaviour
         }
 
         string[] dialogs = new string[2];
-        dialogs[0] = "Simone: " + _currentDialogEvent.GoodResponse;
+        dialogs[0] = _currentDialogEvent.GoodResponse;
         dialogs[1] = "Good Job!";
-        DisplayEncounterMessage(dialogs);
+        DisplayEncounterMessage("Simone", dialogs);
         //MASON: Continue here
         GameObject.Destroy(currentPuzzle);
         GameObject.Destroy(_eaAnimation);
@@ -1243,11 +1263,11 @@ public class EncounterManager : MonoBehaviour
             }
         }
 
-        if(loadWinMessage)
+        if (loadWinMessage)
         {
             DisplayEncounterMessage("Good Job!");
         }
-        else if(_patientsTreated > lastTreatedPatientCount)
+        else if (_patientsTreated > lastTreatedPatientCount)
         {
             if (_patientsTreated == CurrentEncounter.GoalCount)
             {
@@ -1262,6 +1282,7 @@ public class EncounterManager : MonoBehaviour
                 DisplayEncounterMessage("Great Job! Patient treated!");
         }
     }
+
     #endregion Puzzle Win Fail Methods
 
     private void TogglePlayerMenu()
@@ -1273,7 +1294,8 @@ public class EncounterManager : MonoBehaviour
         _playerMenuEnabled = !_playerMenuEnabled;
     }
 
-#region Display Encounter Message Methods
+    #region Display Encounter Message Methods
+
     //For displaying next in a set
     private void DisplayEncounterMessage()
     {
@@ -1311,8 +1333,16 @@ public class EncounterManager : MonoBehaviour
         emotionCoordinate.text = "";
     }
 
-    private void DisplayEncounterMessage(string message, Emotion messageEmotion)
+    private void DisplayEncounterMessage(string SpeakerName, string message)
     {
+        _speakerName.text = SpeakerName.ToUpper() + ":";
+        DisplayEncounterMessage(message);
+    }
+
+    private void DisplayEncounterMessage(string SpeakerName, string message, Emotion messageEmotion)
+    {
+       
+        _speakerName.text = SpeakerName.ToUpper() + ":";
         _currentEncounterMessages.Clear();
         _currentEncounterMessages.Add(message);
         _currentMessageIndex = 0;
@@ -1324,10 +1354,10 @@ public class EncounterManager : MonoBehaviour
         emotionCoordinate.text = messageEmotion.EmotionType + ", " + messageEmotion.EmotionIntensity;
         _encounterMessageEnabled = true;
 
-        switch(messageEmotion.EmotionType)
+        switch (messageEmotion.EmotionType)
         {
             case 'a':
-                switch(messageEmotion.EmotionIntensity)
+                switch (messageEmotion.EmotionIntensity)
                 {
                     case 1:
                         messageBox.color = new Color(.99f, .99f, .8f, 1);
@@ -1467,10 +1497,20 @@ public class EncounterManager : MonoBehaviour
     }
 
     //For begining and displaying a new set
+    private void DisplayEncounterMessage(string SpeakerName, string[] messages)
+    {
+        _speakerName.text = SpeakerName.ToUpper() + ":";
+        DisplayEncounterMessage(messages);
+       
+    }
+
     private void DisplayEncounterMessage(string[] messages)
     {
+       
         if (!_encounterMessageEnabled)
         {
+
+
             _currentEncounterMessages.Clear();
             _currentMessageIndex = 0;
             _encounterMessage.transform.parent.gameObject.SetActive(true);
@@ -1480,8 +1520,11 @@ public class EncounterManager : MonoBehaviour
             _currentMessageIndex++;
         }
         else
+        {
             _currentEncounterMessages.AddRange(messages);
-        
+
+        }
+
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
         messageBox.color = new Color(1f, 1f, 1f, 0.5f);
         Text emotionCoordinate = GameObject.Find("EncounterMessage/EmotionCoordinate").GetComponent<Text>();
@@ -1493,16 +1536,19 @@ public class EncounterManager : MonoBehaviour
         _encounterMessage.transform.parent.gameObject.SetActive(false);
         _encounterMessageEnabled = false;
     }
+
     #endregion Display Encounter Message Methods
 
     public void ShowSubMenu(GameObject subMenu)
     {
         subMenu.SetActive(true);
     }
+
     private void HideSubMenu(GameObject subMenu)
     {
         subMenu.SetActive(false);
     }
+
     private void ResetMenu()
     {
         switch (_activeMenu)
@@ -1553,19 +1599,19 @@ public class EncounterManager : MonoBehaviour
         {
             return 1;
         }
-        else if(newMenuIndex == menuMax && oldMenuIndex == 0)
+        else if (newMenuIndex == menuMax && oldMenuIndex == 0)
         {
             return menuMax - 1;
         }
-        else if(newMenuIndex == 0 && oldMenuIndex > newMenuIndex)
+        else if (newMenuIndex == 0 && oldMenuIndex > newMenuIndex)
         {
             return menuMax;
         }
-        else if(newMenuIndex == menuMax && oldMenuIndex < newMenuIndex)
+        else if (newMenuIndex == menuMax && oldMenuIndex < newMenuIndex)
         {
             return 0;
         }
-        else if(oldMenuIndex < newMenuIndex)
+        else if (oldMenuIndex < newMenuIndex)
         {
             return newMenuIndex + 1;
         }
@@ -1585,15 +1631,15 @@ public class EncounterManager : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            if(i <= CurrentEncounter.GoalCount - 1)
+            if (i <= CurrentEncounter.GoalCount - 1)
             {
-                if(i == 0)
+                if (i == 0)
                 {
-                    _targetName1.text = EncounterGoals[i].Subject;
+                    _targetName1.text = EncounterGoals[i].Subject.ToUpper();
                     _treatment1.text = EncounterGoals[i].ActionName;
 
                     //checkboxes
-                    if(EncounterGoals[i].TreatmentCount == 1)
+                    if (EncounterGoals[i].TreatmentCount == 1)
                     {
                         _target1CB1.gameObject.SetActive(false);
                         _target1CB2.gameObject.SetActive(false);
@@ -1614,7 +1660,7 @@ public class EncounterManager : MonoBehaviour
                 }
                 if (i == 1)
                 {
-                    _targetName2.text = EncounterGoals[i].Subject;
+                    _targetName2.text = EncounterGoals[i].Subject.ToUpper();
                     _treatment2.text = EncounterGoals[i].ActionName;
 
                     if (EncounterGoals[i].TreatmentCount == 1)
@@ -1632,7 +1678,7 @@ public class EncounterManager : MonoBehaviour
                 }
                 if (i == 2)
                 {
-                    _targetName3.text = EncounterGoals[i].Subject;
+                    _targetName3.text = EncounterGoals[i].Subject.ToUpper();
                     _treatment3.text = EncounterGoals[i].ActionName;
 
                     if (EncounterGoals[i].TreatmentCount == 1)
@@ -1650,7 +1696,7 @@ public class EncounterManager : MonoBehaviour
                 }
                 if (i == 3)
                 {
-                    _targetName4.text = EncounterGoals[i].Subject;
+                    _targetName4.text = EncounterGoals[i].Subject.ToUpper();
                     _treatment4.text = EncounterGoals[i].ActionName;
 
                     if (EncounterGoals[i].TreatmentCount == 1)
@@ -1683,7 +1729,7 @@ public class EncounterManager : MonoBehaviour
     {
         for (int i = 0; i < _theGameManager.CurrentSimoneSkills.Count; i++)
         {
-            switch(_theGameManager.CurrentSimoneSkills[i].MySkillType)
+            switch (_theGameManager.CurrentSimoneSkills[i].MySkillType)
             {
                 case SkillType.SCIENCE:
                     _sSkillCount++;
@@ -1741,7 +1787,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
 
-        if(_sSkillCount == 0)
+        if (_sSkillCount == 0)
         {
             _science.interactable = false;
             _science.GetComponentInChildren<Text>().color = new Color(0.5f, 0.5f, 0.5f);
@@ -1749,13 +1795,13 @@ public class EncounterManager : MonoBehaviour
             _sSkill2.gameObject.SetActive(false);
             _sSkill3.gameObject.SetActive(false);
         }
-        else if(_sSkillCount == 1)
+        else if (_sSkillCount == 1)
         {
             _sSkillSubMenu.Add(_sSkill1);
             _sSkill2.gameObject.SetActive(false);
             _sSkill3.gameObject.SetActive(false);
         }
-        else if(_sSkillCount == 2)
+        else if (_sSkillCount == 2)
         {
             _sSkillSubMenu.Add(_sSkill1);
             _sSkillSubMenu.Add(_sSkill2);
