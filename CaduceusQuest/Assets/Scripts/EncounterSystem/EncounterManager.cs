@@ -521,44 +521,7 @@ public class EncounterManager : MonoBehaviour
 
         PopulateTypeSkillSubMenu();
         #endregion Getting/Setting Encounter Buttons
-
-<<<<<<< HEAD
-        #region Getting/Setting Encounter Data
-        _targetName1 = GameObject.Find("Target 1/Target Name").GetComponent<Text>();
-        _targetName2 = GameObject.Find("Target 2/Target Name").GetComponent<Text>();
-        _targetName3 = GameObject.Find("Target 3/Target Name").GetComponent<Text>();
-        _targetName4 = GameObject.Find("Target 4/Target Name").GetComponent<Text>();
-        _treatment1 = GameObject.Find("Target 1/Treatment/Treatment Label").GetComponent<Text>();
-        _treatment2 = GameObject.Find("Target 2/Treatment/Treatment Label").GetComponent<Text>();
-        _treatment3 = GameObject.Find("Target 3/Treatment/Treatment Label").GetComponent<Text>();
-        _treatment4 = GameObject.Find("Target 4/Treatment/Treatment Label").GetComponent<Text>();
-        _target1CB1 = GameObject.Find("Target 1/Treatment/Treatment Checkbox 1").GetComponent<Image>();
-        _target1CB2 = GameObject.Find("Target 1/Treatment/Treatment Checkbox 2").GetComponent<Image>();
-        _target1CB3 = GameObject.Find("Target 1/Treatment/Treatment Checkbox 3").GetComponent<Image>();
-        _target2CB1 = GameObject.Find("Target 2/Treatment/Treatment Checkbox 1").GetComponent<Image>();
-        _target2CB2 = GameObject.Find("Target 2/Treatment/Treatment Checkbox 2").GetComponent<Image>();
-        _target2CB3 = GameObject.Find("Target 2/Treatment/Treatment Checkbox 3").GetComponent<Image>();
-        _target3CB1 = GameObject.Find("Target 3/Treatment/Treatment Checkbox 1").GetComponent<Image>();
-        _target3CB2 = GameObject.Find("Target 3/Treatment/Treatment Checkbox 2").GetComponent<Image>();
-        _target3CB3 = GameObject.Find("Target 3/Treatment/Treatment Checkbox 3").GetComponent<Image>();
-        _target4CB1 = GameObject.Find("Target 4/Treatment/Treatment Checkbox 1").GetComponent<Image>();
-        _target4CB2 = GameObject.Find("Target 4/Treatment/Treatment Checkbox 2").GetComponent<Image>();
-        _target4CB3 = GameObject.Find("Target 4/Treatment/Treatment Checkbox 3").GetComponent<Image>();
-        _target1Trust = GameObject.Find("Target 1/Trust Level/Image").GetComponent<Image>();
-        _target2Trust = GameObject.Find("Target 2/Trust Level/Image").GetComponent<Image>();
-        _target3Trust = GameObject.Find("Target 3/Trust Level/Image").GetComponent<Image>();
-        _target4Trust = GameObject.Find("Target 4/Trust Level/Image").GetComponent<Image>();
-
-        _speakerName = GameObject.Find("EncounterMessage/Speaker Name").GetComponent<Text>();
-
-
-        _encounterMessage = GameObject.Find("EncounterMessage").GetComponentInChildren<Text>();
-        _encounterMessage.transform.parent.gameObject.SetActive(false);
-        EncounterInfoInitializer();
-        #endregion Getting/Setting Encounter Data
-
-=======
->>>>>>> b5cb66d97edda47f0fb2ea4dbe58833495d6aeaf
+        
         CreateTurnOrder();
         PlayerMenu.SetActive(false);
 

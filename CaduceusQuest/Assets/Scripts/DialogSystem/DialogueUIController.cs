@@ -232,6 +232,11 @@ public class DialogueUIController : MonoBehaviour
                         string[] names = new string[3] { "Sylvia", "Mason", "Violet" };
                         _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND, names);
                     }
+                    else if(_currentConvo.SpeakerName == "Dr. Gallo" && _currentConvo.Index == 'c')
+                    {
+                        string[] names = new string[1] { "Sylvia" };
+                        _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND, names);
+                    }
                     else
                     {
                         _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
