@@ -473,6 +473,7 @@ public class EncounterManager : MonoBehaviour
         _target4Trust = GameObject.Find("Target 4/Trust Level/Image").GetComponent<Image>();
 
         _encounterMessage = GameObject.Find("EncounterMessage").GetComponentInChildren<Text>();
+        _speakerName = GameObject.Find("Speaker Name").GetComponent<Text>();
         _encounterMessage.transform.parent.gameObject.SetActive(false);
         EncounterInfoInitializer();
         #endregion Getting/Setting Encounter Data
@@ -1113,7 +1114,7 @@ public class EncounterManager : MonoBehaviour
         dialogs[0] = _currentDialogEvent.GoodResponse;
         dialogs[1] = "Good Job!";
         DisplayEncounterMessage("Simone", dialogs);
-        //MASON: Continue here
+
         GameObject.Destroy(currentPuzzle);
         GameObject.Destroy(_eaAnimation);
     }
@@ -1161,102 +1162,102 @@ public class EncounterManager : MonoBehaviour
                     GameObject.Destroy(currentPuzzle);
                     GameObject.Destroy(_eaAnimation);
                 }
-                if (i == 1)
-                {
-                    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target2SuccessCount;
+                //if (i == 1)
+                //{
+                //    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target2SuccessCount;
 
-                    if (checkBoxIndex == 3)
-                    {
-                        _target2CB1.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
-                    else if (checkBoxIndex == 2)
-                    {
-                        _target2CB2.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
-                    else if (checkBoxIndex == 1)
-                    {
-                        _target2CB3.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
+                //    if (checkBoxIndex == 3)
+                //    {
+                //        _target2CB1.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
+                //    else if (checkBoxIndex == 2)
+                //    {
+                //        _target2CB2.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
+                //    else if (checkBoxIndex == 1)
+                //    {
+                //        _target2CB3.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
 
-                    _target2SuccessCount++;
+                //    _target2SuccessCount++;
 
-                    if (_target2SuccessCount == EncounterGoals[i].TreatmentCount)
-                    {
-                        loadWinMessage = false;
-                        _patientsTreated++;
-                        //True win
-                    }
+                //    if (_target2SuccessCount == EncounterGoals[i].TreatmentCount)
+                //    {
+                //        loadWinMessage = false;
+                //        _patientsTreated++;
+                //        //True win
+                //    }
 
-                    GameObject.Destroy(currentPuzzle);
-                    GameObject.Destroy(_eaAnimation);
-                }
-                if (i == 2)
-                {
-                    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target3SuccessCount;
+                //    GameObject.Destroy(currentPuzzle);
+                //    GameObject.Destroy(_eaAnimation);
+                //}
+                //if (i == 2)
+                //{
+                //    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target3SuccessCount;
 
-                    if (checkBoxIndex == 3)
-                    {
-                        _target3CB1.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
-                    else if (checkBoxIndex == 2)
-                    {
-                        _target3CB2.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
-                    else if (checkBoxIndex == 1)
-                    {
-                        _target3CB3.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
+                //    if (checkBoxIndex == 3)
+                //    {
+                //        _target3CB1.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
+                //    else if (checkBoxIndex == 2)
+                //    {
+                //        _target3CB2.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
+                //    else if (checkBoxIndex == 1)
+                //    {
+                //        _target3CB3.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
 
-                    _target3SuccessCount++;
+                //    _target3SuccessCount++;
 
-                    if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
-                    {
-                        loadWinMessage = false;
-                        _patientsTreated++;
-                        //True win
-                    }
+                //    if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
+                //    {
+                //        loadWinMessage = false;
+                //        _patientsTreated++;
+                //        //True win
+                //    }
 
-                    GameObject.Destroy(currentPuzzle);
-                    GameObject.Destroy(_eaAnimation);
-                }
-                if (i == 3)
-                {
-                    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target4SuccessCount;
+                //    GameObject.Destroy(currentPuzzle);
+                //    GameObject.Destroy(_eaAnimation);
+                //}
+                //if (i == 3)
+                //{
+                //    int checkBoxIndex = EncounterGoals[i].TreatmentCount - _target4SuccessCount;
 
-                    if (checkBoxIndex == 3)
-                    {
-                        _target4CB1.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
-                    else if (checkBoxIndex == 2)
-                    {
-                        _target4CB2.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
-                    else if (checkBoxIndex == 1)
-                    {
-                        _target4CB3.sprite = CheckedBox;
-                        loadWinMessage = true;
-                    }
+                //    if (checkBoxIndex == 3)
+                //    {
+                //        _target4CB1.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
+                //    else if (checkBoxIndex == 2)
+                //    {
+                //        _target4CB2.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
+                //    else if (checkBoxIndex == 1)
+                //    {
+                //        _target4CB3.sprite = CheckedBox;
+                //        loadWinMessage = true;
+                //    }
 
-                    _target4SuccessCount++;
+                //    _target4SuccessCount++;
 
-                    if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
-                    {
-                        loadWinMessage = false;
-                        _patientsTreated++;
-                        //True win
-                    }
+                //    if (_target3SuccessCount == EncounterGoals[i].TreatmentCount)
+                //    {
+                //        loadWinMessage = false;
+                //        _patientsTreated++;
+                //        //True win
+                //    }
 
-                    GameObject.Destroy(currentPuzzle);
-                    GameObject.Destroy(_eaAnimation);
-                }
+                //    GameObject.Destroy(currentPuzzle);
+                //    GameObject.Destroy(_eaAnimation);
+                //}
             }
         }
 

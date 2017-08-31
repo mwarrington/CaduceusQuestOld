@@ -41,3 +41,6 @@ MonoBehaviour:
   - MyIndex: 103
     NextIndex: 104
     MyChangeType: 1
+  - MyIndex: 100
+    NextIndex: 102
+    MyChangeType: 3

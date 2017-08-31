@@ -6,6 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     static public GameManager TheGameManager;
+
+    public List<Event> AllEvents = new List<Event>();
+
     public Dictionary<string, char> CurrentDialogIndexList
     {
         get
@@ -95,7 +98,7 @@ public class GameManager : MonoBehaviour
         allNPCSwitches.AddRange(FindObjectsOfType<NPCDialogSwitch>());
         if (!_currentEvent)
         {
-            _currentEvent = Resources.Load<Event>("Events/Event1");
+            _currentEvent = AllEvents[0];
             for (int i = 0; i < _currentEvent.EventGoals.Count; i++)
             {
                 _currentEvent.EventGoals[i].Achieved = false;
@@ -187,7 +190,7 @@ public class GameManager : MonoBehaviour
 
         Skill newSkill = new Skill(skillName, st);
 
-        if (!_currentSimoneSkills.Contains(newSkill))
+        if (!_currentSimoneSkills.Exists(x => x.Name == newSkill.Name))
             _currentSimoneSkills.Add(newSkill);
     }
 
@@ -271,6 +274,7 @@ public class GameManager : MonoBehaviour
         DialogueUIController dialogController = FindObjectOfType<DialogueUIController>();
 
         dialogController.ShowEventMessage(_completedEvent);
+        _currentEvent = AllEvents[_currentEvent.Index];
         _completedEvent = "";
     }
 

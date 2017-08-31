@@ -11,6 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5aeeed3c9fc6643a73269bc211ab3e, type: 3}
   m_Name: Event1
   m_EditorClassIdentifier: 
+  Complete: 0
+  Index: 1
   Name: Event1
   Subjects:
   - Sylvia

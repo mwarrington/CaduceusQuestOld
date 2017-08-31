@@ -6,6 +6,7 @@ using UnityEditor;
 public class Event : ScriptableObject
 {
     public bool Complete;
+    public int Index;
     public string Name;
     public List<string> Subjects;
     public List<EventGoal> EventGoals = new List<EventGoal>();
