@@ -107,7 +107,7 @@
 		(g)0(n)2(f)h,1(l)"No, I think I've got it.";
 		(g)0(n)3(f)h,1(l)"Yes please.";
 	[2](s)Dr. Gallo(e)g,2(t)"Get to it!"#;
-	[3](s)Dr. Gallo(e)g,2(t)"Ok, listen carefully this time..."&0;
+	[3](s)Dr. Gallo(e)g,2(t)"Ok, listen carefully this time..."&0;;
 	
 	//after completing list 2 --> go to school first thing tomorrow//
 	(c)Dr. Gallo(i)g;
