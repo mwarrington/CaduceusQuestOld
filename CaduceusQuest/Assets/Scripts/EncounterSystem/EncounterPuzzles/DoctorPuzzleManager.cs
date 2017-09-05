@@ -177,7 +177,7 @@ public class DoctorPuzzleManager : MonoBehaviour
         if (successRate > .9f)
             _theEncounterManager.PuzzleWin(Name, this.gameObject);
         else
-            _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.DIALOG);
+            _theEncounterManager.PuzzleFail(FailPenalty, this.gameObject, EncounterActionType.DOCTOR);
     }
 
     //private void ComplexArrowSpawn()
