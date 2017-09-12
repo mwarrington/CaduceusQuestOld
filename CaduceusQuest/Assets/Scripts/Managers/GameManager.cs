@@ -237,7 +237,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DialogueChanger(string name, DialogChangeType dct, string[] otherNames)
+    public void DialogueChanger(string name, DialogChangeType dct, List<string> otherNames)
     {
         for (int i = 0; i < _lastNPCList.Count; i++)
         {
@@ -250,31 +250,34 @@ public class GameManager : MonoBehaviour
                         if (dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
                         {
                             _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
-
-                            for (int t = 0; t < otherNames.Length; t++)
-                            {
-                                _currentDialogIndexList[otherNames[t]] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
-                            }
-
-                            break;
                         }
+                    }
+                }
+            }
+            else if (otherNames.Contains(_lastNPCList[i].NPCName))
+            {
+                for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
+                {
+                    if(dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
+                    {
+                        _currentDialogIndexList[_lastNPCList[i].NPCName] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
                     }
                 }
             }
         }
     }
 
-    public void SetEventsDone()
-    {
-        _completedEvent = CurrentEvent.EventGoals[0].Treatment;
-    }
+    //public void SetEventsMessage()
+    //{
+    //    _completedEvent = CurrentEvent.EventGoals[0].Treatment;
+    //}
 
     private void EventCompletionMessage()
     {
         DialogueUIController dialogController = FindObjectOfType<DialogueUIController>();
 
         dialogController.ShowEventMessage(_completedEvent);
-        _currentEvent = AllEvents[_currentEvent.Index];
+        //_currentEvent = AllEvents[_currentEvent.Index];
         _completedEvent = "";
     }
 

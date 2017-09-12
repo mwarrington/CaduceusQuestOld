@@ -1155,7 +1155,8 @@ public class EncounterManager : MonoBehaviour
                     {
                         loadWinMessage = false;
                         _patientsTreated++;
-                        _theGameManager.CurrentEvent.GoalReached(EncounterGoals[i].Subject, EncounterGoals[i].ActionName);
+                        //MASON: check if current event event goals contain the stuff
+                        //_theGameManager.CurrentEvent.GoalReached(EncounterGoals[i].Subject, EncounterGoals[i].ActionName);
                         //True win
                     }
 

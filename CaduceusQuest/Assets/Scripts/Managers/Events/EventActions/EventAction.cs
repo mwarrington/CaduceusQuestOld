@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventAction
+public class EventAction : ScriptableObject
 {
-    protected virtual void OnActivate()
+    public virtual void OnActivate()
     {
 
     }

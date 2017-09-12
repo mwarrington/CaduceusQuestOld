@@ -226,21 +226,31 @@ public class DialogueUIController : MonoBehaviour
                     _simone.Movement = true;
                     _currentDialogSwitch.ExitDialog();
 
+                    //Gotta get this working...
+                    List<CompleteConversation> CCList = new List<CompleteConversation>();
+                    foreach (CompleteConversation cc in _theGameManager.CurrentEvent.EventGoals)
+                    {
+                        CCList.Add(cc);
+                    }
+
+                    CCList.Find(cc => cc.Name == _currentConvo.SpeakerName && cc.Index == _currentConvo.Index).Achieved = true;
+                    _theGameManager.CurrentEvent.AssessEventGoals();
+
                     //HACK: I'm gonna have to make a more fleshed out event system
-                    if (_currentConvo.SpeakerName == "Dr. Gallo" && _currentConvo.Index == 'a')
-                    {
-                        string[] names = new string[3] { "Sylvia", "Mason", "Violet" };
-                        _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND, names);
-                    }
-                    else if(_currentConvo.SpeakerName == "Dr. Gallo" && _currentConvo.Index == 'c')
-                    {
-                        string[] names = new string[1] { "Sylvia" };
-                        _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND, names);
-                    }
-                    else
-                    {
-                        _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
-                    }
+                    //if (_currentConvo.SpeakerName == "Dr. Gallo" && _currentConvo.Index == 'a')
+                    //{
+                    //    string[] names = new string[3] { "Sylvia", "Mason", "Violet" };
+                    //    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND, names);
+                    //}
+                    //else if(_currentConvo.SpeakerName == "Dr. Gallo" && _currentConvo.Index == 'c')
+                    //{
+                    //    string[] names = new string[1] { "Sylvia" };
+                    //    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND, names);
+                    //}
+                    //else
+                    //{
+                    //    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
+                    //}
                 }
                 else if (!_isWriting)
                     GetNextLine();
