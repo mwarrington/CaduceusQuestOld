@@ -225,16 +225,21 @@ public class DialogueUIController : MonoBehaviour
                     _convoFinished = true;
                     _simone.Movement = true;
                     _currentDialogSwitch.ExitDialog();
-
-                    //Gotta get this working...
+                    
                     List<CompleteConversation> CCList = new List<CompleteConversation>();
-                    foreach (CompleteConversation cc in _theGameManager.CurrentEvent.EventGoals)
+                    foreach (EventGoal eg in _theGameManager.CurrentEvent.EventGoals)
                     {
-                        CCList.Add(cc);
+                        if (eg.GetType() == typeof(CompleteConversation))
+                            CCList.Add((CompleteConversation)eg);
                     }
 
-                    CCList.Find(cc => cc.Name == _currentConvo.SpeakerName && cc.Index == _currentConvo.Index).Achieved = true;
+                    CompleteConversation CC = CCList.Find(cc => cc.Name == _currentConvo.SpeakerName && cc.Index == _currentConvo.Index);
+                    if (CC)
+                        CC.Achieved = true;
+
                     _theGameManager.CurrentEvent.AssessEventGoals();
+
+                    _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
 
                     //HACK: I'm gonna have to make a more fleshed out event system
                     //if (_currentConvo.SpeakerName == "Dr. Gallo" && _currentConvo.Index == 'a')

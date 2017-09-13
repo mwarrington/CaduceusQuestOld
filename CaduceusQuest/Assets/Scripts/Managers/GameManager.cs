@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     private static Dictionary<string, string> _sceneCameras = new Dictionary<string, string>();
     private static string _completedEvent = "";
+    private static int _currentEventIndex;
 
     private static Vector3 _lastPosition;
     public Vector3 LastPosition
@@ -99,9 +100,12 @@ public class GameManager : MonoBehaviour
         if (!_currentEvent)
         {
             _currentEvent = AllEvents[0];
-            for (int i = 0; i < _currentEvent.EventGoals.Count; i++)
+            for (int i = 0; i < AllEvents.Count; i++)
             {
-                _currentEvent.EventGoals[i].Achieved = false;
+                for (int j = 0; j < AllEvents[i].EventGoals.Count; j++)
+                {
+                    AllEvents[i].EventGoals[j].Achieved = false;
+                }
             }
         }
 
@@ -172,6 +176,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        //HACK//
+        if(Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            CurrentEvent.AssessEventGoals();
+        }
+    }
+
     public void UpdateDialogIndexList(string npcName, char newIndex)
     {
         _currentDialogIndexList[npcName] = newIndex;
@@ -237,30 +250,33 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DialogueChanger(string name, DialogChangeType dct, List<string> otherNames)
+    public void DialogueChanger(DialogChangeType dct, List<string> otherNames)
     {
         for (int i = 0; i < _lastNPCList.Count; i++)
         {
-            if (_lastNPCList[i].NPCName == name)
-            {
-                for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
-                {
-                    if (_currentDialogIndexList[name] == _lastNPCList[i].NextConvoInfo[j].MyIndex)
-                    {
-                        if (dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
-                        {
-                            _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
-                        }
-                    }
-                }
-            }
-            else if (otherNames.Contains(_lastNPCList[i].NPCName))
+            //if (_lastNPCList[i].NPCName == name)
+            //{
+            //    for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
+            //    {
+            //        if (_currentDialogIndexList[name] == _lastNPCList[i].NextConvoInfo[j].MyIndex)
+            //        {
+            //            if (DialogChangeType.CONVOEND == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
+            //            {
+            //                _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+            //                break;
+            //            }
+            //        }
+            //    }
+            //}
+            //else 
+            if (otherNames.Contains(_lastNPCList[i].NPCName))
             {
                 for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
                 {
                     if(dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
                     {
                         _currentDialogIndexList[_lastNPCList[i].NPCName] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+                        break;
                     }
                 }
             }
@@ -277,9 +293,13 @@ public class GameManager : MonoBehaviour
         DialogueUIController dialogController = FindObjectOfType<DialogueUIController>();
 
         dialogController.ShowEventMessage(_completedEvent);
-        //_currentEvent = AllEvents[_currentEvent.Index];
         _completedEvent = "";
     }
 
-    
+    public void ProceedToNextEvent()
+    {
+        _currentEventIndex++;
+        if (_currentEventIndex < AllEvents.Count)
+            _currentEvent = AllEvents[_currentEventIndex];
+    }
 }

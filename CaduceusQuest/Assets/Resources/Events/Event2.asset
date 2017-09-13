@@ -11,12 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5aeeed3c9fc6643a73269bc211ab3e, type: 3}
   m_Name: Event2
   m_EditorClassIdentifier: 
-  Complete: 0
-  Index: 2
-  Name: Event2
-  Subjects:
-  - Violet
   EventGoals:
-  - NPC: Sylvia
-    Treatment: Collect Blood Sample
-    Achieved: 1
+  - {fileID: 11400000, guid: ff3579208a2347f49b6e922a7818e2de, type: 2}
+  - {fileID: 11400000, guid: 759dc0c2902099f46a183856d2190a46, type: 2}
+  - {fileID: 11400000, guid: 9fc7b78323003004d9245db5abe6385c, type: 2}
+  EventActions:
+  - {fileID: 11400000, guid: 7b942b800416a5c489574588157d10cd, type: 2}

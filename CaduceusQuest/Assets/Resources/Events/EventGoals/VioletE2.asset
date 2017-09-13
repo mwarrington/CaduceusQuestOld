@@ -8,10 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6246ee325a9e7e44a49d3f44b13e8b8, type: 3}
-  m_Name: NewChangeDialogAction
+  m_Script: {fileID: 11500000, guid: 8ae554b311ee2374c9b966f23aba081c, type: 3}
+  m_Name: VioletE2
   m_EditorClassIdentifier: 
-  NPCsToUpdate:
-  - Sylvia
-  - Violet
-  NPCName: Dr. Gallo
+  _achieved: 1
+  EncounterSubject: Violet
+  EncounterGoal: Complete Intake Form

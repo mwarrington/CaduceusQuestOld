@@ -16,5 +16,6 @@ public class EventGoal : ScriptableObject
             _achieved = value;
         }
     }
+    [SerializeField]
     private bool _achieved;
 }

@@ -14,21 +14,18 @@ public class Event : ScriptableObject
 
         set
         {
-            if (value != _complete)
+            if (value)
             {
-                if (value)
+                foreach (EventAction ea in EventActions)
                 {
-                    foreach (EventAction ea in EventActions)
-                    {
-                        ea.OnActivate();
-                    }
+                    ea.OnActivate();
                 }
-
-                _complete = value;
             }
+
+            _complete = value;
         }
     }
-    private bool _complete;
+    private bool _complete = false;
 
     public List<EventGoal> EventGoals = new List<EventGoal>();
     public List<EventAction> EventActions = new List<EventAction>();
@@ -54,6 +51,9 @@ public class Event : ScriptableObject
         }
 
         if (allAchieved)
+        {
             Complete = true;
+            GameManager.TheGameManager.ProceedToNextEvent();
+        }
     }
 }

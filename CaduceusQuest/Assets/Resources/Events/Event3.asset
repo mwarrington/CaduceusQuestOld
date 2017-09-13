@@ -11,13 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5aeeed3c9fc6643a73269bc211ab3e, type: 3}
   m_Name: Event3
   m_EditorClassIdentifier: 
-  Complete: 0
-  Index: 3
-  Name: Event3
-  Subjects:
-  - Dr. Gallo
-  - Violet
   EventGoals:
-  - NPC: Violet
-    Treatment: Collect Blood Sample
-    Achieved: 0
+  - {fileID: 11400000, guid: 710be9658766afe478b16e7039aef61d, type: 2}
+  EventActions:
+  - {fileID: 11400000, guid: 0e5d9f267ffe12c4cbe0587c88ab54ae, type: 2}

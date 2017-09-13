@@ -1156,6 +1156,20 @@ public class EncounterManager : MonoBehaviour
                         loadWinMessage = false;
                         _patientsTreated++;
                         //MASON: check if current event event goals contain the stuff
+                        List<SuccessfulEncounter> SEList = new List<SuccessfulEncounter>();
+                        //Invalid cast exception... gotta stop that from happening
+                        //could be a big problem...
+                        foreach (EventGoal eg in _theGameManager.CurrentEvent.EventGoals)
+                        {
+                            if (eg.GetType() == typeof(SuccessfulEncounter))
+                                SEList.Add((SuccessfulEncounter)eg);
+                        }
+
+                        SuccessfulEncounter SE = SEList.Find(se => se.EncounterSubject == CurrentEncounter.EncounterGoals[0].Subject && se.EncounterGoal == CurrentEncounter.EncounterGoals[0].ActionName);
+                        if (SE)
+                            SE.Achieved = true;
+
+                        _theGameManager.CurrentEvent.AssessEventGoals();
                         //_theGameManager.CurrentEvent.GoalReached(EncounterGoals[i].Subject, EncounterGoals[i].ActionName);
                         //True win
                     }
