@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6246ee325a9e7e44a49d3f44b13e8b8, type: 3}
-  m_Name: ChangeDialogAction5
+  m_Script: {fileID: 11500000, guid: 8ae554b311ee2374c9b966f23aba081c, type: 3}
+  m_Name: VioletE6
   m_EditorClassIdentifier: 
-  NPCsToUpdate:
-  - Violet
-  NewDialogIndexes: 6600
+  _achieved: 0
+  EncounterSubject: Violet
+  EncounterGoal: Collect Blood Sample

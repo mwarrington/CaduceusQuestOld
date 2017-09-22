@@ -6,12 +6,13 @@ using UnityEditor;
 public class ChangeDialog : EventAction
 {
     public List<string> NPCsToUpdate;
+    public List<char> NewDialogIndexes;
 
     public override void OnActivate()
     {
         base.OnActivate();
 
-        GameManager.TheGameManager.DialogueChanger(DialogChangeType.EVENTTRIGGER, NPCsToUpdate);
+        GameManager.TheGameManager.EventDialogueChanger(NPCsToUpdate, NewDialogIndexes);
     }
 
     [MenuItem("Assets/Create/EventActions/ChangeDialog")]

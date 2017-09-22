@@ -27,6 +27,7 @@ public class Event : ScriptableObject
     }
     private bool _complete = false;
 
+    public List<Event> NextEvents = new List<Event>();
     public List<EventGoal> EventGoals = new List<EventGoal>();
     public List<EventAction> EventActions = new List<EventAction>();
 
@@ -53,7 +54,7 @@ public class Event : ScriptableObject
         if (allAchieved)
         {
             Complete = true;
-            GameManager.TheGameManager.ProceedToNextEvent();
+            GameManager.TheGameManager.ProceedToNextEvent(this);
         }
     }
 }

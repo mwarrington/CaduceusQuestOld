@@ -227,17 +227,20 @@ public class DialogueUIController : MonoBehaviour
                     _currentDialogSwitch.ExitDialog();
                     
                     List<CompleteConversation> CCList = new List<CompleteConversation>();
-                    foreach (EventGoal eg in _theGameManager.CurrentEvent.EventGoals)
+                    for (int i = 0; i < _theGameManager.CurrentEvents.Count; i++)
                     {
-                        if (eg.GetType() == typeof(CompleteConversation))
-                            CCList.Add((CompleteConversation)eg);
+                        foreach (EventGoal eg in _theGameManager.CurrentEvents[i].EventGoals)
+                        {
+                            if (eg.GetType() == typeof(CompleteConversation))
+                                CCList.Add((CompleteConversation)eg);
+                        }
                     }
 
                     CompleteConversation CC = CCList.Find(cc => cc.Name == _currentConvo.SpeakerName && cc.Index == _currentConvo.Index);
                     if (CC)
                         CC.Achieved = true;
 
-                    _theGameManager.CurrentEvent.AssessEventGoals();
+                    _theGameManager.CurrentEvents.ForEach(delegate (Event theEvent) { theEvent.AssessEventGoals(); });
 
                     _theGameManager.DialogueChanger(_currentConvo.SpeakerName, DialogChangeType.CONVOEND);
 

@@ -22,7 +22,6 @@ public class GameManager : MonoBehaviour
 
     private static Dictionary<string, string> _sceneCameras = new Dictionary<string, string>();
     private static string _completedEvent = "";
-    private static int _currentEventIndex;
 
     private static Vector3 _lastPosition;
     public Vector3 LastPosition
@@ -39,14 +38,14 @@ public class GameManager : MonoBehaviour
     }
 
     private static Encounter _currentEncounter;
-    public Event CurrentEvent
+    public List<Event> CurrentEvents
     {
         get
         {
-            return _currentEvent;
+            return _currentEvents;
         }
     }
-    private static Event _currentEvent;
+    private static List<Event> _currentEvents = new List<Event>();
 
     public bool FrontDoorGoesToOverworld
     {
@@ -97,9 +96,9 @@ public class GameManager : MonoBehaviour
         //Should only happen the first time entering that scene
         List<NPCDialogSwitch> allNPCSwitches = new List<NPCDialogSwitch>();
         allNPCSwitches.AddRange(FindObjectsOfType<NPCDialogSwitch>());
-        if (!_currentEvent)
+        if (_currentEvents.Count == 0)
         {
-            _currentEvent = AllEvents[0];
+            _currentEvents.Add(AllEvents[0]);
             for (int i = 0; i < AllEvents.Count; i++)
             {
                 for (int j = 0; j < AllEvents[i].EventGoals.Count; j++)
@@ -181,7 +180,7 @@ public class GameManager : MonoBehaviour
         //HACK//
         if(Input.GetKeyDown(KeyCode.Keypad5))
         {
-            CurrentEvent.AssessEventGoals();
+            CurrentEvents.ForEach(delegate (Event theEvent) { theEvent.AssessEventGoals(); });
         }
     }
 
@@ -250,37 +249,41 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DialogueChanger(DialogChangeType dct, List<string> otherNames)
+    public void EventDialogueChanger(List<string> otherNames, List<char> nextChars)
     {
-        for (int i = 0; i < _lastNPCList.Count; i++)
+        for (int i = 0; i < otherNames.Count; i++)
         {
-            //if (_lastNPCList[i].NPCName == name)
-            //{
-            //    for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
-            //    {
-            //        if (_currentDialogIndexList[name] == _lastNPCList[i].NextConvoInfo[j].MyIndex)
-            //        {
-            //            if (DialogChangeType.CONVOEND == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
-            //            {
-            //                _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
-            //                break;
-            //            }
-            //        }
-            //    }
-            //}
-            //else 
-            if (otherNames.Contains(_lastNPCList[i].NPCName))
-            {
-                for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
-                {
-                    if(dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
-                    {
-                        _currentDialogIndexList[_lastNPCList[i].NPCName] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
-                        break;
-                    }
-                }
-            }
+            _currentDialogIndexList[otherNames[i]] = nextChars[i];
         }
+        //for (int i = 0; i < _lastNPCList.Count; i++)
+        //{
+        //    //if (_lastNPCList[i].NPCName == name)
+        //    //{
+        //    //    for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
+        //    //    {
+        //    //        if (_currentDialogIndexList[name] == _lastNPCList[i].NextConvoInfo[j].MyIndex)
+        //    //        {
+        //    //            if (DialogChangeType.CONVOEND == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
+        //    //            {
+        //    //                _currentDialogIndexList[name] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+        //    //                break;
+        //    //            }
+        //    //        }
+        //    //    }
+        //    //}
+        //    //else 
+        //    if (otherNames.Contains(_lastNPCList[i].NPCName))
+        //    {
+        //        for (int j = 0; j < _lastNPCList[i].NextConvoInfo.Length; j++)
+        //        {
+        //            if(dct == _lastNPCList[i].NextConvoInfo[j].MyChangeType)
+        //            {
+        //                _currentDialogIndexList[_lastNPCList[i].NPCName] = _lastNPCList[i].NextConvoInfo[j].NextIndex;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     //public void SetEventsMessage()
@@ -296,10 +299,18 @@ public class GameManager : MonoBehaviour
         _completedEvent = "";
     }
 
-    public void ProceedToNextEvent()
+    public void ProceedToNextEvent(Event oldEvent)
     {
-        _currentEventIndex++;
-        if (_currentEventIndex < AllEvents.Count)
-            _currentEvent = AllEvents[_currentEventIndex];
+        List<Event> newEvents = new List<Event>();
+        if (oldEvent.NextEvents.Count > 0)
+        {
+            for (int i = 0; i < oldEvent.NextEvents.Count; i++)
+            {
+                newEvents.Add(oldEvent.NextEvents[i]);
+            }
+        }
+
+        _currentEvents.Remove(oldEvent);
+        _currentEvents.AddRange(newEvents);
     }
 }

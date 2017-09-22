@@ -9,10 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a5aeeed3c9fc6643a73269bc211ab3e, type: 3}
-  m_Name: Event5
+  m_Name: Event6
   m_EditorClassIdentifier: 
   NextEvents: []
   EventGoals:
-  - {fileID: 11400000, guid: 42757cd49bdeb8940955b4f5de66624a, type: 2}
+  - {fileID: 11400000, guid: b835bc25624f9774a9c22913fcda14b2, type: 2}
+  - {fileID: 11400000, guid: 619f7dbe111dbae42817a52e28a3fa66, type: 2}
   EventActions:
-  - {fileID: 11400000, guid: ea3a76d35b07bcf4e8c640fb581bb233, type: 2}
+  - {fileID: 11400000, guid: 16a0fe6d80cd5a049a1405a82d3a1f66, type: 2}

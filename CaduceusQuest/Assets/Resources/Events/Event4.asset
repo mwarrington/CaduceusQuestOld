@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5aeeed3c9fc6643a73269bc211ab3e, type: 3}
   m_Name: Event4
   m_EditorClassIdentifier: 
+  NextEvents:
+  - {fileID: 11400000, guid: eb23f384726771446b2bbb4137924f20, type: 2}
   EventGoals:
-  - {fileID: 11400000, guid: 42757cd49bdeb8940955b4f5de66624a, type: 2}
+  - {fileID: 11400000, guid: 710be9658766afe478b16e7039aef61d, type: 2}
   EventActions:
-  - {fileID: 11400000, guid: ea3a76d35b07bcf4e8c640fb581bb233, type: 2}
+  - {fileID: 11400000, guid: 67774b4f01263d148bb75d91a507a961, type: 2}

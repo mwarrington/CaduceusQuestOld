@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: ChangeDialogAction4
   m_EditorClassIdentifier: 
   NPCsToUpdate:
-  - Violet
-  NPCName: n/a
+  - Sylvia
+  NewDialogIndexes: 6600

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ae554b311ee2374c9b966f23aba081c, type: 3}
-  m_Name: VioletE5
+  m_Name: GalloE3
   m_EditorClassIdentifier: 
   _achieved: 0
-  EncounterSubject: Violet
-  EncounterGoal: Collect Blood Sample
+  EncounterSubject: Dr. Gallo
+  EncounterGoal: Examine Neck

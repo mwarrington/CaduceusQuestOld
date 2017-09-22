@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: ChangeDialogAction3
   m_EditorClassIdentifier: 
   NPCsToUpdate:
-  - Sylvia
   - Mason
+  NewDialogIndexes: 6400
