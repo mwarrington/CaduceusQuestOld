@@ -40,6 +40,7 @@ public class EncounterManager : MonoBehaviour
         _cSkillSubMenu = new List<Button>();
 
     private List<string> _currentEncounterMessages = new List<string>();
+    private List<string> _currentEncounterMessageNames = new List<string>();
     private GameObject _currentMinigameObj,
         _eaAnimation;
     private EncounterAction _currentEA;
@@ -1074,10 +1075,13 @@ public class EncounterManager : MonoBehaviour
         else
         {
             _encounterFinished = true;
-            string[] failMessages = new string[2];
-            failMessages[0] = "Oh boy... They don't seem happy.";
-            failMessages[1] = "Maybe we should try again later...";
-            DisplayEncounterMessage("Simone", failMessages);
+            Dictionary<string, string> failMessages = new Dictionary<string, string>();
+            failMessages.Add("", "Oh boy... They don't seem happy.");
+            failMessages.Add("", "Maybe we should try again later...");
+            List<string> one = new List<string>(failMessages.Keys);
+            List<string> two = new List<string>(failMessages.Values);
+            DisplayEncounterMessage(one, two);
+            
             _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERFAIL);
         }
         GameObject.Destroy(currentPuzzle);
@@ -1110,10 +1114,12 @@ public class EncounterManager : MonoBehaviour
             }
         }
 
-        string[] dialogs = new string[2];
-        dialogs[0] = _currentDialogEvent.GoodResponse;
-        dialogs[1] = "Good Job!";
-        DisplayEncounterMessage("Simone", dialogs);
+        Dictionary<string, string> winMessages = new Dictionary<string, string>();
+        winMessages.Add("Simone", _currentDialogEvent.GoodResponse);
+        winMessages.Add("", "Good Job!");
+        List<string> one = new List<string>(winMessages.Keys);
+        List<string> two = new List<string>(winMessages.Values);
+        DisplayEncounterMessage(one, two);
 
         GameObject.Destroy(currentPuzzle);
         GameObject.Destroy(_eaAnimation);
@@ -1286,10 +1292,11 @@ public class EncounterManager : MonoBehaviour
             if (_patientsTreated == CurrentEncounter.GoalCount)
             {
                 _encounterFinished = true;
-                string[] winMessages = new string[2];
-                winMessages[0] = "Wonderful!";
-                winMessages[1] = "You've treated all patients";
-                DisplayEncounterMessage(winMessages);
+                List<string> winMessages = new List<string>();
+                winMessages.Add( "Wonderful!");
+                winMessages.Add("You've treated the patient!");
+                List<string> speakerNames = new List<string>();
+                DisplayEncounterMessage(speakerNames, winMessages);
                 _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERWIN);
             }
             else
@@ -1315,6 +1322,7 @@ public class EncounterManager : MonoBehaviour
     {
         _encounterMessage.transform.parent.gameObject.SetActive(true);
         _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
+        _speakerName.text = _currentEncounterMessageNames[_currentMessageIndex];
         _encounterMessageEnabled = true;
         Image messageBox = _encounterMessage.transform.parent.GetComponent<Image>();
         messageBox.color = new Color(1f, 1f, 1f, 0.5f);
@@ -1332,6 +1340,7 @@ public class EncounterManager : MonoBehaviour
             _currentMessageIndex = 0;
             _encounterMessage.transform.parent.gameObject.SetActive(true);
             _currentEncounterMessages.Add(message);
+            _speakerName.text = "";
             _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
             _encounterMessageEnabled = true;
             _currentMessageIndex++;
@@ -1349,14 +1358,21 @@ public class EncounterManager : MonoBehaviour
 
     private void DisplayEncounterMessage(string SpeakerName, string message)
     {
-        _speakerName.text = SpeakerName.ToUpper() + ":";
+        if (SpeakerName != "")
+            _speakerName.text = SpeakerName.ToUpper() + ":";
+        else
+            _speakerName.text = "";
+
         DisplayEncounterMessage(message);
     }
 
     private void DisplayEncounterMessage(string SpeakerName, string message, Emotion messageEmotion)
     {
-       
-        _speakerName.text = SpeakerName.ToUpper() + ":";
+        if (SpeakerName != "")
+            _speakerName.text = SpeakerName.ToUpper() + ":";
+        else
+            _speakerName.text = "";
+
         _currentEncounterMessages.Clear();
         _currentEncounterMessages.Add(message);
         _currentMessageIndex = 0;
@@ -1511,24 +1527,21 @@ public class EncounterManager : MonoBehaviour
     }
 
     //For begining and displaying a new set
-    private void DisplayEncounterMessage(string SpeakerName, string[] messages)
+    private void DisplayEncounterMessage(List<string> speakerNames, List<string> messages)
     {
-        _speakerName.text = SpeakerName.ToUpper() + ":";
-        DisplayEncounterMessage(messages);
-       
-    }
-
-    private void DisplayEncounterMessage(string[] messages)
-    {
-       
         if (!_encounterMessageEnabled)
         {
-
-
             _currentEncounterMessages.Clear();
             _currentMessageIndex = 0;
             _encounterMessage.transform.parent.gameObject.SetActive(true);
             _currentEncounterMessages.AddRange(messages);
+            _currentEncounterMessageNames.AddRange(speakerNames);
+
+            if (speakerNames[_currentMessageIndex] != "")
+                _speakerName.text = speakerNames[_currentMessageIndex].ToUpper() + ":";
+            else
+                _speakerName.text = "";
+
             _encounterMessage.text = _currentEncounterMessages[_currentMessageIndex];
             _encounterMessageEnabled = true;
             _currentMessageIndex++;

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCsToUpdate:
   - Dr. Gallo
-  NewDialogIndexes: 6300
+  - Macy
+  NewDialogIndexes: 63006200

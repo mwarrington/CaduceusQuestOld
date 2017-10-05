@@ -47,7 +47,7 @@ public class DoctorPuzzleManager : MonoBehaviour
     private Camera _myCamera;
     private SpriteRenderer _correctKeyPressIndicator,
                            _incorrectKeyPressIndicator;
-    private Vector2 _topSpawnPoint,
+    private Vector3 _topSpawnPoint,
                     _bottomSpawnPoint,
                     _leftSpawnPoint,
                     _rightSpawnPoint;
@@ -83,8 +83,8 @@ public class DoctorPuzzleManager : MonoBehaviour
     {
         string path = "Prefabs/EncounterPuzzles/Doctor/arrow_";
         int rand = Random.Range(0, 4);
-        Vector2 spawnPoint = Vector2.zero,
-                spawnVariance = Vector2.zero;
+        Vector3 spawnPoint = Vector3.zero,
+                spawnVariance = Vector3.zero;
 
         if (ComplexSpawning)
         {
@@ -98,19 +98,19 @@ public class DoctorPuzzleManager : MonoBehaviour
 
             if (newRand == 0)
             {
-                spawnPoint = _rightSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+                spawnPoint = _rightSpawnPoint + new Vector3(0, Random.Range(-spawnVariance.y, spawnVariance.y));
             }
             else if (newRand == 1)
             {
-                spawnPoint = _leftSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+                spawnPoint = _leftSpawnPoint + new Vector3(0, Random.Range(-spawnVariance.y, spawnVariance.y));
             }
             else if (newRand == 2)
             {
-                spawnPoint = _topSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+                spawnPoint = _topSpawnPoint + new Vector3(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
             }
             else if (newRand == 3)
             {
-                spawnPoint = _bottomSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+                spawnPoint = _bottomSpawnPoint + new Vector3(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
             }
 
             if(rand == 0)
@@ -134,22 +134,22 @@ public class DoctorPuzzleManager : MonoBehaviour
         {
             if (rand == 0)
             {
-                spawnPoint = _topSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+                spawnPoint = _topSpawnPoint + new Vector3(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
                 path += "up";
             }
             else if (rand == 1)
             {
-                spawnPoint = _bottomSpawnPoint + new Vector2(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
+                spawnPoint = _bottomSpawnPoint + new Vector3(Random.Range(-spawnVariance.x, spawnVariance.x), 0);
                 path += "down";
             }
             else if (rand == 2)
             {
-                spawnPoint = _leftSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+                spawnPoint = _leftSpawnPoint + new Vector3(0, Random.Range(-spawnVariance.y, spawnVariance.y));
                 path += "left";
             }
             else if (rand == 3)
             {
-                spawnPoint = _rightSpawnPoint + new Vector2(0, Random.Range(-spawnVariance.y, spawnVariance.y));
+                spawnPoint = _rightSpawnPoint + new Vector3(0, Random.Range(-spawnVariance.y, spawnVariance.y));
                 path += "right";
             }
         }
