@@ -9568,6 +9568,35 @@ Transform:
   m_Father: {fileID: 1282909856}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &851535377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 851535378}
+  m_Layer: 0
+  m_Name: Receptionist2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &851535378
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 851535377}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.22500992, y: -0.03801173, z: 0.062000394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 887370137}
+  m_Father: {fileID: 2135945784}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &857906178
 GameObject:
   m_ObjectHideFlags: 0
@@ -13938,7 +13967,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1172826446}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 2}
@@ -22235,19 +22264,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2135945784}
+    m_TransformParent: {fileID: 851535378}
     m_Modifications:
     - target: {fileID: 4583770250068184, guid: 1ced7260e46324f919952a9484a71c0b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.8000145
+      value: 9.025024
       objectReference: {fileID: 0}
     - target: {fileID: 4583770250068184, guid: 1ced7260e46324f919952a9484a71c0b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.476
+      value: -0.43798828
       objectReference: {fileID: 0}
     - target: {fileID: 4583770250068184, guid: 1ced7260e46324f919952a9484a71c0b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 6.506
+      value: 6.444
       objectReference: {fileID: 0}
     - target: {fileID: 4583770250068184, guid: 1ced7260e46324f919952a9484a71c0b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -26634,7 +26663,7 @@ Transform:
   m_LocalPosition: {x: -27.91, y: 0.476, z: -0.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 887370137}
+  - {fileID: 851535378}
   - {fileID: 1172826447}
   m_Father: {fileID: 2055352704}
   m_RootOrder: 7
