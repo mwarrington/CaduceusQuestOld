@@ -64,7 +64,7 @@ public class Emotion
 			} else if (EmotionIntensity == 2) {
 				return new Color (.05f, .78f, .84f, 1);
 			} else if (EmotionIntensity == 1) {
-				return new Color (.85f, .92f, .62f, 1);
+				return new Color (.76f, .84f, .88f, 1);
 			} else {
 				Debug.LogError ("That shit don't exist. Emotion Type: " + EmotionType + " Emotion Intensity: " + EmotionIntensity);
 				return Color.black;
@@ -101,7 +101,7 @@ public class Emotion
 			} else if (EmotionIntensity == 3) {
 				return new Color (.90f, .19f, .36f, 1);
 			} else if (EmotionIntensity == 2) {
-				return new Color (.77f, .88f, .38f, 1);
+				return new Color (.93f, .39f, .42f, 1);
 			} else if (EmotionIntensity == 1) {
 				return new Color (.93f, .65f, .64f, 1);
 			} else {

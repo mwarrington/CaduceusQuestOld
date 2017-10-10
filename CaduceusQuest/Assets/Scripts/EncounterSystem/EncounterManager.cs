@@ -1296,6 +1296,8 @@ public class EncounterManager : MonoBehaviour
                 winMessages.Add( "Wonderful!");
                 winMessages.Add("You've treated the patient!");
                 List<string> speakerNames = new List<string>();
+                speakerNames.Add("");
+                speakerNames.Add("");
                 DisplayEncounterMessage(speakerNames, winMessages);
                 _theGameManager.DialogueChanger(CurrentEncounter.EncounterGoals[0].Subject, DialogChangeType.ENCOUNTERWIN);
             }
@@ -1441,7 +1443,7 @@ public class EncounterManager : MonoBehaviour
                 switch (messageEmotion.EmotionIntensity)
                 {
                     case 1:
-                        messageBox.color = new Color(.85f, .92f, .62f, 1);
+                        messageBox.color = new Color(.76f, .84f, .88f, 1);
                         break;
                     case 2:
                         messageBox.color = new Color(.05f, .78f, .84f, 1);
@@ -1495,7 +1497,7 @@ public class EncounterManager : MonoBehaviour
                         messageBox.color = new Color(.93f, .65f, .64f, 1);
                         break;
                     case 2:
-                        messageBox.color = new Color(.77f, .88f, .38f, 1);
+                        messageBox.color = new Color(.93f, .39f, .42f, 1);
                         break;
                     case 3:
                         messageBox.color = new Color(.90f, .19f, .36f, 1);
