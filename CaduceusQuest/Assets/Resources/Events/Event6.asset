@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 619f7dbe111dbae42817a52e28a3fa66, type: 2}
   EventActions:
   - {fileID: 11400000, guid: 16a0fe6d80cd5a049a1405a82d3a1f66, type: 2}
+  - {fileID: 11400000, guid: 439ffb4aa60bd1940aa6a9e58cac85ae, type: 2}

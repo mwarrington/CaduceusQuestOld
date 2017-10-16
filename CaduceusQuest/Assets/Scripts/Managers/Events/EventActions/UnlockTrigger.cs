@@ -12,21 +12,23 @@ public class UnlockTrigger : EventAction
     {
         base.OnActivate();
 
-        if (TriggersToUnlock.Count > 0)
-        {
-            for (int i = 0; i < TriggersToUnlock.Count; i++)
-            {
-                GameObject.Find(TriggersToUnlock[i]).GetComponent<Collider>().enabled = true;
-            }
-        }
+        GameManager.TheGameManager.SetWorldTriggersToChange(TriggersToUnlock, TriggersToLock);
 
-        if (TriggersToLock.Count > 0)
-        {
-            for (int i = 0; i < TriggersToLock.Count; i++)
-            {
-                GameObject.Find(TriggersToLock[i]).GetComponent<Collider>().enabled = false;
-            }
-        }
+        //if (TriggersToUnlock.Count > 0)
+        //{
+        //    for (int i = 0; i < TriggersToUnlock.Count; i++)
+        //    {
+        //        GameObject.Find(TriggersToUnlock[i]).GetComponent<Collider>().enabled = true;
+        //    }
+        //}
+
+        //if (TriggersToLock.Count > 0)
+        //{
+        //    for (int i = 0; i < TriggersToLock.Count; i++)
+        //    {
+        //        GameObject.Find(TriggersToLock[i]).GetComponent<Collider>().enabled = false;
+        //    }
+        //}
     }
 
     [MenuItem("Assets/Create/EventActions/UnlockTrigger")]

@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private static List<NPC> _lastNPCList = new List<NPC>();
 
     private static Dictionary<string, string> _sceneCameras = new Dictionary<string, string>();
+    private static List<string> _unlockTriggerStrings = new List<string>(),
+                                _lockTriggerStrings = new List<string>();
     private static string _completedEvent = "";
 
     private static Vector3 _lastPosition;
@@ -173,6 +175,13 @@ public class GameManager : MonoBehaviour
         {
             FrontDoorGoesToOverworld = false;
         }
+
+        //World spacific changes methods
+        if (SceneManager.GetActiveScene().name == "Hospital")
+        {
+            if (_unlockTriggerStrings.Count != 0 && _lockTriggerStrings.Count != 0)
+                UpdateTriggers();
+        }
     }
 
     private void Update()
@@ -245,6 +254,34 @@ public class GameManager : MonoBehaviour
                         }
                     }
                 }
+            }
+        }
+    }
+
+    //In World events
+    public void SetWorldTriggersToChange(List<string> onTriggers, List<string> offTriggers)
+    {
+        _unlockTriggerStrings.Clear();
+        _lockTriggerStrings.Clear();
+        _unlockTriggerStrings.AddRange(onTriggers);
+        _lockTriggerStrings.AddRange(offTriggers);
+    }
+
+    private void UpdateTriggers()
+    {
+        if (_unlockTriggerStrings.Count > 0)
+        {
+            for (int i = 0; i < _unlockTriggerStrings.Count; i++)
+            {
+                GameObject.Find(_unlockTriggerStrings[i]).GetComponent<Collider>().enabled = true;
+            }
+        }
+
+        if (_lockTriggerStrings.Count > 0)
+        {
+            for (int i = 0; i < _lockTriggerStrings.Count; i++)
+            {
+                GameObject.Find(_lockTriggerStrings[i]).GetComponent<Collider>().enabled = false;
             }
         }
     }
