@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/StartScreen.unity
+    guid: 16ab1d95ec4722f428b7c0ca7330a0f4
+  - enabled: 1
     path: Assets/Scene/Hospital.unity
     guid: b0984606fa8d448388065a63837da68a
   - enabled: 1
@@ -19,4 +22,4 @@ EditorBuildSettings:
     guid: 5f2642ce763d248a19790e156345716b
   - enabled: 1
     path: Assets/Scene/School2.unity
-    guid: 00000000000000000000000000000000
+    guid: 1d3195f9d24594c9cb0ddf3102164af9
