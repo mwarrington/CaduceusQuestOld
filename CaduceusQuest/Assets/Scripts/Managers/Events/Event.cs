@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class Event : ScriptableObject
 {
@@ -31,6 +33,7 @@ public class Event : ScriptableObject
     public List<EventGoal> EventGoals = new List<EventGoal>();
     public List<EventAction> EventActions = new List<EventAction>();
 
+#if UNITY_EDITOR
     [MenuItem("Assets/Create/Event")]
     public static void CreateEvent()
     {
@@ -41,6 +44,7 @@ public class Event : ScriptableObject
 
         Selection.activeObject = asset;
     }
+#endif
 
     public void AssessEventGoals()
     {

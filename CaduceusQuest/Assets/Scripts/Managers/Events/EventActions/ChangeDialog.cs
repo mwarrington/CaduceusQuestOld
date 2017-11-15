@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class ChangeDialog : EventAction
 {
@@ -15,6 +17,7 @@ public class ChangeDialog : EventAction
         GameManager.TheGameManager.EventDialogueChanger(NPCsToUpdate, NewDialogIndexes);
     }
 
+#if UNITY_EDITOR
     [MenuItem("Assets/Create/EventActions/ChangeDialog")]
     public static void CreateEvent()
     {
@@ -25,4 +28,5 @@ public class ChangeDialog : EventAction
 
         Selection.activeObject = asset;
     }
+#endif
 }

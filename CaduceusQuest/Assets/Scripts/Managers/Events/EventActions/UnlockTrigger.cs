@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class UnlockTrigger : EventAction
 {
@@ -31,6 +33,7 @@ public class UnlockTrigger : EventAction
         //}
     }
 
+#if UNITY_EDITOR
     [MenuItem("Assets/Create/EventActions/UnlockTrigger")]
     public static void CreateEvent()
     {
@@ -41,4 +44,5 @@ public class UnlockTrigger : EventAction
 
         Selection.activeObject = asset;
     }
+#endif
 }

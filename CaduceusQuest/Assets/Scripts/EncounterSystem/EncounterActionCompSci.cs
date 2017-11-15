@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class EncounterActionCompSci : EncounterAction
 {
@@ -9,6 +11,7 @@ public class EncounterActionCompSci : EncounterAction
                StrikeCount;
 }
 
+#if UNITY_EDITOR
 public class MakeEncounterActionCompSci
 {
     class EACompSciWindow : EditorWindow
@@ -58,3 +61,4 @@ public class MakeEncounterActionCompSci
         }
     }
 }
+#endif

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class NPC : ScriptableObject
 {
@@ -26,6 +28,7 @@ public class NextConvoData
     }
 }
 
+#if UNITY_EDITOR
 public class MakeNPCScritableObject
 {
     class NPCWindow : EditorWindow
@@ -309,3 +312,4 @@ public class MakeNPCScritableObject
         }
     }
 }
+#endif

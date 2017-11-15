@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class EncounterActionDoctor : EncounterAction
 {
@@ -11,6 +13,7 @@ public class EncounterActionDoctor : EncounterAction
                  SpawnRate;
 }
 
+#if UNITY_EDITOR
 public class MakeEncounterActionDoctor
 {
     class EADoctorWindow : EditorWindow
@@ -71,3 +74,4 @@ public class MakeEncounterActionDoctor
         }
     }
 }
+#endif

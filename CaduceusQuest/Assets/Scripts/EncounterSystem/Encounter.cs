@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Encounter : ScriptableObject
 {
@@ -11,6 +13,7 @@ public class Encounter : ScriptableObject
     public EncounterGoal[] EncounterGoals;
 }
 
+#if UNITY_EDITOR
 public class MakeEncounterObj
 {
     class MakeEncounterWindow : EditorWindow
@@ -169,3 +172,4 @@ public class MakeEncounterObj
         }
     }
 }
+#endif

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class EncounterActionDialog : EncounterAction
 {
@@ -12,6 +14,7 @@ public class EncounterActionDialog : EncounterAction
     public Emotion LineEmotion = new Emotion('a', 0);
 }
 
+#if UNITY_EDITOR
 public class MakeEncounterActionDialog
 {
     class EADialogWindow : EditorWindow
@@ -79,3 +82,4 @@ public class MakeEncounterActionDialog
         Selection.activeObject = asset;
     }
 }
+#endif
