@@ -187,9 +187,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //HACK//
-        if(Input.GetKeyDown(KeyCode.Keypad5))
+        //if(Input.GetKeyDown(KeyCode.Keypad5))
+        //{
+        //    CurrentEvents.ForEach(delegate (Event theEvent) { theEvent.AssessEventGoals(); });
+        //}
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            CurrentEvents.ForEach(delegate (Event theEvent) { theEvent.AssessEventGoals(); });
+            Application.Quit();
         }
     }
 
